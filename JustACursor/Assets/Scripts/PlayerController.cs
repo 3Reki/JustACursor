@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveDir;
 
     [Header("Dash")]
-    [SerializeField] private float dashSpeed;
+    [SerializeField] private AnimationCurve dashSpeed;
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashRefreshCooldown;
     
@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 dashDir;
     private bool canDash = true;
     private bool isDashing;
+    private bool isFirstPhaseDash;
+    private float dashStartTime;
 
     private void Start() 
     {
@@ -35,6 +37,16 @@ public class PlayerController : MonoBehaviour
         moveDir.Normalize();
 
         mousePos = inputs.GetMousePos();
+
+        if (isDashing)
+        {
+            rb.AddForce(dashDir * (dashSpeed.Evaluate((Time.time - dashStartTime) / (dashDuration * 2)) * moveSpeed));
+
+            if (isFirstPhaseDash)
+            {
+                return;
+            }
+        }
 
         ApplyMovement();
         ApplyRotation();
@@ -57,22 +69,23 @@ public class PlayerController : MonoBehaviour
     {
         if (canDash && inputs.GetActionPressed(InputAction.Dash)) 
         {
-            dashDir = moveDir;
-            if (dashDir == Vector2.zero) dashDir = lookDir.normalized;
-
-            canDash = false;
-            isDashing = true;
-            StartCoroutine(ResetDash());
+            StartCoroutine(Dash());
         }
-
-        if (!isDashing) return;
-        
-        rb.SetVelocity(Axis.X, dashDir.x * dashSpeed);
-        rb.SetVelocity(Axis.Y, dashDir.y * dashSpeed);
     }
 
-    private IEnumerator ResetDash()
+    private IEnumerator Dash()
     {
+        dashDir = moveDir;
+        if (dashDir == Vector2.zero) dashDir = Vector2.up;
+
+        canDash = false;
+        isDashing = true;
+        isFirstPhaseDash = true;
+        dashStartTime = Time.time;
+        
+        yield return new WaitForSeconds(dashDuration);
+        isFirstPhaseDash = false;
+        
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         
