@@ -72,16 +72,11 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 10;
  
-        Vector3 objectPos = camera.WorldToScreenPoint (transform.position);
+        Vector3 objectPos = camera.WorldToScreenPoint(transform.position);
         mousePos.x -= objectPos.x;
         mousePos.y -= objectPos.y;
  
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("yess");
     }
 }
