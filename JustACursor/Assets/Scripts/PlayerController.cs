@@ -1,82 +1,83 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(PlayerInput))]
+public class PlayerController : MonoBehaviour 
 {
-    [SerializeField] private new Rigidbody2D rigidbody2D;
-    [SerializeField] private Transform myTransform;
-    [SerializeField] private float moveSpeed = 1f;
-    [SerializeField] private float shootCooldown = .15f;
+    [Header("Movement")]
+    [SerializeField] private float moveSpeed;
+    private Vector2 moveDir;
 
-    private new Camera camera;
-    private bool canShoot = true;
-    private WaitForSeconds shootWait;
+    [Header("Dash")]
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashTime;
+    [SerializeField] private float dashRefreshCooldown;
+    
+    private Rigidbody2D rb;
+    private PlayerInput inputs;
+    private Vector2 lookDir;
+    private Vector2 mousePos;
+    private Vector2 dashDir;
+    private bool canDash = true;
+    private bool isDashing;
 
-    private void Awake()
+    private void Start() 
     {
-        camera = Camera.main;
-        shootWait = new WaitForSeconds(shootCooldown);
+        rb = GetComponent<Rigidbody2D>();
+        inputs = GetComponent<PlayerInput>();
     }
 
-    private void Update()
+    private void FixedUpdate() 
     {
-        Move();
-        Rotate();
-        Shoot();
+        moveDir.x = inputs.GetAxisRaw(Axis.X);
+        moveDir.y = inputs.GetAxisRaw(Axis.Y);
+        moveDir.Normalize();
+
+        mousePos = inputs.GetMousePos();
+
+        ApplyMovement();
+        ApplyRotation();
+        ApplyDash();
     }
 
-    private void Shoot()
+    private void ApplyMovement() 
     {
-        if (!canShoot || !Input.GetKey(KeyCode.Mouse0))
-            return;
+        rb.SetVelocity(Axis.X, moveDir.x * moveSpeed);
+        rb.SetVelocity(Axis.Y, moveDir.y * moveSpeed);
+    }
+
+    private void ApplyRotation() 
+    {
+        lookDir = mousePos - rb.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+    
+    private void ApplyDash() 
+    {
+        if (canDash && inputs.GetActionPressed(InputAction.Dash)) 
+        {
+            dashDir = moveDir;
+            if (dashDir == Vector2.zero) dashDir = lookDir.normalized;
+
+            canDash = false;
+            isDashing = true;
+            StartCoroutine(ResetDash());
+        }
+
+        if (!isDashing) return;
         
-        GameObject bulletGO = Pooler.Instance.Pop("Bullet", myTransform.position, myTransform.rotation * Quaternion.Euler(0, 0, -90));
-        bulletGO.GetComponent<Bullet>().Shoot();
-        canShoot = false;
-
-        StartCoroutine(ShootResetCoroutine());
+        rb.SetVelocity(Axis.X, dashDir.x * dashSpeed);
+        rb.SetVelocity(Axis.Y, dashDir.y * dashSpeed);
     }
 
-    private IEnumerator ShootResetCoroutine()
+    private IEnumerator ResetDash()
     {
-        yield return shootWait;
-        canShoot = true;
-    }
-
-    private void Move()
-    {
-        Vector2 dir = Vector2.zero;
-        if (Input.GetKey(KeyCode.Z))
-        {
-            dir.y += 1;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            dir.y -= 1;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            dir.x += 1;
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            dir.x -= 1;
-        }
-
-        rigidbody2D.AddForce(moveSpeed * 100 * Time.deltaTime * dir.normalized);
+        yield return new WaitForSeconds(dashTime);
+        isDashing = false;
         
-    }
-
-    private void Rotate()
-    {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = 10;
- 
-        Vector3 objectPos = camera.WorldToScreenPoint(transform.position);
-        mousePos.x -= objectPos.x;
-        mousePos.y -= objectPos.y;
- 
-        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        yield return new WaitForSeconds(dashRefreshCooldown);
+        canDash = true;
     }
 }
