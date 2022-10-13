@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     
     private void ApplyDash() 
     {
-        if (canDash && inputs.GetActionPressed(InputAction.Dash)) 
+        if (canDash && inputs.GetActionPressed(PlayerInput.InputAction.Dash)) 
         {
             dashDir = moveDir;
             if (dashDir == Vector2.zero) dashDir = lookDir.normalized;
