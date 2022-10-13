@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Dash")]
     [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashTime;
+    [SerializeField] private float dashDuration;
     [SerializeField] private float dashRefreshCooldown;
     
     private Rigidbody2D rb;
@@ -43,8 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyMovement() 
     {
-        rb.SetVelocity(Axis.X, moveDir.x * moveSpeed);
-        rb.SetVelocity(Axis.Y, moveDir.y * moveSpeed);
+        rb.AddForce(moveDir * moveSpeed);
     }
 
     private void ApplyRotation() 
@@ -74,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ResetDash()
     {
-        yield return new WaitForSeconds(dashTime);
+        yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         
         yield return new WaitForSeconds(dashRefreshCooldown);
