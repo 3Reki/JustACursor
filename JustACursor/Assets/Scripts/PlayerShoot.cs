@@ -25,7 +25,7 @@ public class PlayerShoot : MonoBehaviour
     {
         if (!inputs.GetActionPressed(PlayerInput.InputAction.Shoot) || !canShoot) return;
 
-        GameObject bulletGO = Pooler.Instance.Pop("Bullet", firePoint.position,
+        GameObject bulletGO = Pooler.Instance.Pop(Pooler.Key.Bullet, firePoint.position,
             firePoint.rotation * Quaternion.Euler(0, 0, -90)); // todo : fix sprite rotation
         bulletGO.GetComponent<Bullet>().Shoot();
 

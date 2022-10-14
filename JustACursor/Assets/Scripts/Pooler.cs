@@ -6,7 +6,7 @@ public class Pooler : MonoBehaviour
 {
     public static Pooler Instance;
     
-    private Dictionary<string, Pool> pools = new Dictionary<string, Pool>();
+    private Dictionary<Key, Pool> pools = new Dictionary<Key, Pool>();
     [SerializeField] private List<PoolKey> poolKeys = new List<PoolKey>();
 
     private GameObject objectInstance;
@@ -26,7 +26,7 @@ public class Pooler : MonoBehaviour
     [System.Serializable]
     public class PoolKey
     {
-        public string key;
+        public Key key;
         public Pool pool;
     }
 
@@ -77,7 +77,7 @@ public class Pooler : MonoBehaviour
 
     private void InitRefreshCount()
     {
-        foreach (KeyValuePair<string, Pool> pool in pools)
+        foreach (KeyValuePair<Key, Pool> pool in pools)
         {
             StartCoroutine(RefreshPool(pool.Value));
         }
@@ -101,7 +101,7 @@ public class Pooler : MonoBehaviour
         StartCoroutine(RefreshPool(pool));
     }
 
-    public GameObject Pop(string key)
+    public GameObject Pop(Key key)
     {
         if (pools[key].queue.Count == 0)
         {
@@ -115,7 +115,7 @@ public class Pooler : MonoBehaviour
         return objectInstance;
     }
 
-    public GameObject Pop(string key, Vector3 position)
+    public GameObject Pop(Key key, Vector3 position)
     {
         GameObject go = Pop(key);
         go.transform.position = position;
@@ -123,7 +123,7 @@ public class Pooler : MonoBehaviour
         return go;
     }
     
-    public GameObject Pop(string key, Vector3 position, Quaternion rotation)
+    public GameObject Pop(Key key, Vector3 position, Quaternion rotation)
     {
         GameObject go = Pop(key, position);
         go.transform.rotation = rotation;
@@ -131,7 +131,7 @@ public class Pooler : MonoBehaviour
         return go;
     }
 
-    public void DePop(string key, GameObject go)
+    public void DePop(Key key, GameObject go)
     {
         pools[key].queue.Enqueue(go);
 
@@ -139,15 +139,20 @@ public class Pooler : MonoBehaviour
         go.SetActive(false);
     }
 
-    public void DelayedDePop(float t, string key, GameObject go)
+    public void DelayedDePop(float t, Key key, GameObject go)
     {
         StartCoroutine(DelayedDePopCoroutine(t, key, go));
     }
 
-    IEnumerator DelayedDePopCoroutine(float t, string key, GameObject go)
+    IEnumerator DelayedDePopCoroutine(float t, Key key, GameObject go)
     {
         yield return new WaitForSeconds(t);
         
         DePop(key, go);
+    }
+
+    public enum Key
+    {
+        Bullet
     }
 }
