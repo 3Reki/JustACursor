@@ -8,6 +8,8 @@ public class PlayerInput : MonoBehaviour {
     [Header("Action Keys")]
     [SerializeField] private KeyCode dashKey;
     [SerializeField] private KeyCode shootKey;
+    [SerializeField] private KeyCode speedUpKey;
+    [SerializeField] private KeyCode slowDownKey;
 
     private HashSet<InputAction> requestedActions = new HashSet<InputAction>();
 
@@ -25,6 +27,12 @@ public class PlayerInput : MonoBehaviour {
 
         if (Input.GetKeyDown(shootKey)) requestedActions.Add(InputAction.Shoot);
         else if (Input.GetKeyUp(shootKey)) requestedActions.Remove(InputAction.Shoot);
+        
+        if (Input.GetKeyDown(speedUpKey)) requestedActions.Add(InputAction.SpeedUp);
+        else if (Input.GetKeyUp(speedUpKey)) requestedActions.Remove(InputAction.SpeedUp);
+        
+        if (Input.GetKeyDown(slowDownKey)) requestedActions.Add(InputAction.SlowDown);
+        else if (Input.GetKeyUp(slowDownKey)) requestedActions.Remove(InputAction.SlowDown);
     }
     
     public float GetAxisRaw(Axis axis) {
@@ -37,5 +45,13 @@ public class PlayerInput : MonoBehaviour {
 
     public bool GetActionPressed(InputAction action) {
         return requestedActions.Contains(action);
+    }
+
+    public enum InputAction
+    {
+        Dash,
+        Shoot,
+        SpeedUp,
+        SlowDown
     }
 }

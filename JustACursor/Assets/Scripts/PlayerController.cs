@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     
     private void ApplyDash() 
     {
-        if (canDash && inputs.GetActionPressed(InputAction.Dash)) 
+        if (canDash && inputs.GetActionPressed(PlayerInput.InputAction.Dash)) 
         {
             StartCoroutine(Dash());
         }
