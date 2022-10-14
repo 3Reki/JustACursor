@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8492879579015322654}
   - component: {fileID: 8492879579015322655}
   - component: {fileID: 8492879579015322652}
+  - component: {fileID: 8574159809606814587}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -204,3 +205,32 @@ MonoBehaviour:
   timeToDecrease: 3
   speedUpValue: 2
   slowDownValue: 0.5
+--- !u!60 &8574159809606814587
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492879579015322661}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.4, y: 2.4}
+    newSize: {x: 2.4, y: 2.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.0359955, y: 0.5168071}
+      - {x: -0.50664634, y: -0.019386493}
+      - {x: -1.0446625, y: -0.53163594}
+      - {x: 1.0516974, y: -0.0040694997}

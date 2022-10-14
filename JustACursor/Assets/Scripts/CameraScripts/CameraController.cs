@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
 
 namespace CameraScripts
 {
     public class CameraController : MonoBehaviour
     {
+        public static Camera mainCamera;
+        public static CameraController instance;
+        
         public Transform target;
     
         [SerializeField] private Vector3 localPositionToMove = new Vector3(0, 5, -15);
@@ -14,6 +18,22 @@ namespace CameraScripts
         private Vector3 wantedPosition;
         private Quaternion wantedRotation;
         private Vector3 currentPosition;
+
+        private void Awake()
+        {
+            if (instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            instance = this;
+        }
+
+        private void Start()
+        {
+            mainCamera = Camera.main;
+        }
 
         private void FixedUpdate()
         {
