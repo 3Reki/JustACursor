@@ -172,8 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 8492879579015322654}
   playerMovement: {fileID: 6905191973965184494}
+  playerShoot: {fileID: 8492879579015322655}
   playerDash: {fileID: 9087955399235441740}
-  m_playerData: {fileID: 11400000, guid: 1bcf97825f0eecb46b5fd59ff3902660, type: 2}
+  playerData: {fileID: 11400000, guid: 1bcf97825f0eecb46b5fd59ff3902660, type: 2}
 --- !u!114 &6905191973965184494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,8 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a747e2710fb39f24d81690eaeaf98cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 8492879579015322658}
   firePoint: {fileID: 8492879579015322657}
-  fireRate: 8
 --- !u!114 &8492879579015322652
 MonoBehaviour:
   m_ObjectHideFlags: 0

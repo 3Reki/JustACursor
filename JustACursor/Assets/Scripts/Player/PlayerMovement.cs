@@ -9,7 +9,7 @@ namespace Player
 
         public void ApplyMovement(Vector2 dir) 
         {
-            rb.AddForce(dir * playerController.playerData.moveSpeed);
+            rb.AddForce(dir * playerController.data.moveSpeed);
         }
 
         public void ApplyRotation(Vector2 mousePos) 

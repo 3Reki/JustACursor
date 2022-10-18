@@ -7,13 +7,14 @@ namespace Player
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerController : MonoBehaviour
     {
-        public PlayerData playerData => m_playerData;
+        public PlayerData data => playerData;
         public bool isDashing => playerDash.isDashing;
     
         [SerializeField] private PlayerInput playerInput;
         [SerializeField] private PlayerMovement playerMovement;
+        [SerializeField] private PlayerShoot playerShoot;
         [SerializeField] private PlayerDash playerDash;
-        [SerializeField] private PlayerData m_playerData;
+        [SerializeField] private PlayerData playerData;
 
         private Vector2 moveDir;
 
@@ -40,7 +41,11 @@ namespace Player
             {
                 playerDash.HandleDashInput(moveDir);
             }
-        
+
+            if (playerInput.GetActionPressed(PlayerInput.InputAction.Shoot))
+            {
+                playerShoot.Shoot();
+            }
         }
     }
 }

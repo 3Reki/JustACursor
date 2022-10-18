@@ -3,29 +3,16 @@ using UnityEngine;
 
 namespace Player
 {
-    [RequireComponent(typeof(PlayerInput))]
     public class PlayerShoot : MonoBehaviour
     {
-        private PlayerInput inputs;
-
+        [SerializeField] private PlayerController playerController;
         [SerializeField] private Transform firePoint;
-        [SerializeField] private float fireRate;
     
         private bool canShoot = true;
 
-        private void Start()
+        public void Shoot()
         {
-            inputs = GetComponent<PlayerInput>();
-        }
-
-        private void FixedUpdate()
-        {
-            Shoot();
-        }
-
-        private void Shoot()
-        {
-            if (!inputs.GetActionPressed(PlayerInput.InputAction.Shoot) || !canShoot) return;
+            if (!canShoot) return;
 
             GameObject bulletGO = Pooler.instance.Pop("Bullet", firePoint.position,
                 firePoint.rotation * Quaternion.Euler(0, 0, -90)); // todo : fix sprite rotation
@@ -37,7 +24,7 @@ namespace Player
 
         private IEnumerator ShootCooldown()
         {
-            yield return new WaitForSeconds(1f / fireRate);
+            yield return new WaitForSeconds(1f / playerController.data.fireRate);
             canShoot = true;
         }
     }

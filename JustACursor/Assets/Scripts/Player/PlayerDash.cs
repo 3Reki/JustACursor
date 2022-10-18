@@ -16,7 +16,7 @@ namespace Player
         private bool canDash = true;
         private float dashStartTime;
     
-        private PlayerData playerData => playerController.playerData;
+        private PlayerData playerData => playerController.data;
 
         public void HandleDash()
         {
