@@ -9,11 +9,12 @@ public class Bullet : MonoBehaviour
 
     public void Shoot()
     {
-        rigidbody.AddForce(myTransform.up * bulletSpeed, ForceMode2D.Impulse);
+        Vector2 force = myTransform.up * bulletSpeed;
+        rigidbody.AddForce(force, ForceMode2D.Impulse);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Pooler.instance.DePop("Bullet", gameObject);
+        Pooler.instance.DePop(Pooler.Key.Bullet, gameObject);
     }
 }
