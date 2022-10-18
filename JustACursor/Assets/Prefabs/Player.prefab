@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 8492879579015322657}
   - component: {fileID: 8492879579015322656}
   - component: {fileID: 8492879579015322659}
-  - component: {fileID: 8492879579015322658}
+  - component: {fileID: 8574159809606814587}
   - component: {fileID: 8492879579015322654}
+  - component: {fileID: 8492879579015322658}
+  - component: {fileID: 6905191973965184494}
   - component: {fileID: 8492879579015322655}
   - component: {fileID: 8492879579015322652}
-  - component: {fileID: 8574159809606814587}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -111,6 +112,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!60 &8574159809606814587
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492879579015322661}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.4, y: 2.4}
+    newSize: {x: 2.4, y: 2.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.0359955, y: 0.5168071}
+      - {x: -0.50664634, y: -0.019386493}
+      - {x: -1.0446625, y: -0.53163594}
+      - {x: 1.0516974, y: -0.0040694997}
+--- !u!114 &8492879579015322654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492879579015322661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1faa1fd85881244812e220e6f88889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashKey: 304
+  shootKey: 323
+  speedUpKey: 324
+  slowDownKey: 32
 --- !u!114 &8492879579015322658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3123ab4d4dc42004a83cd85d9c6e4e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMovement: {fileID: 6905191973965184494}
+  playerInput: {fileID: 8492879579015322654}
+  m_playerData: {fileID: 11400000, guid: 1bcf97825f0eecb46b5fd59ff3902660, type: 2}
   moveSpeed: 600
   dashSpeed:
     serializedVersion: 2
@@ -159,7 +208,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   dashDuration: 0.2
   dashRefreshCooldown: 0.25
---- !u!114 &8492879579015322654
+--- !u!114 &6905191973965184494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,13 +217,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8492879579015322661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce1faa1fd85881244812e220e6f88889, type: 3}
+  m_Script: {fileID: 11500000, guid: 62b0616b403542dd93fec0e6d5bbb80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashKey: 304
-  shootKey: 323
-  speedUpKey: 324
-  slowDownKey: 32
+  playerController: {fileID: 8492879579015322658}
+  rb: {fileID: 8492879579015322659}
 --- !u!114 &8492879579015322655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,32 +252,3 @@ MonoBehaviour:
   timeToDecrease: 3
   speedUpValue: 2
   slowDownValue: 0.5
---- !u!60 &8574159809606814587
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8492879579015322661}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.4, y: 2.4}
-    newSize: {x: 2.4, y: 2.4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1.0359955, y: 0.5168071}
-      - {x: -0.50664634, y: -0.019386493}
-      - {x: -1.0446625, y: -0.53163594}
-      - {x: 1.0516974, y: -0.0040694997}

@@ -1,13 +1,19 @@
 using System.Collections;
+using ScriptableObjects;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerInput))]
-public class PlayerController : MonoBehaviour 
+public class PlayerController : MonoBehaviour
 {
+    public PlayerData playerData => m_playerData;
+    
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private PlayerData m_playerData;
+    
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
-    private Vector2 moveDir;
 
     [Header("Dash")]
     [SerializeField] private AnimationCurve dashSpeed;
@@ -15,10 +21,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashRefreshCooldown;
     
     private Rigidbody2D rb;
-    private PlayerInput inputs;
-    private Vector2 lookDir;
+    
     private Vector2 mousePos;
     private Vector2 dashDir;
+    private Vector2 moveDir;
     private bool canDash = true;
     private bool isDashing;
     private bool isFirstPhaseDash;
@@ -27,16 +33,13 @@ public class PlayerController : MonoBehaviour
     private void Start() 
     {
         rb = GetComponent<Rigidbody2D>();
-        inputs = GetComponent<PlayerInput>();
     }
 
     private void FixedUpdate() 
     {
-        moveDir.x = inputs.GetAxisRaw(Axis.X);
-        moveDir.y = inputs.GetAxisRaw(Axis.Y);
+        moveDir.x = playerInput.GetAxisRaw(Axis.X);
+        moveDir.y = playerInput.GetAxisRaw(Axis.Y);
         moveDir.Normalize();
-
-        mousePos = inputs.GetMousePos();
 
         if (isDashing)
         {
@@ -48,26 +51,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        ApplyMovement();
-        ApplyRotation();
+        playerMovement.ApplyMovement(moveDir);
+        playerMovement.ApplyRotation(playerInput.GetMousePos());
         ApplyDash();
     }
 
-    private void ApplyMovement() 
-    {
-        rb.AddForce(moveDir * moveSpeed);
-    }
-
-    private void ApplyRotation() 
-    {
-        lookDir = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-    }
-    
     private void ApplyDash() 
     {
-        if (canDash && inputs.GetActionPressed(PlayerInput.InputAction.Dash)) 
+        if (canDash && playerInput.GetActionPressed(PlayerInput.InputAction.Dash)) 
         {
             StartCoroutine(Dash());
         }
