@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -13,6 +14,6 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Pooler.Instance.DePop("Bullet", gameObject);
+        Pooler.instance.DePop("Bullet", gameObject);
     }
 }

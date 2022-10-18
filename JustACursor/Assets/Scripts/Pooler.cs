@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pooler : MonoBehaviour
 {
-    public static Pooler Instance;
+    public static Pooler instance;
     
     private Dictionary<string, Pool> pools = new Dictionary<string, Pool>();
     [SerializeField] private List<PoolKey> poolKeys = new List<PoolKey>();
@@ -32,7 +32,7 @@ public class Pooler : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        instance = this;
 
         InitPools();
         PopulatePools();
