@@ -1,4 +1,6 @@
+using System;
 using DG.Tweening;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,51 +8,34 @@ namespace Player
 {
     public class PlayerEnergy : MonoBehaviour
     {
-        private PlayerInput inputs;
+        public static float gameSpeed = 1;
     
         [SerializeField] private Image timeFill;
+        [SerializeField] private PlayerController playerController;
 
-        [SerializeField] private float timeToDecrease;
-        [SerializeField, Range(1,2)] private float speedUpValue;
-        [SerializeField, Range(0.1f,1)] private float slowDownValue;
-    
-        public static float gameSpeed = 1;
+        private PlayerData playerData => playerController.data;
 
-        private void Start()
+        public void SpeedUpTime()
         {
-            inputs = GetComponent<PlayerInput>();
+            gameSpeed = playerData.speedUpModifier;
+
+            if (Math.Abs(timeFill.fillAmount - 1) < 0.01f) return;
+
+            timeFill.DOKill();
+            timeFill.DOFillAmount(1, playerData.speedDownMaxDuration - playerData.speedDownMaxDuration * timeFill.fillAmount).SetEase(Ease.Linear)
+                .OnComplete(ResetSpeed);
         }
 
-        private void FixedUpdate()
+        public void SlowDownTime()
         {
-            if (inputs.GetActionPressed(PlayerInput.InputAction.SlowDown))
-            {
-                if (timeFill.fillAmount == 0) return;
+            if (timeFill.fillAmount == 0) return;
 
-                gameSpeed = slowDownValue;
-                timeFill.DOKill();
-                timeFill.DOFillAmount(0, timeToDecrease * timeFill.fillAmount).SetEase(Ease.Linear).OnComplete((ResetSpeed));
-            }
-
-            else if (inputs.GetActionPressed(PlayerInput.InputAction.SpeedUp))
-            {
-                gameSpeed = speedUpValue;
-            
-                if (timeFill.fillAmount == 1) return;
-            
-                timeFill.DOKill();
-                timeFill.DOFillAmount(1, timeToDecrease-timeToDecrease*timeFill.fillAmount).SetEase(Ease.Linear).OnComplete((ResetSpeed));
-            }
-        
-            else
-            {
-                ResetSpeed();
-            }
-        
-        
+            gameSpeed = playerData.speedDownModifier;
+            timeFill.DOKill();
+            timeFill.DOFillAmount(0, playerData.speedDownMaxDuration * timeFill.fillAmount).SetEase(Ease.Linear).OnComplete(ResetSpeed);
         }
 
-        private void ResetSpeed()
+        public void ResetSpeed()
         {
             timeFill.DOKill();
             gameSpeed = 1;

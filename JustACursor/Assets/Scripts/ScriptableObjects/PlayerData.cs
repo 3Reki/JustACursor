@@ -20,7 +20,7 @@ namespace ScriptableObjects
         public float fireRate;
 
         [Header("Time Ability")] 
-        public float maxDuration;
+        public float speedDownMaxDuration;
         [Range(1, 4)]
         public float speedUpModifier;
         [Range(0, 1)]

@@ -129,9 +129,9 @@ GameObject:
   - component: {fileID: 8492879579015322654}
   - component: {fileID: 8492879579015322658}
   - component: {fileID: 8492879579015322655}
-  - component: {fileID: 8492879579015322652}
   - component: {fileID: 6905191973965184494}
   - component: {fileID: 9087955399235441740}
+  - component: {fileID: 8492879579015322652}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -238,6 +238,7 @@ MonoBehaviour:
   playerMovement: {fileID: 6905191973965184494}
   playerShoot: {fileID: 8492879579015322655}
   playerDash: {fileID: 9087955399235441740}
+  playerEnergy: {fileID: 8492879579015322652}
   playerData: {fileID: 11400000, guid: 1bcf97825f0eecb46b5fd59ff3902660, type: 2}
 --- !u!114 &8492879579015322655
 MonoBehaviour:
@@ -253,22 +254,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 8492879579015322658}
   firePoint: {fileID: 8492879579015322657}
---- !u!114 &8492879579015322652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8492879579015322661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 404fbe85428434642b02acb86197749d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeFill: {fileID: 0}
-  timeToDecrease: 3
-  speedUpValue: 2
-  slowDownValue: 0.5
 --- !u!114 &6905191973965184494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,3 +282,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 8492879579015322658}
   rb: {fileID: 8492879579015322659}
+--- !u!114 &8492879579015322652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492879579015322661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404fbe85428434642b02acb86197749d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeFill: {fileID: 0}
+  playerController: {fileID: 8492879579015322658}

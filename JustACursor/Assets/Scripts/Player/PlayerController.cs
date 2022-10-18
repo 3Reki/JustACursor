@@ -14,6 +14,7 @@ namespace Player
         [SerializeField] private PlayerMovement playerMovement;
         [SerializeField] private PlayerShoot playerShoot;
         [SerializeField] private PlayerDash playerDash;
+        [SerializeField] private PlayerEnergy playerEnergy;
         [SerializeField] private PlayerData playerData;
 
         private Vector2 moveDir;
@@ -23,6 +24,19 @@ namespace Player
             moveDir.x = playerInput.GetAxisRaw(Axis.X);
             moveDir.y = playerInput.GetAxisRaw(Axis.Y);
             moveDir.Normalize();
+
+            if (playerInput.GetActionPressed(PlayerInput.InputAction.SlowDown))
+            {
+                playerEnergy.SlowDownTime();
+            }
+            else if (playerInput.GetActionPressed(PlayerInput.InputAction.SpeedUp))
+            {
+                playerEnergy.SpeedUpTime();
+            }
+            else
+            {
+                playerEnergy.ResetSpeed();
+            }
 
             if (isDashing)
             {
