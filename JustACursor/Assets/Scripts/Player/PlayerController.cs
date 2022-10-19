@@ -66,7 +66,7 @@ namespace Player
                 playerShoot.Shoot();
             }
         }
-        
+
         private void FixedUpdate() {
             if (isDashing)
                 playerDash.HandleDash();
@@ -77,14 +77,16 @@ namespace Player
             }
             
             moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
-            playerMovement.ApplyMovement(moveDirection);
+            playerMovement.Move(moveDirection);
 
             if (inputs.Player.Shoot.IsPressed())
             {
                 aimMethod();
             }
-
-            
+            else
+            {
+                playerMovement.LookForward(moveDirection);
+            }
         }
 
         private void GamepadAim()
@@ -92,14 +94,14 @@ namespace Player
             lookPosition = (Vector2) transform.position + inputs.Player.LookGamepad.ReadValue<Vector2>();
             if (lookPosition != Vector2.zero)
             {
-                playerMovement.ApplyRotation(lookPosition);
+                playerMovement.LookAtPosition(lookPosition);
             }
         }
 
         private void MouseAim()
         {
             lookPosition = mainCamera.ScreenToWorldPoint(inputs.Player.LookMouse.ReadValue<Vector2>());
-            playerMovement.ApplyRotation(lookPosition);
+            playerMovement.LookAtPosition(lookPosition);
         }
 
         private void OnControlsChanged(PlayerInput input)

@@ -1912,6 +1912,10 @@ PrefabInstance:
       propertyPath: m_DefaultActionMap
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6905191973965184494, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}
+      propertyPath: lerpStrength
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8492879579015322652, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}
       propertyPath: timeFill
       value: 
