@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 8492879579015322657}
   - component: {fileID: 8492879579015322659}
   - component: {fileID: 8574159809606814587}
-  - component: {fileID: 8492879579015322654}
+  - component: {fileID: 4041533260088147884}
   - component: {fileID: 8492879579015322658}
   - component: {fileID: 8492879579015322655}
   - component: {fileID: 6905191973965184494}
@@ -206,7 +206,7 @@ PolygonCollider2D:
       - {x: -0.50664634, y: -0.019386493}
       - {x: -1.0446625, y: -0.53163594}
       - {x: 1.0516974, y: -0.0040694997}
---- !u!114 &8492879579015322654
+--- !u!114 &4041533260088147884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,13 +215,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 8492879579015322661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce1faa1fd85881244812e220e6f88889, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashKey: 304
-  shootKey: 323
-  speedUpKey: 324
-  slowDownKey: 32
+  m_Actions: {fileID: -944628639613478452, guid: 2017cd02a3f62a04f9ffd422f96973fd, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &8492879579015322658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,7 +248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3123ab4d4dc42004a83cd85d9c6e4e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 8492879579015322654}
   playerMovement: {fileID: 6905191973965184494}
   playerShoot: {fileID: 8492879579015322655}
   playerDash: {fileID: 9087955399235441740}

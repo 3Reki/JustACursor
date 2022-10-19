@@ -6,11 +6,24 @@ public class Bullet : MonoBehaviour
     [SerializeField] private new Rigidbody2D rigidbody;
     [SerializeField] private float bulletSpeed;
 
+    private void OnEnable()
+    {
+        PlayerEnergy.onGameSpeedUpdate += UpdateSpeed;
+    }
+
+    private void OnDisable()
+    {
+        PlayerEnergy.onGameSpeedUpdate -= UpdateSpeed;
+    }
+
     public void Shoot(Vector2 direction)
     {
-        //TODO : Observer pattern to make bulletSpeed dynamic
-        Vector2 force = direction * (bulletSpeed * PlayerEnergy.GameSpeed);
-        rigidbody.AddForce(force, ForceMode2D.Impulse);
+        rigidbody.velocity = direction * (bulletSpeed * PlayerEnergy.GameSpeed);
+    }
+
+    private void UpdateSpeed()
+    {
+        rigidbody.velocity = rigidbody.velocity.normalized * (bulletSpeed * PlayerEnergy.GameSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
