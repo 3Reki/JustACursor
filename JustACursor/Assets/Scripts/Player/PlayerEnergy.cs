@@ -8,7 +8,7 @@ namespace Player
 {
     public class PlayerEnergy : MonoBehaviour
     {
-        public static float gameSpeed = 1;
+        public static float GameSpeed = 1;
     
         [SerializeField] private Image timeFill;
         [SerializeField] private PlayerController playerController;
@@ -17,7 +17,7 @@ namespace Player
 
         public void SpeedUpTime()
         {
-            gameSpeed = playerData.speedUpModifier;
+            GameSpeed = playerData.speedUpModifier;
 
             if (Math.Abs(timeFill.fillAmount - 1) < 0.01f) return;
 
@@ -30,7 +30,7 @@ namespace Player
         {
             if (timeFill.fillAmount == 0) return;
 
-            gameSpeed = playerData.speedDownModifier;
+            GameSpeed = playerData.speedDownModifier;
             timeFill.DOKill();
             timeFill.DOFillAmount(0, playerData.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear).OnComplete(ResetSpeed);
         }
@@ -38,7 +38,7 @@ namespace Player
         public void ResetSpeed()
         {
             timeFill.DOKill();
-            gameSpeed = 1;
+            GameSpeed = 1;
         }
     }
 }

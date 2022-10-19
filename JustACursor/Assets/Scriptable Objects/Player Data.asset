@@ -73,6 +73,6 @@ MonoBehaviour:
   dashDuration: 0.2
   dashRefreshCooldown: 0.25
   fireRate: 8
-  speedDownMaxDuration: 3
+  timeAbilityDuration: 3
   speedUpModifier: 2
   speedDownModifier: 0.5
