@@ -16,7 +16,7 @@ namespace Player
 
         public void ApplyRotation(Vector2 lookPosition) 
         {
-            Vector2 lookDir = (Vector2)transform.position + lookPosition - rb.position;
+            Vector2 lookDir = lookPosition - rb.position;
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
             lastRotation = Quaternion.Euler(0, 0, angle);
             playerController.transform.rotation = lastRotation;

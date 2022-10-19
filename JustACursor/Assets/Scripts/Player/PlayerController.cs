@@ -50,19 +50,22 @@ namespace Player
             moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
             playerMovement.ApplyMovement(moveDirection);
 
-            //Keyboard
-            if (Gamepad.current == null)
+            if (inputs.Player.Shoot.IsPressed())
             {
-                lookPosition = mainCamera.ScreenToWorldPoint(inputs.Player.LookMouse.ReadValue<Vector2>());
-                playerMovement.ApplyRotation(lookPosition);
-            }
-            //Gamepad
-            else
-            {
-                lookPosition = inputs.Player.LookGamepad.ReadValue<Vector2>();
-                if (lookPosition != Vector2.zero)
+                //Keyboard
+                if (Gamepad.current == null)
                 {
+                    lookPosition = mainCamera.ScreenToWorldPoint(inputs.Player.LookMouse.ReadValue<Vector2>());
                     playerMovement.ApplyRotation(lookPosition);
+                }
+                //Gamepad
+                else
+                {
+                    lookPosition = (Vector2)transform.position + inputs.Player.LookGamepad.ReadValue<Vector2>();
+                    if (lookPosition != Vector2.zero)
+                    {
+                        playerMovement.ApplyRotation(lookPosition);
+                    }
                 }
             }
 
