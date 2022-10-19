@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8026529322237951012}
   - component: {fileID: 8026529322237951015}
   - component: {fileID: 8026529322237951014}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Follow Player Camera Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
