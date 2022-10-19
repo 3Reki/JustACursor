@@ -253,6 +253,7 @@ MonoBehaviour:
   playerDash: {fileID: 9087955399235441740}
   playerEnergy: {fileID: 8492879579015322652}
   playerData: {fileID: 11400000, guid: 1bcf97825f0eecb46b5fd59ff3902660, type: 2}
+  playerInput: {fileID: 4041533260088147884}
 --- !u!114 &8492879579015322655
 MonoBehaviour:
   m_ObjectHideFlags: 0
