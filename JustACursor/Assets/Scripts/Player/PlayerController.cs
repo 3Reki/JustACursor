@@ -21,7 +21,7 @@ namespace Player
         private Camera mainCamera;
         
         private Vector2 moveDirection;
-        private Vector2 mousePosition;
+        private Vector2 lookPosition;
 
         private void Start() {
             inputs = new PlayerInputs();
@@ -48,12 +48,23 @@ namespace Player
 
         private void FixedUpdate() {
             moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
-            mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            
             playerMovement.ApplyMovement(moveDirection);
-            playerMovement.ApplyRotation(mousePosition);
-            
-            //TODO : Gamepad left stick rotation
+
+            //Keyboard
+            if (Gamepad.current == null)
+            {
+                lookPosition = mainCamera.ScreenToWorldPoint(inputs.Player.LookMouse.ReadValue<Vector2>());
+                playerMovement.ApplyRotation(lookPosition);
+            }
+            //Gamepad
+            else
+            {
+                lookPosition = inputs.Player.LookGamepad.ReadValue<Vector2>();
+                if (lookPosition != Vector2.zero)
+                {
+                    playerMovement.ApplyRotation(lookPosition);
+                }
+            }
 
             if (!isDashing) return;
             playerDash.HandleDash();

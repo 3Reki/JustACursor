@@ -2,14 +2,12 @@ using System;
 using DG.Tweening;
 using ScriptableObjects;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Player
 {
     public class PlayerEnergy : MonoBehaviour
     {
-        private static float _gameSpeed;
         public static float GameSpeed
         {
             get => _gameSpeed;
@@ -19,13 +17,11 @@ namespace Player
                 onGameSpeedUpdate?.Invoke();
             }
         }
-
-        public delegate void OnGameSpeedUpdate();
-        public static OnGameSpeedUpdate onGameSpeedUpdate;
-    
+        
         [SerializeField] private Image timeFill;
         [SerializeField] private PlayerController playerController;
 
+        private static float _gameSpeed = 1;
         private PlayerData playerData => playerController.data;
 
         public void SpeedUpTime()
@@ -55,5 +51,8 @@ namespace Player
             timeFill.DOKill();
             GameSpeed = 1;
         }
+        
+        public delegate void OnGameSpeedUpdate();
+        public static OnGameSpeedUpdate onGameSpeedUpdate;
     }
 }
