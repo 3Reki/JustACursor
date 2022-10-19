@@ -22,7 +22,7 @@ namespace Player
             if (Math.Abs(timeFill.fillAmount - 1) < 0.01f) return;
 
             timeFill.DOKill();
-            timeFill.DOFillAmount(1, playerData.speedDownMaxDuration - playerData.speedDownMaxDuration * timeFill.fillAmount).SetEase(Ease.Linear)
+            timeFill.DOFillAmount(1, playerData.timeAbilityDuration - playerData.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear)
                 .OnComplete(ResetSpeed);
         }
 
@@ -32,7 +32,7 @@ namespace Player
 
             gameSpeed = playerData.speedDownModifier;
             timeFill.DOKill();
-            timeFill.DOFillAmount(0, playerData.speedDownMaxDuration * timeFill.fillAmount).SetEase(Ease.Linear).OnComplete(ResetSpeed);
+            timeFill.DOFillAmount(0, playerData.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear).OnComplete(ResetSpeed);
         }
 
         public void ResetSpeed()

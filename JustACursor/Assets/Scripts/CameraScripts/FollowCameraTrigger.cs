@@ -10,6 +10,7 @@ namespace CameraScripts
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            //TODO : Smooth transition FixCamera --> FollowCamera
             CameraController.instance.enabled = true;
             CameraController.mainCamera.DOOrthoSize(viewSize, movementDuration);
         }

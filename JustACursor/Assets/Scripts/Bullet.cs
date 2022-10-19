@@ -6,9 +6,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Transform myTransform;
     [SerializeField] private float bulletSpeed;
 
-    public void Shoot()
+    public void Shoot(Vector2 direction)
     {
-        Vector2 force = myTransform.up * bulletSpeed;
+        Vector2 force = direction * bulletSpeed;
         rigidbody.AddForce(force, ForceMode2D.Impulse);
     }
 

@@ -14,9 +14,9 @@ namespace Player
         {
             if (!canShoot) return;
 
-            GameObject bulletGO = Pooler.instance.Pop(Pooler.Key.Bullet, firePoint.position,
-                firePoint.rotation * Quaternion.Euler(0, 0, -90)); // todo : fix sprite rotation
-            bulletGO.GetComponent<Bullet>().Shoot();
+            // todo : fix sprite rotation
+            GameObject bulletGO = Pooler.instance.Pop(Pooler.Key.Bullet, firePoint.position, firePoint.rotation);
+            bulletGO.GetComponent<Bullet>().Shoot(playerController.transform.right);
 
             canShoot = false;
             StartCoroutine(ShootCooldown());
