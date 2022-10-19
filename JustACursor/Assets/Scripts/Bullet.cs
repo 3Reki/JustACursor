@@ -13,10 +13,6 @@ public class Bullet : MonoBehaviour
         rigidbody.AddForce(force, ForceMode2D.Impulse);
     }
 
-    private void Update() {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         Pooler.instance.DePop(Pooler.Key.Bullet, gameObject);
