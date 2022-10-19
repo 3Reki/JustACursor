@@ -52,17 +52,30 @@ namespace Player
                 playerDash.HandleDashInput(moveDirection);
             }
 
+            if (inputs.Player.SlowDown.IsPressed()) playerEnergy.SlowDownTime();
+            else if (inputs.Player.SpeedUp.IsPressed()) playerEnergy.SpeedUpTime();
+            else playerEnergy.ResetSpeed();
+            
+            if (playerDash.isFirstPhase)
+            {
+                return;
+            }
+            
             if (inputs.Player.Shoot.IsPressed())
             {
                 playerShoot.Shoot();
             }
-            
-            if (inputs.Player.SlowDown.IsPressed()) playerEnergy.SlowDownTime();
-            else if (inputs.Player.SpeedUp.IsPressed()) playerEnergy.SpeedUpTime();
-            else playerEnergy.ResetSpeed();
         }
         
         private void FixedUpdate() {
+            if (isDashing)
+                playerDash.HandleDash();
+            
+            if (playerDash.isFirstPhase)
+            {
+                return;
+            }
+            
             moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
             playerMovement.ApplyMovement(moveDirection);
 
@@ -71,13 +84,7 @@ namespace Player
                 aimMethod();
             }
 
-            if (!isDashing) return;
-            playerDash.HandleDash();
-
-            if (playerDash.isFirstPhase)
-            {
-                return;
-            }
+            
         }
 
         private void GamepadAim()
