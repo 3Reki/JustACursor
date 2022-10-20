@@ -8,6 +8,7 @@ namespace ScriptableObjects
         [Header("Movement")] 
         public float moveSpeed;
         public AnimationCurve moveAcceleration;
+        public AnimationCurve moveDeceleration;
         [Range(0, 1)]
         public float rotationSpeed;
         

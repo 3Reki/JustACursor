@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,6 +20,8 @@ namespace Player
         private Camera mainCamera;
         private Vector2 moveDirection;
         private Vector2 lookPosition;
+        private Vector2 lastDir;
+        private IEnumerator stopMovingEnumerator;
 
         public PlayerData data => playerData;
         private bool isDashing => playerDash.isDashing;
@@ -32,6 +34,8 @@ namespace Player
         }
 
         private void Update() {
+            moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
+            
             if (inputs.Player.Dash.WasPressedThisFrame())
             {
                 playerDash.HandleDashInput(moveDirection);
@@ -45,6 +49,22 @@ namespace Player
             {
                 return;
             }
+
+            if (inputs.Player.Move.WasPressedThisFrame())
+            {
+                StopCoroutine(stopMovingEnumerator);
+            }
+
+            if (inputs.Player.Move.IsPressed())
+            {
+                playerMovement.Move(moveDirection);
+                lastDir = moveDirection;
+            }
+            else if (inputs.Player.Move.WasReleasedThisFrame())
+            {
+                stopMovingEnumerator = playerMovement.StopMoving(lastDir);
+                StartCoroutine(stopMovingEnumerator);
+            }
             
             if (inputs.Player.Shoot.IsPressed())
             {
@@ -56,9 +76,6 @@ namespace Player
             if (isDashing) playerDash.HandleDash();
             if (playerDash.isFirstPhase) return;
             
-            moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
-            playerMovement.Move(moveDirection);
-
             if (inputs.Player.Shoot.IsPressed())
             {
                 if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();
