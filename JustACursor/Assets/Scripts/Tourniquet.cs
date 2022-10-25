@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 public class Tourniquet : MonoBehaviour
@@ -7,7 +8,7 @@ public class Tourniquet : MonoBehaviour
 
     private void Update()
     {
-        currentAngle += rotationSpeed*PlayerEnergy.gameSpeed;
+        currentAngle += rotationSpeed*PlayerEnergy.GameSpeed;
         if (currentAngle >= 360) currentAngle -= 360;
         transform.rotation = Quaternion.Euler(0, 0, currentAngle);
     }
