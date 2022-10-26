@@ -13,9 +13,11 @@ namespace ScriptableObjects
         public float rotationSpeed;
         
         [Header("Dash")]
-        public AnimationCurve dashSpeed;
+        public float dashSpeed;
         [Range(0, 0.5f)]
         public float dashDuration;
+        [Range(0, 0.5f)]
+        public float dashFirstPhaseDuration;
         [Range(0, 5f)]
         public float dashRefreshCooldown;
 

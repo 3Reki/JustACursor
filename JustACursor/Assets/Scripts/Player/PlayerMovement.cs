@@ -55,7 +55,6 @@ namespace Player
                 rb.velocity = GetTargetSpeed(direction,
                     playerController.data.moveDeceleration.Evaluate(decelerationProgress));
 
-                Debug.Log(decelerationProgress);
                 decelerationProgress += Time.deltaTime;
                 accelerationProgress -= Time.deltaTime;
 
