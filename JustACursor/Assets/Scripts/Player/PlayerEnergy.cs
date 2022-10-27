@@ -23,36 +23,60 @@ namespace Player
 
         private static float _gameSpeed = 1;
         private PlayerData playerData => playerController.data;
+        private float tweenTime;
+        private TimeState timeState = TimeState.Resetting;
 
         public void SpeedUpTime()
         {
-            GameSpeed = playerData.speedUpModifier;
-
-            if (Math.Abs(timeFill.fillAmount - 1) < 0.01f) return;
+            if (timeState == TimeState.Speeding) return;
+            
+            timeState = TimeState.Speeding;
+            
+            DOTween.Kill(GameSpeed);
+            tweenTime = playerData.lerpDuration - Mathf.Lerp(0, playerData.lerpDuration, (GameSpeed - 1) / (playerData.speedUpModifier - 1));
+            DOTween.To(() => GameSpeed, x => GameSpeed = x, playerData.speedUpModifier, tweenTime).SetEase(playerData.lerpEase);
 
             timeFill.DOKill();
-            timeFill.DOFillAmount(1, playerData.timeAbilityDuration - playerData.timeAbilityDuration * timeFill.fillAmount)
-                .SetEase(Ease.Linear).OnComplete(ResetSpeed);
+            timeFill.DOFillAmount(1, playerData.timeAbilityDuration - playerData.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear);
         }
 
         public void SlowDownTime()
         {
+            if (timeState == TimeState.Slowing) return;
             if (timeFill.fillAmount == 0) return;
+            
+            timeState = TimeState.Slowing;
 
-            GameSpeed = playerData.speedDownModifier;
+            DOTween.Kill(GameSpeed);
+            tweenTime = playerData.lerpDuration - Mathf.Lerp(0, playerData.lerpDuration, (1-GameSpeed)/(1-playerData.speedDownModifier));
+            DOTween.To(() => GameSpeed, x => GameSpeed = x, playerData.speedDownModifier, tweenTime).SetEase(playerData.lerpEase);
             
             timeFill.DOKill();
-            timeFill.DOFillAmount(0, playerData.timeAbilityDuration * timeFill.fillAmount)
-                .SetEase(Ease.Linear).OnComplete(ResetSpeed);
+            timeFill.DOFillAmount(0, playerData.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear);
         }
 
         public void ResetSpeed()
         {
+            if (timeState == TimeState.Resetting) return;
+            
+            timeState = TimeState.Resetting;
+
             timeFill.DOKill();
-            GameSpeed = 1;
+
+            DOTween.Kill(GameSpeed);
+            if (GameSpeed > 1) tweenTime = Mathf.Lerp(0,playerData.lerpDuration, (GameSpeed - 1) / (playerData.speedUpModifier - 1));
+            else tweenTime = Mathf.Lerp(0,playerData.lerpDuration,(1-GameSpeed)/(1-playerData.speedDownModifier));
+            DOTween.To(() => GameSpeed, x => GameSpeed = x, 1, playerData.lerpDuration).SetEase(Ease.Linear);
         }
         
         public delegate void OnGameSpeedUpdate();
         public static OnGameSpeedUpdate onGameSpeedUpdate;
+        
+        private enum TimeState
+        {
+            Slowing,
+            Resetting,
+            Speeding
+        }
     }
 }
