@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 6905191973965184494}
   - component: {fileID: 9087955399235441740}
   - component: {fileID: 8492879579015322652}
+  - component: {fileID: 7116445297489333676}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -248,11 +249,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3123ab4d4dc42004a83cd85d9c6e4e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 1bcf97825f0eecb46b5fd59ff3902660, type: 2}
   playerMovement: {fileID: 6905191973965184494}
   playerShoot: {fileID: 8492879579015322655}
   playerDash: {fileID: 9087955399235441740}
   playerEnergy: {fileID: 8492879579015322652}
-  playerData: {fileID: 11400000, guid: 1bcf97825f0eecb46b5fd59ff3902660, type: 2}
+  playerDeviceHandler: {fileID: 7116445297489333676}
 --- !u!114 &8492879579015322655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,3 +311,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeFill: {fileID: 0}
   playerController: {fileID: 8492879579015322658}
+--- !u!114 &7116445297489333676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492879579015322661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008b6b706efc6f44f8b9ab8b3864c43b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 4041533260088147884}
