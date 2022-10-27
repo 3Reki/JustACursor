@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 namespace ScriptableObjects
@@ -24,6 +25,8 @@ namespace ScriptableObjects
 
         [Header("Time Ability")] 
         public float timeAbilityDuration;
+        public float lerpDuration;
+        public Ease lerpEase;
         [Range(1, 4)]
         public float speedUpModifier;
         [Range(0, 1)]

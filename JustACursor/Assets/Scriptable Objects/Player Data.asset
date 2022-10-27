@@ -99,5 +99,7 @@ MonoBehaviour:
   dashRefreshCooldown: 0.25
   fireRate: 8
   timeAbilityDuration: 3
+  lerpDuration: 1
+  lerpEase: 1
   speedUpModifier: 2
   speedDownModifier: 0.5
