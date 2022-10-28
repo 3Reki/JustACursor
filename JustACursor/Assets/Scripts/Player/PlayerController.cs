@@ -15,6 +15,8 @@ namespace Player
         [SerializeField] private PlayerDash playerDash;
         [SerializeField] private PlayerEnergy playerEnergy;
         [SerializeField] private PlayerDeviceHandler playerDeviceHandler;
+        [SerializeField] private PlayerCollision playerCollision;
+        [SerializeField] private PlayerUI playerUI;
 
         private PlayerInputs inputs;
         private Camera mainCamera;
@@ -42,8 +44,16 @@ namespace Player
                 playerDash.HandleDashInput(moveDirection);
             }
 
-            if (inputs.Player.SlowDown.IsPressed()) playerEnergy.SlowDownTime(data.slowDownModifier);
-            else if (inputs.Player.SpeedUp.IsPressed()) playerEnergy.SpeedUpTime(data.speedUpModifier);
+            if (inputs.Player.SlowDown.IsPressed())
+            {
+                playerEnergy.SlowDownTime(data.slowDownModifier);
+                playerUI.ShowEnergy();
+            }
+            else if (inputs.Player.SpeedUp.IsPressed())
+            {
+                playerEnergy.SpeedUpTime(data.speedUpModifier);
+                playerUI.ShowEnergy();
+            }
             else playerEnergy.ResetSpeed();
             
             if (playerDash.isDashing)

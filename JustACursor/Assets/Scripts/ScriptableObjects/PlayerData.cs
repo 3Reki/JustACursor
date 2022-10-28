@@ -15,6 +15,13 @@ namespace ScriptableObjects
         [Range(0, 0.5f)] public float dashDuration;
         [Range(0, 0.5f)] public float dashFirstPhaseDuration;
         [Range(0, 5f)] public float dashRefreshCooldown;
+        [Range(0, 3)]
+        [Tooltip(
+            "The strength of the movement (in a different direction than the dash direction), " +
+            "only active during the second phase of the dash.")]
+        public float dashSecondPhaseControl;
+        
+        [Header("Shots")] public float fireRate;
 
         [Header("Time Ability")] 
         public float timeAbilityDuration;
@@ -24,16 +31,16 @@ namespace ScriptableObjects
         public float speedUpModifier;
         [Range(0, 1)]
         public float slowDownModifier;
-        [Range(0, 3)]
-        [Tooltip(
-            "The strength of the movement (in a different direction than the dash direction), " +
-            "only active during the second phase of the dash.")]
-        public float dashSecondPhaseControl;
 
-        [Header("Shots")] public float fireRate;
+        [Header("Health")]
+        public int maxHealth;
+        public float invinciblityTime;
 
-        [Header("Time Ability")] public float timeAbilityDuration;
-        [Range(1, 4)] public float speedUpModifier;
-        [Range(0, 1)] public float speedDownModifier;
+        [Header("PlayerUI")]
+        public float healthFadeIn;
+        public float healthStay;
+        public float healthFadeOut;
+        public float timeFadeIn;
+        public float timeFadeOut;
     }
 }

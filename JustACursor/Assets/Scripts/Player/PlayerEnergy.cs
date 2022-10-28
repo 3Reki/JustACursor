@@ -16,9 +16,10 @@ namespace Player
                 onGameSpeedUpdate?.Invoke();
             }
         }
-        
-        [SerializeField] private Image timeFill;
+
+        [SerializeField] private PlayerUI playerUI;
         [SerializeField] private PlayerController playerController;
+        [SerializeField] private Image timeFill;
 
         private static float _gameSpeed = 1;
         private PlayerData data => playerController.data;
@@ -37,6 +38,8 @@ namespace Player
 
             timeFill.DOKill();
             timeFill.DOFillAmount(1, data.timeAbilityDuration - data.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear);
+            
+            playerUI.ShowEnergy();
         }
 
         public void SlowDownTime(float value)
@@ -52,6 +55,8 @@ namespace Player
             
             timeFill.DOKill();
             timeFill.DOFillAmount(0, data.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear);
+            
+            playerUI.ShowEnergy();
         }
 
         public void ResetSpeed()
@@ -66,6 +71,8 @@ namespace Player
             if (GameSpeed > 1) tweenTime = Mathf.Lerp(0,data.lerpDuration, (GameSpeed - 1) / (data.speedUpModifier - 1));
             else tweenTime = Mathf.Lerp(0,data.lerpDuration,(1-GameSpeed)/(1-data.slowDownModifier));
             DOTween.To(() => GameSpeed, x => GameSpeed = x, 1, data.lerpDuration).SetEase(Ease.Linear);
+            
+            playerUI.HideEnergy();
         }
         
         public delegate void OnGameSpeedUpdate();
