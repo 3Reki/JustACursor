@@ -24,7 +24,8 @@ namespace Player
         private IEnumerator stopMovingEnumerator;
 
         public PlayerData data => playerData;
-        private bool isDashing => playerDash.isDashing;
+        public bool isDashing => playerDash.isDashing;
+        public Vector2 dashDirection => playerDash.dashDirection;
 
         private void Start() {
             inputs = new PlayerInputs();
@@ -45,12 +46,13 @@ namespace Player
             else if (inputs.Player.SpeedUp.IsPressed()) playerEnergy.SpeedUpTime(data.speedUpModifier);
             else playerEnergy.ResetSpeed();
             
-            if (playerDash.isFirstPhase)
+            if (playerDash.isDashing)
             {
+                playerDash.DashMovement(moveDirection);
                 return;
             }
 
-            if (inputs.Player.Move.WasPressedThisFrame())
+            if (inputs.Player.Move.WasPressedThisFrame() && stopMovingEnumerator != null)
             {
                 StopCoroutine(stopMovingEnumerator);
             }
@@ -73,8 +75,16 @@ namespace Player
         }
 
         private void FixedUpdate() {
-            if (isDashing) playerDash.HandleDash();
-            if (playerDash.isFirstPhase) return;
+            if (isDashing)
+            {
+                if (playerDash.isFirstPhase)
+                {
+                    playerMovement.LookForward(playerDash.dashDirection);
+                    return;
+                }
+                playerMovement.LookForward(moveDirection);
+                return;
+            }
             
             if (inputs.Player.Shoot.IsPressed())
             {
