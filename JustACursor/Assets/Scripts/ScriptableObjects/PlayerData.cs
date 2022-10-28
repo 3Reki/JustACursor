@@ -30,6 +30,6 @@ namespace ScriptableObjects
         [Range(1, 4)]
         public float speedUpModifier;
         [Range(0, 1)]
-        public float speedDownModifier;
+        public float slowDownModifier;
     }
 }
