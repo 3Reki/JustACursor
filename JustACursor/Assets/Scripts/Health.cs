@@ -30,6 +30,11 @@ public class Health : MonoBehaviour
         if (currentHealth == 0) onDeath.Invoke();
     }
 
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+    }
+
     public int GetCurrentHealth()
     {
         return currentHealth;
