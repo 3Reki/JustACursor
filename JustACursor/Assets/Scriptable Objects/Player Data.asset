@@ -102,4 +102,4 @@ MonoBehaviour:
   lerpDuration: 1
   lerpEase: 1
   speedUpModifier: 2
-  speedDownModifier: 0.5
+  slowDownModifier: 0.5
