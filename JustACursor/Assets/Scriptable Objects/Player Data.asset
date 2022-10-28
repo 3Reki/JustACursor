@@ -62,10 +62,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   rotationSpeed: 0.25
-  dashSpeed: 2
-  dashDuration: 0.5
-  dashFirstPhaseDuration: 0.139
+  dashSpeed: 3.5
+  dashDuration: 0.12
+  dashFirstPhaseDuration: 0.05
   dashRefreshCooldown: 0.2
+  dashSecondPhaseControl: 0.2
   fireRate: 8
   timeAbilityDuration: 3
   speedUpModifier: 2

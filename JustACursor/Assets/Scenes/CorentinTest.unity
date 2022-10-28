@@ -175,7 +175,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31344
+  m_Name: pb_Mesh29620
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1916,6 +1916,10 @@ PrefabInstance:
       propertyPath: lerpStrength
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6905191973965184494, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}
+      propertyPath: dashControlSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8492879579015322652, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}
       propertyPath: timeFill
       value: 
@@ -1971,6 +1975,10 @@ PrefabInstance:
     - target: {fileID: 8492879579015322661, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087955399235441740, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}
+      propertyPath: dashControlSpeed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8492879579015322654, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}

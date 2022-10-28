@@ -13,11 +13,6 @@ namespace Player
         private float decelerationProgress;
 
 
-        // public void Move(Vector2 dir) 
-        // {
-        //     rb.AddForce(dir * playerController.data.moveSpeed);
-        // }
-
         public void LookAtPosition(Vector2 lookPosition)
         {
             Vector2 lookDir = lookPosition - rb.position;
@@ -40,6 +35,14 @@ namespace Player
 
         public void Move(Vector2 direction)
         {
+            if (playerController.isDashing)
+            {
+                accelerationProgress = playerController.data.moveAcceleration
+                    .keys[playerController.data.moveAcceleration.length - 1].time;
+
+                return;
+            }
+
             rb.velocity = GetTargetSpeed(direction,
                 playerController.data.moveAcceleration.Evaluate(accelerationProgress));
             accelerationProgress += Time.deltaTime;
@@ -47,8 +50,13 @@ namespace Player
 
         public IEnumerator StopMoving(Vector2 direction)
         {
+            while (playerController.isDashing)
+            {
+                yield return null;
+            }
             decelerationProgress = 0;
-            accelerationProgress = playerController.data.moveAcceleration.keys[playerController.data.moveAcceleration.length - 1].time;
+            accelerationProgress = playerController.data.moveAcceleration
+                .keys[playerController.data.moveAcceleration.length - 1].time;
 
             while (rb.velocity.magnitude > 0)
             {
@@ -74,7 +82,6 @@ namespace Player
         {
             float targetAngle = Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg;
 
-            // transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, targetAngle, 0), data.angularSpeed); 
             Vector2 moveDirection = Quaternion.Euler(0, 0, targetAngle) * Vector3.up;
             Vector2 targetSpeed = moveDirection.normalized * (playerController.data.moveSpeed * speedPercentage);
 

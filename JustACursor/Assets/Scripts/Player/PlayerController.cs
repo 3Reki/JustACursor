@@ -24,7 +24,8 @@ namespace Player
         private IEnumerator stopMovingEnumerator;
 
         public PlayerData data => playerData;
-        private bool isDashing => playerDash.isDashing;
+        public bool isDashing => playerDash.isDashing;
+        public Vector2 dashDirection => playerDash.dashDirection;
 
         private void Start() {
             inputs = new PlayerInputs();
@@ -45,8 +46,9 @@ namespace Player
             else if (inputs.Player.SpeedUp.IsPressed()) playerEnergy.SpeedUpTime();
             else playerEnergy.ResetSpeed();
             
-            if (playerDash.isFirstPhase)
+            if (playerDash.isDashing)
             {
+                playerDash.DashMovement(moveDirection);
                 return;
             }
 
