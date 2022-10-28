@@ -69,5 +69,7 @@ MonoBehaviour:
   dashSecondPhaseControl: 0.2
   fireRate: 8
   timeAbilityDuration: 3
+  lerpDuration: 1
+  lerpEase: 1
   speedUpModifier: 2
   speedDownModifier: 0.5

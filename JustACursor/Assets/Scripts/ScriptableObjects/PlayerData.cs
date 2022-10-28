@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 namespace ScriptableObjects
@@ -14,7 +15,6 @@ namespace ScriptableObjects
         [Range(0, 0.5f)] public float dashDuration;
         [Range(0, 0.5f)] public float dashFirstPhaseDuration;
         [Range(0, 5f)] public float dashRefreshCooldown;
-
         [Range(0, 3)]
         [Tooltip(
             "The strength of the movement (in a different direction than the dash direction), " +
@@ -23,8 +23,13 @@ namespace ScriptableObjects
 
         [Header("Shots")] public float fireRate;
 
-        [Header("Time Ability")] public float timeAbilityDuration;
-        [Range(1, 4)] public float speedUpModifier;
-        [Range(0, 1)] public float speedDownModifier;
+        [Header("Time Ability")]
+        public float timeAbilityDuration;
+        public float lerpDuration;
+        public Ease lerpEase;
+        [Range(1, 4)]
+        public float speedUpModifier;
+        [Range(0, 1)]
+        public float speedDownModifier;
     }
 }
