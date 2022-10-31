@@ -13,6 +13,19 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   dialogue:
-  - Coucou tout le monde
-  - "On se retrouve pour une nouvelle vid\xE9o"
-  - Aujourd'hui on va casse des cubes !!!
+  - text: Coucou tout le monde !
+    responses: []
+  - text: Quel est votre choix ?
+    responses:
+    - responseText: Oui
+      onPickedResponse:
+        m_PersistentCalls:
+          m_Calls: []
+        m_CallsDirty: 1
+    - responseText: Non
+      onPickedResponse:
+        m_PersistentCalls:
+          m_Calls: []
+        m_CallsDirty: 1
+  - text: "Une tr\xE8s bonne journ\xE9e \xE0 vous"
+    responses: []
