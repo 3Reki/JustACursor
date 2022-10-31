@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ScriptableObjects
 {
-    [CreateAssetMenu(menuName = "Just A Cursor", fileName = "Player Data", order = 0)]
+    [CreateAssetMenu(menuName = "Just A Cursor/PlayerData", fileName = "Player Data", order = 0)]
     public class PlayerData : ScriptableObject
     {
         [Header("Movement")] public float moveSpeed;

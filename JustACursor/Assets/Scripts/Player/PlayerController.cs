@@ -44,16 +44,8 @@ namespace Player
                 playerDash.HandleDashInput(moveDirection);
             }
 
-            if (inputs.Player.SlowDown.IsPressed())
-            {
-                playerEnergy.SlowDownTime(data.slowDownModifier);
-                playerUI.ShowEnergy();
-            }
-            else if (inputs.Player.SpeedUp.IsPressed())
-            {
-                playerEnergy.SpeedUpTime(data.speedUpModifier);
-                playerUI.ShowEnergy();
-            }
+            if (inputs.Player.SlowDown.IsPressed()) playerEnergy.SlowDownTime(data.slowDownModifier);
+            else if (inputs.Player.SpeedUp.IsPressed()) playerEnergy.SpeedUpTime(data.speedUpModifier);
             else playerEnergy.ResetSpeed();
             
             if (playerDash.isDashing)
