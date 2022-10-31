@@ -67,7 +67,7 @@ MonoBehaviour:
   dashFirstPhaseDuration: 0.05
   dashRefreshCooldown: 0.2
   dashSecondPhaseControl: 0.2
-  fireRate: 8
+  fireRate: 4
   timeAbilityDuration: 3
   lerpDuration: 1
   lerpEase: 1
