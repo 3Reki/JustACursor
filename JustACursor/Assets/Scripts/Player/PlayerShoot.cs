@@ -24,7 +24,7 @@ namespace Player
 
         private IEnumerator ShootCooldown()
         {
-            yield return new WaitForSeconds(1f / playerController.data.fireRate);
+            yield return new WaitForSeconds(1f / playerController.data.fireRate / PlayerEnergy.GameSpeed);
             canShoot = true;
         }
     }

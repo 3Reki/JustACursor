@@ -181,7 +181,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &8574159809606814587
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -315,9 +315,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404fbe85428434642b02acb86197749d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUI: {fileID: 8322077768723608807}
   playerController: {fileID: 8492879579015322658}
   timeFill: {fileID: 7568403144059993786}
+  onSpeedUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8322077768723608807}
+        m_TargetAssemblyTypeName: Player.PlayerUI, Assembly-CSharp
+        m_MethodName: ShowEnergy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSlowDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8322077768723608807}
+        m_TargetAssemblyTypeName: Player.PlayerUI, Assembly-CSharp
+        m_MethodName: ShowEnergy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onReset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8322077768723608807}
+        m_TargetAssemblyTypeName: Player.PlayerUI, Assembly-CSharp
+        m_MethodName: HideEnergy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7116445297489333676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,7 +456,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9105837281492657489}
         m_TargetAssemblyTypeName: Health, Assembly-CSharp
-        m_MethodName: ResetHealth
+        m_MethodName: Heal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -429,30 +473,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8492879579015322657}
     m_Modifications:
-    - target: {fileID: 1887681355518742887, guid: 352819842b9341846b4128ad0a84028d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1887681355518742905, guid: 352819842b9341846b4128ad0a84028d, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1887681356097708913, guid: 352819842b9341846b4128ad0a84028d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1887681356097708915, guid: 352819842b9341846b4128ad0a84028d, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1887681356234142900, guid: 352819842b9341846b4128ad0a84028d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1887681356234142903, guid: 352819842b9341846b4128ad0a84028d, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1887681356604897222, guid: 352819842b9341846b4128ad0a84028d, type: 3}
       propertyPath: m_Name
       value: CanvasPlayer
@@ -540,14 +560,6 @@ PrefabInstance:
     - target: {fileID: 1887681356604897242, guid: 352819842b9341846b4128ad0a84028d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1887681357089584729, guid: 352819842b9341846b4128ad0a84028d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1887681357089584731, guid: 352819842b9341846b4128ad0a84028d, type: 3}
-      propertyPath: m_Color.a
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 352819842b9341846b4128ad0a84028d, type: 3}

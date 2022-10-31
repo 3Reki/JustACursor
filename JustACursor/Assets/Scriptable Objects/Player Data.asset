@@ -67,13 +67,13 @@ MonoBehaviour:
   dashFirstPhaseDuration: 0.05
   dashRefreshCooldown: 0.2
   dashSecondPhaseControl: 0.2
-  fireRate: 8
+  fireRate: 4
   timeAbilityDuration: 3
   lerpDuration: 1
   lerpEase: 1
   speedUpModifier: 2
   slowDownModifier: 0.5
-  maxHealth: 0
+  maxHealth: 3
   invinciblityTime: 1
   healthFadeIn: 0.2
   healthStay: 1.2
