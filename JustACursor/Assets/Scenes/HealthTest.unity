@@ -808,7 +808,7 @@ MonoBehaviour:
   - key: 0
     pool:
       prefab: {fileID: 2369120008074473099, guid: fee40cce80a841b4db34ae91d0470740, type: 3}
-      baseCount: 15
+      baseCount: 100
       baseRefreshSpeed: 5
       refreshSpeed: 5
 --- !u!4 &1674347822
