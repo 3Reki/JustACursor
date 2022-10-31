@@ -8,13 +8,11 @@ namespace Dialogue {
 
         [SerializeField] private float writingSpeed;
         
-        public void Run(string textToType, TMP_Text textLabel) {
-            StartCoroutine(TypeText(textToType,textLabel));
+        public Coroutine Run(string textToType, TMP_Text textLabel) {
+            return StartCoroutine(TypeText(textToType,textLabel));
         }
 
         private IEnumerator TypeText(string textToType, TMP_Text textLabel) {
-            yield return new WaitForSeconds(2);
-            
             textLabel.text = string.Empty;
             
             float time = 0;
