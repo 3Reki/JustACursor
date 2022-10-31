@@ -1,7 +1,7 @@
-using System;
 using DG.Tweening;
 using ScriptableObjects;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Player
@@ -17,30 +17,32 @@ namespace Player
                 onGameSpeedUpdate?.Invoke();
             }
         }
-        
-        [SerializeField] private Image timeFill;
+
         [SerializeField] private PlayerController playerController;
+        [SerializeField] private Image timeFill;
 
         private static float _gameSpeed = 1;
-        private PlayerData playerData => playerController.data;
+        private PlayerData data => playerController.data;
         private float tweenTime;
         private TimeState timeState = TimeState.Resetting;
 
-        public void SpeedUpTime()
+        public void SpeedUpTime(float value)
         {
             if (timeState == TimeState.Speeding) return;
             
             timeState = TimeState.Speeding;
             
             DOTween.Kill(GameSpeed);
-            tweenTime = playerData.lerpDuration - Mathf.Lerp(0, playerData.lerpDuration, (GameSpeed - 1) / (playerData.speedUpModifier - 1));
-            DOTween.To(() => GameSpeed, x => GameSpeed = x, playerData.speedUpModifier, tweenTime).SetEase(playerData.lerpEase);
+            tweenTime = data.lerpDuration - Mathf.Lerp(0, data.lerpDuration, (GameSpeed - 1) / (value - 1));
+            DOTween.To(() => GameSpeed, x => GameSpeed = x, value, tweenTime).SetEase(data.lerpEase);
 
             timeFill.DOKill();
-            timeFill.DOFillAmount(1, playerData.timeAbilityDuration - playerData.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear);
+            timeFill.DOFillAmount(1, data.timeAbilityDuration - data.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear);
+            
+            onSpeedUp.Invoke();
         }
 
-        public void SlowDownTime()
+        public void SlowDownTime(float value)
         {
             if (timeState == TimeState.Slowing) return;
             if (timeFill.fillAmount == 0) return;
@@ -48,11 +50,13 @@ namespace Player
             timeState = TimeState.Slowing;
 
             DOTween.Kill(GameSpeed);
-            tweenTime = playerData.lerpDuration - Mathf.Lerp(0, playerData.lerpDuration, (1-GameSpeed)/(1-playerData.speedDownModifier));
-            DOTween.To(() => GameSpeed, x => GameSpeed = x, playerData.speedDownModifier, tweenTime).SetEase(playerData.lerpEase);
+            tweenTime = data.lerpDuration - Mathf.Lerp(0, data.lerpDuration, (1-GameSpeed)/(1-value));
+            DOTween.To(() => GameSpeed, x => GameSpeed = x, value, tweenTime).SetEase(data.lerpEase);
             
             timeFill.DOKill();
-            timeFill.DOFillAmount(0, playerData.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear);
+            timeFill.DOFillAmount(0, data.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear);
+            
+            onSlowDown.Invoke();
         }
 
         public void ResetSpeed()
@@ -64,10 +68,16 @@ namespace Player
             timeFill.DOKill();
 
             DOTween.Kill(GameSpeed);
-            if (GameSpeed > 1) tweenTime = Mathf.Lerp(0,playerData.lerpDuration, (GameSpeed - 1) / (playerData.speedUpModifier - 1));
-            else tweenTime = Mathf.Lerp(0,playerData.lerpDuration,(1-GameSpeed)/(1-playerData.speedDownModifier));
-            DOTween.To(() => GameSpeed, x => GameSpeed = x, 1, playerData.lerpDuration).SetEase(Ease.Linear);
+            if (GameSpeed > 1) tweenTime = Mathf.Lerp(0,data.lerpDuration, (GameSpeed - 1) / (data.speedUpModifier - 1));
+            else tweenTime = Mathf.Lerp(0,data.lerpDuration,(1-GameSpeed)/(1-data.slowDownModifier));
+            DOTween.To(() => GameSpeed, x => GameSpeed = x, 1, data.lerpDuration).SetEase(Ease.Linear);
+            
+            onReset.Invoke();
         }
+
+        public UnityEvent onSpeedUp;
+        public UnityEvent onSlowDown;
+        public UnityEvent onReset;
         
         public delegate void OnGameSpeedUpdate();
         public static OnGameSpeedUpdate onGameSpeedUpdate;
