@@ -15,8 +15,6 @@ namespace Player
         [SerializeField] private PlayerDash playerDash;
         [SerializeField] private PlayerEnergy playerEnergy;
         [SerializeField] private PlayerDeviceHandler playerDeviceHandler;
-        [SerializeField] private PlayerCollision playerCollision;
-        [SerializeField] private PlayerUI playerUI;
 
         private PlayerInputs inputs;
         private Camera mainCamera;
@@ -84,12 +82,22 @@ namespace Player
 
         private void HandleShoot() {
             if (isDashing) return;
-            if (!inputs.Player.Shoot.IsPressed()) return;
+            if (!inputs.Player.Shoot.IsPressed())
+            {
+                if (inputs.Player.Shoot.WasReleasedThisFrame())
+                {
+                    playerShoot.StopShooting();
+                }
+                return;
+            }
             
             if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();
             else GamepadAim();
-                
-            playerShoot.Shoot();
+
+            if (inputs.Player.Shoot.WasPerformedThisFrame())
+            {
+                playerShoot.StartShooting();
+            }
         }
 
         private void HandleEnergy() {

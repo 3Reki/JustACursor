@@ -1,31 +1,20 @@
-using System.Collections;
+using BulletPro;
 using UnityEngine;
 
 namespace Player
 {
     public class PlayerShoot : MonoBehaviour
     {
-        [SerializeField] private PlayerController playerController;
-        [SerializeField] private Transform firePoint;
-    
-        private bool canShoot = true;
+        [SerializeField] private BulletEmitter emitter;
 
-        public void Shoot()
+        public void StartShooting()
         {
-            if (!canShoot) return;
-
-            // todo : fix sprite rotation
-            GameObject bulletGO = Pooler.instance.Pop(Pooler.Key.Bullet, firePoint.position, firePoint.rotation);
-            bulletGO.GetComponent<Bullet>().Shoot(playerController.transform.right);
-
-            canShoot = false;
-            StartCoroutine(ShootCooldown());
+            emitter.Play();
         }
 
-        private IEnumerator ShootCooldown()
+        public void StopShooting()
         {
-            yield return new WaitForSeconds(1f / playerController.data.fireRate / PlayerEnergy.GameSpeed);
-            canShoot = true;
+            emitter.Stop();
         }
     }
 }

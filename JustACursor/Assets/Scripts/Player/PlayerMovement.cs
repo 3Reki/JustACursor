@@ -16,7 +16,7 @@ namespace Player
         public void LookAtPosition(Vector2 lookPosition)
         {
             Vector2 lookDir = lookPosition - rb.position;
-            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(-lookDir.x, lookDir.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
@@ -27,7 +27,7 @@ namespace Player
                 return;
             }
 
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            var angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
 
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, angle),
                 playerController.data.rotationSpeed);
