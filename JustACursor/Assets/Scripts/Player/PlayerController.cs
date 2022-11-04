@@ -1,3 +1,4 @@
+using System.Collections;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,20 +9,25 @@ namespace Player
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerController : MonoBehaviour
     {
-        public PlayerData data => playerData;
-        private bool isDashing => playerDash.isDashing;
-
+        [SerializeField] private PlayerData playerData;
         [SerializeField] private PlayerMovement playerMovement;
         [SerializeField] private PlayerShoot playerShoot;
         [SerializeField] private PlayerDash playerDash;
         [SerializeField] private PlayerEnergy playerEnergy;
-        [SerializeField] private PlayerData playerData;
-        
+        [SerializeField] private PlayerDeviceHandler playerDeviceHandler;
+        [SerializeField] private PlayerCollision playerCollision;
+        [SerializeField] private PlayerUI playerUI;
+
         private PlayerInputs inputs;
         private Camera mainCamera;
-        
         private Vector2 moveDirection;
         private Vector2 lookPosition;
+        private Vector2 lastDir;
+        private IEnumerator stopMovingEnumerator;
+
+        public PlayerData data => playerData;
+        public bool isDashing => playerDash.isDashing;
+        private Vector2 dashDirection => playerDash.dashDirection;
 
         private void Start() {
             inputs = new PlayerInputs();
@@ -31,51 +37,77 @@ namespace Player
         }
 
         private void Update() {
+            moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
+            
+            HandleDash();
+            HandleMovement();
+            HandleRotation();
+            HandleShoot();
+            HandleEnergy();
+        }
+        
+        private void HandleDash() {
             if (inputs.Player.Dash.WasPressedThisFrame())
             {
                 playerDash.HandleDashInput(moveDirection);
             }
-
-            if (inputs.Player.Shoot.IsPressed())
-            {
-                playerShoot.Shoot();
-            }
             
-            if (inputs.Player.SlowDown.IsPressed()) playerEnergy.SlowDownTime();
-            else if (inputs.Player.SpeedUp.IsPressed()) playerEnergy.SpeedUpTime();
-            else playerEnergy.ResetSpeed();
+            if (playerDash.isDashing)
+            {
+                playerDash.DashMovement(moveDirection);
+            }
         }
 
-        private void FixedUpdate() {
-            moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
-            playerMovement.ApplyMovement(moveDirection);
-
-            if (inputs.Player.Shoot.IsPressed())
+        private void HandleMovement() {
+            if (isDashing) return;
+            
+            if (inputs.Player.Move.WasPressedThisFrame() && stopMovingEnumerator != null)
             {
-                //Keyboard
-                if (Gamepad.current == null)
-                {
-                    lookPosition = mainCamera.ScreenToWorldPoint(inputs.Player.LookMouse.ReadValue<Vector2>());
-                    playerMovement.ApplyRotation(lookPosition);
-                }
-                //Gamepad
-                else
-                {
-                    lookPosition = (Vector2)transform.position + inputs.Player.LookGamepad.ReadValue<Vector2>();
-                    if (lookPosition != Vector2.zero)
-                    {
-                        playerMovement.ApplyRotation(lookPosition);
-                    }
-                }
+                StopCoroutine(stopMovingEnumerator);
             }
 
-            if (!isDashing) return;
-            playerDash.HandleDash();
-
-            if (playerDash.isFirstPhase)
+            if (inputs.Player.Move.IsPressed())
             {
-                return;
+                playerMovement.Move(moveDirection);
+                lastDir = moveDirection;
             }
+            else if (inputs.Player.Move.WasReleasedThisFrame())
+            {
+                stopMovingEnumerator = playerMovement.StopMoving(lastDir);
+                StartCoroutine(stopMovingEnumerator);
+            }
+        }
+
+        private void HandleRotation() {
+            playerMovement.LookForward(isDashing && playerDash.isFirstPhase ? dashDirection : moveDirection);
+        }
+
+        private void HandleShoot() {
+            if (isDashing) return;
+            if (!inputs.Player.Shoot.IsPressed()) return;
+            
+            if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();
+            else GamepadAim();
+                
+            playerShoot.Shoot();
+        }
+
+        private void HandleEnergy() {
+            if (inputs.Player.SlowDown.IsPressed()) playerEnergy.SlowDownTime(data.slowDownModifier);
+            else if (inputs.Player.SpeedUp.IsPressed()) playerEnergy.SpeedUpTime(data.speedUpModifier);
+            else playerEnergy.ResetSpeed();
+        }
+        
+        private void MouseAim()
+        {
+            lookPosition = mainCamera.ScreenToWorldPoint(inputs.Player.LookMouse.ReadValue<Vector2>());
+            playerMovement.LookAtPosition(lookPosition);
+        }
+        
+        private void GamepadAim()
+        {
+            lookPosition = (Vector2) transform.position + inputs.Player.LookGamepad.ReadValue<Vector2>();
+            if (lookPosition != Vector2.zero) playerMovement.LookAtPosition(lookPosition);
         }
     }
 }
