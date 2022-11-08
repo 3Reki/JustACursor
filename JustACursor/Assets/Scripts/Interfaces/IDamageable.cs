@@ -1,4 +1,7 @@
-public interface IDamageable
+namespace Interfaces
 {
-    public void Damage(int amount);
+    public interface IDamageable
+    {
+        public void Damage(BulletPro.Bullet bullet, UnityEngine.Vector3 hitPoint);
+    }
 }

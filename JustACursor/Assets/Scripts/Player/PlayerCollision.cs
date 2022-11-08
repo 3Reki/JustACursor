@@ -1,4 +1,5 @@
 using System.Collections;
+using Interfaces;
 using ScriptableObjects;
 using UnityEngine;
 
@@ -11,9 +12,11 @@ namespace Player {
         private PlayerData data => playerController.data;
         private bool isInvincible;
 
-        public void Damage(int amount)
+        public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
-            health.LoseHealth(amount);
+            if (isInvincible) return;
+            
+            health.LoseHealth(bullet.moduleParameters.GetInt("Damage"));
             StartCoroutine(Invincibility());
         }
 
@@ -22,16 +25,6 @@ namespace Player {
             isInvincible = true;
             yield return new WaitForSeconds(data.invinciblityTime);
             isInvincible = false;
-        }
-
-        private void OnCollisionStay2D(Collision2D col)
-        {
-            if (isInvincible) return;
-        
-            if (col.gameObject.TryGetComponent(out ColorEnemy enemy))
-            {
-                Damage(1);
-            }
         }
     }
 }
