@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5928221938580750880}
   - component: {fileID: 7272368783838028449}
   m_Layer: 3
-  m_Name: FirePoint
+  m_Name: Bullet Emitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 6905191973965184494}
   - component: {fileID: 9087955399235441740}
   - component: {fileID: 8492879579015322652}
+  - component: {fileID: 3798327701252216391}
   - component: {fileID: 7116445297489333676}
   - component: {fileID: 7998244573822518287}
   - component: {fileID: 8322077768723608807}
@@ -227,10 +228,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.0359955, y: 0.5168071}
-      - {x: -0.50664634, y: -0.019386493}
-      - {x: -1.0446625, y: -0.53163594}
-      - {x: 1.0516974, y: -0.0040694997}
+    - - {x: -0.55552876, y: -1.1371071}
+      - {x: 0.0015396476, y: -0.56453145}
+      - {x: 0.5815326, y: -1.1322193}
+      - {x: 0.016845942, y: 1.1324191}
 --- !u!114 &4041533260088147884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,8 +334,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 8492879579015322658}
+  energy: {fileID: 3798327701252216391}
   timeFill: {fileID: 7568403144059993786}
-  onSpeedUp:
+  onPlayerSpeedUp:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8322077768723608807}
@@ -349,7 +351,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onSlowDown:
+  onPlayerSlowDown:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8322077768723608807}
@@ -364,7 +366,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onReset:
+  onPlayerReset:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8322077768723608807}
@@ -379,6 +381,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3798327701252216391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492879579015322661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9006801a2f8c6540b6ff720b7ffeecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: f0dbc50461d2a324a9667ab8dc186971, type: 2}
 --- !u!114 &7116445297489333676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,7 +547,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   parentSyncFoldout: 0
-  collisionTagsFoldout: 0
+  collisionTagsFoldout: 1
   advancedEventsFoldout: 0
   useDefaultGizmoColor: 1
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}

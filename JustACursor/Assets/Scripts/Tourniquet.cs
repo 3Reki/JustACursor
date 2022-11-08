@@ -8,7 +8,7 @@ public class Tourniquet : MonoBehaviour
 
     private void Update()
     {
-        currentAngle += rotationSpeed * PlayerEnergy.GameSpeed * Time.deltaTime;
+        currentAngle += rotationSpeed * Energy.GameSpeed * Time.deltaTime;
         if (currentAngle >= 360) currentAngle -= 360;
         transform.rotation = Quaternion.Euler(0, 0, currentAngle);
     }
