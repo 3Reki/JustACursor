@@ -4,16 +4,22 @@ using UnityEngine;
 using UnityEngine.ProBuilder;
 
 namespace Dialogue {
-    public class WriterEffect : MonoBehaviour {
-
-        [SerializeField] private float writingSpeed;
+    public class WriterEffect : MonoBehaviour
+    {
+        public bool IsWriting => isWriting;
         
-        public Coroutine Run(string textToType, TMP_Text textLabel) {
-            return StartCoroutine(TypeText(textToType,textLabel));
+        [SerializeField] private float writingSpeed;
+
+        private Coroutine typeCR;
+        private bool isWriting;
+        
+        public void Run(string textToType, TMP_Text textLabel) {
+            typeCR = StartCoroutine(TypeText(textToType,textLabel));
         }
 
         private IEnumerator TypeText(string textToType, TMP_Text textLabel) {
             textLabel.text = string.Empty;
+            isWriting = true;
             
             float time = 0;
             int charIndex = 0;
@@ -29,6 +35,15 @@ namespace Dialogue {
             }
 
             textLabel.text = textToType;
+            isWriting = false;
+        }
+
+        public void Complete(string textToType, TMP_Text textLabel)
+        {
+            StopCoroutine(typeCR);
+            
+            textLabel.text = textToType;
+            isWriting = false;
         }
     }
 }

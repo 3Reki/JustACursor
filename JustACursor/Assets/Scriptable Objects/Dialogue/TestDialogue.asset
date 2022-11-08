@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4457afccfecf55c44b1345c61497c6c9, type: 3}
+  m_Name: TestDialogue
+  m_EditorClassIdentifier: 
+  dialogue:
+  - "Salut \xE0 toi, je suis le dialogue de test"
+  - "Apr\xE8s ce texte tu vas pouvoir faire un choix et \xE7a va le debug dans la
+    console"
+  - Fais ton choix bg
+  responses:
+  - responseEvent: 1
+    responseText: Choix A
+  - responseEvent: 2
+    responseText: Choix B
