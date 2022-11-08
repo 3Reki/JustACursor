@@ -1,18 +1,33 @@
+using Player;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private new Rigidbody2D rigidbody;
-    [SerializeField] private Transform myTransform;
     [SerializeField] private float bulletSpeed;
 
-    public void Shoot()
+    private void OnEnable()
     {
-        rigidbody.AddForce(myTransform.up * bulletSpeed, ForceMode2D.Impulse);
+        PlayerEnergy.onGameSpeedUpdate += UpdateSpeed;
+    }
+
+    private void OnDisable()
+    {
+        PlayerEnergy.onGameSpeedUpdate -= UpdateSpeed;
+    }
+
+    public void Shoot(Vector2 direction)
+    {
+        rigidbody.velocity = direction * (bulletSpeed * PlayerEnergy.GameSpeed);
+    }
+
+    private void UpdateSpeed()
+    {
+        rigidbody.velocity = rigidbody.velocity.normalized * (bulletSpeed * PlayerEnergy.GameSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Pooler.Instance.DePop("Bullet", gameObject);
+        Pooler.instance.DePop(Pooler.Key.Bullet, gameObject);
     }
 }
