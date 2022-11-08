@@ -101,8 +101,8 @@ namespace Player
         }
 
         private void HandleEnergy() {
-            if (inputs.Player.SlowDown.IsPressed()) playerEnergy.SlowDownTime(data.slowDownModifier);
-            else if (inputs.Player.SpeedUp.IsPressed()) playerEnergy.SpeedUpTime(data.speedUpModifier);
+            if (inputs.Player.SlowDown.IsPressed()) playerEnergy.SlowDownTime();
+            else if (inputs.Player.SpeedUp.IsPressed()) playerEnergy.SpeedUpTime();
             else playerEnergy.ResetSpeed();
         }
         

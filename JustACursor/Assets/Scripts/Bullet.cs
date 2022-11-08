@@ -18,12 +18,12 @@ public class Bullet : MonoBehaviour
 
     public void Shoot(Vector2 direction)
     {
-        rigidbody.velocity = direction * (bulletSpeed * PlayerEnergy.GameSpeed);
+        rigidbody.velocity = direction * (bulletSpeed * Energy.GameSpeed);
     }
 
     private void UpdateSpeed()
     {
-        rigidbody.velocity = rigidbody.velocity.normalized * (bulletSpeed * PlayerEnergy.GameSpeed);
+        rigidbody.velocity = rigidbody.velocity.normalized * (bulletSpeed * Energy.GameSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
