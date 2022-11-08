@@ -16,7 +16,7 @@ namespace CameraScripts
         private void OnTriggerEnter2D(Collider2D other)
         {
             CameraController.instance.enabled = false;
-            CameraController.mainCamera.transform.DOMove(new Vector3(anchorPosition.x, anchorPosition.y, -10), movementDuration);
+            CameraController.mainCamera.transform.DOMove(transform.TransformPoint(new Vector3(anchorPosition.x, anchorPosition.y, -10)), movementDuration);
             CameraController.mainCamera.DOOrthoSize(viewSize, movementDuration);
         }
 
@@ -45,8 +45,8 @@ namespace CameraScripts
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, anchorPosition);
-            Gizmos.DrawSphere(anchorPosition, 1f);
+            Gizmos.DrawLine(transform.position, transform.TransformPoint(anchorPosition));
+            Gizmos.DrawSphere(transform.TransformPoint(anchorPosition), 1f);
         }
 #endif
     }
