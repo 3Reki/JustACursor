@@ -42,6 +42,21 @@ public class BasicBossFSM : MonoBehaviour
         bossData.Init(emmitters);
         bossHP.text = $"{bossData.CurrentHP}";
         SetBossPhase(overridePhaseOnStart ? phaseOverride : BossPhase.One);
+        SetNewParam(0, "Cone");
+    }
+
+    protected void SetNewParam(int emitterIndex, string bulletName) //, float newValue)
+    {
+        for (int i = 0; i < emmitters[emitterIndex].emitterProfile.GetBullet(bulletName).customParameters.Length; i++)
+        {
+            Debug.Log("bullet param name: " + emmitters[emitterIndex].emitterProfile.GetBullet(bulletName).customParameters[i].floatValue.baseValue);
+        }
+
+        // Debug.Log("root bullet name: " + emmitters[emitterIndex].emitterProfile.); 
+        /* for (int i = 0; i < emmitters[emitterIndex].rootBullet; i++)
+        {
+            Debug.Log("sub emitters name: " + emmitters[emitterIndex].subEmitters[i].name);
+        } */
     }
 
     protected void UpdateDebugInput()
