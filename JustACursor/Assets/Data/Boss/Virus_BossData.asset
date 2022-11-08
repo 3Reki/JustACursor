@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af46c4a20a0f5d5459cdc64ad539c715, type: 3}
+  m_Name: Virus_BossData
+  m_EditorClassIdentifier: 
+  bossName: Virus
+  description: "The first boss in the game. \nCore mechanic: slowing & accelerating
+    time"
+  startingHP: 400
+  phase2HPPercentTrigger: 0.6
+  phase3HPPercentTrigger: 0.3
+  attackPattern:
+  - phase: 0
+    patterns:
+    - {fileID: 11400000, guid: 168781c3d7966c14b936ea1140b7bf28, type: 2}
+  - phase: 1
+    patterns:
+    - {fileID: 11400000, guid: 7642e669682aa7f44b46624e349b2278, type: 2}
+    - {fileID: 11400000, guid: f3ee3711c2c6786479b530d7cda52a52, type: 2}
+  - phase: 2
+    patterns:
+    - {fileID: 11400000, guid: 998f27a95b982d74dbc009d4c227def1, type: 2}
+    - {fileID: 11400000, guid: 706091ed6a4d31340915ed704a991cb9, type: 2}
+    - {fileID: 11400000, guid: 30ff1c89ddc43d54f8bc8c7928797dd4, type: 2}
