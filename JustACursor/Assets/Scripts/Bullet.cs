@@ -28,11 +28,6 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out IDamageable entity))
-        {
-            entity.Damage(1);
-        }
-        
         Pooler.instance.DePop(Pooler.Key.Bullet, gameObject);
     }
 }

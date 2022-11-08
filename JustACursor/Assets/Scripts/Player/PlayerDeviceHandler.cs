@@ -2,69 +2,72 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerDeviceHandler : MonoBehaviour
-{
-    private List<SchemeAim> schemeList = new()
+namespace Player {
+    public class PlayerDeviceHandler : MonoBehaviour
     {
-        new("Keyboard & Mouse", AimMethod.Mouse),
-        new("Gamepad", AimMethod.Gamepad)
-    };
+        private List<SchemeAim> schemeList = new()
+        {
+            new("Keyboard & Mouse", AimMethod.Mouse),
+            new("Gamepad", AimMethod.Gamepad)
+        };
+            
+        public AimMethod currentAimMethod { get; private set; }
+    
+        [SerializeField] private PlayerInput playerInput;
+    
+        private string currentScheme;
         
-    public AimMethod currentAimMethod { get; private set; }
-
-    [SerializeField] private PlayerInput playerInput;
-
-    private string currentScheme;
-    
-    private void Start()
-    {
-        currentScheme = playerInput.currentControlScheme;
-        currentAimMethod = GetAimMethod(currentScheme);
-    }
-    
-    private void OnEnable()
-    {
-        playerInput.onControlsChanged += OnControlsChanged;
-    }
-
-    private void OnDisable()
-    {
-        playerInput.onControlsChanged -= OnControlsChanged;
-    }
-    
-    private void OnControlsChanged(PlayerInput input)
-    {
-        currentScheme = playerInput.currentControlScheme;
-        currentAimMethod = GetAimMethod(currentScheme);
-
-        Cursor.visible = currentAimMethod == AimMethod.Mouse;
-    }
-
-    private AimMethod GetAimMethod(string schemeName)
-    {
-        foreach (SchemeAim item in schemeList)
+        private void Start()
         {
-            if (item.schemeName.Equals(schemeName)) return item.aimMethod;
+            currentScheme = playerInput.currentControlScheme;
+            currentAimMethod = GetAimMethod(currentScheme);
         }
-
-        return AimMethod.Mouse;
-    }
-
-    private class SchemeAim
-    {
-        public string schemeName;
-        public AimMethod aimMethod;
-
-        public SchemeAim(string schemeName, AimMethod aimMethod)
+        
+        private void OnEnable()
         {
-            this.schemeName = schemeName;
-            this.aimMethod = aimMethod;
+            playerInput.onControlsChanged += OnControlsChanged;
         }
-    }
-
-    public enum AimMethod
-    {
-        Mouse,
-        Gamepad
+    
+        private void OnDisable()
+        {
+            playerInput.onControlsChanged -= OnControlsChanged;
+        }
+        
+        private void OnControlsChanged(PlayerInput input)
+        {
+            currentScheme = playerInput.currentControlScheme;
+            currentAimMethod = GetAimMethod(currentScheme);
+    
+            Cursor.visible = currentAimMethod == AimMethod.Mouse;
+        }
+    
+        private AimMethod GetAimMethod(string schemeName)
+        {
+            foreach (SchemeAim item in schemeList)
+            {
+                if (item.schemeName.Equals(schemeName)) return item.aimMethod;
+            }
+    
+            return AimMethod.Mouse;
+        }
+    
+        private class SchemeAim
+        {
+            public string schemeName;
+            public AimMethod aimMethod;
+    
+            public SchemeAim(string schemeName, AimMethod aimMethod)
+            {
+                this.schemeName = schemeName;
+                this.aimMethod = aimMethod;
+            }
+        }
+    
+        public enum AimMethod
+        {
+            Mouse,
+            Gamepad
+        }
     }
 }
+

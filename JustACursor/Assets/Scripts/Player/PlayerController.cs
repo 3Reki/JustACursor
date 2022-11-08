@@ -24,7 +24,8 @@ namespace Player
         private IEnumerator stopMovingEnumerator;
 
         public PlayerData data => playerData;
-        private bool isDashing => playerDash.isDashing;
+        public bool isDashing => playerDash.isDashing;
+        private Vector2 dashDirection => playerDash.dashDirection;
 
         private void Start() {
             inputs = new PlayerInputs();
@@ -36,21 +37,29 @@ namespace Player
         private void Update() {
             moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
             
+            HandleDash();
+            HandleMovement();
+            HandleRotation();
+            HandleShoot();
+            HandleEnergy();
+        }
+        
+        private void HandleDash() {
             if (inputs.Player.Dash.WasPressedThisFrame())
             {
                 playerDash.HandleDashInput(moveDirection);
             }
-
-            if (inputs.Player.SlowDown.IsPressed()) playerEnergy.SlowDownTime(data.slowDownModifier);
-            else if (inputs.Player.SpeedUp.IsPressed()) playerEnergy.SpeedUpTime(data.speedUpModifier);
-            else playerEnergy.ResetSpeed();
             
-            if (playerDash.isFirstPhase)
+            if (playerDash.isDashing)
             {
-                return;
+                playerDash.DashMovement(moveDirection);
             }
+        }
 
-            if (inputs.Player.Move.WasPressedThisFrame())
+        private void HandleMovement() {
+            if (isDashing) return;
+            
+            if (inputs.Player.Move.WasPressedThisFrame() && stopMovingEnumerator != null)
             {
                 StopCoroutine(stopMovingEnumerator);
             }
@@ -65,26 +74,36 @@ namespace Player
                 stopMovingEnumerator = playerMovement.StopMoving(lastDir);
                 StartCoroutine(stopMovingEnumerator);
             }
-            
-            if (inputs.Player.Shoot.IsPressed())
+        }
+
+        private void HandleRotation() {
+            playerMovement.LookForward(isDashing && playerDash.isFirstPhase ? dashDirection : moveDirection);
+        }
+
+        private void HandleShoot() {
+            if (isDashing) return;
+            if (!inputs.Player.Shoot.IsPressed())
             {
-                playerShoot.Shoot();
+                if (inputs.Player.Shoot.WasReleasedThisFrame())
+                {
+                    playerShoot.StopShooting();
+                }
+                return;
+            }
+            
+            if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();
+            else GamepadAim();
+
+            if (inputs.Player.Shoot.WasPerformedThisFrame())
+            {
+                playerShoot.StartShooting();
             }
         }
 
-        private void FixedUpdate() {
-            if (isDashing) playerDash.HandleDash();
-            if (playerDash.isFirstPhase) return;
-            
-            if (inputs.Player.Shoot.IsPressed())
-            {
-                if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();
-                else GamepadAim();
-            }
-            else
-            {
-                playerMovement.LookForward(moveDirection);
-            }
+        private void HandleEnergy() {
+            if (inputs.Player.SlowDown.IsPressed()) playerEnergy.SlowDownTime(data.slowDownModifier);
+            else if (inputs.Player.SpeedUp.IsPressed()) playerEnergy.SpeedUpTime(data.speedUpModifier);
+            else playerEnergy.ResetSpeed();
         }
         
         private void MouseAim()
