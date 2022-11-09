@@ -1,3 +1,4 @@
+using BulletPro;
 using Player;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,6 +18,13 @@ public class BossFSM_Virus : BasicBossFSM
     private MovementMode movementMode;
     private Vector3 currentPlayerPosition;
 
+    [Header("Time Freeze")]
+    [SerializeField] private bool decelerationAffectsAll = true; // else slow affects only enemy (easier)
+    [SerializeField] private bool accelerationAffectsAll = true;  // else acceleration affects only player (easier)
+    [SerializeField, Range(1f, 10f)] private float accelerationValue = 4;
+    [SerializeField, Range(0f, 1f)] private float  decelerationValue = 0.25f;
+    // bullet speed, lifespan, delayBetweenShots
+
     private void Start()
     {
         Init();
@@ -25,10 +33,33 @@ public class BossFSM_Virus : BasicBossFSM
         levelCenter = new Vector2(levelLength.bounds.center.x, levelHeight.bounds.center.y + levelHeight.bounds.extents.x);
     } 
 
+    private void SetTimeSpeed(float value)
+    {
+        BulletModuleMovement.TIME_SPEED_MULTIPLIER = value;
+    }
+
     private void Update()
     {
         // DEBUG
         UpdateDebugInput();
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            SetTimeSpeed(1f);
+            // SetNewParam(0, "Speed", 100);
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SetTimeSpeed(accelerationValue);
+            // SetNewParam(0, "Speed", 100);
+        }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            SetTimeSpeed(decelerationValue);
+            // SetNewParam(0, "Speed", 100);
+        }
 
         if (Input.GetKeyDown(KeyCode.M))
         {

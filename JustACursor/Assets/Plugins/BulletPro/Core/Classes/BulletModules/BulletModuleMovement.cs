@@ -54,7 +54,9 @@ namespace BulletPro
 
 		// Called in Bullet.Update()
 		public void Update() => Update(Time.deltaTime);
-		public void Update(float timestep)
+
+		public static float TIME_SPEED_MULTIPLIER = 1f; 
+        public void Update(float timestep)
 		{
 			// enabled spawn module means we're still waiting for the actual spawn
 			if (moduleSpawn.isEnabled) return;
@@ -77,7 +79,7 @@ namespace BulletPro
 					move.y = cr - prevAnimValues.y;
 					prevAnimValues.y = cr;
 				}
-				Translate(move, animationMovementSpace);
+				Translate(move * TIME_SPEED_MULTIPLIER, animationMovementSpace);
 			}
 			// translation if driven by simple values
 			else
@@ -85,10 +87,10 @@ namespace BulletPro
 				if (speedOverLifetime.enabled)
 				{
 					speedOverLifetime.Update(timestep);
-					currentSpeed = baseSpeed * speedOverLifetime.GetCurveResult();
+					currentSpeed = baseSpeed * speedOverLifetime.GetCurveResult() * TIME_SPEED_MULTIPLIER;
 				}
 				else currentSpeed = baseSpeed;
-				Translate(Vector3.up * currentSpeed * timestep, Space.Self);
+				Translate(TIME_SPEED_MULTIPLIER * currentSpeed * timestep * Vector3.up, Space.Self);
 			}
 
 			// rotation if driven by an AnimationClip
@@ -99,7 +101,7 @@ namespace BulletPro
 				float cr = rotateFromAnim.GetCurveResult();
 				angle = cr - prevAnimValues.z;
 				prevAnimValues.z = cr;
-				Rotate(angle);
+				Rotate(angle * TIME_SPEED_MULTIPLIER);
 			}
 			// rotation if driven by simple values
 			else
@@ -107,10 +109,10 @@ namespace BulletPro
 				if (angularSpeedOverLifetime.enabled)
 				{
 					angularSpeedOverLifetime.Update(timestep);
-					currentAngularSpeed = baseAngularSpeed * angularSpeedOverLifetime.GetCurveResult();
+					currentAngularSpeed = baseAngularSpeed * angularSpeedOverLifetime.GetCurveResult() * TIME_SPEED_MULTIPLIER;
 				}
 				else currentAngularSpeed = baseAngularSpeed;
-				Rotate(currentAngularSpeed * timestep);
+				Rotate(currentAngularSpeed * timestep * TIME_SPEED_MULTIPLIER);
 			}
 
 			// scale if driven by simple values
@@ -128,7 +130,7 @@ namespace BulletPro
 				if (scaleOverLifetime.enabled)
 				{
 					scaleOverLifetime.Update(timestep);
-					currentScale = baseScale * scaleOverLifetime.GetCurveResult();
+					currentScale = baseScale * scaleOverLifetime.GetCurveResult() * TIME_SPEED_MULTIPLIER;
 				}
 				else currentScale = baseScale;
 			}

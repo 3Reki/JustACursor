@@ -11,6 +11,7 @@ public enum BossPhase { NONE = -1, One, Two, Three }
 /// This is a simple class to set up boss logic. The heavy part of logic is done on the BossData and called here via enum-based state machine.
 /// Said otherwise, this class is about WHAT and WHEN while BossData is about HOW
 /// </summary>
+
 public class BasicBossFSM : MonoBehaviour
 {
     [SerializeField] BossData bossData;
@@ -35,28 +36,23 @@ public class BasicBossFSM : MonoBehaviour
     void Update()
     {
         UpdateDebugInput();
-    } 
+    }
 
     protected void Init()
     {
         bossData.Init(emmitters);
         bossHP.text = $"{bossData.CurrentHP}";
         SetBossPhase(overridePhaseOnStart ? phaseOverride : BossPhase.One);
-        SetNewParam(0, "Cone");
     }
 
-    protected void SetNewParam(int emitterIndex, string bulletName) //, float newValue)
+    protected void SetNewParam(int emitterIndex, string paramName, int newValue)
     {
-        for (int i = 0; i < emmitters[emitterIndex].emitterProfile.GetBullet(bulletName).customParameters.Length; i++)
+        // i = 1 to skip root bullet
+        for (int i = 1; i < emmitters[emitterIndex].bullets.Count; i++)
         {
-            Debug.Log("bullet param name: " + emmitters[emitterIndex].emitterProfile.GetBullet(bulletName).customParameters[i].floatValue.baseValue);
+            // emmitters[emitterIndex].bullets[i].moduleParameters.SetFloat(paramName, newValue);
+            Debug.Log(BulletPoolManager.instance.pool[i].moduleParameters);
         }
-
-        // Debug.Log("root bullet name: " + emmitters[emitterIndex].emitterProfile.); 
-        /* for (int i = 0; i < emmitters[emitterIndex].rootBullet; i++)
-        {
-            Debug.Log("sub emitters name: " + emmitters[emitterIndex].subEmitters[i].name);
-        } */
     }
 
     protected void UpdateDebugInput()
@@ -78,6 +74,8 @@ public class BasicBossFSM : MonoBehaviour
             Debug_RefreshPlayID();
         }
     }
+
+    public static float CoreMecaMultiplier = 1f;
 
     private void FreezeBossBullets()
     {
@@ -108,7 +106,7 @@ public class BasicBossFSM : MonoBehaviour
     public void TakeDamage(BulletPro.Bullet bullet, Vector3 hitPoint)
     {
         bossData.CurrentHP -= bullet.moduleParameters.GetInt("Damage");
-        bossHP.text = $"{bossData.CurrentHP}"; 
+        bossHP.text = $"{bossData.CurrentHP}";
 
         switch (bossData.CurrentBossPhase)
         {
@@ -131,7 +129,7 @@ public class BasicBossFSM : MonoBehaviour
     {
         bossData.CurrentBossPhase = newPhase;
 
-        SetNewPatterns(); 
+        SetNewPatterns();
     }
 
     private void SetNewPatterns()
@@ -156,3 +154,4 @@ public class BasicBossFSM : MonoBehaviour
         transform.root.gameObject.SetActive(false);
     }
 }
+

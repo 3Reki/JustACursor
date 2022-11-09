@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Cone
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 5836360
+  uniqueIndex: 14641447
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -2363,7 +2363,7 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 8
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -2417,7 +2417,7 @@ MonoBehaviour:
         parameterName: 
       defaultValue: 0
     - settings:
-        valueType: 4
+        valueType: 0
         interpolationValue:
           interpolationFactor: 0
           repartitionCurve:
@@ -2478,7 +2478,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: Speed
-      defaultValue: 5
+      defaultValue: 2
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -7846,7 +7846,7 @@ MonoBehaviour:
           parameterType: 0
           relativeTo: 0
           parameterName: 
-        defaultValue: 1
+        defaultValue: 5
       useSlider: 0
       sliderMin: 0
       sliderMax: 0
@@ -8230,7 +8230,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 14480132
+  uniqueIndex: 12130109
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -10672,7 +10672,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 2064858
+  uniqueIndex: 6686755
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -17784,7 +17784,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 14072171
+  uniqueIndex: 10400025
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
