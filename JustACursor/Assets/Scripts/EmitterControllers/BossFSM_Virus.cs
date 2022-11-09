@@ -19,8 +19,6 @@ public class BossFSM_Virus : BasicBossFSM
     private Vector3 currentPlayerPosition;
 
     [Header("Time Freeze")]
-    [SerializeField] private bool decelerationAffectsAll = true; // else slow affects only enemy (easier)
-    [SerializeField] private bool accelerationAffectsAll = true;  // else acceleration affects only player (easier)
     [SerializeField, Range(1f, 10f)] private float accelerationValue = 4;
     [SerializeField, Range(0f, 1f)] private float  decelerationValue = 0.25f;
     // bullet speed, lifespan, delayBetweenShots
