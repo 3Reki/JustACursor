@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Emmisive 1
+  m_Name: M_Alpha_Emmisive 2
   m_Shader: {fileID: -6465566751694194690, guid: d317e288a62b6d946a9488825b28ca66, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -101,7 +101,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Alpha: 0.594
     m_Colors:
-    - _Color: {r: 13.76636, g: 11.96448, b: 0, a: 1}
+    - _Color: {r: 0.7921569, g: 0.25490198, b: 0, a: 1}
   m_BuildTextureStacks: []
