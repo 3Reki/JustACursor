@@ -102,7 +102,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.594
+    - _Alpha: 1
     m_Colors:
     - _Color: {r: 0.7921569, g: 0.25490198, b: 0, a: 1}
   m_BuildTextureStacks: []
