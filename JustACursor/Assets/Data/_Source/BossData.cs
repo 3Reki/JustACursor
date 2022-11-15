@@ -3,10 +3,27 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class AttackPattern
+public class Phase 
 {
     public BossPhase phase;
-    public EmitterProfile[] patterns = new EmitterProfile[3];
+    public AttackPattern[] attackPatterns = new AttackPattern[1];
+}
+
+public enum MovementPatternType { NONE, ToCenter, FarthestFromPlayer, ClosestFromPlayer, DashTowardPlayer, DashAwayFromPlayer }
+public enum TriggerTime { NONE, BeforeAttack, AfterAttack }
+[Serializable]
+public class MovementPattern
+{
+    public MovementPatternType movementPatternType;
+    public TriggerTime triggerTime;
+    public bool loopTriggerTime;
+}
+
+[Serializable]
+public class AttackPattern
+{
+    public EmitterProfile[] emiterProfiles = new EmitterProfile[3];
+    public MovementPattern[] movementPatterns = new MovementPattern[1]; // TODO: implement this
 }
 
 [CreateAssetMenu(fileName = "BossName_BossData", menuName = "Just A Cursor/BossData")]
@@ -18,13 +35,14 @@ public class BossData : ScriptableObject
     [SerializeField, Range(0, 1)] private float phase2HPPercentTrigger = 0.6f;
     [SerializeField, Range(0, 1)] private float phase3HPPercentTrigger = 0.3f;
 
-    public AttackPattern[] attackPattern = new AttackPattern[1];
+    [Space] public Phase[] bossPhases = new Phase[3]; 
+    
     public BulletEmitter[] BulletEmitter { get; set; }
-
     public int CurrentHP { get; set; }
     public BossPhase CurrentBossPhase { get; set; }
+    public BossPhase PreviousBossPhase { get; set; }
 
-
+    // ALL THE LOGIC SHOULD BE IN THE FSM, NOT HERE (only data)
 
     /// <summary>
     /// This function initializes the BossData with it's emitters and starting HP
@@ -38,22 +56,17 @@ public class BossData : ScriptableObject
 
     public void StartPhaseOne()
     {
-        GoToPhase(BossPhase.One); 
+        GoToPhase(BossPhase.One, 0); 
     }
 
     /// <summary>
     /// This function changes the profile of the bullet emitter without destroying already instantiated bullets
     /// </summary>
-    public void GoToPhase(BossPhase phase)
+    public void GoToPhase(BossPhase phase, int patternIndex)
     {
-        for (int i = 0; i < BulletEmitter.Length; i++)
+        for (int i = 0; i < bossPhases[(int)phase].attackPatterns[patternIndex].emiterProfiles.Length; i++)
         {
-            BulletEmitter[i].Stop();
-            if (i < attackPattern[(int)phase].patterns.Length)
-            {
-                BulletEmitter[i].Play();
-                BulletEmitter[i].SwitchProfile(attackPattern[(int)phase].patterns[i]);
-            }
+            BulletEmitter[i].SwitchProfile(bossPhases[(int)phase].attackPatterns[patternIndex].emiterProfiles[i]);
         }
     }
 
@@ -62,5 +75,5 @@ public class BossData : ScriptableObject
 
     public bool CheckPhase3HPTrigger() => (float)CurrentHP / startingHP <= phase3HPPercentTrigger;
 
-    public AttackPattern GetPhasePatterns(BossPhase phase) => attackPattern[(int)phase];
+    public AttackPattern GetPhasePatterns(BossPhase phase, int patternIndex) => bossPhases[(int)phase].attackPatterns[patternIndex];
 }

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Cone
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3360573
+  uniqueIndex: 13511474
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -2478,7 +2478,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: Speed
-      defaultValue: 2
+      defaultValue: 5
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -8230,7 +8230,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 12130109
+  uniqueIndex: 2989243
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -10672,7 +10672,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 6686755
+  uniqueIndex: 4986677
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -17784,7 +17784,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 10400025
+  uniqueIndex: 13094880
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
