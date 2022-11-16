@@ -82,22 +82,13 @@ namespace Player
 
         private void HandleShoot() {
             if (isDashing) return;
-            if (!inputs.Player.Shoot.IsPressed())
+            if (inputs.Player.Shoot.IsPressed())
             {
-                if (inputs.Player.Shoot.WasReleasedThisFrame())
-                {
-                    playerShoot.StopShooting();
-                }
-                return;
+                playerShoot.Shoot();
             }
             
             if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();
             else GamepadAim();
-
-            if (inputs.Player.Shoot.WasPerformedThisFrame())
-            {
-                playerShoot.StartShooting();
-            }
         }
 
         private void HandleEnergy() {
