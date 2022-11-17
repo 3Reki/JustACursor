@@ -12,7 +12,7 @@ namespace Player
 
         private PlayerData data => playerController.data;
 
-        private bool canShoot;
+        private bool canShoot = true;
         
         public void Shoot()
         {

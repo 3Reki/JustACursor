@@ -306,8 +306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a747e2710fb39f24d81690eaeaf98cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitter: {fileID: 7272368783838028449}
   playerController: {fileID: 8492879579015322658}
+  emitter: {fileID: 7272368783838028449}
 --- !u!114 &9087955399235441740
 MonoBehaviour:
   m_ObjectHideFlags: 0

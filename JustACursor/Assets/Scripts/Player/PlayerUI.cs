@@ -15,12 +15,11 @@ namespace Player {
         
         private PlayerData data => playerController.data;
         private Coroutine showHealthCoroutine;
-    
+
         public void ShowHealth()
         {
             if (showHealthCoroutine != null)
             {
-                Debug.Log("Kill");
                 foreach (Image image in pvs)
                 {
                     image.DOKill();

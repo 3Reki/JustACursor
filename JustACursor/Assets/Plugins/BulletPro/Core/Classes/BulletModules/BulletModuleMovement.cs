@@ -51,6 +51,8 @@ namespace BulletPro
 
 		public override void Enable() { base.Enable(); }
 		public override void Disable() { base.Disable(); }
+		
+		public static float SpeedMultiplier = 1f; 
 
 		// Called in Bullet.Update()
 		public void Update() => Update(Time.deltaTime);
@@ -77,7 +79,7 @@ namespace BulletPro
 					move.y = cr - prevAnimValues.y;
 					prevAnimValues.y = cr;
 				}
-				Translate(move, animationMovementSpace);
+				Translate(move * SpeedMultiplier, animationMovementSpace);
 			}
 			// translation if driven by simple values
 			else
@@ -88,7 +90,7 @@ namespace BulletPro
 					currentSpeed = baseSpeed * speedOverLifetime.GetCurveResult();
 				}
 				else currentSpeed = baseSpeed;
-				Translate(Vector3.up * currentSpeed * timestep, Space.Self);
+				Translate(Vector3.up * currentSpeed * timestep * SpeedMultiplier, Space.Self);
 			}
 
 			// rotation if driven by an AnimationClip
@@ -99,7 +101,7 @@ namespace BulletPro
 				float cr = rotateFromAnim.GetCurveResult();
 				angle = cr - prevAnimValues.z;
 				prevAnimValues.z = cr;
-				Rotate(angle);
+				Rotate(angle * SpeedMultiplier);
 			}
 			// rotation if driven by simple values
 			else
@@ -110,7 +112,7 @@ namespace BulletPro
 					currentAngularSpeed = baseAngularSpeed * angularSpeedOverLifetime.GetCurveResult();
 				}
 				else currentAngularSpeed = baseAngularSpeed;
-				Rotate(currentAngularSpeed * timestep);
+				Rotate(currentAngularSpeed * timestep * SpeedMultiplier);
 			}
 
 			// scale if driven by simple values
@@ -128,7 +130,7 @@ namespace BulletPro
 				if (scaleOverLifetime.enabled)
 				{
 					scaleOverLifetime.Update(timestep);
-					currentScale = baseScale * scaleOverLifetime.GetCurveResult();
+					currentScale = baseScale * scaleOverLifetime.GetCurveResult() * SpeedMultiplier;
 				}
 				else currentScale = baseScale;
 			}
