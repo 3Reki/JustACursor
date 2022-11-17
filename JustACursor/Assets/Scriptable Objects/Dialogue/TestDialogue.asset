@@ -18,7 +18,9 @@ MonoBehaviour:
     console"
   - Fais ton choix bg
   responses:
-  - responseEvent: 1
-    responseText: Choix A
-  - responseEvent: 2
-    responseText: Choix B
+  - <ResponseEvent>k__BackingField: 1
+    <ResponseText>k__BackingField: Choix A
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 281805e916972ac4e8e9ed000c596db1, type: 2}
+  - <ResponseEvent>k__BackingField: 2
+    <ResponseText>k__BackingField: Choix B
+    <NextDialogue>k__BackingField: {fileID: 0}

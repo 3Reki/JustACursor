@@ -52,7 +52,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 4367663600122215312}
-  responses: {fileID: 8421017517193927935}
+  responseParent: {fileID: 8421017517193927935}
+  responseButtons:
+  - {fileID: 7488534520383619289}
+  - {fileID: 7606317731272801501}
   textLabel: {fileID: 534319121429255055}
   writerEffect: {fileID: 4549267829166479790}
   testDialogue: {fileID: 11400000, guid: 31136d4f10912f14f8c456e3390d6fbc, type: 2}
@@ -490,6 +493,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7935454738804089332, guid: 574c9b56fc610e44480176a7ce3d8e19, type: 3}
   m_PrefabInstance: {fileID: 8541352556743816364}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7488534520383619289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1253237222084293749, guid: 574c9b56fc610e44480176a7ce3d8e19, type: 3}
+  m_PrefabInstance: {fileID: 8541352556743816364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8713186753716193448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -600,3 +614,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7935454738804089332, guid: 574c9b56fc610e44480176a7ce3d8e19, type: 3}
   m_PrefabInstance: {fileID: 8713186753716193448}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7606317731272801501 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1253237222084293749, guid: 574c9b56fc610e44480176a7ce3d8e19, type: 3}
+  m_PrefabInstance: {fileID: 8713186753716193448}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

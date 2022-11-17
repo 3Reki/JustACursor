@@ -1,14 +1,18 @@
 using System.Collections;
+using System.Collections.Generic;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
+using UnityEngine.UI;
 
 namespace Dialogue
 {
     public class DialogueUI : MonoBehaviour
     {
         [SerializeField] private GameObject dialogueBox;
-        [SerializeField] private GameObject responses;
+        [SerializeField] private GameObject responseParent;
+        [SerializeField] private List<Button> responseButtons;
         [SerializeField] private TMP_Text textLabel;
         [SerializeField] private WriterEffect writerEffect;
         
@@ -34,7 +38,33 @@ namespace Dialogue
         private void ShowDialogue(DialogueObject dialogueObject)
         {
             dialogueBox.SetActive(true);
+            responseParent.SetActive(false);
             StartCoroutine(StepThroughDialogue(dialogueObject));
+        }
+        
+        private void ShowResponses(Response[] responses)
+        {
+            if (responses.Length > responseButtons.Count)
+            {
+                Debug.LogError("Too much responses provided");
+            }
+            
+            responseParent.SetActive(true);
+            for (int i = 0; i < responseButtons.Count; i++)
+            {
+                responseButtons[i].onClick.RemoveAllListeners();
+                
+                int index = i;
+                responseButtons[i].onClick.AddListener(() =>
+                {
+                    TriggerEvent(responses[index].ResponseEvent);
+                    DialogueObject nextDialogue = responses[index].NextDialogue;
+                    if (nextDialogue != null)
+                    {
+                        ShowDialogue(nextDialogue);
+                    }
+                });
+            }
         }
 
         private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
@@ -45,24 +75,25 @@ namespace Dialogue
             foreach (string dialogue in dialogueObject.Dialogue)
             {
                 index++;
-                
+
                 writerEffect.Run(dialogue, textLabel);
-                while (!interactInput) yield return null;
-                interactInput = false;
-
-                //If text not fully displayed, display it entirely
-                if (writerEffect.IsWriting)
+                while (writerEffect.IsWriting)
                 {
-                    writerEffect.Complete(dialogue, textLabel);
+                    if (interactInput)
+                    {
+                        interactInput = false;
+                        writerEffect.Complete(dialogue, textLabel);
+                    }
+                    yield return null;
                 }
-
+                
                 //If last dialog and has responses
                 if (index == dialogueObject.Dialogue.Length && dialogueObject.HasResponses)
                 {
-                    ShowResponses();
+                    ShowResponses(dialogueObject.Responses);
                     yield break;
                 }
-                
+
                 while (!interactInput) yield return null;
                 interactInput = false;
             }
@@ -70,21 +101,17 @@ namespace Dialogue
             Close();
         }
 
-        private void ShowResponses()
+        private void TriggerEvent(DialogueEvent responseEvent)
         {
-            responses.SetActive(true);
+            // TODO: Some functions called when specific choices are made
+            Debug.Log(responseEvent);
+            Close();
         }
-
+        
         private void Close()
         {
             dialogueBox.SetActive(false);
-            responses.SetActive(false);
-        }
-
-        public void TriggerEvent(DialogueObject.DialogueEvent responseEvent)
-        {
-            // TODO: Some functions called when specific choices are made
-            Close();
+            responseParent.SetActive(false);
         }
     }
 }
