@@ -33,7 +33,7 @@ public class BossFSM_Virus : BasicBossFSM
 
     private void SetTimeSpeed(float value)
     {
-        BulletModuleMovement.TIME_SPEED_MULTIPLIER = value;
+        BulletModuleMovement.SpeedMultiplier = value;
     }
 
     private void Update()
