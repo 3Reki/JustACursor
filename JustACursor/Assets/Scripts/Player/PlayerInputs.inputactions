@@ -335,6 +335,45 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Dialogue",
+            "id": "65f9a20f-8410-4f80-8434-d2dd5d61bc5c",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "c4875b4e-a255-4ca7-afcd-3f1a300ad48e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f49bd4fd-b0eb-48d3-b9cb-6b02af2f74f3",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f286260d-0d56-443c-a716-e21877187eb1",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

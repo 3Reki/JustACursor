@@ -12,7 +12,6 @@ namespace Player
         private float accelerationProgress;
         private float decelerationProgress;
 
-
         public void LookAtPosition(Vector2 lookPosition)
         {
             Vector2 lookDir = lookPosition - rb.position;

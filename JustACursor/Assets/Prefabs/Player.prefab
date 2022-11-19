@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5928221938580750880}
   - component: {fileID: 7272368783838028449}
   m_Layer: 3
-  m_Name: FirePoint
+  m_Name: Bullet Emitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,14 +147,15 @@ GameObject:
   - component: {fileID: 8574159809606814587}
   - component: {fileID: 4041533260088147884}
   - component: {fileID: 8492879579015322658}
-  - component: {fileID: 8492879579015322655}
   - component: {fileID: 6905191973965184494}
+  - component: {fileID: 8492879579015322655}
   - component: {fileID: 9087955399235441740}
   - component: {fileID: 8492879579015322652}
   - component: {fileID: 7116445297489333676}
   - component: {fileID: 7998244573822518287}
   - component: {fileID: 8322077768723608807}
   - component: {fileID: 9105837281492657489}
+  - component: {fileID: 3798327701252216391}
   - component: {fileID: 7058734935673665281}
   m_Layer: 3
   m_Name: Player
@@ -227,10 +228,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.0359955, y: 0.5168071}
-      - {x: -0.50664634, y: -0.019386493}
-      - {x: -1.0446625, y: -0.53163594}
-      - {x: 1.0516974, y: -0.0040694997}
+    - - {x: -0.55552876, y: -1.1371071}
+      - {x: 0.0015396476, y: -0.56453145}
+      - {x: 0.5815326, y: -1.1322193}
+      - {x: 0.016845942, y: 1.1324191}
 --- !u!114 &4041533260088147884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,19 +280,6 @@ MonoBehaviour:
   playerDash: {fileID: 9087955399235441740}
   playerEnergy: {fileID: 8492879579015322652}
   playerDeviceHandler: {fileID: 7116445297489333676}
---- !u!114 &8492879579015322655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8492879579015322661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a747e2710fb39f24d81690eaeaf98cfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emitter: {fileID: 7272368783838028449}
 --- !u!114 &6905191973965184494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +294,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 8492879579015322658}
   rb: {fileID: 8492879579015322659}
+--- !u!114 &8492879579015322655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492879579015322661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a747e2710fb39f24d81690eaeaf98cfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 8492879579015322658}
+  emitter: {fileID: 7272368783838028449}
 --- !u!114 &9087955399235441740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,8 +335,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 8492879579015322658}
+  energy: {fileID: 3798327701252216391}
   timeFill: {fileID: 7568403144059993786}
-  onSpeedUp:
+  onPlayerSpeedUp:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8322077768723608807}
@@ -349,7 +352,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onSlowDown:
+  onPlayerSlowDown:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8322077768723608807}
@@ -364,7 +367,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onReset:
+  onPlayerReset:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8322077768723608807}
@@ -483,6 +486,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3798327701252216391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492879579015322661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9006801a2f8c6540b6ff720b7ffeecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: f0dbc50461d2a324a9667ab8dc186971, type: 2}
 --- !u!114 &7058734935673665281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,7 +548,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   parentSyncFoldout: 0
-  collisionTagsFoldout: 0
+  collisionTagsFoldout: 1
   advancedEventsFoldout: 0
   useDefaultGizmoColor: 1
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
