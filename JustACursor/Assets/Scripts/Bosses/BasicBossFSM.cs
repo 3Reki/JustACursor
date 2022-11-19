@@ -109,7 +109,7 @@ namespace Bosses
         // REFACTORING: should be moved elsewere
         public void TakeDamage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
-            currentHp -= bullet.moduleParameters.GetInt("Damage");
+            currentHp -= 1;
             bossHP.text = $"{currentHp}";
 
             switch (currentBossPhase)

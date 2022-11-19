@@ -133,7 +133,6 @@ namespace Bosses
                 isMoving = true;
 
                 attackMode = AttackMode.Cone;
-                currentPlayerPosition = PlayerController.PlayerPos;
             }
         }
 
