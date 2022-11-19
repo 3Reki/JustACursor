@@ -9,16 +9,16 @@ public class AttackPattern
     public EmitterProfile[] patterns = new EmitterProfile[3];
 }
 
-[CreateAssetMenu(fileName = "BossData_BossName", menuName = "Gameplay/Data/Boss")]
+[CreateAssetMenu(fileName = "BossName_BossData", menuName = "Just A Cursor/BossData")]
 public class BossData : ScriptableObject
 {
     [SerializeField] private string bossName;
-    [SerializeField, TextArea(10 , 20)] private string description; 
-    [SerializeField] private int startingHP;
+    [SerializeField, TextArea(10 , 20)] private string description;
+    [SerializeField] private int startingHP = 800; 
     [SerializeField, Range(0, 1)] private float phase2HPPercentTrigger = 0.6f;
     [SerializeField, Range(0, 1)] private float phase3HPPercentTrigger = 0.3f;
 
-    public AttackPattern[] attackPattern = new AttackPattern[3];
+    public AttackPattern[] attackPattern = new AttackPattern[1];
     public BulletEmitter[] BulletEmitter { get; set; }
 
     public int CurrentHP { get; set; }
