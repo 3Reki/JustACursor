@@ -8,12 +8,12 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerEnergy.onGameSpeedUpdate += UpdateSpeed;
+        Energy.onGameSpeedUpdate += UpdateSpeed;
     }
 
     private void OnDisable()
     {
-        PlayerEnergy.onGameSpeedUpdate -= UpdateSpeed;
+        Energy.onGameSpeedUpdate -= UpdateSpeed;
     }
 
     public void Shoot(Vector2 direction)

@@ -96,7 +96,7 @@ public class BasicBossFSM : MonoBehaviour
             if (playMask[i] == 1)
             {
                 bossData.BulletEmitter[i].Play();
-                Debug.Log("playing pattern: " + bossData.attackPattern[(int)bossData.CurrentBossPhase].patterns[i]);
+                //Debug.Log("playing pattern: " + bossData.attackPattern[(int)bossData.CurrentBossPhase].patterns[i]);
             }
         }
     }
@@ -135,7 +135,7 @@ public class BasicBossFSM : MonoBehaviour
     private void SetNewPatterns()
     {
         bossData.GoToPhase(bossData.CurrentBossPhase);
-        Debug.Log("setting patterns to new phase: " + bossData.CurrentBossPhase);
+        //Debug.Log("setting patterns to new phase: " + bossData.CurrentBossPhase);
 
         Debug_RefreshPlayID();
     }
