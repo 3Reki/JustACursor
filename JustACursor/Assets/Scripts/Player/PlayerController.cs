@@ -27,6 +27,8 @@ namespace Player
         public bool isDashing => playerDash.isDashing;
         private Vector2 dashDirection => playerDash.dashDirection;
 
+        public static Vector3 PlayerPos { get; private set; } // possible to make this an event and avoid update calls
+
         private void Start() {
             inputs = new PlayerInputs();
             inputs.Enable();
@@ -36,7 +38,8 @@ namespace Player
 
         private void Update() {
             moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
-            
+            PlayerPos = transform.position; 
+
             HandleDash();
             HandleMovement();
             HandleRotation();
@@ -82,22 +85,13 @@ namespace Player
 
         private void HandleShoot() {
             if (isDashing) return;
-            if (!inputs.Player.Shoot.IsPressed())
+            if (inputs.Player.Shoot.IsPressed())
             {
-                if (inputs.Player.Shoot.WasReleasedThisFrame())
-                {
-                    playerShoot.StopShooting();
-                }
-                return;
+                playerShoot.Shoot();
             }
             
             if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();
             else GamepadAim();
-
-            if (inputs.Player.Shoot.WasPerformedThisFrame())
-            {
-                playerShoot.StartShooting();
-            }
         }
 
         private void HandleEnergy() {

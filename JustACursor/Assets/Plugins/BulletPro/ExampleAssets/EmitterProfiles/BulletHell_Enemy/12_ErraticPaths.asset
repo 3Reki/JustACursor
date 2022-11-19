@@ -32,7 +32,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114349158023498124}
+  currentParamsSelected: {fileID: 114782398543050446}
   numberOfSubAssets: 7
 --- !u!114 &114281247847933564
 MonoBehaviour:
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 7726657
+  uniqueIndex: 7359931
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -741,6 +741,7 @@ MonoBehaviour:
     typeName: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
     requiredComponentName: 
+  layer: 0
   sortingOrder:
     valueTree:
     - settings:
@@ -7158,7 +7159,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 5983701
+  uniqueIndex: 15472127
   profile: {fileID: 11400000}
   parent: {fileID: 114980266748472528}
   children:
@@ -7852,6 +7853,7 @@ MonoBehaviour:
     typeName: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
     requiredComponentName: 
+  layer: 0
   sortingOrder:
     valueTree:
     - settings:
@@ -9477,7 +9479,7 @@ MonoBehaviour:
   foldoutVFX: 0
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 0
+  currentlyDisplayedModule: 8
   canMove: 1
   canCollide: 0
   isVisible: 0
@@ -14386,7 +14388,7 @@ MonoBehaviour:
   m_Name: Subpattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 3123194
+  uniqueIndex: 6936006
   profile: {fileID: 11400000}
   parent: {fileID: 114349158023498124}
   children:
@@ -29093,7 +29095,7 @@ MonoBehaviour:
   m_Name: Small Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 3497289
+  uniqueIndex: 8990583
   profile: {fileID: 11400000}
   parent: {fileID: 114367796061083068}
   children:
@@ -29338,6 +29340,7 @@ MonoBehaviour:
     bulletOrigin: {x: 0, y: 0, z: 0}
     useDifferentBullet: 0
     bulletParams: {fileID: 0}
+  hasUnknownBulletAmount: 0
   modifiers:
   - modifierType: 1
     globalMovement:
@@ -33747,6 +33750,7 @@ MonoBehaviour:
   highestValues: {x: 0, y: 0, z: 300}
   lowestValues: {x: 0, y: 0, z: 60}
   hasBeenSerializedOnce: 1
+  fakeBulletAmount: 0
   foldout0: 0
   foldout1: 0
   foldout2: 0
@@ -33789,7 +33793,7 @@ MonoBehaviour:
   m_Name: Small bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 8301506
+  uniqueIndex: 15516414
   profile: {fileID: 11400000}
   parent: {fileID: 114396195577588526}
   children: []
@@ -34482,6 +34486,7 @@ MonoBehaviour:
     typeName: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
     requiredComponentName: 
+  layer: 0
   sortingOrder:
     valueTree:
     - settings:
@@ -36383,7 +36388,7 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 3
+  currentlyDisplayedModule: 5
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -37653,7 +37658,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 6
+      defaultValue: 20
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -41793,7 +41798,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 1359877
+  uniqueIndex: 1300261
   profile: {fileID: 11400000}
   parent: {fileID: 114993554623766378}
   children:
@@ -42038,6 +42043,7 @@ MonoBehaviour:
     bulletOrigin: {x: 0, y: 0, z: 0}
     useDifferentBullet: 0
     bulletParams: {fileID: 0}
+  hasUnknownBulletAmount: 0
   modifiers: []
   bulletParamsRandom: 0
   listOfPossibleBulletParams: []
@@ -42045,6 +42051,7 @@ MonoBehaviour:
   highestValues: {x: 0, y: 0, z: 0}
   lowestValues: {x: 0, y: 0, z: 0}
   hasBeenSerializedOnce: 1
+  fakeBulletAmount: 0
   foldout0: 0
   foldout1: 0
   foldout2: 0
@@ -42087,7 +42094,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 16398558
+  uniqueIndex: 13522682
   profile: {fileID: 11400000}
   parent: {fileID: 114281247847933564}
   children:
@@ -48156,8 +48163,7 @@ MonoBehaviour:
             parameterType: 0
             relativeTo: 0
             parameterName: 
-          defaultValue: {fileID: 8300000, guid: 172b966f0e6f81f45b65f79ff51184f2,
-            type: 3}
+          defaultValue: {fileID: 8300000, guid: 172b966f0e6f81f45b65f79ff51184f2, type: 3}
         narrowType: 1
         requireComponent: 0
         typeName: UnityEngine.AudioClip, UnityEngine.AudioModule, Version=0.0.0.0,

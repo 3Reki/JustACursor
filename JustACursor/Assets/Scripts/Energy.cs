@@ -1,3 +1,4 @@
+using BulletPro;
 using DG.Tweening;
 using ScriptableObjects;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class Energy : MonoBehaviour
         private set
         {
             _gameSpeed = value;
+            BulletModuleMovement.SpeedMultiplier = value;
             onGameSpeedUpdate?.Invoke();
         }
     }
