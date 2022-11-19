@@ -3,7 +3,7 @@ using Player;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum MovementMode { NONE, Idle, ToCenter, ToConeFirePoint }
+public enum AttackMode { NONE, Idle, Circle, Cone, Dash }
 
 public class BossFSM_Virus : BasicBossFSM
 {
@@ -12,11 +12,13 @@ public class BossFSM_Virus : BasicBossFSM
     [SerializeField] private BoxCollider2D levelHeight;
     [SerializeField] private BoxCollider2D levelLength;
     private Vector2 levelCenter;
-    private bool move;
-    private readonly float moveSpeed = 5f;
+    private bool isMoving, hasReachedDestination; 
     [SerializeField] private Transform[] coneFirePoints = new Transform[0];
-    private MovementMode movementMode;
+    [SerializeField, Range(1, 30)] private float moveSpeed = 10f;
+
+    private AttackMode attackMode;
     private Vector3 currentPlayerPosition;
+    private Vector3 destination; 
 
     [Header("Time Freeze")]
     [SerializeField, Range(1f, 10f)] private float accelerationValue = 4;
@@ -26,7 +28,7 @@ public class BossFSM_Virus : BasicBossFSM
     private void Start()
     {
         Init();
-        movementMode = MovementMode.Idle;
+        attackMode = AttackMode.Idle;
 
         levelCenter = new Vector2(levelLength.bounds.center.x, levelHeight.bounds.center.y + levelHeight.bounds.extents.x);
     } 
@@ -41,6 +43,7 @@ public class BossFSM_Virus : BasicBossFSM
         // DEBUG
         UpdateDebugInput();
 
+        // placeholder for reset of mechanic
         if (Input.GetKeyDown(KeyCode.X))
         {
             SetTimeSpeed(1f);
@@ -50,48 +53,93 @@ public class BossFSM_Virus : BasicBossFSM
         if (Input.GetKeyDown(KeyCode.C))
         {
             SetTimeSpeed(accelerationValue);
+            energy.SpeedUpTime();
+
             // SetNewParam(0, "Speed", 100);
         }
 
         if (Input.GetKeyDown(KeyCode.V))
         {
             SetTimeSpeed(decelerationValue);
+            energy.SlowDownTime();
+
             // SetNewParam(0, "Speed", 100);
         }
 
         if (Input.GetKeyDown(KeyCode.M))
         {
-            move = true;
-            // energy.SpeedUpTime();
+            PatternIndex = PatternIndex == 1 ? 2 : 1;
+
+            StopPatterns();
+            isMoving = true; 
+
+            attackMode = AttackMode.Circle;
+            destination = levelCenter;
         }
-
-        /* int closestIndex;
-        float currentClosestDistance = 200;  
-        if (Input.GetKeyDown(KeyCode.L))
+        else if (Input.GetKeyDown(KeyCode.L))
         {
-            movementMode = MovementMode.ToConeFirePoint;
+            PatternIndex = 0;
 
+            StopPatterns();
+            isMoving = true;
+
+            attackMode = AttackMode.Cone;
             currentPlayerPosition = PlayerController.PlayerPos;
+            destination = GetFarthestPositionFromPlayer();
+        }
+         
+        if (Vector3.Distance(destination, transform.position) <= 0.05f && isMoving)
+        {
+            isMoving = false;
+            transform.position = destination;
+            float angle = Vector3.SignedAngle(transform.up, (PlayerController.PlayerPos - transform.position), transform.forward);
 
-            for (int i = 0; i < coneFirePoints.Length; i++)
+            transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z + angle); 
+            SetBossPhase(BossData.CurrentBossPhase, PatternIndex);
+            PlayPatterns();
+        }
+        // TODO: pouvoir alterner entre plusieurs patterns s'ils font partie de la même phase (par ex: Cone et Cercle)
+        // TODO: avoir une liste aussi pour les patterns de déplacement
+
+        if (isMoving)
+        {
+            switch (attackMode)
             {
-                currentClosestDistance = Vector3.Distance(currentPlayerPosition, coneFirePoints[i].position)
+                case AttackMode.Circle:
+                    GoToCenter();
+                    break;
+                case AttackMode.Cone:
+                    GoFarFromPlayer();
+                    break;
             }
-        } */
-
-        if (move) GoToCenter();
+        }
     }
 
     private void GoToCenter()
     {
-        movementMode = MovementMode.ToCenter;
+        transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime); 
+    }
 
-        move = Vector3.Distance(levelCenter, transform.position) >= 0.05f;       
-        transform.position = Vector3.MoveTowards(transform.position, levelCenter, moveSpeed * Time.deltaTime); 
+    // REFACTORING : abstractable for reuse
+    private Vector3 GetFarthestPositionFromPlayer()
+    {
+        int farthestIndex = 0;
+        float currentClosestDistance = 0;
+
+        for (int i = 0; i < coneFirePoints.Length; i++)
+        {
+            float temp = Vector3.Distance(currentPlayerPosition, coneFirePoints[i].position);
+            if (temp > currentClosestDistance)
+            {
+                currentClosestDistance = temp;
+                farthestIndex = i;
+            }
+        }
+        return coneFirePoints[farthestIndex].position; 
     }
 
     private void GoFarFromPlayer()
     {
-
+        transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
     }
 }
