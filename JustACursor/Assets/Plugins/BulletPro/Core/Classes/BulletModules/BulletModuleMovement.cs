@@ -56,8 +56,6 @@ namespace BulletPro
 
 		// Called in Bullet.Update()
 		public void Update() => Update(Time.deltaTime);
-
-		public static float TIME_SPEED_MULTIPLIER = 1f; 
         public void Update(float timestep)
 		{
 			// enabled spawn module means we're still waiting for the actual spawn
@@ -89,7 +87,7 @@ namespace BulletPro
 				if (speedOverLifetime.enabled)
 				{
 					speedOverLifetime.Update(timestep);
-					currentSpeed = baseSpeed * speedOverLifetime.GetCurveResult() * TIME_SPEED_MULTIPLIER;
+					currentSpeed = baseSpeed * speedOverLifetime.GetCurveResult() * SpeedMultiplier;
 				}
 				else currentSpeed = baseSpeed;
 				Translate(Vector3.up * currentSpeed * timestep * SpeedMultiplier, Space.Self);
@@ -111,7 +109,7 @@ namespace BulletPro
 				if (angularSpeedOverLifetime.enabled)
 				{
 					angularSpeedOverLifetime.Update(timestep);
-					currentAngularSpeed = baseAngularSpeed * angularSpeedOverLifetime.GetCurveResult() * TIME_SPEED_MULTIPLIER;
+					currentAngularSpeed = baseAngularSpeed * angularSpeedOverLifetime.GetCurveResult() * SpeedMultiplier;
 				}
 				else currentAngularSpeed = baseAngularSpeed;
 				Rotate(currentAngularSpeed * timestep * SpeedMultiplier);
