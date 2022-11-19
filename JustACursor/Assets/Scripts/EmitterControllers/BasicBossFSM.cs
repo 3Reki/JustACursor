@@ -142,7 +142,7 @@ public class BasicBossFSM : MonoBehaviour
 
     private void SetNewPatterns(int patternIndex)
     {
-        bossData.GoToPhase(bossData.CurrentBossPhase);
+        bossData.GoToPhase(bossData.CurrentBossPhase,patternIndex);
         //Debug.Log("setting patterns to new phase: " + bossData.CurrentBossPhase);
 
         //Debug_RefreshPlayID();
