@@ -18,16 +18,46 @@ MonoBehaviour:
   startingHP: 400
   phase2HPPercentTrigger: 0.6
   phase3HPPercentTrigger: 0.3
-  attackPattern:
+  bossPhases:
   - phase: 0
-    patterns:
-    - {fileID: 11400000, guid: 168781c3d7966c14b936ea1140b7bf28, type: 2}
+    attackPatterns:
+    - emiterProfiles:
+      - {fileID: 11400000, guid: 168781c3d7966c14b936ea1140b7bf28, type: 2}
+      movementPatterns:
+      - movementPatternType: 2
+        triggerTime: 1
+        loopTriggerTime: 0
+    - emiterProfiles:
+      - {fileID: 11400000, guid: 7642e669682aa7f44b46624e349b2278, type: 2}
+      movementPatterns:
+      - movementPatternType: 1
+        triggerTime: 1
+        loopTriggerTime: 0
+    - emiterProfiles:
+      - {fileID: 11400000, guid: 25c7bc6bee41dcc4797574786513654e, type: 2}
+      - {fileID: 11400000, guid: 7642e669682aa7f44b46624e349b2278, type: 2}
+      - {fileID: 11400000, guid: 30ff1c89ddc43d54f8bc8c7928797dd4, type: 2}
+      movementPatterns:
+      - movementPatternType: 0
+        triggerTime: 0
+        loopTriggerTime: 0
   - phase: 1
-    patterns:
-    - {fileID: 11400000, guid: 7642e669682aa7f44b46624e349b2278, type: 2}
-    - {fileID: 11400000, guid: f3ee3711c2c6786479b530d7cda52a52, type: 2}
+    attackPatterns:
+    - emiterProfiles:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      movementPatterns:
+      - movementPatternType: 0
+        triggerTime: 0
+        loopTriggerTime: 0
   - phase: 2
-    patterns:
-    - {fileID: 11400000, guid: 998f27a95b982d74dbc009d4c227def1, type: 2}
-    - {fileID: 11400000, guid: 706091ed6a4d31340915ed704a991cb9, type: 2}
-    - {fileID: 11400000, guid: 30ff1c89ddc43d54f8bc8c7928797dd4, type: 2}
+    attackPatterns:
+    - emiterProfiles:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      movementPatterns:
+      - movementPatternType: 0
+        triggerTime: 0
+        loopTriggerTime: 0
