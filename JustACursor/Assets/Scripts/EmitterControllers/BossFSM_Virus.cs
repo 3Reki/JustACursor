@@ -84,7 +84,7 @@ public class BossFSM_Virus : BasicBossFSM
             isMoving = true;
 
             attackMode = AttackMode.Cone;
-            currentPlayerPosition = PlayerController.PlayerPos;
+            currentPlayerPosition = PlayerController.PlayerPosition;
             destination = GetFarthestPositionFromPlayer();
         }
          
@@ -92,14 +92,14 @@ public class BossFSM_Virus : BasicBossFSM
         {
             isMoving = false;
             transform.position = destination;
-            float angle = Vector3.SignedAngle(transform.up, (PlayerController.PlayerPos - transform.position), transform.forward);
+            float angle = Vector3.SignedAngle(transform.up, (PlayerController.PlayerPosition - transform.position), transform.forward);
 
             transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z + angle); 
             SetBossPhase(BossData.CurrentBossPhase, PatternIndex);
             PlayPatterns();
         }
-        // TODO: pouvoir alterner entre plusieurs patterns s'ils font partie de la même phase (par ex: Cone et Cercle)
-        // TODO: avoir une liste aussi pour les patterns de déplacement
+        // TODO: pouvoir alterner entre plusieurs patterns s'ils font partie de la mï¿½me phase (par ex: Cone et Cercle)
+        // TODO: avoir une liste aussi pour les patterns de dï¿½placement
 
         if (isMoving)
         {

@@ -15,6 +15,7 @@ namespace Player
         [SerializeField] private PlayerDash playerDash;
         [SerializeField] private PlayerEnergy playerEnergy;
         [SerializeField] private PlayerDeviceHandler playerDeviceHandler;
+        [SerializeField] private PlayerRespawn playerRespawn;
 
         private PlayerInputs inputs;
         private Camera mainCamera;
@@ -26,8 +27,9 @@ namespace Player
         public PlayerData data => playerData;
         public bool isDashing => playerDash.isDashing;
         private Vector2 dashDirection => playerDash.dashDirection;
+        private bool isAlive => playerRespawn.isAlive;
 
-        public static Vector3 PlayerPos { get; private set; } // possible to make this an event and avoid update calls
+        public static Vector3 PlayerPosition { get; private set; }
 
         private void Start() {
             inputs = new PlayerInputs();
@@ -38,7 +40,7 @@ namespace Player
 
         private void Update() {
             moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
-            PlayerPos = transform.position; 
+            PlayerPosition = transform.position; 
 
             HandleDash();
             HandleMovement();
