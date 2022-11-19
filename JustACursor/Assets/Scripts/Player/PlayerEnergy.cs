@@ -10,7 +10,8 @@ namespace Player
     {
         [SerializeField] private PlayerController playerController;
         [SerializeField] private Energy energy;
-        [SerializeField] private Image timeFill;
+        [SerializeField] private Image extraTimeFill;
+        [SerializeField] private Image intraTimeFill;
 
         private PlayerData data => playerController.data;
 
@@ -18,8 +19,8 @@ namespace Player
         {
             if (!energy.SpeedUpTime()) return;
             
-            timeFill.DOKill();
-            timeFill.DOFillAmount(1, data.timeAbilityDuration - data.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear);
+            DOFillAmount(intraTimeFill,1,data.timeAbilityDuration - data.timeAbilityDuration * intraTimeFill.fillAmount);
+            DOFillAmount(extraTimeFill,1,data.timeAbilityDuration - data.timeAbilityDuration * extraTimeFill.fillAmount);
             
             onPlayerSpeedUp.Invoke();
         }
@@ -27,10 +28,10 @@ namespace Player
         public void SlowDownTime()
         {
             if (!energy.SlowDownTime()) return;
-            if (timeFill.fillAmount == 0) return;
+            if (intraTimeFill.fillAmount == 0) return;
             
-            timeFill.DOKill();
-            timeFill.DOFillAmount(0, data.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear);
+            DOFillAmount(intraTimeFill,0,data.timeAbilityDuration * intraTimeFill.fillAmount);
+            DOFillAmount(extraTimeFill,0,data.timeAbilityDuration * extraTimeFill.fillAmount);
             
             onPlayerSlowDown.Invoke();
         }
@@ -39,23 +40,20 @@ namespace Player
         {
             if (!energy.ResetSpeed()) return;
 
-            timeFill.DOKill();
+            intraTimeFill.DOKill();
+            extraTimeFill.DOKill();
             
             onPlayerReset.Invoke();
+        }
+
+        private void DOFillAmount(Image image, float endValue, float duration)
+        {
+            image.DOKill();
+            image.DOFillAmount(endValue, duration).SetEase(Ease.Linear);
         }
 
         public UnityEvent onPlayerSpeedUp;
         public UnityEvent onPlayerSlowDown;
         public UnityEvent onPlayerReset;
-        
-        public delegate void OnGameSpeedUpdate();
-        public static OnGameSpeedUpdate onGameSpeedUpdate;
-        
-        private enum TimeState
-        {
-            Slowing,
-            Resetting,
-            Speeding
-        }
     }
 }
