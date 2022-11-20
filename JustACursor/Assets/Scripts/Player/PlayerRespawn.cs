@@ -1,25 +1,27 @@
 using System.Collections;
 using DG.Tweening;
 using Player;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerRespawn : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private Transform checkpoint;
+    [SerializeField] private Image respawnScreen;
+    [SerializeField] private Transform respawnPosition;
 
-    [Header("Screen")]
-    [SerializeField] private Image blackScreen;
-    [SerializeField, Range(0.1f, 1)] private float fadeInDuration;
-    [SerializeField, Range(0.1f, 1)] private float stayDuration;
-    [SerializeField, Range(0.1f, 1)] private float fadeOutDuration;
+    [Header("Debug")]
+    [SerializeField] private KeyCode respawnKey;
+
+    private PlayerData data => playerController.data;
 
     public bool isAlive { get; private set; } = true;
 
+    //TODO: To remove
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(respawnKey))
         {
             Respawn();
         }
@@ -30,17 +32,22 @@ public class PlayerRespawn : MonoBehaviour
         StartCoroutine(RespawnCR());
     }
 
+    public void SetCheckpoint(Transform newCheckpoint)
+    {
+        respawnPosition.position = newCheckpoint.position;
+    }
+
     private IEnumerator RespawnCR()
     {
         isAlive = false;
-        blackScreen.DOFade(1, fadeInDuration).SetEase(Ease.Linear);
-        yield return new WaitForSeconds(fadeInDuration);
+        respawnScreen.DOFade(1, data.respawnFadeIn).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(data.respawnFadeIn);
         
-        transform.position = checkpoint.position;
-        yield return new WaitForSeconds(stayDuration);
+        transform.position = respawnPosition.position;
+        yield return new WaitForSeconds(data.respawnStay);
         
-        blackScreen.DOFade(0, fadeOutDuration).SetEase(Ease.Linear);
-        yield return new WaitForSeconds(fadeOutDuration);
+        respawnScreen.DOFade(0, data.respawnFadeOut).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(data.respawnFadeOut);
         isAlive = true;
     }
 }

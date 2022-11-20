@@ -62,7 +62,7 @@ public class Energy : MonoBehaviour
         DOTween.Kill(GameSpeed);
         if (GameSpeed > 1) tweenTime = Mathf.Lerp(0,data.lerpDuration, (GameSpeed - 1) / (data.speedUpModifier - 1));
         else tweenTime = Mathf.Lerp(0,data.lerpDuration,(1-GameSpeed)/(1-data.slowDownModifier));
-        DOTween.To(() => GameSpeed, x => GameSpeed = x, 1, data.lerpDuration).SetEase(Ease.Linear);
+        DOTween.To(() => GameSpeed, x => GameSpeed = x, 1, data.lerpDuration).SetEase(data.lerpEase);
             
         onReset?.Invoke();
         return true;
