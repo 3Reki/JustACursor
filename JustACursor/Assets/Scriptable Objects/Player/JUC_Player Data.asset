@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b0114b0a3580e4ba269b4690f662f9, type: 3}
   m_Name: JUC_Player Data
   m_EditorClassIdentifier: 
-  moveSpeed: 8
+  moveSpeed: 25
   moveAcceleration:
     serializedVersion: 2
     m_Curve:
@@ -69,10 +69,6 @@ MonoBehaviour:
   dashSecondPhaseControl: 0.2
   fireRate: 4
   timeAbilityDuration: 3
-  lerpDuration: 1
-  lerpEase: 1
-  speedUpModifier: 2
-  slowDownModifier: 0.5
   maxHealth: 3
   invinciblityTime: 1
   healthFadeIn: 0.2
@@ -80,3 +76,6 @@ MonoBehaviour:
   healthFadeOut: 0.2
   timeFadeIn: 0.2
   timeFadeOut: 0.2
+  respawnFadeIn: 0.2
+  respawnStay: 0.2
+  respawnFadeOut: 0.2
