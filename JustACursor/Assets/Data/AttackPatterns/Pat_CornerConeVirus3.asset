@@ -15,3 +15,4 @@ MonoBehaviour:
   <length>k__BackingField: 5
   emitterProfiles:
   - {fileID: 11400000, guid: ad95285ae14ef024e9068ead14a40fb9, type: 2}
+  movementDuration: 0.5

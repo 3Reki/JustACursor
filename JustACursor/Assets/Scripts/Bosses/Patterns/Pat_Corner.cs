@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
 using BulletPro;
 using UnityEngine;
 
@@ -8,12 +9,15 @@ namespace Bosses.Patterns
     public class Pat_Corner : Pattern
     {
         [SerializeField] private EmitterProfile[] emitterProfiles;
+        [SerializeField] private float movementDuration;
 
         private IEnumerator playEnumerator;
 
-        public override void Play()
+        public override async void Play()
         {
-            boss.GoToRandomCorner();
+            boss.GoToRandomCorner(movementDuration);
+            await Task.Delay((int) (movementDuration * 1000));
+            
             for (int i = 0; i < emitterProfiles.Length; i++)
             {
                 boss.bulletEmitter[i].SwitchProfile(emitterProfiles[i]);

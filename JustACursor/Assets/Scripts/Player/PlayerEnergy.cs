@@ -17,7 +17,8 @@ namespace Player
 
         public void SpeedUpTime()
         {
-            if (!energy.SpeedUpTime()) return;
+            if (energy.timeState == Energy.TimeState.Speeding) return;
+            energy.SpeedUpTime();
             
             DOFillAmount(intraTimeFill,1,data.timeAbilityDuration - data.timeAbilityDuration * intraTimeFill.fillAmount);
             DOFillAmount(extraTimeFill,1,data.timeAbilityDuration - data.timeAbilityDuration * extraTimeFill.fillAmount);
@@ -27,8 +28,14 @@ namespace Player
 
         public void SlowDownTime()
         {
-            if (!energy.SlowDownTime()) return;
-            if (intraTimeFill.fillAmount == 0) return;
+            if (extraTimeFill.fillAmount == 0)
+            {
+                ResetSpeed();
+                return;
+            }
+            if (energy.timeState == Energy.TimeState.Slowing) return;
+            
+            energy.SlowDownTime();
             
             DOFillAmount(intraTimeFill,0,data.timeAbilityDuration * intraTimeFill.fillAmount);
             DOFillAmount(extraTimeFill,0,data.timeAbilityDuration * extraTimeFill.fillAmount);
@@ -38,8 +45,9 @@ namespace Player
 
         public void ResetSpeed()
         {
-            if (!energy.ResetSpeed()) return;
-
+            if (energy.timeState == Energy.TimeState.Resetting) return;
+            energy.ResetSpeed();
+            
             intraTimeFill.DOKill();
             extraTimeFill.DOKill();
             
