@@ -15,35 +15,30 @@ MonoBehaviour:
   bossName: Virus
   description: "The first boss in the game. \nCore mechanic: slowing & accelerating
     time"
-  startingHP: 400
-  phase2HPPercentTrigger: 0.6
-  phase3HPPercentTrigger: 0.3
+  <startingHP>k__BackingField: 20
+  <phase2HPPercentTrigger>k__BackingField: 0.6
+  <phase3HPPercentTrigger>k__BackingField: 0.3
   bossPhases:
   - phase: 0
     attackPatterns:
-    - emiterProfiles:
+    - duration: 1
+      emiterProfiles:
       - {fileID: 11400000, guid: 168781c3d7966c14b936ea1140b7bf28, type: 2}
       movementPatterns:
       - movementPatternType: 2
         triggerTime: 1
         loopTriggerTime: 0
-    - emiterProfiles:
+    - duration: 1
+      emiterProfiles:
       - {fileID: 11400000, guid: 7642e669682aa7f44b46624e349b2278, type: 2}
       movementPatterns:
       - movementPatternType: 1
         triggerTime: 1
         loopTriggerTime: 0
-    - emiterProfiles:
-      - {fileID: 11400000, guid: 25c7bc6bee41dcc4797574786513654e, type: 2}
-      - {fileID: 11400000, guid: 7642e669682aa7f44b46624e349b2278, type: 2}
-      - {fileID: 11400000, guid: 30ff1c89ddc43d54f8bc8c7928797dd4, type: 2}
-      movementPatterns:
-      - movementPatternType: 0
-        triggerTime: 0
-        loopTriggerTime: 0
   - phase: 1
     attackPatterns:
-    - emiterProfiles:
+    - duration: 1
+      emiterProfiles:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}
@@ -53,7 +48,8 @@ MonoBehaviour:
         loopTriggerTime: 0
   - phase: 2
     attackPatterns:
-    - emiterProfiles:
+    - duration: 1
+      emiterProfiles:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 0}

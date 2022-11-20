@@ -1,79 +1,48 @@
-using BulletPro;
 using System;
+using Bosses;
+using BulletPro;
 using UnityEngine;
 
-[Serializable]
-public class Phase 
+namespace Data._Source
 {
-    public BossPhase phase;
-    public AttackPattern[] attackPatterns = new AttackPattern[1];
-}
-
-public enum MovementPatternType { NONE, ToCenter, FarthestFromPlayer, ClosestFromPlayer, DashTowardPlayer, DashAwayFromPlayer }
-public enum TriggerTime { NONE, BeforeAttack, AfterAttack }
-[Serializable]
-public class MovementPattern
-{
-    public MovementPatternType movementPatternType;
-    public TriggerTime triggerTime;
-    public bool loopTriggerTime;
-}
-
-[Serializable]
-public class AttackPattern
-{
-    public EmitterProfile[] emiterProfiles = new EmitterProfile[3];
-    public MovementPattern[] movementPatterns = new MovementPattern[1]; // TODO: implement this
-}
-
-[CreateAssetMenu(fileName = "BossName_BossData", menuName = "Just A Cursor/BossData")]
-public class BossData : ScriptableObject
-{
-    [SerializeField] private string bossName;
-    [SerializeField, TextArea(10 , 20)] private string description;
-    [SerializeField] private int startingHP = 800; 
-    [SerializeField, Range(0, 1)] private float phase2HPPercentTrigger = 0.6f;
-    [SerializeField, Range(0, 1)] private float phase3HPPercentTrigger = 0.3f;
-
-    [Space] public Phase[] bossPhases = new Phase[3]; 
-    
-    public BulletEmitter[] BulletEmitter { get; set; }
-    public int CurrentHP { get; set; }
-    public BossPhase CurrentBossPhase { get; set; }
-    public BossPhase PreviousBossPhase { get; set; }
-
-    // ALL THE LOGIC SHOULD BE IN THE FSM, NOT HERE (only data)
-
-    /// <summary>
-    /// This function initializes the BossData with it's emitters and starting HP
-    /// </summary>
-    public void Init(BulletEmitter[] emitters)
+    [Serializable]
+    public class Phase 
     {
-        CurrentHP = startingHP;
-        BulletEmitter = new BulletEmitter[emitters.Length];
-        Array.Copy(emitters, BulletEmitter, emitters.Length); 
+        public BossPhase phase;
+        public AttackPattern[] attackPatterns = new AttackPattern[1];
     }
 
-    public void StartPhaseOne()
+    public enum MovementPatternType { None, ToCenter, FarthestFromPlayer, ClosestFromPlayer, DashTowardPlayer, DashAwayFromPlayer }
+    public enum TriggerTime { None, BeforeAttack, AfterAttack }
+    [Serializable]
+    public class MovementPattern
     {
-        GoToPhase(BossPhase.One, 0); 
+        public MovementPatternType movementPatternType;
+        public TriggerTime triggerTime;
+        public bool loopTriggerTime;
     }
 
-    /// <summary>
-    /// This function changes the profile of the bullet emitter without destroying already instantiated bullets
-    /// </summary>
-    public void GoToPhase(BossPhase phase, int patternIndex)
+    [Serializable]
+    public class AttackPattern
     {
-        for (int i = 0; i < bossPhases[(int)phase].attackPatterns[patternIndex].emiterProfiles.Length; i++)
-        {
-            BulletEmitter[i].SwitchProfile(bossPhases[(int)phase].attackPatterns[patternIndex].emiterProfiles[i]);
-        }
+        public float duration = 1f;
+        public EmitterProfile[] emiterProfiles = new EmitterProfile[1];
+        public MovementPattern[] movementPatterns = new MovementPattern[1]; // TODO: implement this
     }
 
-    // just because I want to keep the percent trigger at the boss data level and NOT in the EmitterControllers
-    public bool CheckPhase2HPTrigger() => (float)CurrentHP / startingHP <= phase2HPPercentTrigger;     
+    [CreateAssetMenu(fileName = "BossName_BossData", menuName = "Just A Cursor/BossData")]
+    public class BossData : ScriptableObject
+    {
+        [SerializeField] private string bossName;
+        [SerializeField, TextArea(10 , 20)] private string description;
+        [field: SerializeField] public int startingHP { get; private set; }
+        [field: SerializeField, Range(0, 1)] public float phase2HPPercentTrigger { get; private set; } = 0.6f;
+        [field: SerializeField, Range(0, 1)] public float phase3HPPercentTrigger { get; private set; } = 0.3f;
 
-    public bool CheckPhase3HPTrigger() => (float)CurrentHP / startingHP <= phase3HPPercentTrigger;
+        [Space] public Phase[] bossPhases = new Phase[3];
+        
+        public AttackPattern GetPhasePatterns(BossPhase phase, int patternIndex) => bossPhases[(int)phase].attackPatterns[patternIndex];
 
-    public AttackPattern GetPhasePatterns(BossPhase phase, int patternIndex) => bossPhases[(int)phase].attackPatterns[patternIndex];
+        public int GetPatternCountForPhase(BossPhase phase) => bossPhases[(int) phase].attackPatterns.Length;
+    }
 }

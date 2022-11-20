@@ -29,7 +29,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114027673760526898}
+  currentParamsSelected: {fileID: 114917193883442684}
   numberOfSubAssets: 4
 --- !u!114 &114027673760526898
 MonoBehaviour:
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Cone
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 13511474
+  uniqueIndex: 4469003
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -2363,7 +2363,7 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 3
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -8230,7 +8230,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 2989243
+  uniqueIndex: 1127089
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -10653,12 +10653,17 @@ MonoBehaviour:
     holdsMultiSelect: 0
     isEditingSelection: 0
     isDoneWithSelection: 0
-    selectionRects: []
+    selectionRects:
+    - serializedVersion: 2
+      x: 0.58963096
+      y: 0.40246046
+      width: 0
+      height: 0
     selectionRectsFromExistingMods: []
-    mouseStartPoint: {x: 0.23300476, y: 0.7188334}
-    mouseEndPoint: {x: 0.80396396, y: 0.11912096}
-    currentColor: {r: 0.40667182, g: 0.8394131, b: 0.6055364, a: 0.4}
-    indexOfFirstUndo: 255
+    mouseStartPoint: {x: 0.41036907, y: 0.59753954}
+    mouseEndPoint: {x: 0.41036907, y: 0.59753954}
+    currentColor: {r: 0.73728395, g: 0.06542174, b: 0.15146704, a: 0.4}
+    indexOfFirstUndo: 1486
 --- !u!114 &114671512830859702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10672,7 +10677,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 4986677
+  uniqueIndex: 8630183
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -17784,7 +17789,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 13094880
+  uniqueIndex: 3049622
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -37186,5 +37191,5 @@ MonoBehaviour:
       displayName: Wait
   advancedFoldout: 1
   hasBeenSerializedOnce: 1
-  focusedInstruction: -1
-  safetyForPlaymode: 40
+  focusedInstruction: 3
+  safetyForPlaymode: 63
