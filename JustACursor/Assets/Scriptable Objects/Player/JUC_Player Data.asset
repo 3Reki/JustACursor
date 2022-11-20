@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b0114b0a3580e4ba269b4690f662f9, type: 3}
   m_Name: JUC_Player Data
   m_EditorClassIdentifier: 
-  moveSpeed: 25
+  moveSpeed: 8
   moveAcceleration:
     serializedVersion: 2
     m_Curve:
