@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ScriptableObjects
 {
@@ -30,11 +31,16 @@ namespace ScriptableObjects
         public int maxHealth;
         public float invinciblityTime;
 
-        [Header("PlayerUI")]
+        [Header("Intra UI")]
         public float healthFadeIn;
         public float healthStay;
         public float healthFadeOut;
         public float timeFadeIn;
         public float timeFadeOut;
+        
+        [Header("Respawn")]
+        [Range(0.1f, 1)] public float respawnFadeIn;
+        [Range(0.1f, 1)] public float respawnStay;
+        [Range(0.1f, 1)] public float respawnFadeOut;
     }
 }
