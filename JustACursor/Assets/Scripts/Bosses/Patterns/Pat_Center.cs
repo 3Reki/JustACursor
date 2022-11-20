@@ -1,4 +1,5 @@
-﻿using BulletPro;
+﻿using System.Threading.Tasks;
+using BulletPro;
 using UnityEngine;
 
 namespace Bosses.Patterns
@@ -7,10 +8,13 @@ namespace Bosses.Patterns
     public class Pat_Center : Pattern
     {
         [SerializeField] private EmitterProfile[] emitterProfiles;
+        [SerializeField] private float movementDuration;
         
-        public override void Play()
+        public override async void Play()
         {
-            boss.GoToCenter();
+            boss.GoToCenter(movementDuration);
+            await Task.Delay((int) (movementDuration * 1000));
+            
             boss.transform.rotation = Quaternion.Euler(0, 0, 180);
             for (int i = 0; i < emitterProfiles.Length; i++)
             {

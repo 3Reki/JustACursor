@@ -444,7 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 8213265501839806752}
   respawnScreen: {fileID: 8381984491438418184}
-  respawnPosition: {x: 0, y: -10, z: 0}
+  respawnPosition: {fileID: 0}
   respawnKey: 114
 --- !u!114 &3615676464410597287
 MonoBehaviour:

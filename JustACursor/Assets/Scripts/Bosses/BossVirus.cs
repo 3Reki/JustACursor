@@ -1,5 +1,6 @@
 ﻿using Bosses.Patterns;
 using BulletPro;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,7 +23,6 @@ namespace Bosses
         
         private Vector2 levelCenter;
         private bool hasReachedDestination; 
-        private Vector3 currentPlayerPosition;
         private float patternCooldown;
         private int phasePatternCount;
         private float patternTime = -1;
@@ -39,8 +39,9 @@ namespace Bosses
                 }
             }
             Init();
-            RotateTowardsPlayer();
+            
             PlayPattern(currentBossPhase, currentPatternIndex);
+            patternTime = GetPattern(currentBossPhase, currentPatternIndex).length;
             phasePatternCount = GetPatternCountForPhase(currentBossPhase);
 
             Bounds bounds = levelHeight.bounds;
@@ -82,14 +83,14 @@ namespace Bosses
             transform.rotation = Quaternion.Euler(0f, 0f, zRotation - 90);
         }
 
-        public void GoToCenter()
+        public void GoToCenter(float moveDuration)
         {
-            TeleportTo(levelCenter);
+            MoveTo(levelCenter, moveDuration);
         }
 
-        public void GoToRandomCorner()
+        public void GoToRandomCorner(float moveDuration)
         {
-            TeleportTo(GetRandomCorner());
+            MoveTo(GetRandomCorner(), moveDuration);
         }
 
         private void TestInputs()
@@ -133,6 +134,7 @@ namespace Bosses
 
         private void ChangePattern()
         {
+            StopPattern(currentBossPhase, currentPatternIndex);
             currentPatternIndex++;
             currentPatternIndex %= phasePatternCount;
             PlayPattern(currentBossPhase, currentPatternIndex);
@@ -155,6 +157,7 @@ namespace Bosses
         {
             int farthestIndex = 0;
             float currentClosestDistance = 0;
+            Vector3 currentPlayerPosition = player.transform.position;
 
             for (int i = 0; i < coneFirePoints.Length; i++)
             {
@@ -168,9 +171,10 @@ namespace Bosses
             return coneFirePoints[farthestIndex].position; 
         }
 
-        private void TeleportTo(Vector3 dest)
+        private void MoveTo(Vector3 dest, float moveDuration)
         {
-            transform.position = dest;
+            //transform.position = dest;
+            transform.DOMove(dest, moveDuration);
             //transform.position = Vector3.MoveTowards(transform.position, dest, moveSpeed * Time.deltaTime); 
         }
     }
