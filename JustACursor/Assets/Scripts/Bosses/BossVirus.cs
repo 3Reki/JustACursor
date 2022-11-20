@@ -81,7 +81,7 @@ namespace Bosses
                 }
             } */
 
-            Shoot();
+            //Shoot(); // uncomment for patterns like AP_BulletInCone (loopCount=1)
 
             // if (Vector3.Distance(destination, transform.position) <= 0.05f && isMoving)
             // {
@@ -113,28 +113,39 @@ namespace Bosses
         private void TestInputs()
         {
             // placeholder for reset of mechanic
+            // fireRate=x is for patterns like AP_BulletInCone (loopCount=1)
+            // direct access to rotation/waitTime is for patterns like AP_SimpleSpiral (looopMode=endless)
             if (Input.GetKeyDown(KeyCode.X))
             {
                 SetTimeSpeed(1f);
-                fireRate = 1f;
-                //currentPatternParams.instructionLists[0].instructions[3].rotation = new DynamicFloat(10);
+                //fireRate = 1f; 
+                currentPatternParams.instructionLists[0].instructions[2].rotation = new DynamicFloat(20);
+                currentPatternParams.instructionLists[0].instructions[3].waitTime = new DynamicFloat(0.2f);
             }
 
             if (Input.GetKeyDown(KeyCode.C))
             {
                 SetTimeSpeed(accelerationValue);
                 energy.SpeedUpTime();
-                fireRate = 0.2f;
-                //currentPatternParams.instructionLists[0].instructions[3].rotation = new DynamicFloat(20);
+                //fireRate = 0.2f;
+                currentPatternParams.instructionLists[0].instructions[2].rotation = new DynamicFloat(5);
+                currentPatternParams.instructionLists[0].instructions[3].waitTime = new DynamicFloat(0.01f);
             }
 
             if (Input.GetKeyDown(KeyCode.V))
             {
                 SetTimeSpeed(decelerationValue);
                 energy.SlowDownTime();
-                fireRate = 3f;
-                //currentPatternParams.instructionLists[0].instructions[3].rotation = new DynamicFloat(40);
+                //fireRate = 3f;
+                currentPatternParams.instructionLists[0].instructions[2].rotation = new DynamicFloat(60);
+                currentPatternParams.instructionLists[0].instructions[3].waitTime = new DynamicFloat(1f);
             }
+
+            //Debug.Log(currentPatternParams.instructionLists[0].instructions[2].rotation.baseValue);
+            //Debug.Log(currentPatternParams.instructionLists[0].instructions[2].rotation.root.defaultValue);
+
+            //Debug.Log(currentPatternParams.instructionLists[0].instructions[3].waitTime.baseValue);
+            //Debug.Log(currentPatternParams.instructionLists[0].instructions[3].waitTime.root.defaultValue);
 
             if (Input.GetKeyDown(KeyCode.M))
             {
