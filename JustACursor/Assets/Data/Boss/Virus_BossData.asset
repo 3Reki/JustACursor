@@ -15,7 +15,7 @@ MonoBehaviour:
   bossName: Virus
   description: "The first boss in the game. \nCore mechanic: slowing & accelerating
     time"
-  <startingHP>k__BackingField: 20
+  <startingHP>k__BackingField: 400
   <phase2HPPercentTrigger>k__BackingField: 0.6
   <phase3HPPercentTrigger>k__BackingField: 0.3
   bossPhases:
