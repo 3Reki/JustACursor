@@ -20,52 +20,54 @@ public class Energy : MonoBehaviour
     }
     
     private static float _gameSpeed = 1;
-    
     private float tweenTime;
+
+    public TimeState timeState { get; private set; } = TimeState.Resetting;
     
-    private TimeState timeState = TimeState.Resetting;
-    
-    public bool SpeedUpTime()
+    public void SpeedUpTime()
     {
-        if (timeState == TimeState.Speeding) return false;
-            
+        if (timeState == TimeState.Speeding) return;
         timeState = TimeState.Speeding;
-            
+        
         DOTween.Kill(GameSpeed);
+        
         tweenTime = data.lerpDuration - Mathf.Lerp(0, data.lerpDuration, (GameSpeed - 1) / (data.speedUpModifier - 1));
-        DOTween.To(() => GameSpeed, x => GameSpeed = x, data.speedUpModifier, tweenTime).SetEase(data.lerpEase);
+
+        DOTween.To(() => GameSpeed, x => GameSpeed = x, data.speedUpModifier, tweenTime)
+            .SetEase(data.lerpEase);
             
         onSpeedUp?.Invoke();
-        return true;
     }
 
-    public bool SlowDownTime()
+    public void SlowDownTime()
     {
-        if (timeState == TimeState.Slowing) return false;
-            
+        if (timeState == TimeState.Slowing) return;
         timeState = TimeState.Slowing;
-
+        
         DOTween.Kill(GameSpeed);
+        
         tweenTime = data.lerpDuration - Mathf.Lerp(0, data.lerpDuration, (1-GameSpeed)/(1-data.slowDownModifier));
-        DOTween.To(() => GameSpeed, x => GameSpeed = x, data.slowDownModifier, tweenTime).SetEase(data.lerpEase);
+
+        DOTween.To(() => GameSpeed, x => GameSpeed = x, data.slowDownModifier, tweenTime)
+            .SetEase(data.lerpEase);
             
         onSlowDown?.Invoke();
-        return true;
     }
 
-    public bool ResetSpeed()
+    public void ResetSpeed()
     {
-        if (timeState == TimeState.Resetting) return false;
-            
+        if (timeState == TimeState.Resetting) return;
         timeState = TimeState.Resetting;
-
+        
         DOTween.Kill(GameSpeed);
+        
         if (GameSpeed > 1) tweenTime = Mathf.Lerp(0,data.lerpDuration, (GameSpeed - 1) / (data.speedUpModifier - 1));
         else tweenTime = Mathf.Lerp(0,data.lerpDuration,(1-GameSpeed)/(1-data.slowDownModifier));
-        DOTween.To(() => GameSpeed, x => GameSpeed = x, 1, data.lerpDuration).SetEase(Ease.Linear);
+
+        DOTween.To(() => GameSpeed, x => GameSpeed = x, 1, data.lerpDuration)
+            .SetEase(data.lerpEase);
             
         onReset?.Invoke();
-        return true;
     }
 
     public static UnityEvent onSpeedUp;
@@ -75,7 +77,7 @@ public class Energy : MonoBehaviour
     public delegate void OnGameSpeedUpdate();
     public static OnGameSpeedUpdate onGameSpeedUpdate;
     
-    private enum TimeState
+    public enum TimeState
     {
         Slowing,
         Resetting,

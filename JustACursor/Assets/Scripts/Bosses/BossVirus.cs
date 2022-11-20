@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Bosses.Patterns;
 using BulletPro;
-using Player;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering;
 using System.Collections;
 using Unity.VisualScripting;
+using Random = UnityEngine.Random;
 
 namespace Bosses
 {
-    public enum AttackMode { None, Idle, Circle, Cone, Dash }
 
     public class BossVirus : Boss
     {
@@ -16,39 +16,41 @@ namespace Bosses
         [SerializeField] private Energy energy;
         [SerializeField] private BoxCollider2D levelHeight;
         [SerializeField] private BoxCollider2D levelLength;
-        [SerializeField] private Transform[] coneFirePoints = Array.Empty<Transform>();
-        [SerializeField, Range(1, 30)] private float moveSpeed = 10f;
-        [SerializeField] private float patternDuration = 2f;
+        [SerializeField] private Transform[] coneFirePoints;
         [SerializeField] private float timeBetweenPatterns = .5f;
 
         [Header("Time Freeze")]
         [SerializeField, Range(1f, 10f)] private float accelerationValue = 4;
         [SerializeField, Range(0f, 1f)] private float  decelerationValue = 0.25f;
         // bullet speed, lifespan, delayBetweenShots
-        
+
         private Vector2 levelCenter;
-        private bool isMoving, hasReachedDestination; 
-        private AttackMode attackMode;
-        private Vector3 currentPlayerPosition;
-        private float patternTime;
+        private bool hasReachedDestination;
         private float patternCooldown;
         private int phasePatternCount;
+        private float patternTime = -1;
 
         // TEST
         private float fireRate = 1f;
         private bool canShoot = true;
 
-        PatternParams currentPatternParams; 
+        PatternParams currentPatternParams;
 
         private void Start()
         {
-            patternTime = patternDuration;
             patternCooldown = timeBetweenPatterns;
+            for (int i = 0; i < phases.Length; i++)
+            {
+                foreach (Pattern pat in phases[i].attackPatterns)
+                {
+                    pat.SetTargetBoss(this);
+                }
+            }
             Init();
-            RotateTowardsPlayer();
+
             PlayPattern(currentBossPhase, currentPatternIndex);
-            phasePatternCount = bossData.GetPatternCountForPhase(currentBossPhase);
-            attackMode = AttackMode.Idle;
+            patternTime = GetPattern(currentBossPhase, currentPatternIndex).length;
+            phasePatternCount = GetPatternCountForPhase(currentBossPhase);
 
             // Debug.Log(bulletEmitter[0].emitterProfile.rootBullet.customParameters[0].floatValue.
             Bounds bounds = levelHeight.bounds;
@@ -60,7 +62,7 @@ namespace Bosses
             //Debug.Log("localMovement" + pp.instructionLists[0].instructions[3].localMovement);
             //Debug.Log("globalMovement" + pp.instructionLists[0].instructions[3].globalMovement);
 
-            //rotation = new DynamicFloat(40f); 
+            //rotation = new DynamicFloat(40f);
         }
 
 
@@ -71,43 +73,41 @@ namespace Bosses
 
             TestInputs();
 
-            /* patternTime -= Time.deltaTime;
-            if (patternTime < 0)
+            patternTime -= Time.deltaTime;
+            if (!(patternTime < 0)) return;
+
+            patternCooldown -= Time.deltaTime;
+            if (patternCooldown < 0)
             {
-                patternCooldown -= Time.deltaTime;
-                if (patternCooldown < 0)
-                {
-                    ChangePattern();
-                }
-            } */
+                ChangePattern();
+            }
+        }
 
-            //Shoot(); // uncomment for patterns like AP_BulletInCone (loopCount=1)
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            Health health = other.gameObject.GetComponent<Health>();
+            if (health)
+            {
+                health.LoseHealth(1);
+            }
+        }
 
-            // if (Vector3.Distance(destination, transform.position) <= 0.05f && isMoving)
-            // {
-            //     isMoving = false;
-            //     transform.position = destination;
-            //     float angle = Vector3.SignedAngle(transform.up, (PlayerController.PlayerPos - transform.position), transform.forward);
-            //
-            //     transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z + angle); 
-            //     SetBossPhase(BossData.CurrentBossPhase, PatternIndex);
-            //     PlayPatterns();
-            // }
-            // TODO: pouvoir alterner entre plusieurs patterns s'ils font partie de la même phase (par ex: Cone et Cercle)
-            // TODO: avoir une liste aussi pour les patterns de déplacement
+        public void RotateTowardsPlayer()
+        {
+            Vector3 dir = player.transform.position - transform.position;
+            dir.Normalize();
+            float zRotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, zRotation - 90);
+        }
 
-            // if (isMoving)
-            // {
-            //     switch (attackMode)
-            //     {
-            //         case AttackMode.Circle:
-            //             GoToCenter();
-            //             break;
-            //         case AttackMode.Cone:
-            //             GoFarFromPlayer();
-            //             break;
-            //     }
-            // }
+        public void GoToCenter(float moveDuration)
+        {
+            MoveTo(levelCenter, moveDuration);
+        }
+
+        public void GoToRandomCorner(float moveDuration)
+        {
+            MoveTo(GetRandomCorner(), moveDuration);
         }
 
         private void TestInputs()
@@ -118,7 +118,7 @@ namespace Bosses
             if (Input.GetKeyDown(KeyCode.X))
             {
                 SetTimeSpeed(1f);
-                //fireRate = 1f; 
+                //fireRate = 1f;
                 currentPatternParams.instructionLists[0].instructions[2].rotation = new DynamicFloat(20);
                 currentPatternParams.instructionLists[0].instructions[3].waitTime = new DynamicFloat(0.2f);
             }
@@ -151,47 +151,29 @@ namespace Bosses
             {
                 currentPatternIndex = currentPatternIndex == 1 ? 2 : 1;
 
-                StopPatterns();
-                isMoving = true;
-
-                attackMode = AttackMode.Circle;
+                StopCurrentPhasePatterns();
             }
             else if (Input.GetKeyDown(KeyCode.L))
             {
                 currentPatternIndex = 0;
 
-                StopPatterns();
-                isMoving = true;
-
-                attackMode = AttackMode.Cone;
+                StopCurrentPhasePatterns();
             }
         }
 
         private void ChangePattern()
         {
-            RotateTowardsPlayer();
+            StopPattern(currentBossPhase, currentPatternIndex);
             currentPatternIndex++;
             currentPatternIndex %= phasePatternCount;
-            PlayPattern(BossPhase.One, currentPatternIndex);
-            patternTime = patternDuration;
+            PlayPattern(currentBossPhase, currentPatternIndex);
+            patternTime = GetPattern(currentBossPhase, currentPatternIndex).length;
             patternCooldown = timeBetweenPatterns;
         }
 
-        private void RotateTowardsPlayer()
+        private Vector3 GetRandomCorner()
         {
-            Vector3 dir = player.transform.position - transform.position;
-            dir.Normalize();
-            float zRotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, zRotation - 90);
-        }
-
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            Health health = other.gameObject.GetComponent<Health>();
-            if (health)
-            {
-                health.LoseHealth(1);
-            }
+            return coneFirePoints[Random.Range(0, coneFirePoints.Length)].position;
         }
 
         private void SetTimeSpeed(float value)
@@ -199,16 +181,12 @@ namespace Bosses
             BulletModuleMovement.SpeedMultiplier = value;
         }
 
-        private void GoToCenter()
-        {
-            TeleportTo(levelCenter);
-        }
-
         // REFACTORING : abstractable for reuse
         private Vector3 GetFarthestPositionFromPlayer()
         {
             int farthestIndex = 0;
             float currentClosestDistance = 0;
+            Vector3 currentPlayerPosition = player.transform.position;
 
             for (int i = 0; i < coneFirePoints.Length; i++)
             {
@@ -219,17 +197,14 @@ namespace Bosses
                     farthestIndex = i;
                 }
             }
-            return coneFirePoints[farthestIndex].position; 
+            return coneFirePoints[farthestIndex].position;
         }
 
-        private void GoFarFromPlayer()
+        private void MoveTo(Vector3 dest, float moveDuration)
         {
-            TeleportTo(GetFarthestPositionFromPlayer());
-        }
-
-        private void TeleportTo(Vector3 dest)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, dest, moveSpeed * Time.deltaTime); 
+            //transform.position = dest;
+            transform.DOMove(dest, moveDuration);
+            //transform.position = Vector3.MoveTowards(transform.position, dest, moveSpeed * Time.deltaTime);
         }
 
         public void Shoot()
