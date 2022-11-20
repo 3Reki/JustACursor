@@ -29,7 +29,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114917193883442684}
+  currentParamsSelected: {fileID: 114201774248674550}
   numberOfSubAssets: 4
 --- !u!114 &114027673760526898
 MonoBehaviour:
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Cone
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 587209
+  uniqueIndex: 856031
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -1100,7 +1100,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: {r: 0, g: 0.4705882, b: 1, a: 1}
+      defaultValue: {r: 1, g: 1, b: 1, a: 1}
       gradientValue:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2363,7 +2363,7 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 3
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -2704,7 +2704,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0.5
+      defaultValue: 0.2
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -8230,7 +8230,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 2686796
+  uniqueIndex: 16156344
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -8457,7 +8457,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 4
+      defaultValue: 5
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -8479,9 +8479,13 @@ MonoBehaviour:
     bulletOrigin: {x: 0, y: 0, z: 0}
     useDifferentBullet: 0
     bulletParams: {fileID: 0}
+  - index: 4
+    bulletOrigin: {x: 0, y: 0, z: 0}
+    useDifferentBullet: 0
+    bulletParams: {fileID: 0}
   hasUnknownBulletAmount: 0
   modifiers:
-  - modifierType: 1
+  - modifierType: 0
     globalMovement:
       valueTree:
       - settings:
@@ -9801,7 +9805,7 @@ MonoBehaviour:
           parameterType: 0
           relativeTo: 0
           parameterName: 
-        defaultValue: 35
+        defaultValue: 20
       useSlider: 0
       sliderMin: 0
       sliderMax: 0
@@ -10607,27 +10611,31 @@ MonoBehaviour:
     selectionRectsVisible: 0
     postEffectBulletSpawns:
     - index: 0
-      bulletOrigin: {x: 0, y: 0, z: 39.375}
+      bulletOrigin: {x: 0, y: 0, z: 40}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 1
-      bulletOrigin: {x: 0, y: 0, z: 13.125}
+      bulletOrigin: {x: 0, y: 0, z: 20}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 2
-      bulletOrigin: {x: 0, y: 0, z: -13.125}
+      bulletOrigin: {x: 0, y: 0, z: 0}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 3
-      bulletOrigin: {x: 0, y: 0, z: -39.375}
+      bulletOrigin: {x: 0, y: 0, z: -20}
+      useDifferentBullet: 0
+      bulletParams: {fileID: 0}
+    - index: 4
+      bulletOrigin: {x: 0, y: 0, z: -40}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     enabled: 1
   bulletParamsRandom: 0
   listOfPossibleBulletParams: []
   possibleBulletParams: 0
-  highestValues: {x: 0, y: 0, z: 39.375}
-  lowestValues: {x: 0, y: 0, z: -39.375}
+  highestValues: {x: 0, y: 0, z: 40}
+  lowestValues: {x: 0, y: 0, z: -40}
   hasBeenSerializedOnce: 1
   fakeBulletAmount: 0
   foldout0: 0
@@ -10677,7 +10685,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 6171892
+  uniqueIndex: 3385548
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -17789,7 +17797,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 154576
+  uniqueIndex: 15729915
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
