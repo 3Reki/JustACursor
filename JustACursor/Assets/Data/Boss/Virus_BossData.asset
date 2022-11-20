@@ -28,13 +28,6 @@ MonoBehaviour:
       - movementPatternType: 2
         triggerTime: 1
         loopTriggerTime: 0
-    - duration: 1
-      emiterProfiles:
-      - {fileID: 11400000, guid: 7642e669682aa7f44b46624e349b2278, type: 2}
-      movementPatterns:
-      - movementPatternType: 1
-        triggerTime: 1
-        loopTriggerTime: 0
   - phase: 1
     attackPatterns:
     - duration: 1

@@ -2,6 +2,9 @@
 using BulletPro;
 using Player;
 using UnityEngine;
+using UnityEngine.Rendering;
+using System.Collections;
+using Unity.VisualScripting;
 
 namespace Bosses
 {
@@ -31,6 +34,11 @@ namespace Bosses
         private float patternCooldown;
         private int phasePatternCount;
 
+        // TEST
+        private float fireRate = 1f;
+        private bool canShoot = true;
+
+        PatternParams currentPatternParams; 
 
         private void Start()
         {
@@ -42,9 +50,18 @@ namespace Bosses
             phasePatternCount = bossData.GetPatternCountForPhase(currentBossPhase);
             attackMode = AttackMode.Idle;
 
+            // Debug.Log(bulletEmitter[0].emitterProfile.rootBullet.customParameters[0].floatValue.
             Bounds bounds = levelHeight.bounds;
             levelCenter = new Vector2(levelLength.bounds.center.x, bounds.center.y + bounds.extents.x);
-        } 
+
+            currentPatternParams = bulletEmitter[0].emitterProfile.GetPattern("Pattern");
+            //Debug.Log("rotation: " + pp.instructionLists[0].instructions[3].rotation);
+            //Debug.Log("speed: " + pp.instructionLists[0].instructions[3].speedValue);
+            //Debug.Log("localMovement" + pp.instructionLists[0].instructions[3].localMovement);
+            //Debug.Log("globalMovement" + pp.instructionLists[0].instructions[3].globalMovement);
+
+            //rotation = new DynamicFloat(40f); 
+        }
 
 
         private void Update()
@@ -54,7 +71,7 @@ namespace Bosses
 
             TestInputs();
 
-            patternTime -= Time.deltaTime;
+            /* patternTime -= Time.deltaTime;
             if (patternTime < 0)
             {
                 patternCooldown -= Time.deltaTime;
@@ -62,8 +79,10 @@ namespace Bosses
                 {
                     ChangePattern();
                 }
-            }
-         
+            } */
+
+            Shoot();
+
             // if (Vector3.Distance(destination, transform.position) <= 0.05f && isMoving)
             // {
             //     isMoving = false;
@@ -97,23 +116,24 @@ namespace Bosses
             if (Input.GetKeyDown(KeyCode.X))
             {
                 SetTimeSpeed(1f);
-                // SetNewParam(0, "Speed", 100);
+                fireRate = 1f;
+                //currentPatternParams.instructionLists[0].instructions[3].rotation = new DynamicFloat(10);
             }
 
             if (Input.GetKeyDown(KeyCode.C))
             {
                 SetTimeSpeed(accelerationValue);
                 energy.SpeedUpTime();
-
-                // SetNewParam(0, "Speed", 100);
+                fireRate = 0.2f;
+                //currentPatternParams.instructionLists[0].instructions[3].rotation = new DynamicFloat(20);
             }
 
             if (Input.GetKeyDown(KeyCode.V))
             {
                 SetTimeSpeed(decelerationValue);
                 energy.SlowDownTime();
-
-                // SetNewParam(0, "Speed", 100);
+                fireRate = 3f;
+                //currentPatternParams.instructionLists[0].instructions[3].rotation = new DynamicFloat(40);
             }
 
             if (Input.GetKeyDown(KeyCode.M))
@@ -199,6 +219,20 @@ namespace Bosses
         private void TeleportTo(Vector3 dest)
         {
             transform.position = Vector3.MoveTowards(transform.position, dest, moveSpeed * Time.deltaTime); 
+        }
+
+        public void Shoot()
+        {
+            if (!canShoot) return;
+            bulletEmitter[0].Play();
+            StartCoroutine(ShootCooldown());
+        }
+
+        private IEnumerator ShootCooldown()
+        {
+            canShoot = false;
+            yield return new WaitForSeconds(fireRate);
+            canShoot = true;
         }
     }
 }

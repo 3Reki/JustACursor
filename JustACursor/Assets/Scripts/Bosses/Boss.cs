@@ -166,6 +166,7 @@ namespace Bosses
         /// <summary>
         /// This function changes the profile of the bullet emitter without destroying already instantiated bullets
         /// </summary>
+        // misleading naming. This only switches profiles, it does not call Play()
         protected void PlayPattern(BossPhase phase, int patternIndex)
         {
             for (int i = 0; i < bossData.bossPhases[(int)phase].attackPatterns[patternIndex].emiterProfiles.Length; i++)
