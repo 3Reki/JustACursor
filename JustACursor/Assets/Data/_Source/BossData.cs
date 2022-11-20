@@ -25,7 +25,8 @@ namespace Data._Source
     [Serializable]
     public class AttackPattern
     {
-        public EmitterProfile[] emiterProfiles = new EmitterProfile[3];
+        public float duration = 1f;
+        public EmitterProfile[] emiterProfiles = new EmitterProfile[1];
         public MovementPattern[] movementPatterns = new MovementPattern[1]; // TODO: implement this
     }
 
@@ -34,9 +35,9 @@ namespace Data._Source
     {
         [SerializeField] private string bossName;
         [SerializeField, TextArea(10 , 20)] private string description;
-        [field: SerializeField] public int startingHP { get; } = 800;
-        [field: SerializeField, Range(0, 1)] public float phase2HPPercentTrigger { get; } = 0.6f;
-        [field: SerializeField, Range(0, 1)] public float phase3HPPercentTrigger { get; } = 0.3f;
+        [field: SerializeField] public int startingHP { get; private set; }
+        [field: SerializeField, Range(0, 1)] public float phase2HPPercentTrigger { get; private set; } = 0.6f;
+        [field: SerializeField, Range(0, 1)] public float phase3HPPercentTrigger { get; private set; } = 0.3f;
 
         [Space] public Phase[] bossPhases = new Phase[3];
         

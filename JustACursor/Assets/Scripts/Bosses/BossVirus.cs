@@ -7,7 +7,7 @@ namespace Bosses
 {
     public enum AttackMode { None, Idle, Circle, Cone, Dash }
 
-    public class BossVirus : BasicBossFSM
+    public class BossVirus : Boss
     {
         [Header("- VIRUS -")]
         [SerializeField] private Energy energy;
