@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Bosses.Patterns;
 using BulletPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -13,7 +13,6 @@ namespace Bosses
         [SerializeField] private BoxCollider2D levelHeight;
         [SerializeField] private BoxCollider2D levelLength;
         [SerializeField] private Transform[] coneFirePoints;
-        [SerializeField, Range(1, 30)] private float moveSpeed = 10f;
         [SerializeField] private float timeBetweenPatterns = .5f;
 
         [Header("Time Freeze")]
@@ -22,7 +21,7 @@ namespace Bosses
         // bullet speed, lifespan, delayBetweenShots
         
         private Vector2 levelCenter;
-        private bool isMoving, hasReachedDestination; 
+        private bool hasReachedDestination; 
         private Vector3 currentPlayerPosition;
         private float patternCooldown;
         private int phasePatternCount;
@@ -32,6 +31,13 @@ namespace Bosses
         private void Start()
         {
             patternCooldown = timeBetweenPatterns;
+            for (int i = 0; i < phases.Length; i++)
+            {
+                foreach (Pattern pat in phases[i].attackPatterns)
+                {
+                    pat.SetTargetBoss(this);
+                }
+            }
             Init();
             RotateTowardsPlayer();
             PlayPattern(currentBossPhase, currentPatternIndex);
@@ -116,14 +122,12 @@ namespace Bosses
                 currentPatternIndex = currentPatternIndex == 1 ? 2 : 1;
 
                 StopCurrentPhasePatterns();
-                isMoving = true;
             }
             else if (Input.GetKeyDown(KeyCode.L))
             {
                 currentPatternIndex = 0;
 
                 StopCurrentPhasePatterns();
-                isMoving = true;
             }
         }
 

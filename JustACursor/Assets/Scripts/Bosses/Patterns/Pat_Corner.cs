@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Bosses.Patterns
 {
-    [RequireComponent(typeof(Boss))]
+    [CreateAssetMenu(fileName = "Pat_CornerPattern", menuName = "Just A Cursor/Pattern/Corner")]
     public class Pat_Corner : Pattern
     {
         [SerializeField] private EmitterProfile[] emitterProfiles;
@@ -20,13 +20,13 @@ namespace Bosses.Patterns
             }
 
             playEnumerator = RotationCoroutine();
-            StartCoroutine(playEnumerator);
+            boss.StartCoroutine(playEnumerator);
         }
 
         public override void Stop()
         {
             if (playEnumerator != null)
-                StopCoroutine(playEnumerator);
+                boss.StopCoroutine(playEnumerator);
             
             for (int i = 0; i < emitterProfiles.Length; i++)
             {

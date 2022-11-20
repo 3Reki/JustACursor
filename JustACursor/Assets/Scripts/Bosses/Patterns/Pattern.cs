@@ -2,11 +2,17 @@
 
 namespace Bosses.Patterns
 {
-    [RequireComponent(typeof(Boss))]
-    public abstract class Pattern : MonoBehaviour
+    
+    public abstract class Pattern : ScriptableObject
     {
-        [SerializeField] protected BossVirus boss;
         [field: SerializeField] public float length { get; protected set; }
+        
+        protected BossVirus boss;
+
+        public void SetTargetBoss(BossVirus target)
+        {
+            boss = target;
+        }
         
         public abstract void Play();
 

@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using Bosses.Patterns;
 using BulletPro;
-using Data._Source;
 using JetBrains.Annotations;
 using Player;
 using TMPro;
@@ -38,7 +37,7 @@ namespace Bosses
         
         [SerializeField] protected PlayerController player;
         [SerializeField] protected BossData bossData;
-        [SerializeField] private Phase[] phases;
+        [SerializeField] protected Phase[] phases;
         [SerializeField] private TMP_Text bossHP;
         [SerializeField] private BulletEmitter[] emitters = new BulletEmitter[3]; // must be used only for init
         [SerializeField] protected BossAnimations animator;
@@ -187,7 +186,7 @@ namespace Bosses
         {
             isPaused = !isPaused;
 
-            for (int i = 0; i < bossData.bossPhases[(int)currentBossPhase].attackPatterns[currentPatternIndex].emiterProfiles.Length; i++)
+            for (int i = 0; i < 1; i++) // TODO phases[(int)currentBossPhase].attackPatterns[currentPatternIndex].emitterProfiles.length
             {
                 if (isPaused) bulletEmitter[i].Pause(PlayOptions.AllBullets);
                 else bulletEmitter[i].Play(PlayOptions.AllBullets);
@@ -196,13 +195,13 @@ namespace Bosses
 
         private void Debug_RefreshPlayID()
         {
-            for (int i = 0; i < bossData.bossPhases[(int)currentBossPhase].attackPatterns[currentPatternIndex].emiterProfiles.Length; i++)
+            for (int i = 0; i < 1; i++) // TODO phases[(int)currentBossPhase].attackPatterns[currentPatternIndex].emitterProfiles.length
             {
                 bulletEmitter[i].Stop(); // BAD : will throw an error if emitters are not filld in order
                 if (playMask[i] == 1)
                 {
                     bulletEmitter[i].Play();
-                    Debug.Log("playing pattern: " + bossData.bossPhases[(int)currentBossPhase].attackPatterns[currentPatternIndex].emiterProfiles[i]);
+                    Debug.Log("playing pattern: " + phases[(int)currentBossPhase].attackPatterns[currentPatternIndex]);
                 }
             }
         }
