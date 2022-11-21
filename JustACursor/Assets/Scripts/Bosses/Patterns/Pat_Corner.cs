@@ -15,7 +15,7 @@ namespace Bosses.Patterns
 
         public override async void Play()
         {
-            boss.GoToRandomCorner(movementDuration);
+            boss.mover.GoToRandomCorner(movementDuration);
             await Task.Delay((int) (movementDuration * 1000));
             
             for (int i = 0; i < emitterProfiles.Length; i++)
@@ -44,7 +44,7 @@ namespace Bosses.Patterns
 
             while (timer > 0)
             {
-                boss.RotateTowardsPlayer();
+                boss.mover.RotateTowardsPlayer();
                 yield return null;
                 timer -= Time.deltaTime;
             }

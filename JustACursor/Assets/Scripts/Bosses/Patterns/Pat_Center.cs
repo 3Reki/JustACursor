@@ -12,7 +12,7 @@ namespace Bosses.Patterns
         
         public override async void Play()
         {
-            boss.GoToCenter(movementDuration);
+            boss.mover.GoToCenter(movementDuration);
             await Task.Delay((int) (movementDuration * 1000));
             
             boss.transform.rotation = Quaternion.Euler(0, 0, 180);

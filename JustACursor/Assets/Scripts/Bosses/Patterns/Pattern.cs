@@ -7,9 +7,9 @@ namespace Bosses.Patterns
     {
         [field: SerializeField] public float length { get; protected set; }
         
-        protected BossVirus boss;
+        protected Boss boss;
 
-        public void SetTargetBoss(BossVirus target)
+        public void SetTargetBoss(Boss target)
         {
             boss = target;
         }

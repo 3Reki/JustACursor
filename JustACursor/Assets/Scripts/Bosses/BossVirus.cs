@@ -7,21 +7,18 @@ using Random = UnityEngine.Random;
 
 namespace Bosses
 {
-
     public class BossVirus : Boss
     {
-        [Header("- VIRUS -")]
-        [SerializeField] private Energy energy;
-        [SerializeField] private BoxCollider2D levelHeight;
-        [SerializeField] private BoxCollider2D levelLength;
-        [SerializeField] private Transform[] coneFirePoints;
+        [Header("- VIRUS -")] [SerializeField] private Energy energy;
+        
 
-        [Header("Time Freeze")]
-        [SerializeField, Range(1f, 10f)] private float accelerationValue = 4;
-        [SerializeField, Range(0f, 1f)] private float  decelerationValue = 0.25f;
+        [Header("Time Freeze")] [SerializeField, Range(1f, 10f)]
+        private float accelerationValue = 4;
+
+        [SerializeField, Range(0f, 1f)] private float decelerationValue = 0.25f;
         // bullet speed, lifespan, delayBetweenShots
 
-        private Vector2 levelCenter;
+        
         private bool hasReachedDestination;
 
         // TEST
@@ -39,14 +36,13 @@ namespace Bosses
                     pat.SetTargetBoss(this);
                 }
             }
+
             Init();
 
             PlayPattern(currentBossPhase, currentPatternIndex);
             patternTimer = GetPattern(currentBossPhase, currentPatternIndex).length;
 
             // Debug.Log(bulletEmitter[0].emitterProfile.rootBullet.customParameters[0].floatValue.
-            Bounds bounds = levelHeight.bounds;
-            levelCenter = new Vector2(levelLength.bounds.center.x, bounds.center.y + bounds.extents.x);
 
             currentPatternParams = bulletEmitter[0].emitterProfile.GetPattern("Pattern");
             //Debug.Log("rotation: " + pp.instructionLists[0].instructions[3].rotation);
@@ -59,35 +55,36 @@ namespace Bosses
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            Health health = other.gameObject.GetComponent<Health>();
+            var health = other.gameObject.GetComponent<Health>();
             if (health)
             {
                 health.LoseHealth(1);
             }
         }
 
-        public void RotateTowardsPlayer()
+        private void SetTimeSpeed(float value)
         {
-            Vector3 dir = player.transform.position - transform.position;
-            dir.Normalize();
-            float zRotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, zRotation - 90);
+            BulletModuleMovement.SpeedMultiplier = value;
         }
 
-        public void GoToCenter(float moveDuration)
+        public void Shoot()
         {
-            MoveTo(levelCenter, moveDuration);
+            if (!canShoot) return;
+            bulletEmitter[0].Play();
+            StartCoroutine(ShootCooldown());
         }
 
-        public void GoToRandomCorner(float moveDuration)
+        private IEnumerator ShootCooldown()
         {
-            MoveTo(GetRandomCorner(), moveDuration);
+            canShoot = false;
+            yield return new WaitForSeconds(fireRate);
+            canShoot = true;
         }
-
+        
         protected override void UpdateDebugInput()
         {
             base.UpdateDebugInput();
-            
+
             // placeholder for reset of mechanic
             // fireRate=x is for patterns like AP_BulletInCone (loopCount=1)
             // direct access to rotation/waitTime is for patterns like AP_SimpleSpiral (looopMode=endless)
@@ -135,56 +132,6 @@ namespace Bosses
 
                 StopCurrentPhasePatterns();
             }
-        }
-
-        private Vector3 GetRandomCorner()
-        {
-            return coneFirePoints[Random.Range(0, coneFirePoints.Length)].position;
-        }
-
-        private void SetTimeSpeed(float value)
-        {
-            BulletModuleMovement.SpeedMultiplier = value;
-        }
-
-        // REFACTORING : abstractable for reuse
-        private Vector3 GetFarthestPositionFromPlayer()
-        {
-            int farthestIndex = 0;
-            float currentClosestDistance = 0;
-            Vector3 currentPlayerPosition = player.transform.position;
-
-            for (int i = 0; i < coneFirePoints.Length; i++)
-            {
-                float temp = Vector3.Distance(currentPlayerPosition, coneFirePoints[i].position);
-                if (temp > currentClosestDistance)
-                {
-                    currentClosestDistance = temp;
-                    farthestIndex = i;
-                }
-            }
-            return coneFirePoints[farthestIndex].position;
-        }
-
-        private void MoveTo(Vector3 dest, float moveDuration)
-        {
-            //transform.position = dest;
-            transform.DOMove(dest, moveDuration);
-            //transform.position = Vector3.MoveTowards(transform.position, dest, moveSpeed * Time.deltaTime);
-        }
-
-        public void Shoot()
-        {
-            if (!canShoot) return;
-            bulletEmitter[0].Play();
-            StartCoroutine(ShootCooldown());
-        }
-
-        private IEnumerator ShootCooldown()
-        {
-            canShoot = false;
-            yield return new WaitForSeconds(fireRate);
-            canShoot = true;
         }
     }
 }

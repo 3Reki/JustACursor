@@ -34,10 +34,12 @@ namespace Bosses
         public BulletEmitter[] bulletEmitter { get; private set; }
         public int currentHp { get; private set; }
         public BossPhase currentBossPhase { get; private set; }
+        public BossMovement mover => movementHandler;
         protected int currentPatternIndex { get; set; }
         
         [SerializeField] protected PlayerController player;
         [SerializeField] protected BossData bossData;
+        [SerializeField] private BossMovement movementHandler;
         [SerializeField] protected BossAnimations animator;
         [SerializeField] private TMP_Text bossHP;
         [SerializeField] private BulletEmitter[] emitters = new BulletEmitter[3]; // must be used only for init
