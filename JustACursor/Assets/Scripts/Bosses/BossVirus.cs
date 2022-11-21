@@ -44,7 +44,7 @@ namespace Bosses
 
             // Debug.Log(bulletEmitter[0].emitterProfile.rootBullet.customParameters[0].floatValue.
 
-            currentPatternParams = bulletEmitter[0].emitterProfile.GetPattern("Pattern");
+            //currentPatternParams = bulletEmitter[0].emitterProfile.GetPattern("Pattern");
             //Debug.Log("rotation: " + pp.instructionLists[0].instructions[3].rotation);
             //Debug.Log("speed: " + pp.instructionLists[0].instructions[3].speedValue);
             //Debug.Log("localMovement" + pp.instructionLists[0].instructions[3].localMovement);
