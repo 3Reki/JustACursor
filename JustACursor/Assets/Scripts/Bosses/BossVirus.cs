@@ -2,9 +2,7 @@
 using BulletPro;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Rendering;
 using System.Collections;
-using Unity.VisualScripting;
 using Random = UnityEngine.Random;
 
 namespace Bosses
@@ -17,7 +15,6 @@ namespace Bosses
         [SerializeField] private BoxCollider2D levelHeight;
         [SerializeField] private BoxCollider2D levelLength;
         [SerializeField] private Transform[] coneFirePoints;
-        [SerializeField] private float timeBetweenPatterns = .5f;
 
         [Header("Time Freeze")]
         [SerializeField, Range(1f, 10f)] private float accelerationValue = 4;
@@ -26,7 +23,6 @@ namespace Bosses
 
         private Vector2 levelCenter;
         private bool hasReachedDestination;
-        private int phasePatternCount;
 
         // TEST
         private float fireRate = 1f;
@@ -47,7 +43,6 @@ namespace Bosses
 
             PlayPattern(currentBossPhase, currentPatternIndex);
             patternTimer = GetPattern(currentBossPhase, currentPatternIndex).length;
-            phasePatternCount = GetPatternCountForPhase(currentBossPhase);
 
             // Debug.Log(bulletEmitter[0].emitterProfile.rootBullet.customParameters[0].floatValue.
             Bounds bounds = levelHeight.bounds;
