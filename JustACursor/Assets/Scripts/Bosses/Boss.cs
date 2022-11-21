@@ -34,31 +34,42 @@ namespace Bosses
         public BulletEmitter[] bulletEmitter { get; private set; }
         public int currentHp { get; private set; }
         public BossPhase currentBossPhase { get; private set; }
+        protected int currentPatternIndex { get; set; }
         
         [SerializeField] protected PlayerController player;
         [SerializeField] protected BossData bossData;
-        [SerializeField] protected Phase[] phases;
+        [SerializeField] protected BossAnimations animator;
         [SerializeField] private TMP_Text bossHP;
         [SerializeField] private BulletEmitter[] emitters = new BulletEmitter[3]; // must be used only for init
-        [SerializeField] protected BossAnimations animator;
         
-        protected int currentPatternIndex { get; set; }
 
+        private bool isFrozen;
         private bool isPaused;
+        protected float patternCooldownTimer;
+        protected float patternTimer = -1;
 
         private void Start()
         {
             Init();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             UpdateDebugInput();
+
+            if (isPaused)
+                return;
+            
+            UpdateTimers();
         }
 
         protected void Init()
         {
             currentHp = bossData.startingHP;
+            currentPatternIndex = 0;
+            isPaused = false;
+            isFrozen = false;
+            patternCooldownTimer = bossData.patternCooldown;
             bulletEmitter = new BulletEmitter[emitters.Length];
             Array.Copy(emitters, bulletEmitter, emitters.Length); 
             bossHP.text = $"{currentHp}";
@@ -70,6 +81,9 @@ namespace Bosses
         [UsedImplicitly] // Used by Bullet Receiver onHit event
         public void TakeDamage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
+            if (isPaused)
+                return;
+
             currentHp -= 1;
             bossHP.text = $"{currentHp}";
             animator.Hit();
@@ -91,20 +105,44 @@ namespace Bosses
             }
         }
 
+        protected void UpdateTimers()
+        {
+            patternTimer -= Time.deltaTime;
+            if (patternTimer >= 0) return;
+
+            patternCooldownTimer -= Time.deltaTime;
+            if (patternCooldownTimer < 0)
+            {
+                ChangePattern();
+            }
+        }
+        
+        private void ChangePattern()
+        {
+            StopPattern(currentBossPhase, currentPatternIndex);
+            currentPatternIndex++;
+            currentPatternIndex %= GetPatternCountForPhase(currentBossPhase);
+            PlayPattern(currentBossPhase, currentPatternIndex);
+        }
+
         private async void SetBossPhase(BossPhase newPhase)
         {
             StopCurrentPhasePatterns();
             animator.ChangePhase();
+            isPaused = true;
 
             await Task.Delay((int) (animator.phaseChangeAnimLength * 1000));
             
             currentBossPhase = newPhase;
+            isPaused = false;
+            PlayPattern(newPhase, currentPatternIndex = 0);
         }
 
         private async void Die()
         {
             Debug.Log("Boss is killed");
             StopCurrentPhasePatterns();
+            isPaused = true;
 
             animator.Die();
             GetComponent<BulletReceiver>().enabled = false;
@@ -116,7 +154,7 @@ namespace Bosses
         }
 
         protected Pattern GetPattern(BossPhase phase, int patternIndex) =>
-            phases[(int) phase].attackPatterns[patternIndex];
+            bossData.phases[(int) phase].attackPatterns[patternIndex];
         
         /// <summary>
         /// This function changes the profile of the bullet emitter without destroying already instantiated bullets
@@ -124,12 +162,15 @@ namespace Bosses
         // misleading naming. This only switches profiles, it does not call Play()
         protected void PlayPattern(BossPhase phase, int patternIndex)
         {
-            phases[(int) phase].attackPatterns[patternIndex].Play();
+            Pattern requestedPattern = GetPattern(phase, patternIndex);
+            requestedPattern.Play();
+            patternTimer = requestedPattern.length;
+            patternCooldownTimer = bossData.patternCooldown;
         }
         
         protected void StopPattern(BossPhase phase, int patternIndex)
         {
-            phases[(int) phase].attackPatterns[patternIndex].Stop();
+            bossData.phases[(int) phase].attackPatterns[patternIndex].Stop();
         }
         
         /// <summary>
@@ -137,10 +178,10 @@ namespace Bosses
         /// </summary>
         protected void StopCurrentPhasePatterns()
         {
-            int length = phases[(int) currentBossPhase].attackPatterns.Length;
+            int length = bossData.phases[(int) currentBossPhase].attackPatterns.Length;
             for (int i = 0; i < length; i++)
             {
-                phases[(int) currentBossPhase].attackPatterns[i].Stop();
+                bossData.phases[(int) currentBossPhase].attackPatterns[i].Stop();
             }
         }
 
@@ -149,7 +190,7 @@ namespace Bosses
 
         protected bool CheckPhase3HPThreshold() => (float)currentHp / bossData.startingHP <= bossData.phase3HPPercentTrigger;
         
-        public int GetPatternCountForPhase(BossPhase phase) => phases[(int) phase].attackPatterns.Length;
+        public int GetPatternCountForPhase(BossPhase phase) => bossData.phases[(int) phase].attackPatterns.Length;
         
         
         
@@ -163,7 +204,7 @@ namespace Bosses
         [SerializeField] private KeyCode freeze = KeyCode.F;
         [SerializeField] private KeyCode refresh = KeyCode.R;
         
-        protected void UpdateDebugInput()
+        protected virtual void UpdateDebugInput()
         {
             // change to new profile
             if (Input.GetKeyDown(doPhaseOverride))
@@ -185,11 +226,11 @@ namespace Bosses
 
         private void FreezeBossBullets()
         {
-            isPaused = !isPaused;
+            isFrozen = !isFrozen;
 
             for (int i = 0; i < 1; i++) // TODO phases[(int)currentBossPhase].attackPatterns[currentPatternIndex].emitterProfiles.length
             {
-                if (isPaused) bulletEmitter[i].Pause(PlayOptions.AllBullets);
+                if (isFrozen) bulletEmitter[i].Pause(PlayOptions.AllBullets);
                 else bulletEmitter[i].Play(PlayOptions.AllBullets);
             }
         }
@@ -202,9 +243,18 @@ namespace Bosses
                 if (playMask[i] == 1)
                 {
                     bulletEmitter[i].Play();
-                    Debug.Log("playing pattern: " + phases[(int)currentBossPhase].attackPatterns[currentPatternIndex]);
+                    Debug.Log("playing pattern: " + bossData.phases[(int)currentBossPhase].attackPatterns[currentPatternIndex]);
                 }
             }
+        }
+
+        [ContextMenu("Reset Boss")]
+        private void Reset()
+        {
+            GetComponent<BulletReceiver>().enabled = true;
+            GetComponent<CircleCollider2D>().enabled = true;
+            transform.root.gameObject.SetActive(true);
+            Init();
         }
 
         #endregion

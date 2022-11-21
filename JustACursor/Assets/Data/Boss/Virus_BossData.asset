@@ -11,10 +11,24 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af46c4a20a0f5d5459cdc64ad539c715, type: 3}
   m_Name: Virus_BossData
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   bossName: Virus
   description: "The first boss in the game. \nCore mechanic: slowing & accelerating
     time"
-  <startingHP>k__BackingField: 150
-  <phase2HPPercentTrigger>k__BackingField: 0.6
-  <phase3HPPercentTrigger>k__BackingField: 0.3
+  startingHP: 200
+  phase2HPPercentTrigger: 0.6
+  phase3HPPercentTrigger: 0.3
+  phases:
+  - phase: 0
+    attackPatterns:
+    - {fileID: 11400000, guid: ded4e34c7a8700b4d9e7bb217f249084, type: 2}
+    - {fileID: 11400000, guid: ece64c0f662b39442aeff1583ebe4654, type: 2}
+  - phase: 1
+    attackPatterns:
+    - {fileID: 11400000, guid: dec94bd64db61b5458812372bf9a65fc, type: 2}
+    - {fileID: 11400000, guid: 6cea8ce696cc7c5428e6ebb4c2c2e8dd, type: 2}
+  - phase: 2
+    attackPatterns:
+    - {fileID: 11400000, guid: 0bea666c44ff4b547b69bde75b915b10, type: 2}
+    - {fileID: 11400000, guid: e618c96d3a45ec446ac313b5fc1fb0bd, type: 2}
+  patternCooldown: 0.5

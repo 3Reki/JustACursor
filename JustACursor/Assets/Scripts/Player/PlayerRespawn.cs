@@ -1,53 +1,55 @@
 using System.Collections;
 using DG.Tweening;
-using Player;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerRespawn : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private Image respawnScreen;
-    [SerializeField] private Transform respawnPosition;
-
-    [Header("Debug")]
-    [SerializeField] private KeyCode respawnKey;
-
-    private PlayerData data => playerController.data;
-
-    public bool isAlive { get; private set; } = true;
-
-    //TODO: To remove
-    private void Update()
+    public class PlayerRespawn : MonoBehaviour
     {
-        if (Input.GetKeyDown(respawnKey))
+        [SerializeField] private PlayerController playerController;
+        [SerializeField] private Image respawnScreen;
+        [SerializeField] private Transform respawnPosition;
+
+        [Header("Debug")]
+        [SerializeField] private KeyCode respawnKey;
+
+        private PlayerData data => playerController.data;
+
+        public bool isAlive { get; private set; } = true;
+
+        //TODO: To remove
+        private void Update()
         {
-            Respawn();
+            if (Input.GetKeyDown(respawnKey))
+            {
+                Respawn();
+            }
         }
-    }
 
-    public void Respawn()
-    {
-        StartCoroutine(RespawnCR());
-    }
+        public void Respawn()
+        {
+            StartCoroutine(RespawnCR());
+        }
 
-    public void SetCheckpoint(Transform newCheckpoint)
-    {
-        respawnPosition.position = newCheckpoint.position;
-    }
+        public void SetCheckpoint(Transform newCheckpoint)
+        {
+            respawnPosition.position = newCheckpoint.position;
+        }
 
-    private IEnumerator RespawnCR()
-    {
-        isAlive = false;
-        respawnScreen.DOFade(1, data.respawnFadeIn).SetEase(Ease.Linear);
-        yield return new WaitForSeconds(data.respawnFadeIn);
+        private IEnumerator RespawnCR()
+        {
+            isAlive = false;
+            respawnScreen.DOFade(1, data.respawnFadeIn).SetEase(Ease.Linear);
+            yield return new WaitForSeconds(data.respawnFadeIn);
         
-        transform.position = respawnPosition.position;
-        yield return new WaitForSeconds(data.respawnStay);
+            transform.position = respawnPosition.position;
+            yield return new WaitForSeconds(data.respawnStay);
         
-        respawnScreen.DOFade(0, data.respawnFadeOut).SetEase(Ease.Linear);
-        yield return new WaitForSeconds(data.respawnFadeOut);
-        isAlive = true;
+            respawnScreen.DOFade(0, data.respawnFadeOut).SetEase(Ease.Linear);
+            yield return new WaitForSeconds(data.respawnFadeOut);
+            isAlive = true;
+        }
     }
 }

@@ -26,9 +26,7 @@ namespace Bosses
 
         private Vector2 levelCenter;
         private bool hasReachedDestination;
-        private float patternCooldown;
         private int phasePatternCount;
-        private float patternTime = -1;
 
         // TEST
         private float fireRate = 1f;
@@ -38,10 +36,9 @@ namespace Bosses
 
         private void Start()
         {
-            patternCooldown = timeBetweenPatterns;
-            for (int i = 0; i < phases.Length; i++)
+            for (int i = 0; i < bossData.phases.Length; i++)
             {
-                foreach (Pattern pat in phases[i].attackPatterns)
+                foreach (Pattern pat in bossData.phases[i].attackPatterns)
                 {
                     pat.SetTargetBoss(this);
                 }
@@ -49,7 +46,7 @@ namespace Bosses
             Init();
 
             PlayPattern(currentBossPhase, currentPatternIndex);
-            patternTime = GetPattern(currentBossPhase, currentPatternIndex).length;
+            patternTimer = GetPattern(currentBossPhase, currentPatternIndex).length;
             phasePatternCount = GetPatternCountForPhase(currentBossPhase);
 
             // Debug.Log(bulletEmitter[0].emitterProfile.rootBullet.customParameters[0].floatValue.
@@ -63,24 +60,6 @@ namespace Bosses
             //Debug.Log("globalMovement" + pp.instructionLists[0].instructions[3].globalMovement);
 
             //rotation = new DynamicFloat(40f);
-        }
-
-
-        private void Update()
-        {
-            // DEBUG
-            UpdateDebugInput();
-
-            TestInputs();
-
-            patternTime -= Time.deltaTime;
-            if (!(patternTime < 0)) return;
-
-            patternCooldown -= Time.deltaTime;
-            if (patternCooldown < 0)
-            {
-                ChangePattern();
-            }
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -110,8 +89,10 @@ namespace Bosses
             MoveTo(GetRandomCorner(), moveDuration);
         }
 
-        private void TestInputs()
+        protected override void UpdateDebugInput()
         {
+            base.UpdateDebugInput();
+            
             // placeholder for reset of mechanic
             // fireRate=x is for patterns like AP_BulletInCone (loopCount=1)
             // direct access to rotation/waitTime is for patterns like AP_SimpleSpiral (looopMode=endless)
@@ -159,16 +140,6 @@ namespace Bosses
 
                 StopCurrentPhasePatterns();
             }
-        }
-
-        private void ChangePattern()
-        {
-            StopPattern(currentBossPhase, currentPatternIndex);
-            currentPatternIndex++;
-            currentPatternIndex %= phasePatternCount;
-            PlayPattern(currentBossPhase, currentPatternIndex);
-            patternTime = GetPattern(currentBossPhase, currentPatternIndex).length;
-            patternCooldown = timeBetweenPatterns;
         }
 
         private Vector3 GetRandomCorner()

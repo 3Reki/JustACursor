@@ -7,8 +7,10 @@ namespace Bosses
     {
         [SerializeField] private string bossName;
         [SerializeField, TextArea(10 , 20)] private string description;
-        [field: SerializeField] public int startingHP { get; private set; }
-        [field: SerializeField, Range(0, 1)] public float phase2HPPercentTrigger { get; private set; } = 0.6f;
-        [field: SerializeField, Range(0, 1)] public float phase3HPPercentTrigger { get; private set; } = 0.3f;
+        [SerializeField] public int startingHP;
+        [SerializeField, Range(0, 1)] public float phase2HPPercentTrigger = 0.6f;
+        [SerializeField, Range(0, 1)] public float phase3HPPercentTrigger = 0.3f;
+        [SerializeField] public Phase[] phases;
+        [SerializeField] public float patternCooldown;
     }
 }
