@@ -15,6 +15,8 @@ public class Energy : MonoBehaviour
         {
             _gameSpeed = value;
             BulletModuleMovement.SpeedMultiplier = value;
+            BulletGlobalParamManager.instance.SetFloat("GameFrequency", 1 /value);
+            BulletGlobalParamManager.instance.SetFloat("GameSpeed", value);
             onGameSpeedUpdate?.Invoke();
         }
     }

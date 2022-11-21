@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <length>k__BackingField: 5
   emitterProfiles:
-  - {fileID: 11400000, guid: 997bf9fdf7c3a8b428bd3d5dd50107e6, type: 2}
+  - {fileID: 11400000, guid: c2476feaf58d2274fbd2b4fc4159d14b, type: 2}
   movementDuration: 0.5

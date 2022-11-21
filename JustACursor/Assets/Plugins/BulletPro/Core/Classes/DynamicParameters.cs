@@ -26,7 +26,7 @@ namespace BulletPro
     public enum BulletPositionSortMode { Horizontal, Vertical, Radial, Texture }
 
     // How is a value chosen?
-    public enum DynamicParameterSorting { Fixed, FromAToB, Blend, FromGradient, EqualToParameter }
+    public enum DynamicParameterSorting { Fixed, FromAToB, Blend, FromGradient, EqualToParameter, FixedWithMultiplier }
 
     // If EqualToParameter : from a custom param of Bullet Hierarchy, or Global Parameter?
     public enum UserMadeParameterType { BulletHierarchy, GlobalParameter }

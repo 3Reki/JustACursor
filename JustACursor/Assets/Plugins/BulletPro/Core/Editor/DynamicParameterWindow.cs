@@ -339,7 +339,9 @@ namespace BulletPro.EditorScripts
             optionsList.Add(new GUIContent("List of possible values"));
             if (vType.Contains("Color")) optionsList.Add(new GUIContent("From Gradient"));
             if (!isEditingBulletHierarchy) optionsList.Add(new GUIContent("Equal to another parameter"));
+            if (vType.Contains("Float")) optionsList.Add(new GUIContent("Fixed with multiplier"));
             // cancels skipping one value for incompatible types
+            
             if (!admitsFromTo)
             {
                 int displayed = valueType.enumValueIndex;
@@ -348,6 +350,16 @@ namespace BulletPro.EditorScripts
                 int result = EditorGUILayout.Popup(new GUIContent("Select Value"), displayed, optionsList.ToArray());
                 if (result == 1) result = 2; // blend from list
                 else if (result == 2) result = 4; // equal to parameter
+                valueType.enumValueIndex = result;
+            }
+            else if (vType.Contains("Float"))
+            {
+                int displayed = valueType.enumValueIndex;
+                if (displayed == 4) displayed = 3;
+                else if (displayed == 5) displayed = 4;
+                int result = EditorGUILayout.Popup(new GUIContent("Select Value"), displayed, optionsList.ToArray());
+                if (result == 3) result = 4; // equal to parameter
+                else if (result == 4) result = 5; // fixed with multiplier
                 valueType.enumValueIndex = result;
             }
             else if (!vType.Contains("Color"))
@@ -699,6 +711,18 @@ namespace BulletPro.EditorScripts
                 // In Patterns only : prompt user for "when to reroll the parameter"
                 RerollFrequencyField();
             }
+            
+            // With multiplier GUI
+            else if (valueType.enumValueIndex == (int)DynamicParameterSorting.FixedWithMultiplier)
+            {
+                if (vType.Contains("Enum"))
+                    EditorGUILayout.HelpBox("Since the value you're editing is an Enum, your chosen parameter must be of Int type.", MessageType.Info);
+                EditorGUILayout.PropertyField(currentValue.FindPropertyRelative("defaultValue"), new GUIContent("Value"));
+
+                EditorGUILayout.PropertyField(equalParameterName);
+                // In Patterns only : prompt user for "when to reroll the parameter"
+                RerollFrequencyField();
+            }
 
             EditorGUILayout.EndVertical();
             GUILayout.Space(hasScrolling ? rightMargin : rightMarginWithoutScroll);
@@ -710,7 +734,7 @@ namespace BulletPro.EditorScripts
 
             GUILayout.Space(16);
 
-            EditorGUI.BeginDisabledGroup(valueType.enumValueIndex == 0 || valueType.enumValueIndex == 4);
+            EditorGUI.BeginDisabledGroup(valueType.enumValueIndex == 0 || valueType.enumValueIndex == 4 || valueType.enumValueIndex == 5);
 
             GUIContent interpolationValueGC = new GUIContent("Interpolation Value (between 0 and 1)", "Select how this number will be calculated. It will then be used to choose the value of your Dynamic Parameter.");
             EditorGUILayout.LabelField(interpolationValueGC, headerStyle, GUILayout.Height(headerHeight));

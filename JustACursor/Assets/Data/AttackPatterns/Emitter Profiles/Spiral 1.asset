@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 16058313
+  uniqueIndex: 4015977
   profile: {fileID: 11400000}
   parent: {fileID: 114184213563873034}
   children:
@@ -2566,7 +2566,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 2631590
+  uniqueIndex: 14241981
   profile: {fileID: 11400000}
   parent: {fileID: 114334976902514986}
   children:
@@ -22124,7 +22124,7 @@ MonoBehaviour:
             parameterName: 
           defaultValue: 0
         - settings:
-            valueType: 0
+            valueType: 5
             interpolationValue:
               interpolationFactor: 0
               repartitionCurve:
@@ -22184,7 +22184,7 @@ MonoBehaviour:
             blendColor: {r: 0, g: 0, b: 0, a: 0}
             parameterType: 0
             relativeTo: 0
-            parameterName: 
+            parameterName: GameFrequency
           defaultValue: 1
         useSlider: 0
         sliderMin: 0
@@ -31713,7 +31713,7 @@ MonoBehaviour:
   advancedFoldout: 0
   hasBeenSerializedOnce: 1
   focusedInstruction: -1
-  safetyForPlaymode: 75
+  safetyForPlaymode: 79
 --- !u!114 &114334976902514986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31727,7 +31727,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 10960299
+  uniqueIndex: 14442319
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -38839,7 +38839,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 5502244
+  uniqueIndex: 7756562
   profile: {fileID: 11400000}
   parent: {fileID: 114043142638459942}
   children: []
