@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace CameraScripts
@@ -29,7 +30,7 @@ namespace CameraScripts
         {
             mainCamera = Camera.main;
         }
-
+        
         private void FixedUpdate()
         {
             Vector3 wantedPosition = target.TransformPoint(localPositionToMove);
@@ -40,6 +41,28 @@ namespace CameraScripts
 
             Quaternion wantedRotation = Quaternion.LookRotation(target.TransformPoint(localPositionToLook) - currentPosition);
             transform.rotation = Quaternion.Slerp(transform.rotation, wantedRotation, rotationSpeed);
+        }
+        
+        public static void ShakeCamera(float intensity, float timer)
+        {
+            instance.StartCoroutine(CameraShakeCoroutine(intensity, timer));
+        }
+
+        private static IEnumerator CameraShakeCoroutine(float intensity, float timer)
+        {
+            Vector3 lastCameraMovement = Vector3.zero;
+            var transform1 = mainCamera.transform;
+            Vector3 initialPosition = transform1.position;
+            
+            while (timer > 0f) {
+                Vector3 randomMovement = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * intensity;
+                transform1.position = transform1.position - lastCameraMovement + randomMovement;
+                lastCameraMovement = randomMovement;
+                yield return null;
+                timer -= Time.unscaledDeltaTime;
+            }
+
+            transform1.position = initialPosition;
         }
     }
 }

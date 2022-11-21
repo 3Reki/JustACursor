@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using CameraScripts;
 using ScriptableObjects;
 using UnityEngine;
 
@@ -37,6 +38,7 @@ namespace Player
             isDashing = true;
             isFirstPhase = true;
             playerController.invincible = true;
+            CameraController.ShakeCamera(playerData.dashShakeIntensity, playerData.dashShakeDuration);
 
             yield return new WaitForSeconds(playerData.dashFirstPhaseDuration); 
                 // TODO : cache WaitForSeconds (wait for GD to look for good values)

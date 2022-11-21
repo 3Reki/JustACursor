@@ -21,6 +21,8 @@ namespace ScriptableObjects
             "The strength of the movement (in a different direction than the dash direction), " +
             "only active during the second phase of the dash.")]
         public float dashSecondPhaseControl;
+        public float dashShakeIntensity;
+        public float dashShakeDuration;
         
         [Header("Shots")] public float fireRate;
 
@@ -30,6 +32,8 @@ namespace ScriptableObjects
         [Header("Health")]
         public int maxHealth;
         public float invinciblityTime;
+        public float onHitShakeIntensity;
+        public float onHitShakeDuration;
 
         [Header("Intra UI")]
         public float healthFadeIn;

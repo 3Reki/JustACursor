@@ -54,7 +54,7 @@ namespace Player
             HandleShoot();
             HandleEnergy();
         }
-        
+
         private void HandleDash() {
             if (inputs.Player.Dash.WasPressedThisFrame())
             {

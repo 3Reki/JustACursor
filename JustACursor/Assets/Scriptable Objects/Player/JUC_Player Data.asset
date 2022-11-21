@@ -67,10 +67,14 @@ MonoBehaviour:
   dashFirstPhaseDuration: 0.05
   dashRefreshCooldown: 0.2
   dashSecondPhaseControl: 0.2
+  dashShakeIntensity: 0.2
+  dashShakeDuration: 0.06
   fireRate: 4
   timeAbilityDuration: 3
   maxHealth: 3
   invinciblityTime: 1
+  onHitShakeIntensity: 0.3
+  onHitShakeDuration: 0.09
   healthFadeIn: 0.2
   healthStay: 1.2
   healthFadeOut: 0.2

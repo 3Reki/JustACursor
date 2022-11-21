@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using CameraScripts;
 using Interfaces;
 using ScriptableObjects;
 using UnityEngine;
@@ -12,6 +14,11 @@ namespace Player {
         [SerializeField] private Health health;
 
         private PlayerData data => playerController.data;
+
+        private void Start()
+        {
+            health.onHealthLose.AddListener(() => CameraController.ShakeCamera(data.onHitShakeIntensity, data.onHitShakeDuration));
+        }
 
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
