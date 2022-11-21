@@ -6,11 +6,12 @@ using UnityEngine;
 namespace Player {
     public class PlayerCollision : MonoBehaviour, IDamageable
     {
+        public bool isInvincible;
+        
         [SerializeField] private PlayerController playerController;
         [SerializeField] private Health health;
 
         private PlayerData data => playerController.data;
-        private bool isInvincible;
 
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {

@@ -465,6 +465,7 @@ MonoBehaviour:
   playerEnergy: {fileID: 7955158611217667163}
   playerDeviceHandler: {fileID: 3972917172572675394}
   playerRespawn: {fileID: 6038647851309756490}
+  playerCollision: {fileID: 2644103639729209473}
 --- !u!114 &2972059125400848232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,6 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d52094d7ab04344abb47b93d6f15d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInvincible: 0
   playerController: {fileID: 8213265501839806752}
   health: {fileID: 3615676464410597287}
 --- !u!114 &8212564198902162576

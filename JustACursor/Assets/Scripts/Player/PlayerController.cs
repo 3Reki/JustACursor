@@ -9,6 +9,14 @@ namespace Player
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerController : MonoBehaviour
     {
+        public PlayerData data => playerData;
+        public bool isDashing => playerDash.isDashing;
+        public bool invincible
+        {
+            get => playerCollision.isInvincible;
+            set => playerCollision.isInvincible = value;
+        }
+        
         [SerializeField] private PlayerData playerData;
         [SerializeField] private PlayerMovement playerMovement;
         [SerializeField] private PlayerShoot playerShoot;
@@ -16,6 +24,7 @@ namespace Player
         [SerializeField] private PlayerEnergy playerEnergy;
         [SerializeField] private PlayerDeviceHandler playerDeviceHandler;
         [SerializeField] private PlayerRespawn playerRespawn;
+        [SerializeField] private PlayerCollision playerCollision;
 
         private PlayerInputs inputs;
         private Camera mainCamera;
@@ -24,8 +33,6 @@ namespace Player
         private Vector2 lastDir;
         private IEnumerator stopMovingEnumerator;
 
-        public PlayerData data => playerData;
-        public bool isDashing => playerDash.isDashing;
         private Vector2 dashDirection => playerDash.dashDirection;
         private bool isAlive => playerRespawn.isAlive;
 
