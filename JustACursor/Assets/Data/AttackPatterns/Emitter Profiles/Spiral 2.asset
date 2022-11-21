@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 12554722
+  uniqueIndex: 3226582
   profile: {fileID: 11400000}
   parent: {fileID: 114184213563873034}
   children:
@@ -2534,7 +2534,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 13648150
+  uniqueIndex: 2213033
   profile: {fileID: 11400000}
   parent: {fileID: 114334976902514986}
   children:
@@ -17888,7 +17888,7 @@ MonoBehaviour:
             indexOfTo: 0
             indexOfBlendedChildren: 
             weight: 0
-            headerTitle: 
+            headerTitle: Rotation
             blendColor: {r: 0, g: 0, b: 0, a: 0}
             parameterType: 0
             relativeTo: 0
@@ -31681,7 +31681,7 @@ MonoBehaviour:
   advancedFoldout: 0
   hasBeenSerializedOnce: 1
   focusedInstruction: -1
-  safetyForPlaymode: 100
+  safetyForPlaymode: 104
 --- !u!114 &114334976902514986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31695,7 +31695,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 13729223
+  uniqueIndex: 6019934
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -38807,7 +38807,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 8360469
+  uniqueIndex: 2319288
   profile: {fileID: 11400000}
   parent: {fileID: 114043142638459942}
   children: []

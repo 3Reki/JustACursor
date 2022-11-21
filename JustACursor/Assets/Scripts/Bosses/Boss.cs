@@ -75,7 +75,8 @@ namespace Bosses
             bulletEmitter = new BulletEmitter[emitters.Length];
             Array.Copy(emitters, bulletEmitter, emitters.Length); 
             bossHP.text = $"{currentHp}";
-            SetBossPhase(overridePhaseOnStart ? phaseOverride : BossPhase.One);
+            currentBossPhase = overridePhaseOnStart ? phaseOverride : BossPhase.One;
+            PlayPattern(currentBossPhase, currentPatternIndex);
         }
 
         // PLACEHOLDER
@@ -202,9 +203,10 @@ namespace Bosses
         [Tooltip("0 means don't play the pattern at this index. 1 means play it;")] public int[] playMask = { 1, 1, 1 };
         [SerializeField] private bool overridePhaseOnStart;
         [SerializeField] private BossPhase phaseOverride = BossPhase.One;
-        [SerializeField] private KeyCode doPhaseOverride = KeyCode.Space;
+        [SerializeField] private KeyCode doPhaseOverride = KeyCode.G;
         [SerializeField] private KeyCode freeze = KeyCode.F;
         [SerializeField] private KeyCode refresh = KeyCode.R;
+        [SerializeField] private KeyCode setHealthToOne = KeyCode.H;
         
         protected virtual void UpdateDebugInput()
         {
@@ -223,6 +225,14 @@ namespace Bosses
             if (Input.GetKeyDown(refresh))
             {
                 Debug_RefreshPlayID();
+            }
+
+            if (Input.GetKeyDown(setHealthToOne))
+            {
+                currentHp = 1;
+                bossHP.text = "1";
+                animator.Hit();
+                SetBossPhase(BossPhase.Three);
             }
         }
 

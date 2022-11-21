@@ -78,12 +78,10 @@ MonoBehaviour:
   playMask: 010000000100000001000000
   overridePhaseOnStart: 0
   phaseOverride: 0
-  doPhaseOverride: 32
+  doPhaseOverride: 103
   freeze: 102
   refresh: 114
-  energy: {fileID: 7959131783884150724}
-  accelerationValue: 4
-  decelerationValue: 0.8
+  setHealthToOne: 104
 --- !u!114 &7959131783884150726
 MonoBehaviour:
   m_ObjectHideFlags: 0
