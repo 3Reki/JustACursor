@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using DG.Tweening;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Bosses
@@ -6,6 +8,7 @@ namespace Bosses
     public class BossAnimations : MonoBehaviour
     {
         [SerializeField] private new Animation animation;
+        [SerializeField] private SpriteRenderer bodySprite;
 
         [field: SerializeField] public float attackAnimLength { get; private set; }
         [field: SerializeField] public float phaseChangeAnimLength { get; private set; }
@@ -16,6 +19,13 @@ namespace Bosses
         [SerializeField] private UnityEvent onHit;
         [SerializeField] private UnityEvent onPhaseChange;
         [SerializeField] private UnityEvent onDeath;
+
+        private Color defaultColor;
+
+        private void Awake()
+        {
+            defaultColor = bodySprite.color;
+        }
 
         public void Attack()
         {
@@ -41,6 +51,12 @@ namespace Bosses
         {
             animation.clip = clip;
             animation.Play();
+        }
+
+        public void ColorLerp()
+        {
+            bodySprite.color = Color.red;
+            bodySprite.DOColor(defaultColor, 0.1f);
         }
     }
 }
