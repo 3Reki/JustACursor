@@ -5,17 +5,29 @@ namespace Bosses.Patterns
     
     public abstract class Pattern : ScriptableObject
     {
-        [field: SerializeField] public float length { get; protected set; }
+        [SerializeField] protected Resolver resolver;
+        [SerializeField, Range(0, 30f)] protected float patternDuration = 3f;
         
-        protected Boss boss;
-
-        public void SetTargetBoss(Boss target)
+        protected Boss linkedBoss;
+        protected float currentPatternTime;
+        
+        public virtual Pattern Play(Boss boss)
         {
-            boss = target;
+            linkedBoss = boss;
+            currentPatternTime = patternDuration;
+            return this;
         }
-        
-        public abstract void Play();
 
-        public abstract void Stop();
+        public virtual Pattern Update()
+        {
+            currentPatternTime -= Time.deltaTime;
+
+            return currentPatternTime < 0 ? Stop() : this;
+        }
+
+        public virtual Pattern Stop()
+        {
+            return resolver.Resolve(linkedBoss);
+        }
     }
 }

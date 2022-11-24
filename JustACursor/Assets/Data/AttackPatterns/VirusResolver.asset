@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c993d58b2c469f8db5e54f5a974421, type: 3}
+  m_Name: VirusResolver
+  m_EditorClassIdentifier: 
+  choices:
+    conditionType: 1
+    pattern: {fileID: 0}
+    weight: 0
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0

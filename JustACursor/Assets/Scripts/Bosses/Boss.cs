@@ -33,6 +33,7 @@ namespace Bosses
     {
         public BulletEmitter[] bulletEmitter { get; private set; }
         public int currentHp { get; private set; }
+        public int maxHP => bossData.startingHP;
         public BossPhase currentBossPhase { get; private set; }
         public BossMovement mover => movementHandler;
         protected int currentPatternIndex { get; set; }
@@ -43,8 +44,9 @@ namespace Bosses
         [SerializeField] protected BossAnimations animator;
         [SerializeField] private TMP_Text bossHP;
         [SerializeField] private BulletEmitter[] emitters = new BulletEmitter[3]; // must be used only for init
-        
 
+
+        private Pattern currentPattern;
         private bool isFrozen;
         private bool isPaused;
         protected float patternCooldownTimer;
@@ -61,8 +63,14 @@ namespace Bosses
 
             if (isPaused)
                 return;
+
             
-            UpdateTimers();
+            if (currentPattern == null)
+            {
+                currentPattern = bossData.resolver.Resolve(this);
+            }
+            currentPattern = currentPattern.Update();
+            //UpdateTimers();
         }
 
         protected void Init()
@@ -75,8 +83,9 @@ namespace Bosses
             bulletEmitter = new BulletEmitter[emitters.Length];
             Array.Copy(emitters, bulletEmitter, emitters.Length); 
             bossHP.text = $"{currentHp}";
-            currentBossPhase = overridePhaseOnStart ? phaseOverride : BossPhase.One;
-            PlayPattern(currentBossPhase, currentPatternIndex);
+            
+            //currentBossPhase = overridePhaseOnStart ? phaseOverride : BossPhase.One;
+            //PlayPattern(currentBossPhase, currentPatternIndex);
         }
 
         // PLACEHOLDER
@@ -91,60 +100,60 @@ namespace Bosses
             bossHP.text = $"{currentHp}";
             animator.Hit();
 
-            switch (currentBossPhase)
-            {
-                case BossPhase.None:
-                    Debug.LogError("Boss Phase is NONE");
-                    break;
-                case BossPhase.One:
-                    if (CheckPhase2HPThreshold()) SetBossPhase(BossPhase.Two);
-                    break;
-                case BossPhase.Two:
-                    if (CheckPhase3HPThreshold()) SetBossPhase(BossPhase.Three);
-                    break;
-                case BossPhase.Three:
-                    if (currentHp <= 0) Die();
-                    break;
-            }
+            // switch (currentBossPhase)
+            // {
+            //     case BossPhase.None:
+            //         Debug.LogError("Boss Phase is NONE");
+            //         break;
+            //     case BossPhase.One:
+            //         if (CheckPhase2HPThreshold()) SetBossPhase(BossPhase.Two);
+            //         break;
+            //     case BossPhase.Two:
+            //         if (CheckPhase3HPThreshold()) SetBossPhase(BossPhase.Three);
+            //         break;
+            //     case BossPhase.Three:
+            //         if (currentHp <= 0) Die();
+            //         break;
+            // }
         }
 
-        protected void UpdateTimers()
-        {
-            patternTimer -= Time.deltaTime;
-            if (patternTimer >= 0) return;
-
-            patternCooldownTimer -= Time.deltaTime;
-            if (patternCooldownTimer < 0)
-            {
-                ChangePattern();
-            }
-        }
-        
-        private void ChangePattern()
-        {
-            StopPattern(currentBossPhase, currentPatternIndex);
-            currentPatternIndex++;
-            currentPatternIndex %= GetPatternCountForPhase(currentBossPhase);
-            PlayPattern(currentBossPhase, currentPatternIndex);
-        }
-
-        private async void SetBossPhase(BossPhase newPhase)
-        {
-            StopCurrentPhasePatterns();
-            animator.ChangePhase();
-            isPaused = true;
-
-            await Task.Delay((int) (animator.phaseChangeAnimLength * 1000));
-            
-            currentBossPhase = newPhase;
-            isPaused = false;
-            PlayPattern(newPhase, currentPatternIndex = 0);
-        }
+        // protected void UpdateTimers()
+        // {
+        //     patternTimer -= Time.deltaTime;
+        //     if (patternTimer >= 0) return;
+        //
+        //     patternCooldownTimer -= Time.deltaTime;
+        //     if (patternCooldownTimer < 0)
+        //     {
+        //         ChangePattern();
+        //     }
+        // }
+        //
+        // private void ChangePattern()
+        // {
+        //     StopPattern(currentBossPhase, currentPatternIndex);
+        //     currentPatternIndex++;
+        //     currentPatternIndex %= GetPatternCountForPhase(currentBossPhase);
+        //     PlayPattern(currentBossPhase, currentPatternIndex);
+        // }
+        //
+        // private async void SetBossPhase(BossPhase newPhase)
+        // {
+        //     StopCurrentPhasePatterns();
+        //     animator.ChangePhase();
+        //     isPaused = true;
+        //
+        //     await Task.Delay((int) (animator.phaseChangeAnimLength * 1000));
+        //     
+        //     currentBossPhase = newPhase;
+        //     isPaused = false;
+        //     PlayPattern(newPhase, currentPatternIndex = 0);
+        // }
 
         private async void Die()
         {
             Debug.Log("Boss is killed");
-            StopCurrentPhasePatterns();
+            // StopCurrentPhasePatterns();
             isPaused = true;
 
             animator.Die();
@@ -156,6 +165,7 @@ namespace Bosses
             transform.root.gameObject.SetActive(false);
         }
 
+        /*
         protected Pattern GetPattern(BossPhase phase, int patternIndex) =>
             bossData.phases[(int) phase].attackPatterns[patternIndex];
         
@@ -195,7 +205,7 @@ namespace Bosses
         
         public int GetPatternCountForPhase(BossPhase phase) => bossData.phases[(int) phase].attackPatterns.Length;
         
-        
+        */
         
         #region Debug
 
@@ -213,7 +223,7 @@ namespace Bosses
             // change to new profile
             if (Input.GetKeyDown(doPhaseOverride))
             {
-                SetBossPhase(phaseOverride);
+                // SetBossPhase(phaseOverride);
             }
 
             // freeze effect. Placeholder
@@ -232,7 +242,7 @@ namespace Bosses
                 currentHp = 1;
                 bossHP.text = "1";
                 animator.Hit();
-                SetBossPhase(BossPhase.Three);
+                // SetBossPhase(BossPhase.Three);
             }
         }
 
@@ -255,7 +265,7 @@ namespace Bosses
                 if (playMask[i] == 1)
                 {
                     bulletEmitter[i].Play();
-                    Debug.Log("playing pattern: " + bossData.phases[(int)currentBossPhase].attackPatterns[currentPatternIndex]);
+                    // Debug.Log("playing pattern: " + bossData.phases[(int)currentBossPhase].attackPatterns[currentPatternIndex]);
                 }
             }
         }

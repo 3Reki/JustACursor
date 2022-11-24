@@ -10,7 +10,8 @@ namespace Bosses
         [SerializeField] public int startingHP;
         [SerializeField, Range(0, 1)] public float phase2HPPercentTrigger = 0.6f;
         [SerializeField, Range(0, 1)] public float phase3HPPercentTrigger = 0.3f;
-        [SerializeField] public Phase[] phases;
+        //[SerializeField] public Phase[] phases;
+        [SerializeField] public Resolver resolver;
         [SerializeField] public float patternCooldown;
     }
 }
