@@ -6,11 +6,16 @@ namespace Bosses.Conditions
     public enum ConditionType
     {
         None,
-        HealthThreshold
+        HealthThreshold,
+        Test
     }
     
-    public interface ICondition
+    [Serializable]
+    public class ICondition
     {
-        public bool Check(Boss boss); // LéBossó
+        public virtual bool Check(Boss boss)
+        {
+            return false;
+        } 
     }
 }

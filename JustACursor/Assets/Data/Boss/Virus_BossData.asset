@@ -18,17 +18,5 @@ MonoBehaviour:
   startingHP: 200
   phase2HPPercentTrigger: 0.6
   phase3HPPercentTrigger: 0.3
-  phases:
-  - phase: 0
-    attackPatterns:
-    - {fileID: 11400000, guid: ded4e34c7a8700b4d9e7bb217f249084, type: 2}
-    - {fileID: 11400000, guid: ece64c0f662b39442aeff1583ebe4654, type: 2}
-  - phase: 1
-    attackPatterns:
-    - {fileID: 11400000, guid: dec94bd64db61b5458812372bf9a65fc, type: 2}
-    - {fileID: 11400000, guid: 6cea8ce696cc7c5428e6ebb4c2c2e8dd, type: 2}
-  - phase: 2
-    attackPatterns:
-    - {fileID: 11400000, guid: 0bea666c44ff4b547b69bde75b915b10, type: 2}
-    - {fileID: 11400000, guid: e618c96d3a45ec446ac313b5fc1fb0bd, type: 2}
+  resolver: {fileID: 11400000, guid: 34ef1323fb0a223418af72d9fccc77aa, type: 2}
   patternCooldown: 0.5

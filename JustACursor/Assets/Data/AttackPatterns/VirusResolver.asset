@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: VirusResolver
   m_EditorClassIdentifier: 
   choices:
-    conditionType: 1
+  - conditionType: 2
     pattern: {fileID: 0}
     weight: 0
     cdtHealthThreshold:
       comparisonType: 0
       threshold: 0
+    cdtTest:
+      comparisonType: 0
+      cond: 0
