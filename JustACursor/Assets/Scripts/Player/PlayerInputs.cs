@@ -411,9 +411,18 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Return"",
+                    ""name"": ""Back"",
                     ""type"": ""Button"",
                     ""id"": ""9e9eeefb-1204-4118-bd0f-a8772bd5ce12"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GoTo"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e60c850-23cc-409d-b498-6ace1cfd6565"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -428,7 +437,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""Return"",
+                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -439,7 +448,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Return"",
+                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -462,6 +471,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a57be6db-a1eb-46e2-88b4-c43278444e50"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GoTo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -513,7 +533,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
-        m_Menu_Return = m_Menu.FindAction("Return", throwIfNotFound: true);
+        m_Menu_Back = m_Menu.FindAction("Back", throwIfNotFound: true);
+        m_Menu_GoTo = m_Menu.FindAction("GoTo", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -688,13 +709,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Menu;
     private IMenuActions m_MenuActionsCallbackInterface;
     private readonly InputAction m_Menu_Pause;
-    private readonly InputAction m_Menu_Return;
+    private readonly InputAction m_Menu_Back;
+    private readonly InputAction m_Menu_GoTo;
     public struct MenuActions
     {
         private @PlayerInputs m_Wrapper;
         public MenuActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_Menu_Pause;
-        public InputAction @Return => m_Wrapper.m_Menu_Return;
+        public InputAction @Back => m_Wrapper.m_Menu_Back;
+        public InputAction @GoTo => m_Wrapper.m_Menu_GoTo;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -707,9 +730,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
-                @Return.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnReturn;
-                @Return.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnReturn;
-                @Return.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnReturn;
+                @Back.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnBack;
+                @Back.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnBack;
+                @Back.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnBack;
+                @GoTo.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnGoTo;
+                @GoTo.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnGoTo;
+                @GoTo.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnGoTo;
             }
             m_Wrapper.m_MenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -717,9 +743,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @Return.started += instance.OnReturn;
-                @Return.performed += instance.OnReturn;
-                @Return.canceled += instance.OnReturn;
+                @Back.started += instance.OnBack;
+                @Back.performed += instance.OnBack;
+                @Back.canceled += instance.OnBack;
+                @GoTo.started += instance.OnGoTo;
+                @GoTo.performed += instance.OnGoTo;
+                @GoTo.canceled += instance.OnGoTo;
             }
         }
     }
@@ -759,6 +788,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     public interface IMenuActions
     {
         void OnPause(InputAction.CallbackContext context);
-        void OnReturn(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
+        void OnGoTo(InputAction.CallbackContext context);
     }
 }
