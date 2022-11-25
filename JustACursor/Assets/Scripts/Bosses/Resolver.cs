@@ -1,26 +1,35 @@
 ﻿using System;
+using System.Collections.Generic;
 using Bosses.Conditions;
 using Bosses.Patterns;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Bosses
 {
-    [CreateAssetMenu(fileName = "Resolver", menuName = "Just A Cursor/Pattern Resolver", order = 0)]
-    public class Resolver : ScriptableObject
+    //[CreateAssetMenu(fileName = "Resolver", menuName = "Just A Cursor/Pattern Resolver", order = 0)]
+    [Serializable]
+    public class Resolver
     {
         [SerializeField] private ResolvedPattern[] choices;
 
+        private readonly List<ResolvedPattern> selectedList = new();
+        
         public Pattern Resolve(Boss boss)
         {
+            selectedList.Clear();
+            
             foreach (ResolvedPattern choice in choices)
             {
-                if (choice.cdtHealthThreshold.Check(boss))
+                if (choice.condition.Check(boss))
                 {
-                    return choice.pattern;
+                    selectedList.Add(choice); 
                 }
             }
 
-            return null;
+            return selectedList.Count == 0 
+                ? null 
+                : selectedList[Random.Range(0, selectedList.Count)].pattern.Play(boss);
         }
     }
 
@@ -37,6 +46,7 @@ namespace Bosses
                 {
                     ConditionType.HealthThreshold => cdtHealthThreshold,
                     ConditionType.Test => cdtTest,
+                    ConditionType.None => cdtNone,
                     _ => null
                 };
             }
@@ -45,8 +55,9 @@ namespace Bosses
         public Pattern pattern;
         [Range(0, 20)]
         public float weight;
-        
-        public Cdt_HealthThreshold cdtHealthThreshold;
-        public Cdt_Test cdtTest;
+
+        [SerializeField] private Cdt_None cdtNone;
+        [SerializeField] private Cdt_HealthThreshold cdtHealthThreshold;
+        [SerializeField] private Cdt_Test cdtTest;
     }
 }

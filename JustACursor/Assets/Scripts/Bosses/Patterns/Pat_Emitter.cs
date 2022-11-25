@@ -6,7 +6,7 @@ namespace Bosses.Patterns
     [CreateAssetMenu(fileName = "Pat_Emitter", menuName = "Just A Cursor/Pattern/Emitter Pattern", order = 0)]
     public class Pat_Emitter : Pattern
     {
-        [SerializeField] private EmitterProfile[] emitterProfiles = new EmitterProfile[3];
+        [SerializeField, Tooltip("Max 3 profiles")] private EmitterProfile[] emitterProfiles;
         
         public override Pattern Play(Boss boss)
         {

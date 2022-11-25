@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Bosses.Patterns
 {
-    [CreateAssetMenu(fileName = "Pat_CornerPattern", menuName = "Just A Cursor/Pattern/Corner")]
+    [CreateAssetMenu(fileName = "Pat_Corner", menuName = "Just A Cursor/Pattern/Corner")]
     public class Pat_Corner : Pattern
     {
         private IEnumerator playEnumerator;

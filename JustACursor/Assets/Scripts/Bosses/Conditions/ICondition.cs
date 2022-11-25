@@ -10,12 +10,8 @@ namespace Bosses.Conditions
         Test
     }
     
-    [Serializable]
-    public class ICondition
+    public interface ICondition
     {
-        public virtual bool Check(Boss boss)
-        {
-            return false;
-        } 
+        public bool Check(Boss boss);
     }
 }

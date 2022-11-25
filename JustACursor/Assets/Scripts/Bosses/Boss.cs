@@ -65,11 +65,8 @@ namespace Bosses
                 return;
 
             
-            if (currentPattern == null)
-            {
-                currentPattern = bossData.resolver.Resolve(this);
-            }
-            currentPattern = currentPattern.Update();
+            currentPattern = currentPattern == null ? bossData.resolver.Resolve(this) : currentPattern.Update();
+            
             //UpdateTimers();
         }
 

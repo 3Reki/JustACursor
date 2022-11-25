@@ -9,20 +9,17 @@ namespace Editor
     [CustomPropertyDrawer(typeof(ResolvedPattern))]
     public class ResolvedPatternDrawer : PropertyDrawer
     {
-        private bool showProperty;
-
-        public override void OnGUI(Rect position, SerializedProperty property,
-            GUIContent label)
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty(position, label, property);
 
             Vector2 propPosition = position.position;
             Vector2 defaultSize = new Vector2(position.width, EditorGUIUtility.singleLineHeight);
-
-            showProperty = EditorGUI.Foldout(new Rect(propPosition, defaultSize), showProperty, "Resolved Pattern");
+            
+            property.isExpanded = EditorGUI.Foldout(new Rect(propPosition, defaultSize), property.isExpanded, label);
             propPosition.y += EditorGUIUtility.singleLineHeight;
 
-            if (!showProperty)
+            if (!property.isExpanded)
             {
                 EditorGUI.EndProperty();
                 return;
@@ -45,6 +42,9 @@ namespace Editor
                     break;
             }
             propPosition.y += propHeight;
+            
+            EditorGUI.PropertyField(new Rect(propPosition, defaultSize), property.FindPropertyRelative("pattern"));
+            propPosition.y += EditorGUIUtility.singleLineHeight;
 
             EditorGUI.indentLevel -= 1;
             EditorGUI.EndProperty();
@@ -68,13 +68,26 @@ namespace Editor
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            if (!showProperty)
+            if (!property.isExpanded)
             {
                 return EditorGUIUtility.singleLineHeight;
             }
 
-            return EditorGUIUtility.singleLineHeight * 2 +
-                   EditorGUI.GetPropertyHeight(property.FindPropertyRelative("cdtHealthThreshold"), true);
+            float selectedPropertyHeight = 0f;
+            
+            switch (property.FindPropertyRelative("conditionType").GetEnumValue<ConditionType>())
+            {
+                case ConditionType.HealthThreshold:
+                    selectedPropertyHeight =
+                        EditorGUI.GetPropertyHeight(property.FindPropertyRelative("cdtHealthThreshold"), true);
+                    break;
+                case ConditionType.Test:
+                    selectedPropertyHeight =
+                        EditorGUI.GetPropertyHeight(property.FindPropertyRelative("cdtTest"), true);
+                    break;
+            }
+
+            return EditorGUIUtility.singleLineHeight * 3 + selectedPropertyHeight;
         }
 
         

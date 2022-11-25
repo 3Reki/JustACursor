@@ -10,9 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71f4f13db08b49e9a7fb7664e36949b1, type: 3}
-  m_Name: Pat_CenterSpiral3
+  m_Name: Pat_Center
   m_EditorClassIdentifier: 
-  <length>k__BackingField: 5
-  emitterProfiles:
-  - {fileID: 11400000, guid: bdad1747801e3de4a913312845e04c3e, type: 2}
-  movementDuration: 0.5
+  resolver:
+    choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: e67896c0a4783144baa79f313fab4b8b, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtTest:
+        comparisonType: 0
+        cond: 0
+  patternDuration: 0.5

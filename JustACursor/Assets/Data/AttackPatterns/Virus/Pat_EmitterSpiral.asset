@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b086fb99be7d4d3da1071fac48d6a0a2, type: 3}
-  m_Name: Pat_CornerConeVirus3
+  m_Script: {fileID: 11500000, guid: e33134043b5f423880cdfc1a5c61978d, type: 3}
+  m_Name: Pat_EmitterSpiral
   m_EditorClassIdentifier: 
-  <length>k__BackingField: 5
+  resolver:
+    choices: []
+  patternDuration: 5
   emitterProfiles:
-  - {fileID: 11400000, guid: ad95285ae14ef024e9068ead14a40fb9, type: 2}
-  movementDuration: 0.5
+  - {fileID: 11400000, guid: 19392bd4aa68d2d40b455eb19b40e233, type: 2}

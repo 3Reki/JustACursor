@@ -18,5 +18,24 @@ MonoBehaviour:
   startingHP: 200
   phase2HPPercentTrigger: 0.6
   phase3HPPercentTrigger: 0.3
-  resolver: {fileID: 11400000, guid: 34ef1323fb0a223418af72d9fccc77aa, type: 2}
+  resolver:
+    choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 3fc21f73121932b4cb6a185b6a79cfd8, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtTest:
+        comparisonType: 0
+        cond: 0
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: c8645a8bb7616f04b926beae427d4212, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtTest:
+        comparisonType: 0
+        cond: 0
   patternCooldown: 0.5
