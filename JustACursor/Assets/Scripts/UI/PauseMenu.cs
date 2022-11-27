@@ -4,6 +4,8 @@ namespace UI
 {
     public class PauseMenu : MonoBehaviour
     {
-        [SerializeField] private MenuHandler menuHandler;
+        public void OnClickConfirmQuit() {
+            Application.Quit();
+        }
     }
 }

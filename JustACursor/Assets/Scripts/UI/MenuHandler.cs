@@ -1,18 +1,25 @@
 using System.Collections.Generic;
 using Managers;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace UI
 {
     public class MenuHandler : MonoBehaviour
     {
+        [SerializeField] private GameObject startMenu;
+        
         private PlayerInputs inputs;
         private Stack<GameObject> uiStack = new();
+        
+        private GameObject currentConfirmation;
+        private GameObject lastSelectedElement;
 
-        [SerializeField] private GameObject startMenu;
+        private EventSystem eventSystem;
 
         private void Start()
         {
+            eventSystem = EventSystem.current;
             inputs = InputManager.Instance.inputs;
         }
         
@@ -57,6 +64,22 @@ namespace UI
             }
 
             if (uiStack.Count == 0) Time.timeScale = 1;
+        }
+
+        public void OpenConfirmation(GameObject go)
+        {
+            lastSelectedElement = eventSystem.currentSelectedGameObject;
+            
+            currentConfirmation = go;
+            currentConfirmation.SetActive(true);
+        }
+
+        public void CloseConfirmation()
+        {
+            currentConfirmation.SetActive(false);
+            currentConfirmation = null;
+
+            eventSystem.SetSelectedGameObject(lastSelectedElement);
         }
     }
 }
