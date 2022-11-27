@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Net;
 using Managers;
 using UnityEngine;
 
@@ -15,30 +14,20 @@ namespace UI
         private void Start()
         {
             inputs = InputManager.Instance.inputs;
-
-            /*onPauseButtonPressed += () =>
-            {
-                if (uiStack.Count == 0) Open(startMenu);
-            };
-
-            onBackButtonPressed += Close;*/
         }
         
         private void Update()
         {
-            if (inputs.Menu.Pause.WasPressedThisFrame())
-            {
+            if (inputs.UI.Pause.WasPressedThisFrame()) {
                 if (uiStack.Count == 0) Open(startMenu);
-
-                //Close startMenu
                 else if (uiStack.Count == 1) Close();
-
+                
                 return;
             }
-
-            if (inputs.Menu.Back.WasPressedThisFrame())
+            
+            if (inputs.UI.Back.WasPressedThisFrame())
             {
-                Close();
+                if (uiStack.Count > 1) Close();
             }
         }
 
@@ -69,11 +58,5 @@ namespace UI
 
             if (uiStack.Count == 0) Time.timeScale = 1;
         }
-        
-        /*public delegate void OnPauseButtonPressed();
-        public static OnPauseButtonPressed onPauseButtonPressed;
-        
-        public delegate void OnBackButtonPressed();
-        public static OnBackButtonPressed onBackButtonPressed;*/
     }
 }
