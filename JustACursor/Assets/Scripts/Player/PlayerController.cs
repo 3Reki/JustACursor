@@ -49,6 +49,7 @@ namespace Player
             moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
             PlayerPosition = transform.position; 
 
+            if (Time.timeScale == 0) return;
             HandleDash();
             HandleMovement();
             HandleRotation();
