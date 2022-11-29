@@ -1,5 +1,4 @@
-﻿using BulletPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Bosses.Patterns
 {
@@ -8,15 +7,32 @@ namespace Bosses.Patterns
     {
         [SerializeField] private Pattern[] patterns;
         
-        public override Pattern Play(Boss boss)
+        public override void Play(Boss boss)
         {
-            // TODO
-            return base.Play(boss);
+            base.Play(boss);
+            
+            foreach (Pattern pattern in patterns)
+            {
+                pattern.Play(boss);
+            }
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            
+            foreach (Pattern pattern in patterns)
+            {
+                pattern.Update();
+            }
         }
 
         public override Pattern Stop()
         {
-            
+            foreach (Pattern pattern in patterns)
+            {
+                pattern.Stop();
+            }
             return base.Stop();
         }
     }

@@ -5,11 +5,10 @@ namespace Bosses.Patterns
     [CreateAssetMenu(fileName = "Pat_Center", menuName = "Just A Cursor/Pattern/Center")]
     public class Pat_Center : Pattern
     {
-        public override Pattern Play(Boss boss)
+        public override void Play(Boss boss)
         {
             base.Play(boss);
             linkedBoss.mover.GoToCenter(patternDuration);
-            return Stop();
         }
 
         public override Pattern Stop()

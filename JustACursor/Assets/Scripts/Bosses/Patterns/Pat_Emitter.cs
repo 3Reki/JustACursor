@@ -8,23 +8,22 @@ namespace Bosses.Patterns
     {
         [SerializeField, Tooltip("Max 3 profiles")] private EmitterProfile[] emitterProfiles;
         
-        public override Pattern Play(Boss boss)
+        public override void Play(Boss boss)
         {
             base.Play(boss);
             
             for (int i = 0; i < emitterProfiles.Length; i++)
             {
                 linkedBoss.bulletEmitter[i].SwitchProfile(emitterProfiles[i]);
+                linkedBoss.bulletEmitter[i].Play();
             }
-
-            return this;
         }
 
         public override Pattern Stop()
         {
             for (int i = 0; i < emitterProfiles.Length; i++)
             {
-                linkedBoss.bulletEmitter[i].Stop(); 
+                linkedBoss.bulletEmitter[i].Stop();
             }
             return base.Stop();
         }

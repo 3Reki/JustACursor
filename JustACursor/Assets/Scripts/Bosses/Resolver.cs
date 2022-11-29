@@ -27,9 +27,14 @@ namespace Bosses
                 }
             }
 
-            return selectedList.Count == 0 
-                ? null 
-                : selectedList[Random.Range(0, selectedList.Count)].pattern.Play(boss);
+            if (selectedList.Count == 0)
+            {
+                boss.currentPatternPhase = PatternPhase.None;
+                return null;
+            }
+
+            boss.currentPatternPhase = PatternPhase.Start;
+            return selectedList[Random.Range(0, selectedList.Count)].pattern;
         }
     }
 

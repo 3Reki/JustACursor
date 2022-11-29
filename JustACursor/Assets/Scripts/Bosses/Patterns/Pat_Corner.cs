@@ -8,12 +8,10 @@ namespace Bosses.Patterns
     {
         private IEnumerator playEnumerator;
 
-        public override Pattern Play(Boss boss)
+        public override void Play(Boss boss)
         {
             base.Play(boss);
             linkedBoss.mover.GoToRandomCorner(patternDuration);
-
-            return this;
         }
 
         public override Pattern Stop()

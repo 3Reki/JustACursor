@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da8a7c80eab4c474da1e90eb12356b89, type: 3}
-  m_Name: Spiral 1
+  m_Name: SpiralVirusPhase1
   m_EditorClassIdentifier: 
   rootBullet: {fileID: 114334976902514986}
   subAssets:
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 4015977
+  uniqueIndex: 3402717
   profile: {fileID: 11400000}
   parent: {fileID: 114184213563873034}
   children:
@@ -271,7 +271,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 14
+      defaultValue: 10
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -314,22 +314,6 @@ MonoBehaviour:
     useDifferentBullet: 0
     bulletParams: {fileID: 0}
   - index: 9
-    bulletOrigin: {x: 0, y: 0, z: 0}
-    useDifferentBullet: 0
-    bulletParams: {fileID: 0}
-  - index: 10
-    bulletOrigin: {x: 0, y: 0, z: 0}
-    useDifferentBullet: 0
-    bulletParams: {fileID: 0}
-  - index: 11
-    bulletOrigin: {x: 0, y: 0, z: 0}
-    useDifferentBullet: 0
-    bulletParams: {fileID: 0}
-  - index: 12
-    bulletOrigin: {x: 0, y: 0, z: 0}
-    useDifferentBullet: 0
-    bulletParams: {fileID: 0}
-  - index: 13
     bulletOrigin: {x: 0, y: 0, z: 0}
     useDifferentBullet: 0
     bulletParams: {fileID: 0}
@@ -1655,7 +1639,7 @@ MonoBehaviour:
           parameterType: 0
           relativeTo: 0
           parameterName: 
-        defaultValue: 360
+        defaultValue: 97.05
       useSlider: 0
       sliderMin: 0
       sliderMax: 0
@@ -1881,7 +1865,7 @@ MonoBehaviour:
           parameterType: 0
           relativeTo: 0
           parameterName: 
-        defaultValue: 0
+        defaultValue: -50
       useSlider: 0
       sliderMin: 0
       sliderMax: 0
@@ -2338,7 +2322,115 @@ MonoBehaviour:
       sliderMin: 0
       sliderMax: 0
     layoutDegrees:
-      valueTree: []
+      valueTree:
+      - settings:
+          valueType: 0
+          interpolationValue:
+            interpolationFactor: 0
+            repartitionCurve:
+              serializedVersion: 2
+              m_Curve: []
+              m_PreInfinity: 0
+              m_PostInfinity: 0
+              m_RotationOrder: 0
+            shareValueBetweenInstances: 0
+            rerollFrequency: 0
+            interpolationFactorFromShot: 0
+            interpolationFactorFromPattern: 0
+            interpolationFactorFromBullet: 0
+            relativeTo: 0
+            parameterName: 
+            loopDepth: 0
+            useComplexRerollSequence: 0
+            checkEveryNLoops: 0
+            loopSequence: 0
+            period: 0
+            wrapMode: 0
+            sortMode: 0
+            sortDirection: 0
+            repartitionTexture: {fileID: 0}
+            centerX: 0
+            centerY: 0
+            radius: 0
+            wrapPoint: 0
+            countClockwise: 0
+            differentValuesPerShot: 0
+          combinedInterpolationFactors: 0
+          index: 0
+          indexOfParent: 0
+          indexOfFrom: 0
+          indexOfTo: 0
+          indexOfBlendedChildren: 
+          weight: 0
+          headerTitle: 
+          blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
+        defaultValue: 0
+      - settings:
+          valueType: 0
+          interpolationValue:
+            interpolationFactor: 0
+            repartitionCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 1
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 1
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            shareValueBetweenInstances: 0
+            rerollFrequency: 0
+            interpolationFactorFromShot: 0
+            interpolationFactorFromPattern: 0
+            interpolationFactorFromBullet: 0
+            relativeTo: 0
+            parameterName: 
+            loopDepth: 0
+            useComplexRerollSequence: 0
+            checkEveryNLoops: 0
+            loopSequence: 0
+            period: 0
+            wrapMode: 0
+            sortMode: 0
+            sortDirection: 0
+            repartitionTexture: {fileID: 0}
+            centerX: 0
+            centerY: 0
+            radius: 0
+            wrapPoint: 0
+            countClockwise: 0
+            differentValuesPerShot: 0
+          combinedInterpolationFactors: 0
+          index: 1
+          indexOfParent: 0
+          indexOfFrom: 0
+          indexOfTo: 0
+          indexOfBlendedChildren: 
+          weight: 0
+          headerTitle: Layout Degrees
+          blendColor: {r: 0, g: 0, b: 0, a: 0}
+          parameterType: 0
+          relativeTo: 0
+          parameterName: 
+        defaultValue: 0
       useSlider: 0
       sliderMin: 0
       sliderMax: 0
@@ -2461,67 +2553,51 @@ MonoBehaviour:
     selectionRectsVisible: 0
     postEffectBulletSpawns:
     - index: 0
-      bulletOrigin: {x: 0, y: 0, z: 167.14285}
+      bulletOrigin: {x: 0, y: 0, z: 162}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 1
-      bulletOrigin: {x: 0, y: 0, z: 141.42857}
+      bulletOrigin: {x: 0, y: 0, z: 126}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 2
-      bulletOrigin: {x: 0, y: 0, z: 115.71428}
-      useDifferentBullet: 0
-      bulletParams: {fileID: 0}
-    - index: 3
       bulletOrigin: {x: 0, y: 0, z: 90}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
+    - index: 3
+      bulletOrigin: {x: 0, y: 0, z: 54}
+      useDifferentBullet: 0
+      bulletParams: {fileID: 0}
     - index: 4
-      bulletOrigin: {x: 0, y: 0, z: 64.28571}
+      bulletOrigin: {x: 0, y: 0, z: 18}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 5
-      bulletOrigin: {x: 0, y: 0, z: 38.571426}
+      bulletOrigin: {x: 0, y: 0, z: -18}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 6
-      bulletOrigin: {x: 0, y: 0, z: 12.857142}
+      bulletOrigin: {x: 0, y: 0, z: -54}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 7
-      bulletOrigin: {x: 0, y: 0, z: -12.857142}
-      useDifferentBullet: 0
-      bulletParams: {fileID: 0}
-    - index: 8
-      bulletOrigin: {x: 0, y: 0, z: -38.571426}
-      useDifferentBullet: 0
-      bulletParams: {fileID: 0}
-    - index: 9
-      bulletOrigin: {x: 0, y: 0, z: -64.28571}
-      useDifferentBullet: 0
-      bulletParams: {fileID: 0}
-    - index: 10
       bulletOrigin: {x: 0, y: 0, z: -90}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
-    - index: 11
-      bulletOrigin: {x: 0, y: 0, z: -115.71428}
+    - index: 8
+      bulletOrigin: {x: 0, y: 0, z: -126}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
-    - index: 12
-      bulletOrigin: {x: 0, y: 0, z: -141.42857}
-      useDifferentBullet: 0
-      bulletParams: {fileID: 0}
-    - index: 13
-      bulletOrigin: {x: 0, y: 0, z: -167.14285}
+    - index: 9
+      bulletOrigin: {x: 0, y: 0, z: -162}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     enabled: 1
   bulletParamsRandom: 0
   listOfPossibleBulletParams: []
   possibleBulletParams: 0
-  highestValues: {x: 0, y: 0, z: 167.14285}
-  lowestValues: {x: 0, y: 0, z: -167.14285}
+  highestValues: {x: 0, y: 0, z: 162}
+  lowestValues: {x: 0, y: 0, z: -162}
   hasBeenSerializedOnce: 1
   fakeBulletAmount: 0
   foldout0: 0
@@ -2566,7 +2642,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 14241981
+  uniqueIndex: 3537981
   profile: {fileID: 11400000}
   parent: {fileID: 114334976902514986}
   children:
@@ -12657,7 +12733,7 @@ MonoBehaviour:
             indexOfTo: 0
             indexOfBlendedChildren: 
             weight: 0
-            headerTitle: 
+            headerTitle: Shot
             blendColor: {r: 0, g: 0, b: 0, a: 0}
             parameterType: 0
             relativeTo: 0
@@ -17256,7 +17332,7 @@ MonoBehaviour:
         m_Center: {x: 0, y: 0, z: 0}
         m_Extent: {x: 0, y: 0, z: 0}
       displayName: Shoot
-    - enabled: 1
+    - enabled: 0
       instructionType: 18
       waitTime:
         valueTree:
@@ -17925,7 +18001,7 @@ MonoBehaviour:
             parameterType: 0
             relativeTo: 0
             parameterName: 
-          defaultValue: 5
+          defaultValue: 60
         useSlider: 0
         sliderMin: 0
         sliderMax: 0
@@ -22185,7 +22261,7 @@ MonoBehaviour:
             parameterType: 0
             relativeTo: 0
             parameterName: GameFrequency
-          defaultValue: 1
+          defaultValue: 2
         useSlider: 0
         sliderMin: 0
         sliderMax: 0
@@ -31713,7 +31789,7 @@ MonoBehaviour:
   advancedFoldout: 0
   hasBeenSerializedOnce: 1
   focusedInstruction: -1
-  safetyForPlaymode: 79
+  safetyForPlaymode: 103
 --- !u!114 &114334976902514986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31727,7 +31803,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 14442319
+  uniqueIndex: 16356041
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -38839,7 +38915,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 7756562
+  uniqueIndex: 12797142
   profile: {fileID: 11400000}
   parent: {fileID: 114043142638459942}
   children: []
@@ -41158,7 +41234,7 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1

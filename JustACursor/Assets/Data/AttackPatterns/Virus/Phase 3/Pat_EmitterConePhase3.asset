@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96697c9c23b6481f95acf4bd0a751f9d, type: 3}
-  m_Name: Pat_LookAtPlayer
+  m_Script: {fileID: 11500000, guid: e33134043b5f423880cdfc1a5c61978d, type: 3}
+  m_Name: Pat_EmitterConePhase3
   m_EditorClassIdentifier: 
   resolver:
     choices: []
   patternDuration: 5
+  emitterProfiles:
+  - {fileID: 11400000, guid: 997bf9fdf7c3a8b428bd3d5dd50107e6, type: 2}

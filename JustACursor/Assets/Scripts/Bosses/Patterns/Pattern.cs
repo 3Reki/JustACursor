@@ -11,18 +11,21 @@ namespace Bosses.Patterns
         protected Boss linkedBoss;
         protected float currentPatternTime;
         
-        public virtual Pattern Play(Boss boss)
+        public virtual void Play(Boss boss)
         {
             linkedBoss = boss;
             currentPatternTime = patternDuration;
-            return this;
+            boss.currentPatternPhase = PatternPhase.Update;
         }
 
-        public virtual Pattern Update()
+        public virtual void Update()
         {
             currentPatternTime -= Time.deltaTime;
 
-            return currentPatternTime < 0 ? Stop() : this;
+            if (currentPatternTime < 0)
+            {
+                linkedBoss.currentPatternPhase = PatternPhase.Stop;
+            }
         }
 
         public virtual Pattern Stop()

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da8a7c80eab4c474da1e90eb12356b89, type: 3}
-  m_Name: AP_BulletInCone 1
+  m_Name: ConeVirusPhase3
   m_EditorClassIdentifier: 
   rootBullet: {fileID: 114671512830859702}
   subAssets:
@@ -29,7 +29,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114027673760526898}
+  currentParamsSelected: {fileID: 114917193883442684}
   numberOfSubAssets: 4
 --- !u!114 &114027673760526898
 MonoBehaviour:
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Cone
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3636241
+  uniqueIndex: 1803795
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -2363,7 +2363,7 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 5
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -2704,7 +2704,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0.2
+      defaultValue: 0.3
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -3628,7 +3628,7 @@ MonoBehaviour:
         indexOfTo: 0
         indexOfBlendedChildren: 
         weight: 0
-        headerTitle: Lifespan
+        headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
         parameterType: 0
         relativeTo: 0
@@ -8230,7 +8230,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 8906376
+  uniqueIndex: 5715685
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -8501,7 +8501,7 @@ MonoBehaviour:
     bulletParams: {fileID: 0}
   hasUnknownBulletAmount: 0
   modifiers:
-  - modifierType: 1
+  - modifierType: 0
     globalMovement:
       valueTree:
       - settings:
@@ -9821,7 +9821,7 @@ MonoBehaviour:
           parameterType: 0
           relativeTo: 0
           parameterName: 
-        defaultValue: 35
+        defaultValue: 11.43
       useSlider: 0
       sliderMin: 0
       sliderMax: 0
@@ -9934,7 +9934,7 @@ MonoBehaviour:
           parameterType: 0
           relativeTo: 0
           parameterName: 
-        defaultValue: 150.98
+        defaultValue: 105
       useSlider: 0
       sliderMin: 0
       sliderMax: 0
@@ -10627,19 +10627,19 @@ MonoBehaviour:
     selectionRectsVisible: 0
     postEffectBulletSpawns:
     - index: 0
-      bulletOrigin: {x: 0, y: 0, z: 67.10222}
+      bulletOrigin: {x: 0, y: 0, z: 45.72}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 1
-      bulletOrigin: {x: 0, y: 0, z: 50.326664}
+      bulletOrigin: {x: 0, y: 0, z: 34.29}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 2
-      bulletOrigin: {x: 0, y: 0, z: 33.55111}
+      bulletOrigin: {x: 0, y: 0, z: 22.86}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 3
-      bulletOrigin: {x: 0, y: 0, z: 16.775555}
+      bulletOrigin: {x: 0, y: 0, z: 11.43}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 4
@@ -10647,27 +10647,27 @@ MonoBehaviour:
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 5
-      bulletOrigin: {x: 0, y: 0, z: -16.775555}
+      bulletOrigin: {x: 0, y: 0, z: -11.43}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 6
-      bulletOrigin: {x: 0, y: 0, z: -33.55111}
+      bulletOrigin: {x: 0, y: 0, z: -22.86}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 7
-      bulletOrigin: {x: 0, y: 0, z: -50.326664}
+      bulletOrigin: {x: 0, y: 0, z: -34.29}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     - index: 8
-      bulletOrigin: {x: 0, y: 0, z: -67.10222}
+      bulletOrigin: {x: 0, y: 0, z: -45.72}
       useDifferentBullet: 0
       bulletParams: {fileID: 0}
     enabled: 1
   bulletParamsRandom: 0
   listOfPossibleBulletParams: []
   possibleBulletParams: 0
-  highestValues: {x: 0, y: 0, z: 67.10222}
-  lowestValues: {x: 0, y: 0, z: -67.10222}
+  highestValues: {x: 0, y: 0, z: 45.72}
+  lowestValues: {x: 0, y: 0, z: -45.72}
   hasBeenSerializedOnce: 1
   fakeBulletAmount: 0
   foldout0: 0
@@ -10684,7 +10684,7 @@ MonoBehaviour:
   inputTexture: {fileID: 0}
   outputTexture:
     tex: {fileID: 0}
-    widthInWindow: 0.5
+    widthInWindow: 0.503
     ingameDistance: 5
     orientation: 1
     justChangedOrientation: 0
@@ -10717,7 +10717,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 8059213
+  uniqueIndex: 1278001
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -13037,7 +13037,7 @@ MonoBehaviour:
   foldoutVFX: 0
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 6
+  currentlyDisplayedModule: 1
   canMove: 0
   canCollide: 0
   isVisible: 0
@@ -17829,7 +17829,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 1792118
+  uniqueIndex: 7576649
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -27593,7 +27593,7 @@ MonoBehaviour:
         m_Center: {x: 0, y: 0, z: 0}
         m_Extent: {x: 0, y: 0, z: 0}
       displayName: Shoot
-    - enabled: 1
+    - enabled: 0
       instructionType: 6
       waitTime:
         valueTree:
@@ -28711,7 +28711,7 @@ MonoBehaviour:
             indexOfTo: 0
             indexOfBlendedChildren: 
             weight: 0
-            headerTitle: Audio Clip
+            headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
             parameterType: 0
             relativeTo: 0
@@ -32519,7 +32519,7 @@ MonoBehaviour:
             weight: 0
             headerTitle: Wait Time
             blendColor: {r: 0, g: 0, b: 0, a: 0}
-            parameterType: 1
+            parameterType: 0
             relativeTo: 0
             parameterName: GameFrequency
           defaultValue: 1
@@ -37232,4 +37232,4 @@ MonoBehaviour:
   advancedFoldout: 1
   hasBeenSerializedOnce: 1
   focusedInstruction: 3
-  safetyForPlaymode: 164
+  safetyForPlaymode: 69
