@@ -50,6 +50,8 @@ namespace Bosses
                 {
                     ConditionType.HealthThreshold => cdtHealthThreshold,
                     ConditionType.CornerDistance => cdtCornerDistance,
+                    ConditionType.CenterDistance => cdtCenterDistance,
+                    ConditionType.BossDistance => cdtBossDistance,
                     ConditionType.None => cdtNone,
                     _ => null
                 };
@@ -63,5 +65,7 @@ namespace Bosses
         [SerializeField] private Cdt_None cdtNone;
         [SerializeField] private Cdt_HealthThreshold cdtHealthThreshold;
         [SerializeField] private Cdt_CornerDistance cdtCornerDistance;
+        [SerializeField] private Cdt_CenterDistance cdtCenterDistance;
+        [SerializeField] private Cdt_BossDistance cdtBossDistance;
     }
 }

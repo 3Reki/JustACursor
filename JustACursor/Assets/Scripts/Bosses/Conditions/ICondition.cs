@@ -1,17 +1,28 @@
-﻿using System;
-using UnityEngine;
-
-namespace Bosses.Conditions
+﻿namespace Bosses.Conditions
 {
+    public interface ICondition
+    {
+        public bool Check(Boss boss);
+    }
+    
     public enum ConditionType
     {
         None,
         HealthThreshold,
-        CornerDistance
+        CornerDistance,
+        CenterDistance,
+        BossDistance
     }
     
-    public interface ICondition
+    public enum Entity
     {
-        public bool Check(Boss boss);
+        Player,
+        Boss
+    }
+        
+    public enum RelativePosition
+    {
+        CloserThan,
+        FartherThan
     }
 }

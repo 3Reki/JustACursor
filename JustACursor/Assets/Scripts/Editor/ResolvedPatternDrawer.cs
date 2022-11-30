@@ -15,7 +15,7 @@ namespace Editor
 
             Vector2 propPosition = position.position;
             Vector2 defaultSize = new Vector2(position.width, EditorGUIUtility.singleLineHeight);
-            
+
             property.isExpanded = EditorGUI.Foldout(new Rect(propPosition, defaultSize), property.isExpanded, label);
             propPosition.y += EditorGUIUtility.singleLineHeight;
 
@@ -31,38 +31,37 @@ namespace Editor
             propPosition.y += EditorGUIUtility.singleLineHeight;
 
             float propHeight = 0;
-                
+
             switch (property.FindPropertyRelative("conditionType").GetEnumValue<ConditionType>())
             {
                 case ConditionType.HealthThreshold:
-                    DrawHealth();
+                    DrawConditionProperty("cdtHealthThreshold");
                     break;
                 case ConditionType.CornerDistance:
-                    DrawCornerDistance();
+                    DrawConditionProperty("cdtCornerDistance");
+                    break;
+                case ConditionType.CenterDistance:
+                    DrawConditionProperty("cdtCenterDistance");
+                    break;
+                case ConditionType.BossDistance:
+                    DrawConditionProperty("cdtBossDistance");
                     break;
             }
+
             propPosition.y += propHeight;
-            
+
             EditorGUI.PropertyField(new Rect(propPosition, defaultSize), property.FindPropertyRelative("pattern"));
             propPosition.y += EditorGUIUtility.singleLineHeight;
 
             EditorGUI.indentLevel -= 1;
             EditorGUI.EndProperty();
-            
-            void DrawHealth()
-            {
-                propHeight = EditorGUI.GetPropertyHeight(property.FindPropertyRelative("cdtHealthThreshold"), true);
-                EditorGUI.PropertyField(
-                    new Rect(propPosition.x, propPosition.y, defaultSize.x,
-                        propHeight), property.FindPropertyRelative("cdtHealthThreshold"), true);
-            }
 
-            void DrawCornerDistance()
+            void DrawConditionProperty(string propertyName)
             {
-                propHeight = EditorGUI.GetPropertyHeight(property.FindPropertyRelative("cdtCornerDistance"), true);
+                propHeight = EditorGUI.GetPropertyHeight(property.FindPropertyRelative(propertyName), true);
                 EditorGUI.PropertyField(
                     new Rect(propPosition.x, propPosition.y, defaultSize.x,
-                        propHeight), property.FindPropertyRelative("cdtCornerDistance"), true);
+                        propHeight), property.FindPropertyRelative(propertyName), true);
             }
         }
 
@@ -74,22 +73,27 @@ namespace Editor
             }
 
             float selectedPropertyHeight = 0f;
-            
+
             switch (property.FindPropertyRelative("conditionType").GetEnumValue<ConditionType>())
             {
                 case ConditionType.HealthThreshold:
-                    selectedPropertyHeight =
-                        EditorGUI.GetPropertyHeight(property.FindPropertyRelative("cdtHealthThreshold"), true);
+                    selectedPropertyHeight = GetConditionPropertyHeight("cdtHealthThreshold");
                     break;
                 case ConditionType.CornerDistance:
-                    selectedPropertyHeight =
-                        EditorGUI.GetPropertyHeight(property.FindPropertyRelative("cdtCornerDistance"), true);
+                    selectedPropertyHeight = GetConditionPropertyHeight("cdtCornerDistance");
+                    break;
+                case ConditionType.CenterDistance:
+                    selectedPropertyHeight = GetConditionPropertyHeight("cdtCenterDistance");
+                    break;
+                case ConditionType.BossDistance:
+                    selectedPropertyHeight = GetConditionPropertyHeight("cdtBossDistance");
                     break;
             }
 
             return EditorGUIUtility.singleLineHeight * 3 + selectedPropertyHeight;
-        }
 
-        
+            float GetConditionPropertyHeight(string propertyName) =>
+                EditorGUI.GetPropertyHeight(property.FindPropertyRelative(propertyName), true);
+        }
     }
 }

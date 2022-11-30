@@ -1,26 +1,21 @@
 ﻿using System;
 using Levels;
-using Player;
 using UnityEngine;
 
 namespace Bosses.Conditions
 {
     [Serializable]
-    public struct Cdt_CornerDistance : ICondition
+    public struct Cdt_CenterDistance : ICondition
     {
         [SerializeField] private Entity targetType;
-        [SerializeField] private Room.Corner corner;
         [SerializeField] private RelativePosition checkType;
         [SerializeField] private float distance;
         
         public bool Check(Boss boss)
         {
             Vector2 targetPosition = HandleTargetType(boss);
-            
-            if (corner == Room.Corner.Any)
-                return HandleCheckType(boss.mover.room.MinDistanceToCorners(targetPosition));
 
-            return HandleCheckType(boss.mover.room.DistanceToCorner(targetPosition, corner));
+            return HandleCheckType(boss.mover.room.DistanceToCenter(targetPosition));
         }
 
         private Vector2 HandleTargetType(Boss boss)
@@ -42,5 +37,7 @@ namespace Bosses.Conditions
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
+        
+        
     }
 }

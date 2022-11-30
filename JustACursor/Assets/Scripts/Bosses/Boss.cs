@@ -111,7 +111,7 @@ namespace Bosses
 
         private async void SetBossPhase(BossPhase newPhase)
         {
-            StopCurrentPhasePatterns();
+            StopCurrentPattern();
             animator.ChangePhase();
             isPaused = true;
         
@@ -123,7 +123,7 @@ namespace Bosses
 
         private async void Die()
         {
-            StopCurrentPhasePatterns();
+            StopCurrentPattern();
             isPaused = true;
 
             animator.Die();
@@ -135,7 +135,7 @@ namespace Bosses
             transform.root.gameObject.SetActive(false);
         }
 
-        protected void StopCurrentPhasePatterns()
+        protected void StopCurrentPattern()
         {
             currentPattern.Stop();
             currentPatternPhase = PatternPhase.None;
@@ -155,13 +155,14 @@ namespace Bosses
         [SerializeField] private KeyCode freeze = KeyCode.F;
         [SerializeField] private KeyCode refresh = KeyCode.R;
         [SerializeField] private KeyCode setHealthToOne = KeyCode.H;
+        [SerializeField] private KeyCode skipPattern = KeyCode.J;
         
         protected virtual void UpdateDebugInput()
         {
             // change to new profile
             if (Input.GetKeyDown(doPhaseOverride))
             {
-                // SetBossPhase(phaseOverride);
+                SetBossPhase(phaseOverride);
             }
 
             // freeze effect. Placeholder
@@ -180,7 +181,12 @@ namespace Bosses
                 currentHp = 1;
                 bossHP.text = "1";
                 animator.Hit();
-                // SetBossPhase(BossPhase.Three);
+                SetBossPhase(BossPhase.Three);
+            }
+
+            if (Input.GetKeyDown(skipPattern))
+            {
+                StopCurrentPattern();
             }
         }
 
