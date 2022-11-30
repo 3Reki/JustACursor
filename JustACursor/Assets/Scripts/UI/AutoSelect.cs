@@ -14,10 +14,6 @@ namespace UI {
             if (isFirstElement) selectable.Select();
         }
 
-        private void OnDisable() {
-            if (isFirstElement) selectable.Select();
-        }
-
         public void OnPointerEnter(PointerEventData eventData) {
             selectable.Select();
         }
