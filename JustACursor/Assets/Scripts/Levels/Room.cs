@@ -53,10 +53,10 @@ namespace Levels
         public enum Corner
         {
             Any = -1,
-            TopLeft = 0,
-            TopRight = 1,
-            BottomLeft = 2,
-            BottomRight = 3
+            NorthWest = 0,
+            NorthEast = 1,
+            SouthWest = 2,
+            SouthEast = 3
         }
     }
 }
