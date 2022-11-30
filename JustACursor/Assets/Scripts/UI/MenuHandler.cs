@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using Managers;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -34,7 +36,16 @@ namespace UI
             
             if (inputs.UI.Back.WasPressedThisFrame())
             {
-                if (uiStack.Count > 1) Close();
+                if (uiStack.Count <= 1) return;
+
+                TMP_Dropdown checkDropdown = eventSystem.currentSelectedGameObject.GetComponent<TMP_Dropdown>();
+                if (checkDropdown && checkDropdown.IsExpanded)
+                {
+                    checkDropdown.Hide();
+                    return;
+                }
+                
+                Close();
             }
         }
 
