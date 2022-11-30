@@ -1,4 +1,5 @@
 using System.Collections;
+using Managers;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -37,9 +38,9 @@ namespace Player
 
         public static Vector3 PlayerPosition { get; private set; }
 
-        private void Start() {
-            inputs = new PlayerInputs();
-            inputs.Enable();
+        private void Start()
+        {
+            inputs = InputManager.Instance.inputs;
             
             mainCamera = Camera.main;
         }
@@ -92,7 +93,7 @@ namespace Player
         }
 
         private void HandleShoot() {
-            if (isDashing) return;
+            if (isDashing || Time.timeScale == 0) return;
             if (inputs.Player.Shoot.IsPressed())
             {
                 if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
+using Player;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
@@ -24,8 +26,7 @@ namespace Dialogue
 
         private void Start()
         {
-            inputs = new PlayerInputs();
-            inputs.Enable();
+            inputs = InputManager.Instance.inputs;
             
             ShowDialogue(testDialogue);
         }
