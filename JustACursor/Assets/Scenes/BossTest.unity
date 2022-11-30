@@ -29388,6 +29388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf85d710baf436d9816082677e64b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPatternPhase: 0
   player: {fileID: 1243091281}
   bossData: {fileID: 11400000, guid: cb4a2a41c52acbb44acb421644cab47a, type: 2}
   movementHandler: {fileID: 662580484}

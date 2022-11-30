@@ -1,8 +1,7 @@
 using System;
 using System.Collections;
 using CameraScripts;
-using Interfaces;
-using ScriptableObjects;
+using Levels;
 using UnityEngine;
 
 namespace Player {

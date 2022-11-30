@@ -1,6 +1,5 @@
 using System.Collections;
 using BulletPro;
-using ScriptableObjects;
 using UnityEngine;
 
 namespace Player

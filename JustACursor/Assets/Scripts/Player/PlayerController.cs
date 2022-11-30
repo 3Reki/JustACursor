@@ -1,6 +1,4 @@
 using System.Collections;
-using Managers;
-using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

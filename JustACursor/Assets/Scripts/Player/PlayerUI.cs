@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
 

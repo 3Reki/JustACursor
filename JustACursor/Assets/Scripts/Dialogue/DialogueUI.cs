@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Managers;
 using Player;
-using ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;

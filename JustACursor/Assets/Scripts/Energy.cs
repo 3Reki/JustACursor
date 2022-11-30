@@ -1,6 +1,5 @@
 using BulletPro;
 using DG.Tweening;
-using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 

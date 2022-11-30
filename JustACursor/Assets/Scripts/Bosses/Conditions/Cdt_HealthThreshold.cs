@@ -11,7 +11,16 @@ namespace Bosses.Conditions
         
         public bool Check(Boss boss)
         {
-            return (float) boss.currentHp / boss.maxHP < threshold;
+            float currentPercentHP = (float) boss.currentHp / boss.maxHP;
+            return comparisonType switch
+            {
+                ComparisonType.InferiorTo => currentPercentHP < threshold,
+                ComparisonType.InferiorOrEqual => currentPercentHP <= threshold,
+                ComparisonType.SuperiorOrEqual => currentPercentHP >= threshold,
+                ComparisonType.Superior => currentPercentHP > threshold,
+                ComparisonType.Equal => Math.Abs(currentPercentHP - threshold) < 0.005,
+                _ => throw new ArgumentOutOfRangeException()
+            };
         }
         
         public enum ComparisonType
