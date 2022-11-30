@@ -32,25 +32,4 @@ namespace Bosses.Conditions
             Equal
         }
     }
-    
-    [Serializable]
-    public struct Cdt_Test : ICondition
-    {
-        [SerializeField] private ComparisonType comparisonType;
-        [SerializeField] private bool cond;
-        
-        public bool Check(Boss boss)
-        {
-            return cond;
-        }
-        
-        public enum ComparisonType
-        {
-            InferiorTo,
-            InferiorOrEqual,
-            SuperiorOrEqual,
-            Superior,
-            Equal
-        }
-    }
 }

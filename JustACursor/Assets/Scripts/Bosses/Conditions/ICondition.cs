@@ -7,7 +7,7 @@ namespace Bosses.Conditions
     {
         None,
         HealthThreshold,
-        Test
+        CornerDistance
     }
     
     public interface ICondition

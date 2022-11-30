@@ -44,7 +44,7 @@ Material:
     m_Floats:
     - _GlitchMax: 1
     - _GlitchMin: -1
-    - _GlitchPower: 2
+    - _GlitchPower: 0
     - _GlitchSpeed: 0.5
     m_Colors:
     - _Color: {r: 0.59607846, g: 2.6352942, b: 5.992157, a: 0}

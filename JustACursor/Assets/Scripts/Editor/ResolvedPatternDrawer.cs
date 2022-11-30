@@ -37,8 +37,8 @@ namespace Editor
                 case ConditionType.HealthThreshold:
                     DrawHealth();
                     break;
-                case ConditionType.Test:
-                    DrawTest();
+                case ConditionType.CornerDistance:
+                    DrawCornerDistance();
                     break;
             }
             propPosition.y += propHeight;
@@ -57,12 +57,12 @@ namespace Editor
                         propHeight), property.FindPropertyRelative("cdtHealthThreshold"), true);
             }
 
-            void DrawTest()
+            void DrawCornerDistance()
             {
-                propHeight = EditorGUI.GetPropertyHeight(property.FindPropertyRelative("cdtTest"), true);
+                propHeight = EditorGUI.GetPropertyHeight(property.FindPropertyRelative("cdtCornerDistance"), true);
                 EditorGUI.PropertyField(
                     new Rect(propPosition.x, propPosition.y, defaultSize.x,
-                        propHeight), property.FindPropertyRelative("cdtTest"), true);
+                        propHeight), property.FindPropertyRelative("cdtCornerDistance"), true);
             }
         }
 
@@ -81,9 +81,9 @@ namespace Editor
                     selectedPropertyHeight =
                         EditorGUI.GetPropertyHeight(property.FindPropertyRelative("cdtHealthThreshold"), true);
                     break;
-                case ConditionType.Test:
+                case ConditionType.CornerDistance:
                     selectedPropertyHeight =
-                        EditorGUI.GetPropertyHeight(property.FindPropertyRelative("cdtTest"), true);
+                        EditorGUI.GetPropertyHeight(property.FindPropertyRelative("cdtCornerDistance"), true);
                     break;
             }
 

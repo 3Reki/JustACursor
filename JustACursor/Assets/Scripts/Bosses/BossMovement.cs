@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Levels;
 using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -7,25 +8,15 @@ namespace Bosses
 {
     public class BossMovement : MonoBehaviour
     {
+        public Room room;
+        
         [SerializeField] private Transform bossTransform;
         [SerializeField] private PlayerController player;
-        [SerializeField] private Transform roomTopLeftCorner;
-        [SerializeField] private Transform roomBottomRightCorner;
         [SerializeField] private Transform[] coneFirePoints;
-        
-        private Vector2 levelCenter;
-
-        private void Awake()
-        {
-            Vector3 topLeftPos = roomTopLeftCorner.position;
-            Vector3 bottomRightPos = roomBottomRightCorner.position;
-            levelCenter = new Vector2((bottomRightPos.x + topLeftPos.x) * 0.5f,
-                (topLeftPos.y + bottomRightPos.y) * 0.5f);
-        }
 
         public void GoToCenter(float moveDuration)
         {
-            MoveTo(levelCenter, moveDuration);
+            MoveTo(room.centerPosition, moveDuration);
         }
 
         public void GoToRandomCorner(float moveDuration)

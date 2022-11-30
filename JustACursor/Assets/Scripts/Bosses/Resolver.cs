@@ -7,7 +7,6 @@ using Random = UnityEngine.Random;
 
 namespace Bosses
 {
-    //[CreateAssetMenu(fileName = "Resolver", menuName = "Just A Cursor/Pattern Resolver", order = 0)]
     [Serializable]
     public class Resolver
     {
@@ -50,7 +49,7 @@ namespace Bosses
                 return conditionType switch
                 {
                     ConditionType.HealthThreshold => cdtHealthThreshold,
-                    ConditionType.Test => cdtTest,
+                    ConditionType.CornerDistance => cdtCornerDistance,
                     ConditionType.None => cdtNone,
                     _ => null
                 };
@@ -63,6 +62,6 @@ namespace Bosses
 
         [SerializeField] private Cdt_None cdtNone;
         [SerializeField] private Cdt_HealthThreshold cdtHealthThreshold;
-        [SerializeField] private Cdt_Test cdtTest;
+        [SerializeField] private Cdt_CornerDistance cdtCornerDistance;
     }
 }

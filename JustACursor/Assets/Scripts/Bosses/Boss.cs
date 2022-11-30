@@ -19,6 +19,7 @@ namespace Bosses
         public int maxHP => bossData.startingHP;
         public BossPhase currentBossPhase { get; private set; }
         public BossMovement mover => movementHandler;
+        public PlayerController targetedPlayer => player;
         protected int currentPatternIndex { get; set; }
         public PatternPhase currentPatternPhase = PatternPhase.None;
 
