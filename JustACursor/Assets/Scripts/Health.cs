@@ -4,48 +4,61 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
-    private int currentHealth;
+    public int MaxHealth => maxHealth;
+    public int CurrentHealth => currentHealth;
 
-    private ScriptableObject healthData;
+    private int maxHealth = -1;
+    private int currentHealth = -1;
+    
     public UnityEvent onHealthGain;
     public UnityEvent onHealthLose;
     public UnityEvent onDeath;
 
     private void Start()
     {
+        currentHealth = MaxHealth;
+    }
+
+    public void Init(int maxHealth)
+    {
+        this.maxHealth = maxHealth;
         currentHealth = maxHealth;
     }
 
     public void GainHealth(int amount)
     {
-        currentHealth = Math.Clamp(currentHealth + amount, 0, maxHealth);
+        if (maxHealth == -1) Debug.LogError("Health has not been initialized!");
+        
+        currentHealth = Math.Clamp(currentHealth + amount, 0, MaxHealth);
         onHealthGain.Invoke();
     }
 
     public void LoseHealth(int amount)
     {
-        currentHealth = Math.Clamp(currentHealth - amount, 0, maxHealth);
+        if (maxHealth == -1) Debug.LogError("Health has not been initialized!");
+        
+        currentHealth = Math.Clamp(currentHealth - amount, 0, MaxHealth);
         onHealthLose.Invoke();
         
         if (currentHealth == 0) onDeath.Invoke();
     }
 
+    public float GetRatio()
+    {
+        return (float)currentHealth / maxHealth;
+    }
+
+    public void SetHealth(int amount)
+    {
+        if (amount > maxHealth) Debug.LogError("Can't set health above max health!");
+        currentHealth = amount;
+    }
+
     public void Heal() {
-        GainHealth(maxHealth);
+        GainHealth(MaxHealth);
     }
 
     public void Kill() {
-        LoseHealth(maxHealth);
-    }
-
-    public int GetCurrentHealth()
-    {
-        return currentHealth;
-    }
-
-    public int GetMaxHealth()
-    {
-        return maxHealth;
+        LoseHealth(MaxHealth);
     }
 }
