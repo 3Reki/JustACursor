@@ -26,28 +26,30 @@ namespace CameraScripts
             Bounds triggerBounds = GetComponent<BoxCollider2D>().bounds;
             Vector3 position = triggerBounds.center;
             Vector3 size = triggerBounds.size;
-            
-            Gizmos.color = new Color(1, .4f, .4f);
+
+            Gizmos.color = new Color(0, 0, 1);
             Gizmos.DrawWireCube(position, size);
-            Gizmos.color = new Color(1, .15f, .15f, .7f);
+            Gizmos.color = new Color(30/255f, 144/255f, 1, .75f);
             Gizmos.DrawCube(position, size);
             
-            var style = new GUIStyle
+            /*var style = new GUIStyle
             {
                 alignment = TextAnchor.MiddleCenter,
                 fontStyle = FontStyle.Bold,
-                normal = new GUIStyleState {textColor = Color.white}
+                fixedWidth = triggerBounds.size.x,
+                normal = new GUIStyleState { textColor = Color.white }
             };
-
-            Handles.Label(position, "FixCameraTrigger", style);
-
+            
+            //Handles.Label(position, "FixCameraTrigger", style);*/
         }
 
         private void OnDrawGizmosSelected()
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = new Color(0, 0, 1);
             Gizmos.DrawLine(transform.position, transform.TransformPoint(anchorPosition));
-            Gizmos.DrawSphere(transform.TransformPoint(anchorPosition), 1f);
+            Gizmos.DrawWireSphere(transform.TransformPoint(anchorPosition), .5f);
+            Gizmos.color = new Color(30/255f, 144/255f, 1, .75f);
+            Gizmos.DrawSphere(transform.TransformPoint(anchorPosition), .5f);
         }
 #endif
     }
