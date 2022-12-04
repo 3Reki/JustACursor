@@ -601,6 +601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2790930019707531674}
   - component: {fileID: 2790930019707531669}
+  - component: {fileID: 7959131784298348654}
   m_Layer: 0
   m_Name: Boss_Virus_Graph
   m_TagString: Untagged
@@ -644,9 +645,111 @@ Animation:
   - {fileID: 7400000, guid: 65520a53d287aa94ba5bbc313884ea0e, type: 2}
   - {fileID: 7400000, guid: d2ae788f38499f24ab528b3706f63289, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &7959131784298348654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2790930019707531685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71919579cb2b4edb8103245c0000a414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animation: {fileID: 2790930019707531669}
+  bodySprite: {fileID: 2790930018455270799}
+  <attackAnimLength>k__BackingField: 0
+  <phaseChangeAnimLength>k__BackingField: 1
+  <hitAnimLength>k__BackingField: 0
+  <deathAnimLength>k__BackingField: 3.6
+  onAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7959131784298348654}
+        m_TargetAssemblyTypeName: Bosses.VirusAnimations, Assembly-CSharp
+        m_MethodName: PlayAnimation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7400000, guid: d059d2bcf1ca107429d8e3724d5013f0, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AnimationClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7959131784298348654}
+        m_TargetAssemblyTypeName: Bosses.BossAnimations, Assembly-CSharp
+        m_MethodName: ColorLerp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPhaseChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7959131784298348654}
+        m_TargetAssemblyTypeName: Bosses.VirusAnimations, Assembly-CSharp
+        m_MethodName: PlayAnimation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7400000, guid: 9a55806e4fbe6ca47bfc5aff2c04e29c, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AnimationClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6190450907929523742}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6190450908297225395}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7959131784298348654}
+        m_TargetAssemblyTypeName: Bosses.VirusAnimations, Assembly-CSharp
+        m_MethodName: PlayAnimation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7400000, guid: 65520a53d287aa94ba5bbc313884ea0e, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AnimationClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6190450906261169186
 GameObject:
   m_ObjectHideFlags: 0

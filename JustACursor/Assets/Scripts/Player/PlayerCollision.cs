@@ -14,9 +14,24 @@ namespace Player {
 
         private PlayerData data => playerController.data;
 
-        private void Start()
+        private void OnEnable()
         {
-            health.onHealthLose.AddListener(() => CameraController.ShakeCamera(data.onHitShakeIntensity, data.onHitShakeDuration));
+            health.onHealthLose.AddListener(Shake);
+        }
+
+        private void OnDisable()
+        {
+            health.onHealthLose.RemoveListener(Shake);
+        }
+        
+        private void Awake()
+        {
+            health.Init(data.maxHealth);
+        }
+
+        private void Shake()
+        {
+            CameraController.ShakeCamera(data.onHitShakeIntensity, data.onHitShakeDuration);
         }
 
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)

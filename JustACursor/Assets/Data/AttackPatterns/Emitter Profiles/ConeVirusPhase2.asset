@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Cone
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 12780110
+  uniqueIndex: 5103184
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -2363,7 +2363,7 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 5
+  currentlyDisplayedModule: 8
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -8230,7 +8230,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 12092646
+  uniqueIndex: 11665191
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -10717,7 +10717,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3059376
+  uniqueIndex: 3950204
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -17829,7 +17829,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 3936742
+  uniqueIndex: 9914738
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:

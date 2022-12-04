@@ -30,7 +30,6 @@ namespace Player
 
             var angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
 
-            Debug.Log(data.rotationCurve.Evaluate(rotationProgress));
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, angle),
                 data.rotationCurve.Evaluate(rotationProgress));
 

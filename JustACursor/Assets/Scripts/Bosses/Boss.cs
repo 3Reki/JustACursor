@@ -2,9 +2,8 @@ using System;
 using System.Threading.Tasks;
 using Bosses.Patterns;
 using BulletPro;
-using JetBrains.Annotations;
+using Levels;
 using Player;
-using TMPro;
 using UnityEngine;
 
 namespace Bosses
@@ -12,10 +11,9 @@ namespace Bosses
     public enum BossPhase { None = -1, One = 0, Two = 1, Three = 2 }
     public enum PatternPhase { None, Start, Update, Stop }
 
-    public abstract class Boss : MonoBehaviour
+    public abstract class Boss : MonoBehaviour, IDamageable
     {
         public BulletEmitter[] bulletEmitter => emitters;
-        public int currentHp { get; private set; }
         public int maxHP => bossData.startingHP;
         public BossPhase currentBossPhase { get; private set; }
         public BossMovement mover => movementHandler;
@@ -27,12 +25,17 @@ namespace Bosses
         [SerializeField] protected BossData bossData;
         [SerializeField] private BossMovement movementHandler;
         [SerializeField] protected BossAnimations animator;
-        [SerializeField] private TMP_Text bossHP;
         [SerializeField] private BulletEmitter[] emitters = new BulletEmitter[3]; // must be used only for init
+        public Health health;
         
         private Pattern currentPattern;
         private bool isFrozen;
         private bool isPaused;
+
+        private void Awake()
+        {
+            health.Init(bossData.startingHP);
+        }
 
         private void Start()
         {
@@ -43,34 +46,23 @@ namespace Bosses
         {
             UpdateDebugInput();
 
-            if (isPaused)
-                return;
+            if (isPaused) return;
 
             HandlePatterns();
         }
 
-        protected void Init()
+        private void Init()
         {
-            currentHp = bossData.startingHP;
             currentPatternIndex = 0;
             isPaused = false;
             isFrozen = false;
             //patternCooldownTimer = bossData.patternCooldown;
-            bossHP.text = $"{currentHp}";
         }
-
-        // PLACEHOLDER
-        // REFACTORING: should be moved elsewere
-        [UsedImplicitly] // Used by Bullet Receiver onHit event
-        public void TakeDamage(BulletPro.Bullet bullet, Vector3 hitPoint)
+        
+        public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
-            if (isPaused)
-                return;
-
-            currentHp -= 1;
-            bossHP.text = $"{currentHp}";
-            animator.Hit();
-
+            health.LoseHealth(bullet.moduleParameters.GetInt("Damage"));
+            
             switch (currentBossPhase)
             {
                 case BossPhase.None:
@@ -82,11 +74,12 @@ namespace Bosses
                 case BossPhase.Two:
                     if (CheckPhase3HPThreshold()) SetBossPhase(BossPhase.Three);
                     break;
-                case BossPhase.Three:
-                    if (currentHp <= 0) Die();
-                    break;
             }
         }
+        
+        protected bool CheckPhase2HPThreshold() => health.GetRatio() <= bossData.phase2HPThreshold;
+
+        protected bool CheckPhase3HPThreshold() => health.GetRatio() <= bossData.phase3HPThreshold;
 
         private void HandlePatterns()
         {
@@ -121,7 +114,17 @@ namespace Bosses
             isPaused = false;
         }
 
-        private async void Die()
+        public void Heal()
+        {
+            
+        }
+
+        public void Hit()
+        {
+            animator.Hit();
+        }
+
+        public async void Die()
         {
             StopCurrentPattern();
             isPaused = true;
@@ -141,9 +144,7 @@ namespace Bosses
             currentPatternPhase = PatternPhase.None;
         }
 
-        protected bool CheckPhase2HPThreshold() => (float)currentHp / bossData.startingHP <= bossData.phase2HPThreshold;
-
-        protected bool CheckPhase3HPThreshold() => (float)currentHp / bossData.startingHP <= bossData.phase3HPThreshold;
+        
 
         #region Debug
 
@@ -178,8 +179,7 @@ namespace Bosses
 
             if (Input.GetKeyDown(setHealthToOne))
             {
-                currentHp = 1;
-                bossHP.text = "1";
+                health.SetHealth(1);
                 animator.Hit();
                 SetBossPhase(BossPhase.Three);
             }
