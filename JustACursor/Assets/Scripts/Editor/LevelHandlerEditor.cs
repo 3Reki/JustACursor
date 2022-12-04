@@ -8,7 +8,6 @@ namespace Editor
     public class LevelHandlerEditor : UnityEditor.Editor
     {
         private LevelHandler editedLevelHandler;
-        private float scaleDecreaseValue;
 
         private void OnEnable()
         {
@@ -20,56 +19,48 @@ namespace Editor
             serializedObject.Update();
             DrawDefaultInspector();
 
-            //scaleDecreaseValue = EditorGUILayout.FloatField("Scale Decrease Per Floor :",scaleDecreaseValue);
+            GUILayout.Space(10);
+            GUILayout.Label("Editor Only", EditorStyles.boldLabel);
+            if (GUILayout.Button("Get Components"))
+            {
+                if (Application.isPlaying)
+                {
+                    Debug.LogWarning("Editor Only !");
+                    return;
+                }
+                editedLevelHandler.GetComponents();
+            }
 
             if (GUILayout.Button("Setup Floors"))
             {
-                editedLevelHandler.OrderFloors();
-                editedLevelHandler.ScaleFloors();
-                
-                /*List<Floor> _floors = editedLevelHandler.Floors;
-                
-                TilemapRenderer[] _tilemapRenderers = _floors[0].GetComponentsInChildren<TilemapRenderer>();
-                SpriteRenderer[] _spriteRenderers = _floors[0].GetComponentsInChildren<SpriteRenderer>();
-                foreach (TilemapRenderer _renderer in _tilemapRenderers)
+                if (Application.isPlaying)
                 {
-                    _renderer.sortingLayerName = "CurrentFloor";
-                    _renderer.sortingOrder = 0;
+                    Debug.LogWarning("Editor Only !");
+                    return;
                 }
-                        
-                foreach (SpriteRenderer _renderer in _spriteRenderers)
-                {
-                    _renderer.sortingLayerName = "CurrentFloor";
-                    _renderer.sortingOrder = -1;
-                }
-                
-                for (int i = 1; i < _floors.Count; i++)
-                {
-                    float _newScale = Mathf.Clamp(1 - scaleDecreaseValue * i,0.1f,1);
-                    _floors[i].transform.localScale = new Vector3(_newScale, _newScale, _newScale);
-                    _tilemapRenderers = _floors[i].GetComponentsInChildren<TilemapRenderer>();
-                    _spriteRenderers = _floors[i].GetComponentsInChildren<SpriteRenderer>();
-                    
-                    foreach (TilemapRenderer _renderer in _tilemapRenderers)
-                    {
-                        _renderer.sortingLayerName = "OtherFloor";
-                        _renderer.sortingOrder = -i;
-                    }
-                        
-                    foreach (SpriteRenderer _renderer in _spriteRenderers)
-                    {
-                        _renderer.sortingLayerName = "OtherFloor";
-                        _renderer.sortingOrder = -i-1;
-                    }
-                }*/
+                editedLevelHandler.SetupFloors();
             }
-
-            if (Application.isPlaying)
+                
+            if (GUILayout.Button("Reset All (for editing)"))
             {
-                if (GUILayout.Button("Go to next floor"))
+                if (Application.isPlaying)
                 {
-                    editedLevelHandler.GoToNextFloor();
+                    Debug.LogWarning("Editor Only !");
+                    return;
                 }
+                editedLevelHandler.ResetAll();
+            }
+            
+            GUILayout.Space(10);
+            GUILayout.Label("Runtime Only", EditorStyles.boldLabel);
+            if (GUILayout.Button("Go to Next Floor"))
+            {
+                if (!Application.isPlaying)
+                {
+                    Debug.LogWarning("Runtime Only !");
+                    return;
+                }
+                editedLevelHandler.GoToNextFloor();
             }
 
             serializedObject.ApplyModifiedProperties();

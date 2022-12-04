@@ -9,7 +9,7 @@ namespace Player
     {
         [SerializeField] private PlayerController playerController;
         [SerializeField] private Image respawnScreen;
-        [SerializeField] private Transform respawnPosition;
+        [SerializeField] private Transform respawnPoint;
 
         [Header("Debug")]
         [SerializeField] private KeyCode respawnKey;
@@ -34,7 +34,7 @@ namespace Player
 
         public void SetCheckpoint(Transform newCheckpoint)
         {
-            respawnPosition.position = newCheckpoint.position;
+            respawnPoint = newCheckpoint;
         }
 
         private IEnumerator RespawnCR()
@@ -43,7 +43,7 @@ namespace Player
             respawnScreen.DOFade(1, data.respawnFadeIn).SetEase(Ease.Linear);
             yield return new WaitForSeconds(data.respawnFadeIn);
         
-            transform.position = respawnPosition.position;
+            transform.SetPositionAndRotation(respawnPoint.position,respawnPoint.rotation);
             yield return new WaitForSeconds(data.respawnStay);
         
             respawnScreen.DOFade(0, data.respawnFadeOut).SetEase(Ease.Linear);

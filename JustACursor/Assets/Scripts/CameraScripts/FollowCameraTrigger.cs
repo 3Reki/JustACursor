@@ -1,7 +1,5 @@
 using DG.Tweening;
 using UnityEngine;
-#if UNITY_EDITOR
-#endif
 
 namespace CameraScripts
 {
@@ -20,15 +18,6 @@ namespace CameraScripts
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
-            Bounds triggerBounds = GetComponent<BoxCollider2D>().bounds;
-            Vector3 position = triggerBounds.center;
-            Vector3 size = triggerBounds.size;
-            
-            Gizmos.color = new Color(1, 0, 0);
-            Gizmos.DrawWireCube(position, size);
-            Gizmos.color = new Color(178/255f, 34/255f, 34/255f, .75f);
-            Gizmos.DrawCube(position, size);
-            
             /*var style = new GUIStyle
             {
                 alignment = TextAnchor.MiddleCenter,
@@ -38,6 +27,18 @@ namespace CameraScripts
             };
 
             Handles.Label(position, "FollowCameraTrigger", style);*/
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Bounds triggerBounds = GetComponent<BoxCollider2D>().bounds;
+            Vector3 position = triggerBounds.center;
+            Vector3 size = triggerBounds.size;
+            
+            Gizmos.color = new Color(1, 0, 0);
+            Gizmos.DrawWireCube(position, size);
+            Gizmos.color = new Color(.5f, 0, 0, .5f);
+            Gizmos.DrawCube(position, size);
         }
 #endif
     }

@@ -1,68 +1,104 @@
-using System.Collections.Generic;
 using CameraScripts;
-using DG.Tweening;
+using Player;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace Levels
 {
     public class LevelHandler : MonoBehaviour
     {
-        public List<Floor> Floors;
-        [SerializeField] private float scaleDecreaseValue;
-        [SerializeField] private Transform player;
-
+        [SerializeField] private PlayerRespawn player;
+        [SerializeField] private Floor[] floors;
+        [SerializeField, Range(0.2f,0.05f)] private float scaleDecreaseValue;
+        [SerializeField, Range(0.1f,2f)] private float scaleDuration;
+        
         private int currentFloorIndex;
         
+        public delegate void OnEndFloor();
+        public static OnEndFloor onEndFloor;
+
+        private void OnEnable()
+        {
+            onEndFloor += GoToNextFloor;
+        }
+
+        private void OnDisable()
+        {
+            onEndFloor -= GoToNextFloor;
+        }
+
+        private void Start()
+        {
+            player.SetCheckpoint(floors[currentFloorIndex].StartPoint);
+        }
+
+        public void GetComponents()
+        {
+            floors = GetComponentsInChildren<Floor>(true);
+            player = FindObjectOfType<PlayerRespawn>();
+        }
+
         public void GoToNextFloor()
         {
-            Floors[currentFloorIndex].gameObject.SetActive(false);
+            //Disable current floor
+            floors[currentFloorIndex].gameObject.SetActive(false);
             currentFloorIndex++;
             
-            player.transform.SetPositionAndRotation(Floors[currentFloorIndex].StartPoint.position, Floors[currentFloorIndex].StartPoint.rotation);
+            if (currentFloorIndex >= floors.Length) return;
             
-            OrderFloors();
-            ScaleFloors();
+            //Next floor
+            CameraController.instance.enabled = true;
+            player.transform.SetPositionAndRotation(floors[currentFloorIndex].StartPoint.position, floors[currentFloorIndex].StartPoint.rotation);
+            player.SetCheckpoint(floors[currentFloorIndex].StartPoint);
+            UpdateFloors();
         }
 
-        public void OrderFloors()
+        public void SetupFloors()
         {
-            for (int i = currentFloorIndex; i < Floors.Count; i++)
+            for (int i = 0; i < floors.Length; i++)
             {
-                TilemapRenderer[] tilemapRenderers = Floors[i].GetComponentsInChildren<TilemapRenderer>();
-                SpriteRenderer[] spriteRenderers = Floors[i].GetComponentsInChildren<SpriteRenderer>();
-                    
-                foreach (TilemapRenderer tmRenderer in tilemapRenderers)
-                {
-                    tmRenderer.sortingLayerName = (i == currentFloorIndex) ? "CurrentFloor" : "OtherFloor";
-                    tmRenderer.sortingOrder = -i;
-                }
-                        
-                foreach (SpriteRenderer tmRenderer in spriteRenderers)
-                {
-                    tmRenderer.sortingLayerName = (i == currentFloorIndex) ? "CurrentFloor" : "OtherFloor";
-                    tmRenderer.sortingOrder = -i-1;
-                }
+                Floor floor = floors[i];
+                floor.GetComponents();
+                
+                float scaleValue = Mathf.Clamp(1 - scaleDecreaseValue * i,0.1f,1);
+                floor.Scale(scaleValue,scaleDuration);
+                
+                floor.SetAllTriggerState(i == 0);
+
+                string sortingLayerName = (i == 0) ? "CurrentFloor" : "OtherFloor";
+                floor.SetSortingLayer(sortingLayerName,i);
             }
+            
+            Debug.Log("Floors have been setup successfully!");
         }
 
-        public void ScaleFloors()
+        public void ResetAll()
         {
-            for (int i = currentFloorIndex; i < Floors.Count; i++)
+            for (int i = 0; i < floors.Length; i++)
             {
-                float newScale = Mathf.Clamp(1 - scaleDecreaseValue * i,0.1f,1);
-                if (Application.isPlaying)
-                {
-                    Floors[i].transform.DOScale(new Vector3(newScale,newScale,newScale),1.5f);
-                }
-                else
-                {
-                    Floors[i].transform.localScale = new Vector3(newScale, newScale, newScale);
-                }
+                Floor floor = floors[i];
+                
+                floor.Scale(1,scaleDuration);
+                floor.SetAllTriggerState(true);
+                floor.SetSortingLayer("CurrentFloor",i);
+            }
+            
+            Debug.Log("Floors have been reset successfully!");
+        }
+
+        private void UpdateFloors()
+        {
+            floors[currentFloorIndex].SetAllTriggerState(true);
+            
+            for (int i = currentFloorIndex; i < floors.Length; i++)
+            {
+                Floor floor = floors[i];
+                
+                float scaleValue = Mathf.Clamp(1 - scaleDecreaseValue * i,0.1f,1);
+                floor.Scale(scaleValue,scaleDuration);
+
+                string sortingLayerName = (i == currentFloorIndex) ? "CurrentFloor" : "OtherFloor";
+                floor.SetSortingLayer(sortingLayerName,i);
             }
         }
-        
-        public delegate void OnEndFloor();
-        public static OnEndFloor onEndFloor; 
     }
 }
