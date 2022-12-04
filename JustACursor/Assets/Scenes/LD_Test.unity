@@ -7944,21 +7944,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 436086211}
     m_Modifications:
-    - target: {fileID: 189038058272294056, guid: 940cc5dd305f71642a1575b5bd34c3c9, type: 3}
-      propertyPath: m_SortingOrder
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 189038058272294057, guid: 940cc5dd305f71642a1575b5bd34c3c9, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 189038058272294057, guid: 940cc5dd305f71642a1575b5bd34c3c9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 189038058272294057, guid: 940cc5dd305f71642a1575b5bd34c3c9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 189038058272294057, guid: 940cc5dd305f71642a1575b5bd34c3c9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8003,10 +7991,6 @@ PrefabInstance:
     - target: {fileID: 189038058272294071, guid: 940cc5dd305f71642a1575b5bd34c3c9, type: 3}
       propertyPath: m_Name
       value: Filtre_Cathodique
-      objectReference: {fileID: 0}
-    - target: {fileID: 189038058272294071, guid: 940cc5dd305f71642a1575b5bd34c3c9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 940cc5dd305f71642a1575b5bd34c3c9, type: 3}
