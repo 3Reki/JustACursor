@@ -38,6 +38,14 @@ MonoBehaviour:
       cdtBossDistance:
         checkType: 0
         distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
     - conditionType: 0
       pattern: {fileID: 11400000, guid: 3fc21f73121932b4cb6a185b6a79cfd8, type: 2}
       weight: 0
@@ -56,6 +64,14 @@ MonoBehaviour:
       cdtBossDistance:
         checkType: 0
         distance: 5
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
   - choices:
     - conditionType: 0
       pattern: {fileID: 11400000, guid: 55715f107a82c1c42a186331ac3dc527, type: 2}
@@ -75,6 +91,14 @@ MonoBehaviour:
       cdtBossDistance:
         checkType: 0
         distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
     - conditionType: 0
       pattern: {fileID: 11400000, guid: 032ce65965c73f04e9949d3db8ec14a1, type: 2}
       weight: 0
@@ -93,6 +117,14 @@ MonoBehaviour:
       cdtBossDistance:
         checkType: 0
         distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
   - choices:
     - conditionType: 0
       pattern: {fileID: 11400000, guid: 1b916d5b02ba9d04f89874195f7149e8, type: 2}
@@ -112,6 +144,14 @@ MonoBehaviour:
       cdtBossDistance:
         checkType: 0
         distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
     - conditionType: 0
       pattern: {fileID: 11400000, guid: 55eb0118170ed944da4f234c5cae228b, type: 2}
       weight: 0
@@ -130,3 +170,11 @@ MonoBehaviour:
       cdtBossDistance:
         checkType: 0
         distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0

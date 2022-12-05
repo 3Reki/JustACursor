@@ -4,16 +4,7 @@
     {
         public bool Check(Boss boss);
     }
-    
-    public enum ConditionType
-    {
-        None,
-        HealthThreshold,
-        CornerDistance,
-        CenterDistance,
-        BossDistance
-    }
-    
+
     public enum Entity
     {
         Player,
@@ -22,7 +13,7 @@
         
     public enum RelativePosition
     {
-        CloserThan,
-        FartherThan
+        Inside,
+        Outside
     }
 }

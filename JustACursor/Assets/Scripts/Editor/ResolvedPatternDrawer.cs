@@ -1,5 +1,4 @@
 ﻿using Bosses;
-using Bosses.Conditions;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -46,6 +45,12 @@ namespace Editor
                 case ConditionType.BossDistance:
                     DrawConditionProperty("cdtBossDistance");
                     break;
+                case ConditionType.Quarter:
+                    DrawConditionProperty("cdtQuarter");
+                    break;
+                case ConditionType.Half:
+                    DrawConditionProperty("cdtHalf");
+                    break;
             }
 
             propPosition.y += propHeight;
@@ -87,6 +92,12 @@ namespace Editor
                     break;
                 case ConditionType.BossDistance:
                     selectedPropertyHeight = GetConditionPropertyHeight("cdtBossDistance");
+                    break;
+                case ConditionType.Quarter:
+                    selectedPropertyHeight = GetConditionPropertyHeight("cdtQuarter");
+                    break;
+                case ConditionType.Half:
+                    selectedPropertyHeight = GetConditionPropertyHeight("cdtHalf");
                     break;
             }
 
