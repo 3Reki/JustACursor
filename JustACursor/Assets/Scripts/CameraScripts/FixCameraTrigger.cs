@@ -36,14 +36,20 @@ namespace CameraScripts
             Vector3 position = triggerBounds.center;
             Vector3 size = triggerBounds.size;
 
-            Gizmos.color = new Color(0, 0, 1);
-            Gizmos.DrawWireCube(position, size);
-            Gizmos.DrawLine(transform.position, transform.TransformPoint(anchorPosition));
-            Gizmos.DrawWireSphere(transform.TransformPoint(anchorPosition), .5f);
+            Camera cam = Camera.main;
+            Vector3 camPos = transform.TransformPoint(anchorPosition);
+            float height = 2f * viewSize;
+            float width = height * cam.aspect;
             
-            Gizmos.color = new Color(0, 0, .5f, .5f);
+            Gizmos.color = new Color(0, .5f, 1);
             Gizmos.DrawCube(position, size);
-            Gizmos.DrawSphere(transform.TransformPoint(anchorPosition), .5f);
+            
+            Gizmos.color = new Color(0, 0, 1f, .5f);
+            Gizmos.DrawWireCube(position, size);
+            Gizmos.DrawLine(transform.position,camPos);
+            Gizmos.DrawWireCube(camPos, new Vector2(width, height));
+            Gizmos.DrawLine(new Vector3(camPos.x-width/2,camPos.y+height/2), new Vector3(camPos.x+width/2,camPos.y-height/2));
+            Gizmos.DrawLine(new Vector3(camPos.x-width/2,camPos.y-height/2), new Vector3(camPos.x+width/2,camPos.y+height/2));
         }
 #endif
     }
