@@ -2,7 +2,7 @@ using CameraScripts;
 using Player;
 using UnityEngine;
 
-namespace Levels
+namespace LD
 {
     public class LevelHandler : MonoBehaviour
     {

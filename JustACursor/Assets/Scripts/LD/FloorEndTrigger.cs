@@ -1,7 +1,7 @@
 ﻿using Player;
 using UnityEngine;
 
-namespace Levels
+namespace LD
 {
     public class FloorEndTrigger : MonoBehaviour
     {

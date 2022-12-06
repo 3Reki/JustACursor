@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Levels
+namespace LD
 {
     public class Floor : MonoBehaviour
     {

@@ -1,8 +1,7 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using UnityEngine;
 
-namespace Levels
+namespace LD
 {
     public class Room : MonoBehaviour
     {

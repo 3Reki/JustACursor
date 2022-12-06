@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using CameraScripts;
-using Levels;
 using UnityEngine;
 
 namespace Player {

@@ -630,7 +630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 8213265501839806752}
   respawnScreen: {fileID: 8381984491438418184}
-  respawnPosition: {fileID: 0}
+  respawnPoint: {fileID: 0}
   respawnKey: 114
 --- !u!114 &3615676464410597287
 MonoBehaviour:
@@ -644,7 +644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83c06037a7cfc94098aa9b1122f4dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
   onHealthGain:
     m_PersistentCalls:
       m_Calls:

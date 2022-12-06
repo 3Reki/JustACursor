@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Levels
+namespace LD
 {
     public class Tourniquet : MonoBehaviour
     {
