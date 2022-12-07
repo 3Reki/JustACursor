@@ -45,11 +45,190 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emitterProfile: {fileID: 11400000, guid: d674f87d908e7ad4a871edf11f53d03a, type: 2}
-  patternOrigin: {fileID: 6995481266605536940}
+  patternOrigin: {fileID: 3695938181335937323}
   playAtStart: 0
   useDefaultGizmoColor: 1
   gizmoColor: {r: 0, g: 1, b: 0, a: 1}
-  gizmoSize: 0.5
+  gizmoSize: 0.32
+--- !u!1 &2075680991202118078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5258055325957493252}
+  - component: {fileID: 525236000826725874}
+  m_Layer: 3
+  m_Name: Hitbox (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5258055325957493252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075680991202118078}
+  m_LocalRotation: {x: 0, y: 0, z: -0.15901972, w: 0.9872754}
+  m_LocalPosition: {x: -0.55, y: -0.664, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9186319392919533144}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -18.3}
+--- !u!114 &525236000826725874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075680991202118078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50e756f139e8884f93ef2eca2eef78d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 5258055325957493252}
+  colliderType: 1
+  startingChildren: []
+  syncEnable: 1
+  syncDisable: 1
+  syncCollisionTags: 1
+  hitboxSize: 1.75
+  hitboxOffset: {x: 0, y: 0}
+  killBulletOnCollision: 1
+  maxSimultaneousCollisionsPerFrame: 1
+  collisionTags:
+    tagList: 0
+  OnHitByBullet:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletExit:
+    m_PersistentCalls:
+      m_Calls: []
+  parentSyncFoldout: 0
+  collisionTagsFoldout: 0
+  advancedEventsFoldout: 0
+  useDefaultGizmoColor: 1
+  gizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  gizmoZOffset: 0
+--- !u!1 &2389090486421393252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5582726313676599864}
+  - component: {fileID: 681573613400245299}
+  m_Layer: 3
+  m_Name: Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5582726313676599864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2389090486421393252}
+  m_LocalRotation: {x: 0, y: 0, z: 0.15901972, w: 0.9872754}
+  m_LocalPosition: {x: 0.55, y: -0.664, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9186319392919533144}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 18.3}
+--- !u!114 &681573613400245299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2389090486421393252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50e756f139e8884f93ef2eca2eef78d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 5582726313676599864}
+  colliderType: 1
+  startingChildren: []
+  syncEnable: 1
+  syncDisable: 1
+  syncCollisionTags: 1
+  hitboxSize: 1.75
+  hitboxOffset: {x: 0, y: 0}
+  killBulletOnCollision: 1
+  maxSimultaneousCollisionsPerFrame: 1
+  collisionTags:
+    tagList: 0
+  OnHitByBullet:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletExit:
+    m_PersistentCalls:
+      m_Calls: []
+  parentSyncFoldout: 0
+  collisionTagsFoldout: 0
+  advancedEventsFoldout: 0
+  useDefaultGizmoColor: 1
+  gizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  gizmoZOffset: 0
+--- !u!1 &4488323496402614989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3695938181335937323}
+  m_Layer: 3
+  m_Name: Bullet Emitter Start Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3695938181335937323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4488323496402614989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.89, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6995481266605536940}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4909733088939463512
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +282,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1604ef142b16c1f41b805e994f2388df, type: 2}
+  - {fileID: 2100000, guid: bb1890ac0e1cee24aa10dd2c0ddbd48b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,8 +324,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6995481266605536940}
   - component: {fileID: 8093265011072216441}
+  - component: {fileID: 4305560577591374969}
   - component: {fileID: 924910023452520100}
-  - component: {fileID: 7877347182654519344}
   - component: {fileID: 8213265501839806752}
   - component: {fileID: 2972059125400848232}
   - component: {fileID: 1018933142017180286}
@@ -179,6 +358,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2303760420451671604}
+  - {fileID: 9186319392919533144}
+  - {fileID: 3695938181335937323}
   m_Father: {fileID: 8492879579015322657}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -203,36 +384,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!60 &924910023452520100
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5006236445304533773}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.4, y: 2.4}
-    newSize: {x: 2.4, y: 2.4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.55552876, y: -1.1371071}
-      - {x: 0.0015396476, y: -0.56453145}
-      - {x: 0.5815326, y: -1.1322193}
-      - {x: 0.016845942, y: 1.1324191}
---- !u!114 &7877347182654519344
+--- !u!114 &4305560577591374969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -262,6 +414,38 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!60 &924910023452520100
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5006236445304533773}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.4, y: 2.4}
+    newSize: {x: 2.4, y: 2.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.57138187, y: -0.68951696}
+      - {x: -0.13369551, y: -0.5579615}
+      - {x: -0.26516432, y: -1.0437319}
+      - {x: 0.26942635, y: -1.0404809}
+      - {x: 0.13368826, y: -0.5588671}
+      - {x: 0.5728331, y: -0.69404954}
+      - {x: -0.003188169, y: 1.0288954}
 --- !u!114 &8213265501839806752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +465,7 @@ MonoBehaviour:
   playerEnergy: {fileID: 7955158611217667163}
   playerDeviceHandler: {fileID: 3972917172572675394}
   playerRespawn: {fileID: 6038647851309756490}
+  playerCollision: {fileID: 2644103639729209473}
 --- !u!114 &2972059125400848232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,7 +581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008b6b706efc6f44f8b9ab8b3864c43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 7877347182654519344}
+  playerInput: {fileID: 4305560577591374969}
 --- !u!114 &2644103639729209473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d52094d7ab04344abb47b93d6f15d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInvincible: 0
   playerController: {fileID: 8213265501839806752}
   health: {fileID: 3615676464410597287}
 --- !u!114 &8212564198902162576
@@ -530,8 +716,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 6995481266605536940}
-  colliderType: 0
-  startingChildren: []
+  colliderType: 2
+  startingChildren:
+  - {fileID: 681573613400245299}
+  - {fileID: 525236000826725874}
+  - {fileID: 2038983684113202031}
   syncEnable: 1
   syncDisable: 1
   syncCollisionTags: 1
@@ -565,12 +754,46 @@ MonoBehaviour:
   OnHitByBulletExit:
     m_PersistentCalls:
       m_Calls: []
-  parentSyncFoldout: 0
-  collisionTagsFoldout: 1
+  parentSyncFoldout: 1
+  collisionTagsFoldout: 0
   advancedEventsFoldout: 0
   useDefaultGizmoColor: 1
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
   gizmoZOffset: 0
+--- !u!1 &8275907979604179105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9186319392919533144}
+  m_Layer: 3
+  m_Name: Bullet Receivers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9186319392919533144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8275907979604179105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5582726313676599864}
+  - {fileID: 5258055325957493252}
+  - {fileID: 8117729187896404655}
+  m_Father: {fileID: 6995481266605536940}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8492879579015322661
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +819,7 @@ Transform:
   m_GameObject: {fileID: 8492879579015322661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6995481266605536940}
@@ -605,6 +828,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8518323549280883614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8117729187896404655}
+  - component: {fileID: 2038983684113202031}
+  m_Layer: 3
+  m_Name: Hitbox (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8117729187896404655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518323549280883614}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.55, y: -0.664, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9186319392919533144}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &2038983684113202031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518323549280883614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50e756f139e8884f93ef2eca2eef78d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 8117729187896404655}
+  colliderType: 1
+  startingChildren: []
+  syncEnable: 1
+  syncDisable: 1
+  syncCollisionTags: 1
+  hitboxSize: 1.1
+  hitboxOffset: {x: 0, y: 0}
+  killBulletOnCollision: 1
+  maxSimultaneousCollisionsPerFrame: 1
+  collisionTags:
+    tagList: 0
+  OnHitByBullet:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletExit:
+    m_PersistentCalls:
+      m_Calls: []
+  parentSyncFoldout: 0
+  collisionTagsFoldout: 0
+  advancedEventsFoldout: 0
+  useDefaultGizmoColor: 1
+  gizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  gizmoZOffset: 0
 --- !u!1001 &1433422630715892639
 PrefabInstance:
   m_ObjectHideFlags: 0

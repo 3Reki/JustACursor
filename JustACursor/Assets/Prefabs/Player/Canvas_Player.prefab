@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 3216638131369191649}
   - component: {fileID: 319322950965491163}
   m_Layer: 5
-  m_Name: BlackScreen
+  m_Name: RespawnScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 3763301622017401614}
   - component: {fileID: 1239168460579363232}
   m_Layer: 5
-  m_Name: Bar Extra
+  m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

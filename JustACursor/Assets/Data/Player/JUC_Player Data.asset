@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b0114b0a3580e4ba269b4690f662f9, type: 3}
+  m_Name: JUC_Player Data
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
+  moveAcceleration:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 8.787737
+      outSlope: 8.787737
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.08230453
+    - serializedVersion: 3
+      time: 0.15
+      value: 1
+      inSlope: -0.023535937
+      outSlope: -0.023535937
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  moveDeceleration:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -27.67719
+      outSlope: -27.67719
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.040516645
+    - serializedVersion: 3
+      time: 0.1
+      value: 0
+      inSlope: -0.030256504
+      outSlope: -0.030256504
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rotationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.33333334
+      outSlope: 0.33333334
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 1
+      inSlope: 0.33333334
+      outSlope: 0.33333334
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  dashSpeed: 3.5
+  dashDuration: 0.12
+  dashFirstPhaseDuration: 0.05
+  dashRefreshCooldown: 0.2
+  dashSecondPhaseControl: 0.2
+  dashShakeIntensity: 0.2
+  dashShakeDuration: 0.06
+  fireRate: 4
+  timeAbilityDuration: 3
+  maxHealth: 3
+  invinciblityTime: 1
+  onHitShakeIntensity: 0.3
+  onHitShakeDuration: 0.09
+  healthFadeIn: 0.2
+  healthStay: 1.2
+  healthFadeOut: 0.2
+  timeFadeIn: 0.2
+  timeFadeOut: 0.2
+  respawnFadeIn: 0.2
+  respawnStay: 0.2
+  respawnFadeOut: 0.2

@@ -1,16 +1,38 @@
+using System;
 using System.Collections;
-using Interfaces;
-using ScriptableObjects;
+using CameraScripts;
+using Levels;
 using UnityEngine;
 
 namespace Player {
     public class PlayerCollision : MonoBehaviour, IDamageable
     {
+        public bool isInvincible;
+        
         [SerializeField] private PlayerController playerController;
         [SerializeField] private Health health;
 
         private PlayerData data => playerController.data;
-        private bool isInvincible;
+
+        private void OnEnable()
+        {
+            health.onHealthLose.AddListener(Shake);
+        }
+
+        private void OnDisable()
+        {
+            health.onHealthLose.RemoveListener(Shake);
+        }
+        
+        private void Awake()
+        {
+            health.Init(data.maxHealth);
+        }
+
+        private void Shake()
+        {
+            CameraController.ShakeCamera(data.onHitShakeIntensity, data.onHitShakeDuration);
+        }
 
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {

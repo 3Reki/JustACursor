@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using ScriptableObjects;
+using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
@@ -24,8 +24,7 @@ namespace Dialogue
 
         private void Start()
         {
-            inputs = new PlayerInputs();
-            inputs.Enable();
+            inputs = InputManager.Instance.inputs;
             
             ShowDialogue(testDialogue);
         }

@@ -2,78 +2,67 @@ using System;
 using System.Threading.Tasks;
 using Bosses.Patterns;
 using BulletPro;
-using JetBrains.Annotations;
+using Levels;
 using Player;
-using TMPro;
 using UnityEngine;
 
 namespace Bosses
 {
-    public enum BossPhase { None = -1, One, Two, Three }
-    
-    [Serializable]
-    public struct Phase 
+    public enum BossPhase { None = -1, One = 0, Two = 1, Three = 2 }
+    public enum PatternPhase { None, Start, Update, Stop }
+
+    public abstract class Boss : MonoBehaviour, IDamageable
     {
-        public BossPhase phase;
-        public Pattern[] attackPatterns;
-
-        public Phase(Pattern[] attackPatterns)
-        {
-            this.attackPatterns = attackPatterns;
-            phase = BossPhase.None;
-        }
-    }
-
-    /// <summary>
-    /// This is a simple class to set up boss logic. The heavy part of logic is done on the BossData and called here via enum-based state machine.
-    /// Said otherwise, this class is about WHAT and WHEN while BossData is about HOW
-    /// </summary>
-
-    public abstract class Boss : MonoBehaviour
-    {
-        public BulletEmitter[] bulletEmitter { get; private set; }
-        public int currentHp { get; private set; }
+        public BulletEmitter[] bulletEmitter => emitters;
+        public int maxHP => bossData.startingHP;
         public BossPhase currentBossPhase { get; private set; }
-        
+        public BossMovement mover => movementHandler;
+        public PlayerController targetedPlayer => player;
+        protected int currentPatternIndex { get; set; }
+        public PatternPhase currentPatternPhase = PatternPhase.None;
+
         [SerializeField] protected PlayerController player;
         [SerializeField] protected BossData bossData;
-        [SerializeField] protected Phase[] phases;
-        [SerializeField] private TMP_Text bossHP;
-        [SerializeField] private BulletEmitter[] emitters = new BulletEmitter[3]; // must be used only for init
+        [SerializeField] private BossMovement movementHandler;
         [SerializeField] protected BossAnimations animator;
+        [SerializeField] private BulletEmitter[] emitters = new BulletEmitter[3]; // must be used only for init
+        public Health health;
         
-        protected int currentPatternIndex { get; set; }
-
+        private Pattern currentPattern;
+        private bool isFrozen;
         private bool isPaused;
+
+        private void Awake()
+        {
+            health.Init(bossData.startingHP);
+        }
 
         private void Start()
         {
             Init();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             UpdateDebugInput();
+
+            if (isPaused) return;
+
+            HandlePatterns();
         }
 
-        protected void Init()
+        private void Init()
         {
-            currentHp = bossData.startingHP;
-            bulletEmitter = new BulletEmitter[emitters.Length];
-            Array.Copy(emitters, bulletEmitter, emitters.Length); 
-            bossHP.text = $"{currentHp}";
-            SetBossPhase(overridePhaseOnStart ? phaseOverride : BossPhase.One);
+            currentPatternIndex = 0;
+            isPaused = false;
+            isFrozen = false;
+            //patternCooldownTimer = bossData.patternCooldown;
         }
-
-        // PLACEHOLDER
-        // REFACTORING: should be moved elsewere
-        [UsedImplicitly] // Used by Bullet Receiver onHit event
-        public void TakeDamage(BulletPro.Bullet bullet, Vector3 hitPoint)
+        
+        public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
-            currentHp -= 1;
-            bossHP.text = $"{currentHp}";
-            animator.Hit();
-
+            health.LoseHealth(bullet.moduleParameters.GetInt("Damage"));
+            
             switch (currentBossPhase)
             {
                 case BossPhase.None:
@@ -85,26 +74,60 @@ namespace Bosses
                 case BossPhase.Two:
                     if (CheckPhase3HPThreshold()) SetBossPhase(BossPhase.Three);
                     break;
-                case BossPhase.Three:
-                    if (currentHp <= 0) Die();
+            }
+        }
+        
+        protected bool CheckPhase2HPThreshold() => health.GetRatio() <= bossData.phase2HPThreshold;
+
+        protected bool CheckPhase3HPThreshold() => health.GetRatio() <= bossData.phase3HPThreshold;
+
+        private void HandlePatterns()
+        {
+            switch (currentPatternPhase)
+            {
+                case PatternPhase.None:
+                    currentPattern = bossData.phaseResolvers[(int) currentBossPhase].Resolve(this);
                     break;
+                case PatternPhase.Start:
+                    currentPattern.Play(this);
+                    break;
+                case PatternPhase.Update:
+                    currentPattern.Update();
+                    break;
+                case PatternPhase.Stop:
+                    currentPattern = currentPattern.Stop();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
         private async void SetBossPhase(BossPhase newPhase)
         {
-            StopCurrentPhasePatterns();
+            StopCurrentPattern();
             animator.ChangePhase();
-
+            isPaused = true;
+        
             await Task.Delay((int) (animator.phaseChangeAnimLength * 1000));
             
             currentBossPhase = newPhase;
+            isPaused = false;
         }
 
-        private async void Die()
+        public void Heal()
         {
-            Debug.Log("Boss is killed");
-            StopCurrentPhasePatterns();
+            
+        }
+
+        public void Hit()
+        {
+            animator.Hit();
+        }
+
+        public async void Die()
+        {
+            StopCurrentPattern();
+            isPaused = true;
 
             animator.Die();
             GetComponent<BulletReceiver>().enabled = false;
@@ -115,54 +138,27 @@ namespace Bosses
             transform.root.gameObject.SetActive(false);
         }
 
-        protected Pattern GetPattern(BossPhase phase, int patternIndex) =>
-            phases[(int) phase].attackPatterns[patternIndex];
-        
-        /// <summary>
-        /// This function changes the profile of the bullet emitter without destroying already instantiated bullets
-        /// </summary>
-        protected void PlayPattern(BossPhase phase, int patternIndex)
+        protected void StopCurrentPattern()
         {
-            phases[(int) phase].attackPatterns[patternIndex].Play();
-        }
-        
-        protected void StopPattern(BossPhase phase, int patternIndex)
-        {
-            phases[(int) phase].attackPatterns[patternIndex].Stop();
-        }
-        
-        /// <summary>
-        /// Deactivate the emitter of the current phase
-        /// </summary>
-        protected void StopCurrentPhasePatterns()
-        {
-            int length = phases[(int) currentBossPhase].attackPatterns.Length;
-            for (int i = 0; i < length; i++)
-            {
-                phases[(int) currentBossPhase].attackPatterns[i].Stop();
-            }
+            currentPattern.Stop();
+            currentPatternPhase = PatternPhase.None;
         }
 
-        // just because I want to keep the percent trigger at the boss data level and NOT in the EmitterControllers
-        protected bool CheckPhase2HPThreshold() => (float)currentHp / bossData.startingHP <= bossData.phase2HPPercentTrigger;
+        
 
-        protected bool CheckPhase3HPThreshold() => (float)currentHp / bossData.startingHP <= bossData.phase3HPPercentTrigger;
-        
-        public int GetPatternCountForPhase(BossPhase phase) => phases[(int) phase].attackPatterns.Length;
-        
-        
-        
         #region Debug
 
         [Header("DEBUG")]
         [Tooltip("0 means don't play the pattern at this index. 1 means play it;")] public int[] playMask = { 1, 1, 1 };
         [SerializeField] private bool overridePhaseOnStart;
         [SerializeField] private BossPhase phaseOverride = BossPhase.One;
-        [SerializeField] private KeyCode doPhaseOverride = KeyCode.Space;
+        [SerializeField] private KeyCode doPhaseOverride = KeyCode.G;
         [SerializeField] private KeyCode freeze = KeyCode.F;
         [SerializeField] private KeyCode refresh = KeyCode.R;
+        [SerializeField] private KeyCode setHealthToOne = KeyCode.H;
+        [SerializeField] private KeyCode skipPattern = KeyCode.J;
         
-        protected void UpdateDebugInput()
+        protected virtual void UpdateDebugInput()
         {
             // change to new profile
             if (Input.GetKeyDown(doPhaseOverride))
@@ -180,15 +176,27 @@ namespace Bosses
             {
                 Debug_RefreshPlayID();
             }
+
+            if (Input.GetKeyDown(setHealthToOne))
+            {
+                health.SetHealth(1);
+                animator.Hit();
+                SetBossPhase(BossPhase.Three);
+            }
+
+            if (Input.GetKeyDown(skipPattern))
+            {
+                StopCurrentPattern();
+            }
         }
 
         private void FreezeBossBullets()
         {
-            isPaused = !isPaused;
+            isFrozen = !isFrozen;
 
             for (int i = 0; i < 1; i++) // TODO phases[(int)currentBossPhase].attackPatterns[currentPatternIndex].emitterProfiles.length
             {
-                if (isPaused) bulletEmitter[i].Pause(PlayOptions.AllBullets);
+                if (isFrozen) bulletEmitter[i].Pause(PlayOptions.AllBullets);
                 else bulletEmitter[i].Play(PlayOptions.AllBullets);
             }
         }
@@ -201,9 +209,18 @@ namespace Bosses
                 if (playMask[i] == 1)
                 {
                     bulletEmitter[i].Play();
-                    Debug.Log("playing pattern: " + phases[(int)currentBossPhase].attackPatterns[currentPatternIndex]);
+                    // Debug.Log("playing pattern: " + bossData.phases[(int)currentBossPhase].attackPatterns[currentPatternIndex]);
                 }
             }
+        }
+
+        [ContextMenu("Reset Boss")]
+        private void Reset()
+        {
+            GetComponent<BulletReceiver>().enabled = true;
+            GetComponent<CircleCollider2D>().enabled = true;
+            transform.gameObject.SetActive(true);
+            Init();
         }
 
         #endregion

@@ -23,13 +23,14 @@ namespace CameraScripts
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
-            Vector3 position = transform.position;
-            Vector2 colliderSize = GetComponent<BoxCollider2D>().size;
+            Bounds triggerBounds = GetComponent<BoxCollider2D>().bounds;
+            Vector3 position = triggerBounds.center;
+            Vector3 size = triggerBounds.size;
             
             Gizmos.color = new Color(1, .4f, .4f);
-            Gizmos.DrawWireCube(position + new Vector3(0, 0, -1), colliderSize);
+            Gizmos.DrawWireCube(position, size);
             Gizmos.color = new Color(1, .15f, .15f, .7f);
-            Gizmos.DrawCube(position, colliderSize);
+            Gizmos.DrawCube(position, size);
             
             var style = new GUIStyle
             {
@@ -38,7 +39,7 @@ namespace CameraScripts
                 normal = new GUIStyleState {textColor = Color.white}
             };
 
-            Handles.Label(position + new Vector3(0, 0, -2), "FixCameraTrigger", style);
+            Handles.Label(position, "FixCameraTrigger", style);
 
         }
 

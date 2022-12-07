@@ -1,34 +1,20 @@
-﻿using System.Threading.Tasks;
-using BulletPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Bosses.Patterns
 {
-    [CreateAssetMenu(fileName = "Pat_CenterPattern", menuName = "Just A Cursor/Pattern/Center")]
+    [CreateAssetMenu(fileName = "Pat_Center", menuName = "Just A Cursor/Pattern/Center")]
     public class Pat_Center : Pattern
     {
-        [SerializeField] private EmitterProfile[] emitterProfiles;
-        [SerializeField] private float movementDuration;
-        
-        public override async void Play()
+        public override void Play(Boss boss)
         {
-            boss.GoToCenter(movementDuration);
-            await Task.Delay((int) (movementDuration * 1000));
-            
-            boss.transform.rotation = Quaternion.Euler(0, 0, 180);
-            for (int i = 0; i < emitterProfiles.Length; i++)
-            {
-                boss.bulletEmitter[i].SwitchProfile(emitterProfiles[i]);
-            }
+            base.Play(boss);
+            linkedBoss.mover.GoToCenter(patternDuration);
         }
 
-        public override void Stop()
+        public override Pattern Stop()
         {
-            
-            for (int i = 0; i < emitterProfiles.Length; i++)
-            {
-                boss.bulletEmitter[i].Stop(); 
-            }
+            // TODO Kill Tween
+            return base.Stop();
         }
     }
 }

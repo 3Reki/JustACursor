@@ -15,6 +15,166 @@ MonoBehaviour:
   bossName: Virus
   description: "The first boss in the game. \nCore mechanic: slowing & accelerating
     time"
-  <startingHP>k__BackingField: 150
-  <phase2HPPercentTrigger>k__BackingField: 0.6
-  <phase3HPPercentTrigger>k__BackingField: 0.3
+  startingHP: 200
+  phase2HPThreshold: 0.6
+  phase3HPThreshold: 0.3
+  phaseResolvers:
+  - choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: c8645a8bb7616f04b926beae427d4212, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: -1
+        checkType: 1
+        distance: 5
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 3fc21f73121932b4cb6a185b6a79cfd8, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 5
+      cdtBossDistance:
+        checkType: 0
+        distance: 5
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+  - choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 55715f107a82c1c42a186331ac3dc527, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 032ce65965c73f04e9949d3db8ec14a1, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+  - choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 1b916d5b02ba9d04f89874195f7149e8, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 55eb0118170ed944da4f234c5cae228b, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0

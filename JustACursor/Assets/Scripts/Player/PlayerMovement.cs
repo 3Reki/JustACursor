@@ -8,9 +8,11 @@ namespace Player
         [SerializeField] private PlayerController playerController;
         [SerializeField] private Rigidbody2D rb;
 
-        private Quaternion lastRotation;
         private float accelerationProgress;
         private float decelerationProgress;
+        private float rotationProgress;
+        
+        private PlayerData data => playerController.data;
 
         public void LookAtPosition(Vector2 lookPosition)
         {
@@ -21,29 +23,31 @@ namespace Player
 
         public void LookForward(Vector2 dir)
         {
-            if (dir.sqrMagnitude < 0.1f)
-            {
+            if (dir.sqrMagnitude < 0.1f) {
+                rotationProgress = 0;
                 return;
             }
 
             var angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
 
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, angle),
-                playerController.data.rotationSpeed);
+                data.rotationCurve.Evaluate(rotationProgress));
+
+            rotationProgress += Time.deltaTime;
         }
 
         public void Move(Vector2 direction)
         {
             if (playerController.isDashing)
             {
-                accelerationProgress = playerController.data.moveAcceleration
-                    .keys[playerController.data.moveAcceleration.length - 1].time;
+                accelerationProgress = data.moveAcceleration
+                    .keys[data.moveAcceleration.length - 1].time;
 
                 return;
             }
 
             rb.velocity = GetTargetSpeed(direction,
-                playerController.data.moveAcceleration.Evaluate(accelerationProgress));
+                data.moveAcceleration.Evaluate(accelerationProgress));
             accelerationProgress += Time.deltaTime;
         }
 
@@ -54,13 +58,13 @@ namespace Player
                 yield return null;
             }
             decelerationProgress = 0;
-            accelerationProgress = playerController.data.moveAcceleration
-                .keys[playerController.data.moveAcceleration.length - 1].time;
+            accelerationProgress = data.moveAcceleration
+                .keys[data.moveAcceleration.length - 1].time;
 
             while (rb.velocity.magnitude > 0)
             {
                 rb.velocity = GetTargetSpeed(direction,
-                    playerController.data.moveDeceleration.Evaluate(decelerationProgress));
+                    data.moveDeceleration.Evaluate(decelerationProgress));
 
                 decelerationProgress += Time.deltaTime;
                 accelerationProgress -= Time.deltaTime;
@@ -82,7 +86,7 @@ namespace Player
             float targetAngle = Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg;
 
             Vector2 moveDirection = Quaternion.Euler(0, 0, targetAngle) * Vector3.up;
-            Vector2 targetSpeed = moveDirection.normalized * (playerController.data.moveSpeed * speedPercentage);
+            Vector2 targetSpeed = moveDirection.normalized * (data.moveSpeed * speedPercentage);
 
             return targetSpeed;
         }

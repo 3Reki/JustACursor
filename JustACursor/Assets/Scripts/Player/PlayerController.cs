@@ -1,5 +1,4 @@
 using System.Collections;
-using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +8,14 @@ namespace Player
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerController : MonoBehaviour
     {
+        public PlayerData data => playerData;
+        public bool isDashing => playerDash.isDashing;
+        public bool invincible
+        {
+            get => playerCollision.isInvincible;
+            set => playerCollision.isInvincible = value;
+        }
+        
         [SerializeField] private PlayerData playerData;
         [SerializeField] private PlayerMovement playerMovement;
         [SerializeField] private PlayerShoot playerShoot;
@@ -16,24 +23,22 @@ namespace Player
         [SerializeField] private PlayerEnergy playerEnergy;
         [SerializeField] private PlayerDeviceHandler playerDeviceHandler;
         [SerializeField] private PlayerRespawn playerRespawn;
+        [SerializeField] private PlayerCollision playerCollision;
 
         private PlayerInputs inputs;
         private Camera mainCamera;
         private Vector2 moveDirection;
-        private Vector2 lookPosition;
         private Vector2 lastDir;
         private IEnumerator stopMovingEnumerator;
 
-        public PlayerData data => playerData;
-        public bool isDashing => playerDash.isDashing;
         private Vector2 dashDirection => playerDash.dashDirection;
         private bool isAlive => playerRespawn.isAlive;
 
         public static Vector3 PlayerPosition { get; private set; }
 
-        private void Start() {
-            inputs = new PlayerInputs();
-            inputs.Enable();
+        private void Start()
+        {
+            inputs = InputManager.Instance.inputs;
             
             mainCamera = Camera.main;
         }
@@ -48,7 +53,7 @@ namespace Player
             HandleShoot();
             HandleEnergy();
         }
-        
+
         private void HandleDash() {
             if (inputs.Player.Dash.WasPressedThisFrame())
             {
@@ -86,14 +91,15 @@ namespace Player
         }
 
         private void HandleShoot() {
-            if (isDashing) return;
+            if (isDashing || Time.timeScale == 0) return;
             if (inputs.Player.Shoot.IsPressed())
             {
+                if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();
+                else GamepadAim();
+                
                 playerShoot.Shoot();
             }
             
-            if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();
-            else GamepadAim();
         }
 
         private void HandleEnergy() {
@@ -104,14 +110,17 @@ namespace Player
         
         private void MouseAim()
         {
-            lookPosition = mainCamera.ScreenToWorldPoint(inputs.Player.LookMouse.ReadValue<Vector2>());
+            Vector2 lookPosition = mainCamera.ScreenToWorldPoint(inputs.Player.LookMouse.ReadValue<Vector2>());
             playerMovement.LookAtPosition(lookPosition);
         }
         
         private void GamepadAim()
         {
-            lookPosition = (Vector2) transform.position + inputs.Player.LookGamepad.ReadValue<Vector2>();
-            if (lookPosition != Vector2.zero) playerMovement.LookAtPosition(lookPosition);
+            Vector2 lookDir = inputs.Player.LookGamepad.ReadValue<Vector2>();
+            if (lookDir != Vector2.zero)
+            {
+                playerMovement.LookAtPosition(lookDir + (Vector2) transform.position);
+            }
         }
     }
 }
