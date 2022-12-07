@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Bosses.Conditions;
 using Bosses.Patterns;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Bosses
 {
@@ -33,7 +32,7 @@ namespace Bosses
             }
 
             boss.currentPatternPhase = PatternPhase.Start;
-            return selectedList[Random.Range(0, selectedList.Count)].pattern;
+            return selectedList.RandomWeightedSelection().pattern;
         }
     }
 
@@ -62,7 +61,7 @@ namespace Bosses
         
         public Pattern pattern;
         [Range(0, 20)]
-        public float weight;
+        public float weight = 1;
 
         [SerializeField] private Cdt_None cdtNone;
         [SerializeField] private Cdt_HealthThreshold cdtHealthThreshold;
