@@ -1,10 +1,9 @@
-using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Bosses
+namespace Bosses.Dependencies
 {
     public class BossBar : MonoBehaviour
     {

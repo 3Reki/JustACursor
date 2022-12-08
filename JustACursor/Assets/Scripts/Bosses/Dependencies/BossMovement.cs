@@ -4,7 +4,7 @@ using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Bosses
+namespace Bosses.Dependencies
 {
     public class BossMovement : MonoBehaviour
     {
@@ -16,7 +16,7 @@ namespace Bosses
 
         public void GoToCenter(float moveDuration)
         {
-            MoveTo(room.centerPosition, moveDuration);
+            MoveTo(room.middleCenter, moveDuration);
         }
 
         public void GoToRandomCorner(float moveDuration)

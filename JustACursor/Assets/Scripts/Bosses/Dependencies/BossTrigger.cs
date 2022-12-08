@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Bosses
+namespace Bosses.Dependencies
 {
     public class BossTrigger : MonoBehaviour
     {

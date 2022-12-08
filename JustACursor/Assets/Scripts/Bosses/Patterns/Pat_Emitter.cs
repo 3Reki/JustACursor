@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Bosses.Patterns
 {
     [CreateAssetMenu(fileName = "Pat_Emitter", menuName = "Just A Cursor/Pattern/Emitter Pattern", order = 0)]
-    public class Pat_Emitter : Pattern
+    public class Pat_Emitter : Pattern<Boss>
     {
         [SerializeField, Tooltip("Max 3 profiles")] private EmitterProfile[] emitterProfiles;
         
@@ -19,7 +19,7 @@ namespace Bosses.Patterns
             }
         }
 
-        public override Pattern Stop()
+        public override Pattern<Boss> Stop()
         {
             for (int i = 0; i < emitterProfiles.Length; i++)
             {

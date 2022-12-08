@@ -4,20 +4,20 @@ using Bosses.Conditions;
 using Bosses.Patterns;
 using UnityEngine;
 
-namespace Bosses
+namespace Bosses.Dependencies
 {
     [Serializable]
-    public class Resolver
+    public class Resolver<T> where T : Boss
     {
-        [SerializeField] private ResolvedPattern[] choices;
+        [SerializeField] private ResolvedPattern<T>[] choices;
 
-        private readonly List<ResolvedPattern> selectedList = new();
+        private readonly List<ResolvedPattern<T>> selectedList = new();
         
-        public Pattern Resolve(Boss boss)
+        public Pattern<T> Resolve(Boss boss)
         {
             selectedList.Clear();
             
-            foreach (ResolvedPattern choice in choices)
+            foreach (ResolvedPattern<T> choice in choices)
             {
                 if (choice.condition.Check(boss))
                 {
@@ -27,17 +27,17 @@ namespace Bosses
 
             if (selectedList.Count == 0)
             {
-                boss.currentPatternPhase = PatternPhase.None;
                 return null;
             }
 
-            boss.currentPatternPhase = PatternPhase.Start;
-            return selectedList.RandomWeightedSelection().pattern;
+            Pattern<T> pat = selectedList.RandomWeightedSelection().pattern;
+            pat.phase = PatternPhase.Start;
+            return pat;
         }
     }
 
     [Serializable]
-    public class ResolvedPattern
+    public class ResolvedPattern<T> where T : Boss
     {
         public ConditionType conditionType;
 
@@ -59,7 +59,7 @@ namespace Bosses
             }
         }
         
-        public Pattern pattern;
+        public Pattern<T> pattern;
         [Range(0, 20)]
         public float weight = 1;
 

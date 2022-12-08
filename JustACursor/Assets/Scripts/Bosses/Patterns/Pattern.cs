@@ -1,21 +1,23 @@
-﻿using UnityEngine;
+﻿using Bosses.Dependencies;
+using UnityEngine;
 
 namespace Bosses.Patterns
 {
     
-    public abstract class Pattern : ScriptableObject
+    public abstract class Pattern<T> : ScriptableObject where T : Boss
     {
-        [SerializeField] protected Resolver resolver;
+        [HideInInspector] public PatternPhase phase = PatternPhase.None;
+        [SerializeField] protected Resolver<T> resolver;
         [SerializeField, Range(0, 30f)] protected float patternDuration = 3f;
         
-        protected Boss linkedBoss;
+        protected T linkedBoss;
         protected float currentPatternTime;
         
-        public virtual void Play(Boss boss)
+        public virtual void Play(T boss)
         {
             linkedBoss = boss;
             currentPatternTime = patternDuration;
-            boss.currentPatternPhase = PatternPhase.Update;
+            phase = PatternPhase.Update;
         }
 
         public virtual void Update()
@@ -24,13 +26,16 @@ namespace Bosses.Patterns
 
             if (currentPatternTime < 0)
             {
-                linkedBoss.currentPatternPhase = PatternPhase.Stop;
+                phase = PatternPhase.Stop;
             }
         }
 
-        public virtual Pattern Stop()
+        public virtual Pattern<T> Stop()
         {
+            phase = PatternPhase.None;
             return resolver.Resolve(linkedBoss);
         }
     }
+    
+    public enum PatternPhase { None, Start, Update, Stop }
 }

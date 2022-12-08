@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Bosses.Patterns
 {
     [CreateAssetMenu(fileName = "Pat_Corner", menuName = "Just A Cursor/Pattern/Corner")]
-    public class Pat_Corner : Pattern
+    public class Pat_Corner : Pattern<Boss>
     {
         private IEnumerator playEnumerator;
 
@@ -14,7 +14,7 @@ namespace Bosses.Patterns
             linkedBoss.mover.GoToRandomCorner(patternDuration);
         }
 
-        public override Pattern Stop()
+        public override Pattern<Boss> Stop()
         {
             // TODO Kill Tween
             return base.Stop();

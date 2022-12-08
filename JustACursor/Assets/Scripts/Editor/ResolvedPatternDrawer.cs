@@ -1,11 +1,12 @@
 ﻿using Bosses;
+using Bosses.Dependencies;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace Editor
 {
-    [CustomPropertyDrawer(typeof(ResolvedPattern))]
+    [CustomPropertyDrawer(typeof(ResolvedPattern<Boss>))]
     public class ResolvedPatternDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

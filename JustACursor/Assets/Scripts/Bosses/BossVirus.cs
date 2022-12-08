@@ -17,16 +17,16 @@ namespace Bosses
         //
         //     Init();
         // }
-        //
-        // private void OnCollisionEnter2D(Collision2D other)
-        // {
-        //     var health = other.gameObject.GetComponent<Health>();
-        //     if (health)
-        //     {
-        //         health.LoseHealth(1);
-        //     }
-        // }
-        //
+        
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            var otherHealth = other.gameObject.GetComponent<Health>();
+            if (otherHealth)
+            {
+                otherHealth.LoseHealth(1);
+            }
+        }
+        
         // protected override void UpdateDebugInput()
         // {
         //     base.UpdateDebugInput();

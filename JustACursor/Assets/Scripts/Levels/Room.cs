@@ -6,7 +6,15 @@ namespace Levels
 {
     public class Room : MonoBehaviour
     {
-        public Vector2 centerPosition { get; private set; }
+        public Vector2 topLeft => corners[0];
+        public Vector2 topCenter => new(middleCenter.x, corners[0].y);
+        public Vector2 topRight => corners[1];
+        public Vector2 middleLeft => new(corners[0].x, middleCenter.y);
+        public Vector2 middleCenter { get; private set; }
+        public Vector2 middleRight => new(corners[1].x, middleCenter.y);
+        public Vector2 bottomLeft => corners[2];
+        public Vector2 bottomCenter => new(middleCenter.x, corners[2].y);
+        public Vector2 bottomRight => corners[3];
         
         [SerializeField] private Transform roomTopLeftCorner;
         [SerializeField] private Transform roomBottomRightCorner;
@@ -18,11 +26,11 @@ namespace Levels
             Vector2 topLeftPos = roomTopLeftCorner.position;
             Vector2 bottomRightPos = roomBottomRightCorner.position;
             corners = new[] {topLeftPos, new Vector2(bottomRightPos.x, topLeftPos.y), new Vector2(topLeftPos.x, bottomRightPos.y), bottomRightPos};
-            centerPosition = new Vector2((bottomRightPos.x + topLeftPos.x) * 0.5f,
+            middleCenter = new Vector2((bottomRightPos.x + topLeftPos.x) * 0.5f,
                 (topLeftPos.y + bottomRightPos.y) * 0.5f);
         }
 
-        public float DistanceToCenter(Vector2 position) => Vector2.Distance(centerPosition, position);
+        public float DistanceToCenter(Vector2 position) => Vector2.Distance(middleCenter, position);
 
         public float MinDistanceToCorners(Vector2 position)
         {
@@ -54,10 +62,10 @@ namespace Levels
         {
             return quarter switch
             {
-                Quarter.NorthWest => position.x <= centerPosition.x && position.y > centerPosition.y,
-                Quarter.NorthEast => position.x > centerPosition.x && position.y >= centerPosition.y,
-                Quarter.SouthWest => position.x < centerPosition.x && position.y <= centerPosition.y,
-                Quarter.SouthEast => position.x >= centerPosition.x && position.y < centerPosition.y,
+                Quarter.NorthWest => position.x <= middleCenter.x && position.y > middleCenter.y,
+                Quarter.NorthEast => position.x > middleCenter.x && position.y >= middleCenter.y,
+                Quarter.SouthWest => position.x < middleCenter.x && position.y <= middleCenter.y,
+                Quarter.SouthEast => position.x >= middleCenter.x && position.y < middleCenter.y,
                 _ => throw new ArgumentOutOfRangeException(nameof(quarter), quarter, null)
             };
         }
@@ -66,10 +74,10 @@ namespace Levels
         {
             return half switch
             {
-                Half.North => position.y > centerPosition.y,
-                Half.East => position.x > centerPosition.x,
-                Half.South => position.y <= centerPosition.y,
-                Half.West => position.x <= centerPosition.x,
+                Half.North => position.y > middleCenter.y,
+                Half.East => position.x > middleCenter.x,
+                Half.South => position.y <= middleCenter.y,
+                Half.West => position.x <= middleCenter.x,
                 _ => throw new ArgumentOutOfRangeException(nameof(half), half, null)
             };
         }
