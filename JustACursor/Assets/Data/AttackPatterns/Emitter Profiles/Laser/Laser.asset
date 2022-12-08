@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da8a7c80eab4c474da1e90eb12356b89, type: 3}
-  m_Name: Laser_Speaker_Minion
+  m_Name: Laser
   m_EditorClassIdentifier: 
   rootBullet: {fileID: 114671512830859702}
   subAssets:
@@ -30,7 +30,7 @@ MonoBehaviour:
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
   currentParamsSelected: {fileID: 114027673760526898}
-  numberOfSubAssets: 4
+  numberOfSubAssets: 0
 --- !u!114 &114027673760526898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 16088051
+  uniqueIndex: 16347745
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -156,7 +156,7 @@ MonoBehaviour:
         indexOfTo: 0
         indexOfBlendedChildren: 
         weight: 0
-        headerTitle: Sprite
+        headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
         parameterType: 0
         relativeTo: 0
@@ -1100,7 +1100,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: {r: 0.6830921, g: 0, b: 1, a: 1}
+      defaultValue: {r: 0, g: 0.4705882, b: 1, a: 1}
       gradientValue:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2363,10 +2363,10 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 3
+  currentlyDisplayedModule: 5
   canMove: 1
   canCollide: 1
-  isVisible: 1
+  isVisible: 0
   hasLifespan: 1
   hasLimitedRange: 0
   forwardSpeed:
@@ -2699,7 +2699,7 @@ MonoBehaviour:
         indexOfTo: 0
         indexOfBlendedChildren: 
         weight: 0
-        headerTitle: Start Scale
+        headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
         parameterType: 0
         relativeTo: 0
@@ -2828,13 +2828,23 @@ MonoBehaviour:
   - colliderType: 1
     size: 1.71
     offset: {x: 0, y: 0, z: 0}
+    lineStart: {x: -0.5, y: 0}
+    lineEnd: {x: -0.5, y: 5}
+  - colliderType: 1
+    size: 1.71
+    offset: {x: 0, y: 0, z: 0}
     lineStart: {x: 0, y: 0}
-    lineEnd: {x: 0, y: 0.8}
+    lineEnd: {x: 0, y: 5}
+  - colliderType: 1
+    size: 1.71
+    offset: {x: 0, y: 0, z: 0}
+    lineStart: {x: 0.5, y: 0}
+    lineEnd: {x: 0.5, y: 5}
   dieOnCollision: 1
   deathTiming: 0
   maxSimultaneousCollisionsPerFrame: 1
   shapeFoldout: 1
-  collisionTagsFoldout: 1
+  collisionTagsFoldout: 0
   homing: 0
   homingTags:
     tagList: 1
@@ -3585,8 +3595,8 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.33333334
-              outWeight: 0.33333334
+              inWeight: 0
+              outWeight: 0
             - serializedVersion: 3
               time: 1
               value: 1
@@ -3594,8 +3604,8 @@ MonoBehaviour:
               outSlope: 0
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.33333334
-              outWeight: 0.33333334
+              inWeight: 0
+              outWeight: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -3633,7 +3643,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0.5
+      defaultValue: 1
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -4089,7 +4099,7 @@ MonoBehaviour:
           parameterType: 0
           relativeTo: 0
           parameterName: 
-        defaultValue: 0.5
+        defaultValue: 1
       useSlider: 0
       sliderMin: 0
       sliderMax: 0
@@ -4213,30 +4223,21 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 0
             value: 0
-            inSlope: 0.9508953
-            outSlope: 0.9508953
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 0.8981565
-            value: 0.85405284
-            inSlope: 1.1919744
-            outSlope: 1.1919744
-            tangentMode: 34
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
             weightedMode: 0
             inWeight: 0.33333334
             outWeight: 0.33333334
           - serializedVersion: 3
             time: 1
             value: 1
-            inSlope: 1.4330536
-            outSlope: 1.4330536
-            tangentMode: 34
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
             weightedMode: 0
             inWeight: 0.33333334
-            outWeight: 0
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -4724,7 +4725,7 @@ MonoBehaviour:
           m_RotationOrder: 4
       forceZeroToOne: 1
   scaleOverLifetime:
-    enabled: 1
+    enabled: 0
     wrapMode:
       valueTree:
       - settings:
@@ -4952,7 +4953,7 @@ MonoBehaviour:
           parameterType: 0
           relativeTo: 0
           parameterName: 
-        defaultValue: 1
+        defaultValue: 0
     period:
       valueTree:
       - settings:
@@ -5062,7 +5063,7 @@ MonoBehaviour:
           parameterType: 0
           relativeTo: 0
           parameterName: 
-        defaultValue: 2
+        defaultValue: 1
       useSlider: 0
       sliderMin: 0
       sliderMax: 0
@@ -5186,21 +5187,21 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 0
             value: 0
-            inSlope: 5
-            outSlope: 5
-            tangentMode: 34
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
             weightedMode: 0
-            inWeight: 0
+            inWeight: 0.33333334
             outWeight: 0.33333334
           - serializedVersion: 3
             time: 1
-            value: 5
-            inSlope: 5
-            outSlope: 5
-            tangentMode: 34
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
             weightedMode: 0
             inWeight: 0.33333334
-            outWeight: 0
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -5688,7 +5689,7 @@ MonoBehaviour:
           m_RotationOrder: 4
       forceZeroToOne: 1
   alphaOverLifetime:
-    enabled: 1
+    enabled: 0
     wrapMode:
       valueTree:
       - settings:
@@ -5916,7 +5917,7 @@ MonoBehaviour:
           parameterType: 0
           relativeTo: 0
           parameterName: 
-        defaultValue: 1
+        defaultValue: 0
     period:
       valueTree:
       - settings:
@@ -6149,16 +6150,7 @@ MonoBehaviour:
           m_Curve:
           - serializedVersion: 3
             time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 0.75
-            value: 1
+            value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -6167,13 +6159,13 @@ MonoBehaviour:
             outWeight: 0.33333334
           - serializedVersion: 3
             time: 1
-            value: 0
+            value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0.33333334
-            outWeight: 0
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -7548,7 +7540,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 3711301
+  uniqueIndex: 5394175
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -7836,7 +7828,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 10383089
+  uniqueIndex: 13731716
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -9352,7 +9344,7 @@ MonoBehaviour:
       unless: 0
       canceller: 0
     onBulletDeath:
-      enabled: 1
+      enabled: 0
       behaviour: 0
       unless: 0
       canceller: 0
@@ -10156,7 +10148,7 @@ MonoBehaviour:
   foldoutVFX: 0
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 1
+  currentlyDisplayedModule: 5
   canMove: 0
   canCollide: 0
   isVisible: 0
@@ -14948,7 +14940,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 11357085
+  uniqueIndex: 2932378
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -19897,4 +19889,4 @@ MonoBehaviour:
   advancedFoldout: 0
   hasBeenSerializedOnce: 1
   focusedInstruction: -1
-  safetyForPlaymode: 13
+  safetyForPlaymode: 8
