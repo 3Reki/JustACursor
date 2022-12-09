@@ -47,7 +47,7 @@ MonoBehaviour:
         half: 0
         checkType: 0
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: 3fc21f73121932b4cb6a185b6a79cfd8, type: 2}
+      pattern: {fileID: 11400000, guid: 218cf39e750f00f49910cb3b3beaa370, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
         half: 0
         checkType: 0
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: 032ce65965c73f04e9949d3db8ec14a1, type: 2}
+      pattern: {fileID: 11400000, guid: 733e8a0b2a614194295bb373cec9a9e5, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
