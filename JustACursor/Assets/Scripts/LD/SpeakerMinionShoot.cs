@@ -24,13 +24,13 @@ namespace LD
 
         private IEnumerator LaserCycle()
         {
-            yield return new WaitForSeconds(timeBeforeNextPreview/Energy.GameSpeed);
-            
             laser.ShowPreview();
             
             yield return new WaitForSeconds(previewDuration/Energy.GameSpeed-Time.deltaTime);
 
             yield return StartCoroutine(laser.Fire(laserDuration));
+            
+            yield return new WaitForSeconds(timeBeforeNextPreview/Energy.GameSpeed);
 
             if (isLooping) StartCoroutine(LaserCycle());
         }
