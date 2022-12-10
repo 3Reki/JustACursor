@@ -8075,6 +8075,62 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595409, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserWidth
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserLength
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7632370720203135143, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_SortingOrder
       value: -1
@@ -8166,7 +8222,7 @@ PrefabInstance:
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: firePosition
       value: 
-      objectReference: {fileID: 156832529}
+      objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserDuration
       value: 2
@@ -8285,11 +8341,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
---- !u!4 &156832529 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8059214268692747244, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
-  m_PrefabInstance: {fileID: 156832528}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &436086208
 GameObject:
   m_ObjectHideFlags: 0
@@ -13839,11 +13890,6 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 7911879526573161379, guid: c2b2869cb037bfe4e9db5e18d6613d08, type: 3}
   m_PrefabInstance: {fileID: 1752596052}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1787242690 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8059214268692747244, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
-  m_PrefabInstance: {fileID: 8059214270169500235}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1876319887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14195,6 +14241,54 @@ PrefabInstance:
       propertyPath: startIsolatedFromBullet
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595409, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660014381432595410, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7632370720203135143, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_SortingOrder
       value: -1
@@ -14286,7 +14380,7 @@ PrefabInstance:
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: firePosition
       value: 
-      objectReference: {fileID: 1787242690}
+      objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserColor.a
       value: 1
