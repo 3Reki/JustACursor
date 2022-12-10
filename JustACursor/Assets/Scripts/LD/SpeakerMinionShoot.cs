@@ -14,27 +14,19 @@ namespace LD
 
         private void Start()
         {
-            if (shootAtStart) Shoot();
+            if (shootAtStart) StartCoroutine(ShootLoop());
         }
 
-        public void Shoot()
+        private IEnumerator ShootLoop()
         {
-            StartCoroutine(LaserCycle());
-        }
-
-        private IEnumerator LaserCycle()
-        {
-            laser.ShowPreview();
-            
-            yield return new WaitForSeconds(previewDuration/Energy.GameSpeed-Time.deltaTime);
-
-            yield return StartCoroutine(laser.Fire(laserDuration));
-            
+            yield return StartCoroutine(laser.Fire(previewDuration,laserDuration));
             yield return new WaitForSeconds(timeBeforeNextPreview/Energy.GameSpeed);
-
-            if (isLooping) StartCoroutine(LaserCycle());
+            if (isLooping) StartCoroutine(ShootLoop());
         }
-
         
+        public IEnumerator ShootOneShot(float previewDuration, float laserDuration, float laserWidth, float laserLength)
+        {
+            yield return StartCoroutine(laser.CustomFire(previewDuration, laserDuration, laserWidth, laserLength));
+        }
     }
 }
