@@ -18,7 +18,7 @@ namespace Bosses.Patterns.Drones
 
             for (int i = 0; i < droneCount; i++)
             {
-                linkedBoss.GetDrone(i).SetPositionAndRotation(Vector2.Lerp(start, end, i / (droneCount - 1f)),
+                linkedBoss.GetDrone(i).SetPositionAndRotation(Vector2.Lerp(start, end, (i + 0.5f) / droneCount),
                     rotation);
             }
         }

@@ -130,10 +130,9 @@ namespace Bosses
             transform.root.gameObject.SetActive(false);
         }
 
-        protected void StopCurrentPattern()
+        protected virtual void StopCurrentPattern()
         {
             currentPattern.Stop();
-            // currentPatternPhase = PatternPhase.None;
         }
 
         

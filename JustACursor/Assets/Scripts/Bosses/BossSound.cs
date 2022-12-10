@@ -39,6 +39,12 @@ namespace Bosses
             return drones[i];
         }
 
+        protected override void StopCurrentPattern()
+        {
+            base.StopCurrentPattern();
+            currentDronePattern.Stop();
+        }
+
         private void HandleDrones()
         {
             if (currentDronePattern == null)
