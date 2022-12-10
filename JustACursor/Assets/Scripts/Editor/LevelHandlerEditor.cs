@@ -7,11 +7,11 @@ namespace Editor
     [CustomEditor(typeof(LevelHandler))]
     public class LevelHandlerEditor : UnityEditor.Editor
     {
-        private LevelHandler editedLevelHandler;
+        private LevelHandler editedLH;
 
         private void OnEnable()
         {
-            editedLevelHandler = target as LevelHandler;
+            editedLH = target as LevelHandler;
         }
 
         public override void OnInspectorGUI()
@@ -28,7 +28,7 @@ namespace Editor
                     Debug.LogWarning("Editor Only !");
                     return;
                 }
-                editedLevelHandler.GetComponents();
+                editedLH.GetComponents();
             }
 
             if (GUILayout.Button("Setup Floors"))
@@ -38,7 +38,7 @@ namespace Editor
                     Debug.LogWarning("Editor Only !");
                     return;
                 }
-                editedLevelHandler.SetupFloors();
+                editedLH.SetupFloors();
             }
                 
             if (GUILayout.Button("Reset All (for editing)"))
@@ -48,7 +48,7 @@ namespace Editor
                     Debug.LogWarning("Editor Only !");
                     return;
                 }
-                editedLevelHandler.ResetAll();
+                editedLH.ResetAll();
             }
             
             GUILayout.Space(10);
@@ -60,7 +60,7 @@ namespace Editor
                     Debug.LogWarning("Runtime Only !");
                     return;
                 }
-                editedLevelHandler.GoToNextFloor();
+                editedLH.GoToNextFloor();
             }
 
             serializedObject.ApplyModifiedProperties();
