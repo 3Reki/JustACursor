@@ -1,5 +1,6 @@
-﻿using Bosses.Dependencies;
-using Bosses.Patterns.Drones;
+﻿using System;
+using Bosses.Dependencies;
+using Bosses.Patterns;
 using UnityEngine;
 
 namespace Bosses
@@ -7,19 +8,21 @@ namespace Bosses
     public class BossSound : Boss
     {
         public int droneCount => drones.Length;
+        
         [Space(15)]
         [Header("=== Sound Boss ===")]
         [SerializeField] private TempDrone[] drones = new TempDrone[12];
-
-        [SerializeField] private Pat_Dr_HalfRoom pat;
-
-        [SerializeField] private Resolver<BossSound> dronesResolver;
+        [SerializeField] private Resolver<BossSound>[] dronesResolver;
         
-        protected override void Start()
+        private Pattern<BossSound> currentDronePattern;
+
+        protected override void Update()
         {
-            base.Start();
+            base.Update();
+
+            if (isPaused) return;
             
-            pat.Play(this);
+            HandleDrones();
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -34,6 +37,31 @@ namespace Bosses
         public TempDrone GetDrone(int i)
         {
             return drones[i];
+        }
+
+        private void HandleDrones()
+        {
+            if (currentDronePattern == null)
+            {
+                currentDronePattern = dronesResolver[(int) currentBossPhase].Resolve(this);
+            }
+            switch (currentDronePattern.phase)
+            {
+                case PatternPhase.None:
+                    currentDronePattern = dronesResolver[(int) currentBossPhase].Resolve(this);
+                    break;
+                case PatternPhase.Start:
+                    currentDronePattern.Play(this);
+                    break;
+                case PatternPhase.Update:
+                    currentDronePattern.Update();
+                    break;
+                case PatternPhase.Stop:
+                    currentDronePattern = currentDronePattern.Stop();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

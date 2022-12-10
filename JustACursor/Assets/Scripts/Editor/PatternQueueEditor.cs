@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Editor
 {
-    [CustomEditor(typeof(PatternQueue))]
+    [CustomEditor(typeof(PatternQueue<>))]
     public class PatternQueueEditor : UnityEditor.Editor
     {
         private SerializedProperty resolver, instructions;
@@ -40,4 +40,10 @@ namespace Editor
             serializedObject.ApplyModifiedProperties();
         }
     }
+    
+    [CustomEditor(typeof(PatternBossQueue))]
+    public class PatternBossQueueEditor : PatternQueueEditor {}
+
+    [CustomEditor(typeof(PatternDronesQueue))]
+    public class PatternDronesQueueEditor : PatternQueueEditor {}
 }

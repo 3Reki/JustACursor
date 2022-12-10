@@ -5,7 +5,7 @@ namespace Bosses.Dependencies
 {
     public static class ResolverUtils
     {
-        public static float WeightSum<T>(this List<ResolvedPattern<T>> resolvedPatterns) where T : Boss
+        public static float WeightSum<T>(this List<ResolvedPattern<T>> resolvedPatterns) where T : Bosses.Boss
         {
             float sum = 0;
 
@@ -23,7 +23,7 @@ namespace Bosses.Dependencies
             return sum;
         }
 
-        public static ResolvedPattern<T> RandomWeightedSelection<T>(this List<ResolvedPattern<T>> candidates) where T : Boss
+        public static ResolvedPattern<T> RandomWeightedSelection<T>(this List<ResolvedPattern<T>> candidates) where T : Bosses.Boss
         {
             float selected = Random.Range(0f, candidates.WeightSum());
             Debug.Log(selected);

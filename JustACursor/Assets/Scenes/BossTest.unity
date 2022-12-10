@@ -40606,6 +40606,18 @@ PrefabInstance:
       propertyPath: drones.Array.data[23]
       value: 
       objectReference: {fileID: 1923417845}
+    - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
+      propertyPath: dronesResolver.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
+      propertyPath: dronesResolver.Array.data[0].choices.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
+      propertyPath: dronesResolver.Array.data[0].choices.Array.data[0].pattern
+      value: 
+      objectReference: {fileID: 11400000, guid: 0cad17703f2775344b03e8511eb0b0f2, type: 2}
     - target: {fileID: 5281635801060162622, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: m_SizeDelta.x
       value: 175.87

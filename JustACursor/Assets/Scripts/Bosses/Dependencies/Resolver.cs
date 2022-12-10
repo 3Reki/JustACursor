@@ -13,7 +13,7 @@ namespace Bosses.Dependencies
 
         private readonly List<ResolvedPattern<T>> selectedList = new();
         
-        public Pattern<T> Resolve(Boss boss)
+        public Pattern<T> Resolve(T boss)
         {
             selectedList.Clear();
             

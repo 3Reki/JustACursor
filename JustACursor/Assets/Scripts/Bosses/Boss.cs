@@ -19,7 +19,6 @@ namespace Bosses
         public BossMovement mover => movementHandler;
         public PlayerController targetedPlayer => player;
         
-        //[HideInInspector] public PatternPhase currentPatternPhase = PatternPhase.None;
         public Health health;
 
         [SerializeField] protected PlayerController player;
@@ -28,10 +27,11 @@ namespace Bosses
         [SerializeField] private BossMovement movementHandler;
         [SerializeField] private BulletEmitter[] emitters = new BulletEmitter[3];
         
+        protected bool isPaused;
+        
         private Pattern<Boss> currentPattern;
-        private BossPhase currentBossPhase;
+        protected BossPhase currentBossPhase;
         private bool isFrozen;
-        private bool isPaused;
 
         private void Awake()
         {
@@ -41,8 +41,6 @@ namespace Bosses
         protected virtual void Start()
         {
             DebugStart();
-            
-            currentPattern = bossData.phaseResolvers[(int) currentBossPhase].Resolve(this);
         }
 
         protected virtual void Update()

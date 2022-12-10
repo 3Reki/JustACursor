@@ -4,21 +4,20 @@ using UnityEngine;
 
 namespace Bosses.Patterns
 {
-    [CreateAssetMenu(fileName = "Pat_NAME", menuName = "Just A Cursor/Pattern/Pattern Queue", order = 0)]
-    public class PatternQueue : Pattern<Boss>
+    public class PatternQueue<T> : Pattern<T> where T : Boss
     {
-        [SerializeField] private Pattern<Boss>[] instructions;
+        [SerializeField] private Pattern<T>[] instructions;
 
-        private readonly Queue<Pattern<Boss>> patternQueue = new();
-        private Pattern<Boss> currentPattern;
+        private readonly Queue<Pattern<T>> patternQueue = new();
+        private Pattern<T> currentPattern;
 
-        public override void Play(Boss boss)
+        public override void Play(T boss)
         {
             base.Play(boss);
             
             patternQueue.Clear();
             currentPattern = null;
-            foreach (Pattern<Boss> instruction in instructions)
+            foreach (Pattern<T> instruction in instructions)
             {
                 patternQueue.Enqueue(instruction);
             }
@@ -58,7 +57,7 @@ namespace Bosses.Patterns
             }
         }
 
-        public override Pattern<Boss> Stop()
+        public override Pattern<T> Stop()
         {
             if (currentPattern.phase is PatternPhase.Update or PatternPhase.Stop)
             {
