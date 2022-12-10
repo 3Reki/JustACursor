@@ -1,41 +1,31 @@
 using System.Collections;
-using System.Threading.Tasks;
 using BulletPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace LD
 {
     public class SpeakerMinionShoot : MonoBehaviour
     {
+        [SerializeField] private LineRenderer lineRenderer;
+        
         [Header("Emitter")]
         [SerializeField] private BulletEmitter emitter;
         [SerializeField] private Transform firePosition;
 
-        [Header("Time")]
-        [SerializeField] private bool isLooping;
-        [SerializeField] private float previewDuration;
-        [SerializeField] private float laserDuration;
-        [SerializeField] private float timeBeforeNextPreview;
-        
         [Header("Preview")]
-        [SerializeField] private LineRenderer lineRenderer;
+        [SerializeField] private float previewDuration;
+        [SerializeField] private float timeBeforeNextPreview;
+        [SerializeField] private Gradient previewGradient;
+
+        [Header("Laser")]
+        [SerializeField] private bool isLooping;
         [SerializeField] private float laserWidth;
         [SerializeField] private float laserLength;
-        [SerializeField, Range(0,1)] private float previewAlpha;
+        [SerializeField] private Gradient laserGradient;
 
-        private Gradient laserGradient;
-        private Gradient previewGradient;
-
-        private void OnEnable()
-        {
-            Energy.onGameSpeedUpdate += UpdateSpeed;
-        }
-
-        private void OnDisable()
-        {
-            Energy.onGameSpeedUpdate -= UpdateSpeed;
-        }
+        [SerializeField] private float laserDuration;
+        
+        private BulletCollider[] newColliders = new BulletCollider[3];
 
         private void Awake()
         {
@@ -43,58 +33,67 @@ namespace LD
             lineRenderer.positionCount = 2;
             lineRenderer.SetPosition(0,firePosition.position);
             lineRenderer.SetPosition(1,firePosition.position+Vector3.up*laserLength);
-            laserGradient = lineRenderer.colorGradient;
-            previewGradient = new Gradient();
-            previewGradient.SetKeys(laserGradient.colorKeys,
-                new GradientAlphaKey[2]
-            {
-                new(previewAlpha, 0),
-                new(previewAlpha, 1)
-            });
-            
-            BulletParams myBullet = emitter.emitterProfile.GetBullet("Bullet");
-            
-            float colliderWidth = laserWidth / 20;
-            
-            myBullet.colliders[0].lineStart = new Vector2(-colliderWidth, 0);
-            myBullet.colliders[0].lineEnd = new Vector2(-colliderWidth, laserLength);
 
-            myBullet.colliders[1].lineEnd = new Vector2(0, laserLength);
-            
-            myBullet.colliders[2].lineStart = new Vector2(colliderWidth, 0);
-            myBullet.colliders[2].lineEnd = new Vector2(colliderWidth, laserLength);
+            InitNewColliders();
+        }
 
-            myBullet.lifespan = new DynamicFloat(laserDuration);
-            
-            /*PatternParams myPattern = emitter.emitterProfile.GetPattern("Pattern");
-            myPattern.instructionLists[0].instructions[2].waitTime = new DynamicFloat();*/
-
+        private void Start()
+        {
             StartCoroutine(LaserCycle());
+        }
+
+        private void InitNewColliders()
+        {
+            float colliderOffset = laserWidth/2;
+            
+            newColliders[0] = new BulletCollider
+            {
+                colliderType = BulletColliderType.Line,
+                lineStart = new Vector2(-colliderOffset, 0),
+                lineEnd = new Vector2(-colliderOffset, laserLength)
+            };
+            
+            newColliders[1] = new BulletCollider
+            {
+                colliderType = BulletColliderType.Line,
+                lineEnd = new Vector2(0, laserLength)
+            };
+            
+            newColliders[2] = new BulletCollider
+            {
+                colliderType = BulletColliderType.Line,
+                lineStart = new Vector2(colliderOffset, 0),
+                lineEnd = new Vector2(colliderOffset, laserLength)
+            };
         }
 
         private IEnumerator LaserCycle()
         {
-            yield return new WaitForSeconds(timeBeforeNextPreview);
+            yield return new WaitForSeconds(timeBeforeNextPreview/Energy.GameSpeed);
             
             lineRenderer.colorGradient = previewGradient;
             lineRenderer.gameObject.SetActive(true);
             
-            yield return new WaitForSeconds(previewDuration);
+            yield return new WaitForSeconds(previewDuration/Energy.GameSpeed-Time.deltaTime);
             
             emitter.Play();
+            yield return new WaitForSeconds(Time.deltaTime);
+            SetupBullet(emitter.bullets[^1]);
+            
             lineRenderer.colorGradient = laserGradient;
             
-            yield return new WaitForSeconds(laserDuration);
+            yield return new WaitForSeconds(laserDuration/Energy.GameSpeed);
             
             lineRenderer.gameObject.SetActive(false);
             emitter.Stop();
 
             StartCoroutine(LaserCycle());
         }
-    
-        private void UpdateSpeed()
+
+        private void SetupBullet(BulletPro.Bullet bullet)
         {
-            //emitter.rootBullet.modulePatterns.patternRuntimeInfo[0].instructionLists[0].instructions[2].waitTime = timeBetweenLasers/Energy.GameSpeed;
+            bullet.moduleLifespan.lifespan = laserDuration/Energy.GameSpeed;
+            bullet.moduleCollision.SetColliders(newColliders);
         }
     }
 }

@@ -8071,6 +8071,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2420579271805927657, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7632370720203135143, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_SortingOrder
       value: -1
@@ -8149,11 +8153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7632370720203135143, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserWidth
-      value: 5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserLength
@@ -8163,6 +8167,70 @@ PrefabInstance:
       propertyPath: firePosition
       value: 
       objectReference: {fileID: 156832529}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: timeBeforeNextPreview
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.a
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key1.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190805, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -8213,7 +8281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190806, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
@@ -13291,7 +13359,7 @@ PrefabInstance:
     - target: {fileID: 7218749293906598778, guid: 87a8711d299d159479b88d0d9e4e67f3, type: 3}
       propertyPath: pools.Array.data[0].prefab
       value: 
-      objectReference: {fileID: 6478446552991069567, guid: aba134c44be02a54abe5ea8631df6f88, type: 3}
+      objectReference: {fileID: 8892281244433778796, guid: 9abffad01c50aa94b84c6706084669b2, type: 3}
     - target: {fileID: 7218749293906598778, guid: 87a8711d299d159479b88d0d9e4e67f3, type: 3}
       propertyPath: pools.Array.data[0].foldout
       value: 1
@@ -14209,7 +14277,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: aad8f32b94e3bc34e973a8c28543ff68, type: 2}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserWidth
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserLength
@@ -14244,6 +14312,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserGradient.key0.b
       value: 0
       objectReference: {fileID: 0}
@@ -14265,6 +14337,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: timeBeforeNextPreview
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.a
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key1.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: previewGradient.key1.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190805, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}

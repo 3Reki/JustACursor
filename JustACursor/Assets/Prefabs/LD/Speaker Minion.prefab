@@ -82,7 +82,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.1
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -204,12 +204,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitterProfile: {fileID: 0}
+  emitterProfile: {fileID: 11400000, guid: aad8f32b94e3bc34e973a8c28543ff68, type: 2}
   patternOrigin: {fileID: 8059214268692747244}
   playAtStart: 0
   useDefaultGizmoColor: 1
   gizmoColor: {r: 0, g: 1, b: 0, a: 1}
-  gizmoSize: 0.3
+  gizmoSize: 0.2
 --- !u!1 &8059214269864190806
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,13 +258,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ba8712ef3e0974e82b261d5e93ae25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 7632370720203135143}
   emitter: {fileID: 8059214269714859626}
   firePosition: {fileID: 0}
-  isLooping: 1
   previewDuration: 0.5
-  laserDuration: 0.5
   timeBeforeNextPreview: 1
-  lineRenderer: {fileID: 7632370720203135143}
+  previewGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  isLooping: 1
+  laserWidth: 0
+  laserLength: 0
+  laserGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  laserDuration: 0.5
 --- !u!1 &8059214270548006959
 GameObject:
   m_ObjectHideFlags: 0
