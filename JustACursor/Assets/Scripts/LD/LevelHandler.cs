@@ -13,7 +13,7 @@ namespace LD
         [field:SerializeField] public List<Floor> Floors { get; private set; }
 
         [Header("Parameters")]
-        [SerializeField, Range(0.2f,0.05f)] private float scaleDecreaseValue;
+        [SerializeField, Range(0.05f,0.2f)] private float scaleDecreaseValue;
         [HideInInspector] public int NbMaxFloorShown;
         
         public delegate void OnEndFloor();
