@@ -48,6 +48,30 @@ namespace LD
             
             return Vector2.Distance(corners[(int) corner], position);
         }
+
+        public bool IsInsideQuarter(Vector2 position, Quarter quarter)
+        {
+            return quarter switch
+            {
+                Quarter.NorthWest => position.x <= centerPosition.x && position.y > centerPosition.y,
+                Quarter.NorthEast => position.x > centerPosition.x && position.y >= centerPosition.y,
+                Quarter.SouthWest => position.x < centerPosition.x && position.y <= centerPosition.y,
+                Quarter.SouthEast => position.x >= centerPosition.x && position.y < centerPosition.y,
+                _ => throw new ArgumentOutOfRangeException(nameof(quarter), quarter, null)
+            };
+        }
+        
+        public bool IsInsideHalf(Vector2 position, Half half)
+        {
+            return half switch
+            {
+                Half.North => position.y > centerPosition.y,
+                Half.East => position.x > centerPosition.x,
+                Half.South => position.y <= centerPosition.y,
+                Half.West => position.x <= centerPosition.x,
+                _ => throw new ArgumentOutOfRangeException(nameof(half), half, null)
+            };
+        }
         
         public enum Corner
         {
@@ -56,6 +80,22 @@ namespace LD
             NorthEast = 1,
             SouthWest = 2,
             SouthEast = 3
+        }
+
+        public enum Quarter
+        {
+            NorthWest = 0,
+            NorthEast = 1,
+            SouthWest = 2,
+            SouthEast = 3
+        }
+        
+        public enum Half
+        {
+            North = 0,
+            East = 1,
+            South = 2,
+            West = 3
         }
     }
 }

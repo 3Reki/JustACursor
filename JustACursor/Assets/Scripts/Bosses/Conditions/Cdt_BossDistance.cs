@@ -20,8 +20,8 @@ namespace Bosses.Conditions
         {
             return checkType switch
             {
-                RelativePosition.CloserThan => relativeDistance < distance,
-                RelativePosition.FartherThan => relativeDistance > distance,
+                RelativePosition.Inside => relativeDistance < distance,
+                RelativePosition.Outside => relativeDistance > distance,
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
