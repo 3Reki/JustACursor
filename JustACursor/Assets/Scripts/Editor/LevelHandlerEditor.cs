@@ -18,6 +18,7 @@ namespace Editor
         {
             serializedObject.Update();
             DrawDefaultInspector();
+            editedLH.NbMaxFloorShown = EditorGUILayout.IntSlider("NbMaxFloorShown", editedLH.NbMaxFloorShown, 1, editedLH.Floors.Count);
 
             GUILayout.Space(10);
             GUILayout.Label("Editor Only", EditorStyles.boldLabel);

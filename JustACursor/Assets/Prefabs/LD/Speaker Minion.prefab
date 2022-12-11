@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8059214269864190805}
+  - component: {fileID: 5776398038772267765}
   - component: {fileID: 8059214269864190804}
   m_Layer: 0
   m_Name: Speaker Minion
@@ -34,6 +35,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &5776398038772267765
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8059214269864190806}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &8059214269864190804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,12 +73,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ba8712ef3e0974e82b261d5e93ae25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFromLD: 1
   laser: {fileID: 5660014381432595410}
   timeBeforeNextPreview: 1
   previewDuration: 0.5
   laserDuration: 0.5
-  shootAtStart: 1
-  isLooping: 1
 --- !u!1 &8059214270548006959
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8059214270548006958}
   - component: {fileID: 8059214270548006957}
+  - component: {fileID: 2362559175277563414}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -136,6 +163,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2362559175277563414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8059214270548006959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc12a11c0363d504692042b566ec11ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RenderPlan: 1
 --- !u!1001 &112494887816612579
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -70,7 +70,7 @@ namespace LD
             lineRenderer.widthMultiplier = width;
             lineRenderer.positionCount = 2;
             lineRenderer.SetPosition(0,transform.position);
-            lineRenderer.SetPosition(1,transform.position+Vector3.up*length);
+            lineRenderer.SetPosition(1,transform.position+transform.up*length);
         }
         
         private void InitNewColliders(float width, float length)

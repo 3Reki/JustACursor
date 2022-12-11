@@ -47,7 +47,7 @@ namespace Editor
             serializedObject.ApplyModifiedProperties();
         }
 
-        private void OnSceneGUI()
+        /*private void OnSceneGUI()
         {
             if (!drawReceiverMode) return;
             HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
@@ -92,6 +92,6 @@ namespace Editor
             //br.transform.rotation = Quaternion.Euler(0,0,angle);
             
             selectedPoints.RemoveAt(0);
-        }
+        }*/
     }
 }

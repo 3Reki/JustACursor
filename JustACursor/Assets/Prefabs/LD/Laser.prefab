@@ -130,7 +130,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 5693606108572183780}
   emitter: {fileID: 5693606106664384123}
-  emitterStartPosition: {fileID: 0}
   previewGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 0.2509804}

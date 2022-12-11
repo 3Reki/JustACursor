@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using CameraScripts;
 using Player;
 using UnityEngine;
@@ -6,12 +8,14 @@ namespace LD
 {
     public class LevelHandler : MonoBehaviour
     {
+        [Header("Components")]
         [SerializeField] private PlayerRespawn player;
-        [SerializeField] private Floor[] floors;
+        [field:SerializeField] public List<Floor> Floors { get; private set; }
+
+        [Header("Parameters")]
         [SerializeField, Range(0.2f,0.05f)] private float scaleDecreaseValue;
         [SerializeField, Range(0.1f,2f)] private float scaleDuration;
-        
-        private int currentFloorIndex;
+        [HideInInspector] public int NbMaxFloorShown;
         
         public delegate void OnEndFloor();
         public static OnEndFloor onEndFloor;
@@ -28,77 +32,79 @@ namespace LD
 
         private void Start()
         {
-            player.SetCheckpoint(floors[currentFloorIndex].StartPoint);
-        }
-
-        public void GetComponents()
-        {
-            floors = GetComponentsInChildren<Floor>(true);
-            player = FindObjectOfType<PlayerRespawn>();
+            player.SetCheckpoint(Floors[0].StartPoint);
         }
 
         public void GoToNextFloor()
         {
             //Disable current floor
-            floors[currentFloorIndex].gameObject.SetActive(false);
-            currentFloorIndex++;
+            Floors[0].gameObject.SetActive(false);
+            Floors.RemoveAt(0);
             
-            if (currentFloorIndex >= floors.Length) return;
+            if (Floors.Count == 0) return;
             
             //Next floor
             CameraController.instance.enabled = true;
-            player.transform.SetPositionAndRotation(floors[currentFloorIndex].StartPoint.position, floors[currentFloorIndex].StartPoint.rotation);
-            player.SetCheckpoint(floors[currentFloorIndex].StartPoint);
+            player.transform.SetPositionAndRotation(Floors[0].StartPoint.position, Floors[0].StartPoint.rotation);
+            player.SetCheckpoint(Floors[0].StartPoint);
             UpdateFloors();
+        }
+        
+        private void UpdateFloors()
+        {
+            NbMaxFloorShown = Math.Min(NbMaxFloorShown, Floors.Count);
+            for (int i = 0; i < NbMaxFloorShown; i++)
+            {
+                Floor floor = Floors[i];
+                float scaleValue = Mathf.Clamp(1 - scaleDecreaseValue * i,0.1f,1);
+                floor.Scale(scaleValue);
+                
+                string sortingLayerName = (i == 0) ? "CurrentFloor" : "OtherFloor";
+                floor.SetSortingLayer(sortingLayerName,-i);
+
+                floor.SetFloorState(i == 0 ? Floor.FloorState.All : Floor.FloorState.TilemapOnly);
+            }
+
+            for (int i = NbMaxFloorShown; i < Floors.Count; i++)
+            {
+                Floors[i].SetFloorState(Floor.FloorState.Nothing);
+            }
+        }
+        
+        /*
+         * Methods for LevelHandlerEditor
+         */
+        
+        public void GetComponents()
+        {
+            Floors = new List<Floor>(GetComponentsInChildren<Floor>(true));
+            player = FindObjectOfType<PlayerRespawn>();
         }
 
         public void SetupFloors()
         {
-            for (int i = 0; i < floors.Length; i++)
+            foreach (var floor in Floors)
             {
-                Floor floor = floors[i];
                 floor.GetComponents();
-                
-                float scaleValue = Mathf.Clamp(1 - scaleDecreaseValue * i,0.1f,1);
-                floor.Scale(scaleValue,scaleDuration);
-                
-                floor.SetAllTriggerState(i == 0);
-
-                string sortingLayerName = (i == 0) ? "CurrentFloor" : "OtherFloor";
-                floor.SetSortingLayer(sortingLayerName,i);
             }
+            
+            UpdateFloors();
             
             Debug.Log("Floors have been setup successfully!");
         }
 
         public void ResetAll()
         {
-            for (int i = 0; i < floors.Length; i++)
+            for (int i = 0; i < Floors.Count; i++)
             {
-                Floor floor = floors[i];
+                Floor floor = Floors[i];
                 
-                floor.Scale(1,scaleDuration);
-                floor.SetAllTriggerState(true);
-                floor.SetSortingLayer("CurrentFloor",i);
+                floor.Scale(1);
+                floor.SetFloorState(Floor.FloorState.All);
+                floor.SetSortingLayer("CurrentFloor",0);
             }
             
             Debug.Log("Floors have been reset successfully!");
-        }
-
-        private void UpdateFloors()
-        {
-            floors[currentFloorIndex].SetAllTriggerState(true);
-            
-            for (int i = currentFloorIndex; i < floors.Length; i++)
-            {
-                Floor floor = floors[i];
-                
-                float scaleValue = Mathf.Clamp(1 - scaleDecreaseValue * i,0.1f,1);
-                floor.Scale(scaleValue,scaleDuration);
-
-                string sortingLayerName = (i == currentFloorIndex) ? "CurrentFloor" : "OtherFloor";
-                floor.SetSortingLayer(sortingLayerName,i);
-            }
         }
     }
 }

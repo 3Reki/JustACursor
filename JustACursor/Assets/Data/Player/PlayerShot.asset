@@ -9578,7 +9578,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 4013579
+  uniqueIndex: 11351724
   profile: {fileID: 11400000}
   parent: {fileID: 114746627269426962}
   children:
@@ -14541,7 +14541,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 15140024
+  uniqueIndex: 1361820
   profile: {fileID: 11400000}
   parent: {fileID: 114235044058580522}
   children:
@@ -14801,7 +14801,7 @@ MonoBehaviour:
   inputTexture: {fileID: 0}
   outputTexture:
     tex: {fileID: 0}
-    widthInWindow: 0.58
+    widthInWindow: 1
     ingameDistance: 5
     orientation: 0
     justChangedOrientation: 0
@@ -14844,7 +14844,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 801875
+  uniqueIndex: 5394727
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -17164,7 +17164,7 @@ MonoBehaviour:
   foldoutVFX: 0
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 1
+  currentlyDisplayedModule: 3
   canMove: 0
   canCollide: 0
   isVisible: 0
@@ -21956,7 +21956,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 6636696
+  uniqueIndex: 14208255
   profile: {fileID: 11400000}
   parent: {fileID: 114527426404384722}
   children: []
@@ -24275,7 +24275,7 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 8
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -24735,22 +24735,17 @@ MonoBehaviour:
   animationMovementSpace: 0
   animationTexture: {fileID: 0}
   collisionTags:
-    tagList: 18
+    tagList: 22
   colliders:
-  - colliderType: 1
-    size: 1
-    offset: {x: -0.88, y: 0, z: 0}
+  - colliderType: 0
+    size: 0.1
+    offset: {x: 0, y: 0, z: 0}
     lineStart: {x: -2.4, y: -1.13}
-    lineEnd: {x: 0, y: 1}
-  - colliderType: 1
-    size: 1
-    offset: {x: -0.88, y: 0, z: 0}
-    lineStart: {x: 2.4, y: -1.13}
     lineEnd: {x: 0, y: 1}
   dieOnCollision: 1
   deathTiming: 0
   maxSimultaneousCollisionsPerFrame: 1
-  shapeFoldout: 1
+  shapeFoldout: 0
   collisionTagsFoldout: 1
   homing: 0
   homingTags:
