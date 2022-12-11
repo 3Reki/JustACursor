@@ -443,6 +443,9 @@ namespace BulletPro
             if (val.settings.valueType == DynamicParameterSorting.Fixed)
                 return val.defaultValue;
 
+            if (val.settings.valueType == DynamicParameterSorting.FixedWithMultiplier)
+                return val.defaultValue * BulletGlobalParamManager.instance.GetFloat(val.settings.parameterName);
+
             // equal to param
             if (val.settings.valueType == DynamicParameterSorting.EqualToParameter)
             {

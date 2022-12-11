@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,12 +14,11 @@ namespace Player {
         
         private PlayerData data => playerController.data;
         private Coroutine showHealthCoroutine;
-    
+
         public void ShowHealth()
         {
             if (showHealthCoroutine != null)
             {
-                Debug.Log("Kill");
                 foreach (Image image in pvs)
                 {
                     image.DOKill();
@@ -42,7 +40,7 @@ namespace Player {
         {
             for (int i = 0; i < pvs.Count; i++)
             {
-                if (health.GetCurrentHealth() >= health.GetMaxHealth() - i) {
+                if (health.CurrentHealth >= health.MaxHealth - i) {
                     pvs[i].DOFade(1, data.healthFadeIn);
                 }
                 else pvs[i].DOFade(0, data.healthFadeOut);

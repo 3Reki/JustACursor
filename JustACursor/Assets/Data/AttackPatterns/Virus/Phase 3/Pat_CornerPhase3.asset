@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b086fb99be7d4d3da1071fac48d6a0a2, type: 3}
+  m_Name: Pat_CornerPhase3
+  m_EditorClassIdentifier: 
+  resolver:
+    choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 8030e9ccd5fdb804c9983a8285d1eb37, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtTest:
+        comparisonType: 0
+        cond: 0
+  patternDuration: 0.5

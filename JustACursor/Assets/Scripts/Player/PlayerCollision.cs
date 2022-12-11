@@ -1,19 +1,43 @@
+using System;
 using System.Collections;
-using ScriptableObjects;
+using CameraScripts;
 using UnityEngine;
 
 namespace Player {
     public class PlayerCollision : MonoBehaviour, IDamageable
     {
+        public bool isInvincible;
+        
         [SerializeField] private PlayerController playerController;
         [SerializeField] private Health health;
 
         private PlayerData data => playerController.data;
-        private bool isInvincible;
 
-        public void Damage(int amount)
+        private void OnEnable()
         {
-            health.LoseHealth(amount);
+            health.onHealthLose.AddListener(Shake);
+        }
+
+        private void OnDisable()
+        {
+            health.onHealthLose.RemoveListener(Shake);
+        }
+        
+        private void Awake()
+        {
+            health.Init(data.maxHealth);
+        }
+
+        private void Shake()
+        {
+            CameraController.ShakeCamera(data.onHitShakeIntensity, data.onHitShakeDuration);
+        }
+
+        public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
+        {
+            if (isInvincible) return;
+            
+            health.LoseHealth(bullet.moduleParameters.GetInt("Damage"));
             StartCoroutine(Invincibility());
         }
 
@@ -22,16 +46,6 @@ namespace Player {
             isInvincible = true;
             yield return new WaitForSeconds(data.invinciblityTime);
             isInvincible = false;
-        }
-
-        private void OnCollisionStay2D(Collision2D col)
-        {
-            if (isInvincible) return;
-        
-            if (col.gameObject.TryGetComponent(out ColorEnemy enemy))
-            {
-                Damage(1);
-            }
         }
     }
 }

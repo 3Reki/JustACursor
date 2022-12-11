@@ -7,8 +7,8 @@ namespace Player {
     {
         private List<SchemeAim> schemeList = new()
         {
-            new("Keyboard & Mouse", AimMethod.Mouse),
-            new("Gamepad", AimMethod.Gamepad)
+            new SchemeAim("Keyboard & Mouse", AimMethod.Mouse),
+            new SchemeAim("Gamepad", AimMethod.Gamepad)
         };
             
         public AimMethod currentAimMethod { get; private set; }

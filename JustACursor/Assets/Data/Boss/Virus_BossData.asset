@@ -1,0 +1,180 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af46c4a20a0f5d5459cdc64ad539c715, type: 3}
+  m_Name: Virus_BossData
+  m_EditorClassIdentifier: 
+  bossName: Virus
+  description: "The first boss in the game. \nCore mechanic: slowing & accelerating
+    time"
+  startingHP: 200
+  phase2HPThreshold: 0.6
+  phase3HPThreshold: 0.3
+  phaseResolvers:
+  - choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: c8645a8bb7616f04b926beae427d4212, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: -1
+        checkType: 1
+        distance: 5
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 3fc21f73121932b4cb6a185b6a79cfd8, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 5
+      cdtBossDistance:
+        checkType: 0
+        distance: 5
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+  - choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 55715f107a82c1c42a186331ac3dc527, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 032ce65965c73f04e9949d3db8ec14a1, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+  - choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 1b916d5b02ba9d04f89874195f7149e8, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 55eb0118170ed944da4f234c5cae228b, type: 2}
+      weight: 0
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
