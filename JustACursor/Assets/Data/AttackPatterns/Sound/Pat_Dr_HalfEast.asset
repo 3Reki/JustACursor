@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccf1865493b4de29a1529c3734bbc08, type: 3}
   m_Name: Pat_Dr_HalfEast
   m_EditorClassIdentifier: 
-  phase: 0
+  phase: 2
   resolver:
     choices: []
   patternDuration: 5
-  half: 1
+  half: 2
+  alternateDirectionMode: 2

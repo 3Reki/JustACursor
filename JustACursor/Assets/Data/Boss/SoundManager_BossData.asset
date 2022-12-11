@@ -45,32 +45,6 @@ MonoBehaviour:
         targetType: 0
         half: 0
         checkType: 0
-    - conditionType: 0
-      pattern: {fileID: 0}
-      weight: 1
-      cdtHealthThreshold:
-        comparisonType: 0
-        threshold: 0
-      cdtCornerDistance:
-        targetType: 0
-        corner: 0
-        checkType: 0
-        distance: 0
-      cdtCenterDistance:
-        targetType: 0
-        checkType: 0
-        distance: 5
-      cdtBossDistance:
-        checkType: 0
-        distance: 5
-      cdtQuarter:
-        targetType: 0
-        quarter: 0
-        checkType: 0
-      cdtHalf:
-        targetType: 0
-        half: 0
-        checkType: 0
   - choices:
     - conditionType: 0
       pattern: {fileID: 11400000, guid: 55715f107a82c1c42a186331ac3dc527, type: 2}

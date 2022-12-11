@@ -40438,6 +40438,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1243091281}
     - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
+      propertyPath: bossData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b85a997e37844146b26fe43d1411fa8, type: 2}
+    - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: drones.Array.size
       value: 12
       objectReference: {fileID: 0}
@@ -40576,7 +40580,7 @@ PrefabInstance:
     - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: dronesResolver.Array.data[0].choices.Array.data[0].pattern
       value: 
-      objectReference: {fileID: 11400000, guid: 8f1df03cf2a7402458223250ccd1c8eb, type: 2}
+      objectReference: {fileID: 11400000, guid: 8d849b3ae4555eb46919f51c76e54087, type: 2}
     - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: dronesResolver.Array.data[0].choices.Array.data[1].pattern
       value: 
