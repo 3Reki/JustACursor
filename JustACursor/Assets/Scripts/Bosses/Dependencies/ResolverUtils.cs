@@ -26,7 +26,7 @@ namespace Bosses.Dependencies
         public static ResolvedPattern<T> RandomWeightedSelection<T>(this List<ResolvedPattern<T>> candidates) where T : Bosses.Boss
         {
             float selected = Random.Range(0f, candidates.WeightSum());
-            Debug.Log(selected);
+
             foreach (ResolvedPattern<T> pattern in candidates)
             {
                 selected -= pattern.weight;

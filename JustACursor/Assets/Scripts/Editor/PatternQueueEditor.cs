@@ -1,6 +1,6 @@
 ﻿using Bosses.Patterns;
 using UnityEditor;
-using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Editor
 {
