@@ -20,10 +20,11 @@ namespace LD
             Vector3 position = triggerBounds.center;
             Vector3 size = triggerBounds.size;
             
-            Gizmos.color = new Color(0, 1, 0);
-            Gizmos.DrawWireCube(position, size);
-            Gizmos.color = new Color(0, .5f, 0, .5f);
+            Gizmos.color = new Color(0, 1, 0, .5f);
             Gizmos.DrawCube(position, size);
+            
+            Gizmos.color = new Color(0, .5f, 0);
+            Gizmos.DrawWireCube(position, size);
         }
 #endif
     }
