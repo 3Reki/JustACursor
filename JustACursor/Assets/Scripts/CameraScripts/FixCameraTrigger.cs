@@ -1,10 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 namespace CameraScripts
 {
     public class FixCameraTrigger : MonoBehaviour
@@ -23,31 +19,38 @@ namespace CameraScripts
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
-            Bounds triggerBounds = GetComponent<BoxCollider2D>().bounds;
-            Vector3 position = triggerBounds.center;
-            Vector3 size = triggerBounds.size;
-            
-            Gizmos.color = new Color(1, .4f, .4f);
-            Gizmos.DrawWireCube(position, size);
-            Gizmos.color = new Color(1, .15f, .15f, .7f);
-            Gizmos.DrawCube(position, size);
-            
-            var style = new GUIStyle
+            /*var style = new GUIStyle
             {
                 alignment = TextAnchor.MiddleCenter,
                 fontStyle = FontStyle.Bold,
-                normal = new GUIStyleState {textColor = Color.white}
+                fixedWidth = triggerBounds.size.x,
+                normal = new GUIStyleState { textColor = Color.white }
             };
-
-            Handles.Label(position, "FixCameraTrigger", style);
-
+            
+            //Handles.Label(position, "FixCameraTrigger", style);*/
         }
 
         private void OnDrawGizmosSelected()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, transform.TransformPoint(anchorPosition));
-            Gizmos.DrawSphere(transform.TransformPoint(anchorPosition), 1f);
+            Bounds triggerBounds = GetComponent<BoxCollider2D>().bounds;
+            Vector3 position = triggerBounds.center;
+            Vector3 size = triggerBounds.size;
+
+            Camera cam = Camera.main;
+            Vector3 camPos = transform.TransformPoint(anchorPosition);
+            float height = 2f * viewSize;
+            float width = height * cam.aspect;
+            
+            Gizmos.color = new Color(0, 0, 1f, .5f);
+            Gizmos.DrawCube(position, size);
+            
+            Gizmos.color = new Color(.5f, .5f, 1);
+            Gizmos.DrawWireCube(position, size);
+            Gizmos.DrawLine(transform.position,camPos);
+            
+            Gizmos.DrawWireCube(camPos, new Vector2(width, height));
+            Gizmos.DrawLine(new Vector3(camPos.x-width/2,camPos.y+height/2), new Vector3(camPos.x+width/2,camPos.y-height/2));
+            Gizmos.DrawLine(new Vector3(camPos.x-width/2,camPos.y-height/2), new Vector3(camPos.x+width/2,camPos.y+height/2));
         }
 #endif
     }

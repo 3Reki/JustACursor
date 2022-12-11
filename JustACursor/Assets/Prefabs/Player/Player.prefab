@@ -29,8 +29,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8492879579015322657}
-  m_RootOrder: 1
+  m_Father: {fileID: 6995481266605536940}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8795511399625430581
 MonoBehaviour:
@@ -49,7 +49,7 @@ MonoBehaviour:
   playAtStart: 0
   useDefaultGizmoColor: 1
   gizmoColor: {r: 0, g: 1, b: 0, a: 1}
-  gizmoSize: 0.32
+  gizmoSize: 0.5
 --- !u!1 &2075680991202118078
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +227,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6995481266605536940}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4909733088939463512
 GameObject:
@@ -359,6 +359,7 @@ Transform:
   m_Children:
   - {fileID: 2303760420451671604}
   - {fileID: 9186319392919533144}
+  - {fileID: 3360843010186996588}
   - {fileID: 3695938181335937323}
   m_Father: {fileID: 8492879579015322657}
   m_RootOrder: 0
@@ -630,7 +631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 8213265501839806752}
   respawnScreen: {fileID: 8381984491438418184}
-  respawnPosition: {fileID: 0}
+  respawnPoint: {fileID: 0}
   respawnKey: 114
 --- !u!114 &3615676464410597287
 MonoBehaviour:
@@ -644,7 +645,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83c06037a7cfc94098aa9b1122f4dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
   onHealthGain:
     m_PersistentCalls:
       m_Calls:
@@ -823,7 +823,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6995481266605536940}
-  - {fileID: 3360843010186996588}
   - {fileID: 6077025339040786904}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -977,7 +976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2623719161867187467, guid: 352819842b9341846b4128ad0a84028d, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2623719161867187467, guid: 352819842b9341846b4128ad0a84028d, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,10 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 namespace CameraScripts
 {
     public class FollowCameraTrigger : MonoBehaviour
@@ -22,24 +18,36 @@ namespace CameraScripts
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
+            /*var style = new GUIStyle
+            {
+                alignment = TextAnchor.MiddleCenter,
+                fontStyle = FontStyle.Bold,
+                fixedWidth = triggerBounds.size.x,
+                normal = new GUIStyleState {textColor = Color.white}
+            };
+
+            Handles.Label(position, "FollowCameraTrigger", style);*/
+        }
+
+        private void OnDrawGizmosSelected()
+        {
             Bounds triggerBounds = GetComponent<BoxCollider2D>().bounds;
             Vector3 position = triggerBounds.center;
             Vector3 size = triggerBounds.size;
             
-            Gizmos.color = new Color(1, .4f, .4f);
-            Gizmos.DrawWireCube(position + new Vector3(0, 0, -1), size);
-            Gizmos.color = new Color(1, .15f, .15f, .7f);
-            Gizmos.DrawCube(position, size);
+            Camera cam = Camera.main;
+            Vector2 camPos = transform.position;
+            float height = 2f * viewSize;
+            float width = height * cam.aspect;
             
-            var style = new GUIStyle
-            {
-                alignment = TextAnchor.MiddleCenter,
-                fontStyle = FontStyle.Bold,
-                normal = new GUIStyleState {textColor = Color.white}
-            };
+            Gizmos.color = new Color(1, 0, 0, .5f);
+            Gizmos.DrawCube(position, size);
 
-            Handles.Label(position + new Vector3(0, 0, -2), "FollowCameraTrigger", style);
-
+            Gizmos.color = new Color(1f, .5f, .5f);
+            Gizmos.DrawWireCube(position, size);
+            Gizmos.DrawWireCube(camPos, new Vector2(width, height));
+            Gizmos.DrawLine(new Vector3(camPos.x-width/2,camPos.y+height/2), new Vector3(camPos.x+width/2,camPos.y-height/2));
+            Gizmos.DrawLine(new Vector3(camPos.x-width/2,camPos.y-height/2), new Vector3(camPos.x+width/2,camPos.y+height/2));
         }
 #endif
     }

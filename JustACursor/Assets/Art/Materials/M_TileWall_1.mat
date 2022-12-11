@@ -104,5 +104,5 @@ Material:
     m_Floats:
     - _Alpha: 1
     m_Colors:
-    - _Color: {r: 8.094118, g: 11.984314, b: 0, a: 1}
+    - _Color: {r: 1.5305222, g: 0.5661801, b: 2.1132078, a: 1}
   m_BuildTextureStacks: []
