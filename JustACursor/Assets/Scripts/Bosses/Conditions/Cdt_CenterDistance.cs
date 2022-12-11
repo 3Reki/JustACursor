@@ -1,5 +1,4 @@
 ﻿using System;
-using Levels;
 using UnityEngine;
 
 namespace Bosses.Conditions

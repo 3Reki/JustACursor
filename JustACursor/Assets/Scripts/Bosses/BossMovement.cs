@@ -1,5 +1,5 @@
 ﻿using DG.Tweening;
-using Levels;
+using LD;
 using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
