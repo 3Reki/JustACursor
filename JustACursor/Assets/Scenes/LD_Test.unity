@@ -8963,7 +8963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &189657617
 Transform:
   m_ObjectHideFlags: 0
@@ -13863,7 +13863,7 @@ Transform:
   m_GameObject: {fileID: 686748440}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 4, y: 4, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 189657617}
@@ -13899,7 +13899,44 @@ MonoBehaviour:
   - {fileID: 759066808}
   - {fileID: 759066807}
   - {fileID: 2050926104}
+  floorTilemaps:
+  - {fileID: 189657616}
+  - {fileID: 1654264288}
+  - {fileID: 189657616}
+  - {fileID: 1654264288}
+  - {fileID: 189657616}
+  - {fileID: 1654264288}
+  - {fileID: 189657616}
+  - {fileID: 1654264288}
+  - {fileID: 189657616}
+  - {fileID: 1654264288}
+  - {fileID: 189657616}
+  - {fileID: 1654264288}
   floorElements:
+  - {fileID: 2094866113}
+  - {fileID: 457644273}
+  - {fileID: 1127563634}
+  - {fileID: 743850467}
+  - {fileID: 2094866113}
+  - {fileID: 457644273}
+  - {fileID: 1127563634}
+  - {fileID: 743850467}
+  - {fileID: 2094866113}
+  - {fileID: 457644273}
+  - {fileID: 1127563634}
+  - {fileID: 743850467}
+  - {fileID: 2094866113}
+  - {fileID: 457644273}
+  - {fileID: 1127563634}
+  - {fileID: 743850467}
+  - {fileID: 2094866113}
+  - {fileID: 457644273}
+  - {fileID: 1127563634}
+  - {fileID: 743850467}
+  - {fileID: 2094866113}
+  - {fileID: 457644273}
+  - {fileID: 1127563634}
+  - {fileID: 743850467}
   - {fileID: 2094866113}
   - {fileID: 457644273}
   - {fileID: 1127563634}
@@ -14485,13 +14522,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1544901519}
-  floors:
+  <Floors>k__BackingField:
   - {fileID: 2011888464}
   - {fileID: 2125100683}
   - {fileID: 686748442}
   scaleDecreaseValue: 0.1
-  scaleDuration: 1
-  nbMaxOfFloorShown: 0
+  NbMaxFloorShown: 2
 --- !u!1 &784230833
 GameObject:
   m_ObjectHideFlags: 0
@@ -25169,7 +25205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1654264289
 Transform:
   m_ObjectHideFlags: 0
@@ -34013,7 +34049,44 @@ MonoBehaviour:
   - {fileID: 1898173393}
   - {fileID: 1849783416}
   - {fileID: 508235192}
+  floorTilemaps:
+  - {fileID: 1129094036}
+  - {fileID: 31080588}
+  - {fileID: 1129094036}
+  - {fileID: 31080588}
+  - {fileID: 1129094036}
+  - {fileID: 31080588}
+  - {fileID: 1129094036}
+  - {fileID: 31080588}
+  - {fileID: 1129094036}
+  - {fileID: 31080588}
+  - {fileID: 1129094036}
+  - {fileID: 31080588}
   floorElements:
+  - {fileID: 1719835461}
+  - {fileID: 1278235546}
+  - {fileID: 1049645970}
+  - {fileID: 2129295502}
+  - {fileID: 1719835461}
+  - {fileID: 1278235546}
+  - {fileID: 1049645970}
+  - {fileID: 2129295502}
+  - {fileID: 1719835461}
+  - {fileID: 1278235546}
+  - {fileID: 1049645970}
+  - {fileID: 2129295502}
+  - {fileID: 1719835461}
+  - {fileID: 1278235546}
+  - {fileID: 1049645970}
+  - {fileID: 2129295502}
+  - {fileID: 1719835461}
+  - {fileID: 1278235546}
+  - {fileID: 1049645970}
+  - {fileID: 2129295502}
+  - {fileID: 1719835461}
+  - {fileID: 1278235546}
+  - {fileID: 1049645970}
+  - {fileID: 2129295502}
   - {fileID: 1719835461}
   - {fileID: 1278235546}
   - {fileID: 1049645970}
@@ -42738,7 +42811,44 @@ MonoBehaviour:
   - {fileID: 2102656938}
   - {fileID: 2102656937}
   - {fileID: 1480582114}
+  floorTilemaps:
+  - {fileID: 1274690948}
+  - {fileID: 2041560760}
+  - {fileID: 1274690948}
+  - {fileID: 2041560760}
+  - {fileID: 1274690948}
+  - {fileID: 2041560760}
+  - {fileID: 1274690948}
+  - {fileID: 2041560760}
+  - {fileID: 1274690948}
+  - {fileID: 2041560760}
+  - {fileID: 1274690948}
+  - {fileID: 2041560760}
   floorElements:
+  - {fileID: 340727946}
+  - {fileID: 1763418053}
+  - {fileID: 1899523058}
+  - {fileID: 1153775890}
+  - {fileID: 340727946}
+  - {fileID: 1763418053}
+  - {fileID: 1899523058}
+  - {fileID: 1153775890}
+  - {fileID: 340727946}
+  - {fileID: 1763418053}
+  - {fileID: 1899523058}
+  - {fileID: 1153775890}
+  - {fileID: 340727946}
+  - {fileID: 1763418053}
+  - {fileID: 1899523058}
+  - {fileID: 1153775890}
+  - {fileID: 340727946}
+  - {fileID: 1763418053}
+  - {fileID: 1899523058}
+  - {fileID: 1153775890}
+  - {fileID: 340727946}
+  - {fileID: 1763418053}
+  - {fileID: 1899523058}
+  - {fileID: 1153775890}
   - {fileID: 340727946}
   - {fileID: 1763418053}
   - {fileID: 1899523058}

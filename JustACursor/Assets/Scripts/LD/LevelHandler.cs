@@ -14,7 +14,6 @@ namespace LD
 
         [Header("Parameters")]
         [SerializeField, Range(0.2f,0.05f)] private float scaleDecreaseValue;
-        [SerializeField, Range(0.1f,2f)] private float scaleDuration;
         [HideInInspector] public int NbMaxFloorShown;
         
         public delegate void OnEndFloor();
