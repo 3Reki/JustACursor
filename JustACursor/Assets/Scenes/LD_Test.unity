@@ -13763,18 +13763,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1278235547}
     m_Modifications:
-    - target: {fileID: 5660014382880073223, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
-      propertyPath: m_Parameters.numCapVertices
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
-      propertyPath: laserWidth
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
-      propertyPath: laserLength
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190805, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_RootOrder
       value: 1
