@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8059214269864190806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48,13 +48,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActiveAtStart: 1
   laser: {fileID: 5660014381432595410}
-  laserWidth: 0
-  laserLength: 0
-  timeBeforeFirstFire: 0
-  previewDuration: 0
-  laserDuration: 0
-  laserCooldown: 0
-  hasCollision: 0
+  laserWidth: 1
+  laserLength: 5
+  timeBeforeFirstFire: 0.5
+  previewDuration: 1
+  laserDuration: 2
+  laserCooldown: 1
+  hasCollision: 1
   isEndless: 0
   movementAxis: 0
   movementCurve:
@@ -63,26 +63,44 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
+      inSlope: 5.5471697
+      outSlope: 5.5471697
+      tangentMode: 1
+      weightedMode: 3
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
+      tangentMode: 1
+      weightedMode: 3
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: -1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 3
+      inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
+      inSlope: 5.7412395
+      outSlope: 5.7412395
+      tangentMode: 1
+      weightedMode: 3
+      inWeight: 0.23333335
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  amplitude: 0
-  period: 0
+  amplitude: 5
+  period: 2
 --- !u!1 &8059214270548006959
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,9 +172,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingLayerID: -1869789539
+  m_SortingLayer: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
   m_FlipX: 0
@@ -198,15 +216,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: laserGradient.key0.b
-      value: 0.5566038
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: laserGradient.key0.g
-      value: 0.5566038
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: laserGradient.key0.r
-      value: 0.5566038
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: laserGradient.key1.a
@@ -214,15 +232,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: laserGradient.key1.b
-      value: 0.7075472
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: laserGradient.key1.g
-      value: 0.7075472
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: laserGradient.key1.r
-      value: 0.7075472
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: previewGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: previewGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: previewGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: previewGradient.key1.g
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389298, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: m_RootOrder
@@ -266,6 +300,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389298, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606108572183780, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606108572183780, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606108572183780, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1869789539
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606108572183780, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: m_Parameters.numCapVertices
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6010795632695718172, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}

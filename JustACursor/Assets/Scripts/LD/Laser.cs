@@ -106,8 +106,8 @@ namespace LD
             lineRenderer.widthMultiplier = width;
             
             Vector3 position = myTransform.localPosition;
-            lineRenderer.SetPosition(0, position);
-            lineRenderer.SetPosition(1,position + Vector3.up * length);
+            lineRenderer.SetPosition(0, Vector2.zero);
+            lineRenderer.SetPosition(1,Vector2.zero + Vector2.up * length);
         }
 
         private void SetupColliders(float width, float length)
