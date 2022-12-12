@@ -12,9 +12,9 @@ namespace Bosses.Instructions.Patterns
         protected T linkedEntity;
         protected float currentPatternTime;
         
-        public virtual void Play(T boss)
+        public virtual void Play(T entity)
         {
-            linkedEntity = boss;
+            linkedEntity = entity;
             currentPatternTime = patternDuration;
             isFinished = false;
         }
@@ -29,9 +29,6 @@ namespace Bosses.Instructions.Patterns
             }
         }
 
-        public virtual void Stop()
-        {
-            
-        }
+        public abstract void Stop();
     }
 }

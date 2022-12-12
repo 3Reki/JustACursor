@@ -76,9 +76,8 @@ MonoBehaviour:
   isFromLD: 1
   myTransform: {fileID: 8059214269864190805}
   laser: {fileID: 5660014381432595410}
-  timeBeforeNextPreview: 1
-  previewDuration: 0.5
-  laserDuration: 0.5
+  laserPattern: {fileID: 11400000, guid: 01649ec115093fd4c8f284637e5270fe, type: 2}
+  laserCooldown: 1
 --- !u!1 &8059214270548006959
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,9 +151,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -188,6 +187,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser
       objectReference: {fileID: 0}
+    - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: laserGradient.key0.a
+      value: 0.7058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: laserGradient.key0.b
+      value: 0.5566038
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: laserGradient.key0.g
+      value: 0.5566038
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: laserGradient.key0.r
+      value: 0.5566038
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: laserGradient.key1.a
+      value: 0.7058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: laserGradient.key1.b
+      value: 0.7075472
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: laserGradient.key1.g
+      value: 0.7075472
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693606107218389297, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: laserGradient.key1.r
+      value: 0.7075472
+      objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389298, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -198,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389298, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.553
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389298, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: m_LocalPosition.z

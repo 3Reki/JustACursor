@@ -8,9 +8,9 @@ namespace Bosses.Instructions.Patterns
     {
         private IEnumerator playEnumerator;
 
-        public override void Play(Boss boss)
+        public override void Play(Boss entity)
         {
-            base.Play(boss);
+            base.Play(entity);
             linkedEntity.mover.GoToRandomCorner(patternDuration);
         }
 

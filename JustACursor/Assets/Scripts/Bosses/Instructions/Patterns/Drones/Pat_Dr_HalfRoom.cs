@@ -10,9 +10,9 @@ namespace Bosses.Instructions.Patterns.Drones
         [SerializeField] private Room.Half half;
         [SerializeField] private AlternateDirectionMode alternateDirectionMode = AlternateDirectionMode.Simple;
 
-        public override void Play(BossSound boss)
+        public override void Play(BossSound entity)
         {
-            base.Play(boss);
+            base.Play(entity);
 
             GetPosition(out Vector2 start, out Vector2 end);
             int droneCount = linkedEntity.droneCount;
@@ -23,6 +23,8 @@ namespace Bosses.Instructions.Patterns.Drones
                     GetRotation(i, droneCount));
             }
         }
+
+        public override void Stop() {}
 
         private void GetPosition(out Vector2 lineStart, out Vector2 lineEnd)
         {

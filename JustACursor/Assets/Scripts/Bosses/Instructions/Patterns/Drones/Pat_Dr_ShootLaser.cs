@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Bosses.Instructions.Patterns.Drones
 {
@@ -9,22 +8,17 @@ namespace Bosses.Instructions.Patterns.Drones
         [SerializeField] private float previewDuration;
         [SerializeField] private float laserWidth;
         [SerializeField] private float laserLength;
-        
-        private IEnumerator[] shootEnumerator;
-        
-        public override void Play(BossSound boss)
+
+        public override void Play(BossSound entity)
         {
-            base.Play(boss);
+            base.Play(entity);
 
             int droneCount = linkedEntity.droneCount;
 
-            shootEnumerator = new IEnumerator[droneCount];
-            
             for (int i = 0; i < droneCount; i++)
             {
-                shootEnumerator[i] = linkedEntity.GetDrone(i)
-                    .ShootOneShot(previewDuration, patternDuration, laserWidth, laserLength);
-                linkedEntity.GetDrone(i).StartCoroutine(shootEnumerator[i]);
+                linkedEntity.GetDrone(i)
+                    .StartFire(previewDuration, patternDuration - previewDuration, laserWidth, laserLength);
             }
         }
 
@@ -34,7 +28,7 @@ namespace Bosses.Instructions.Patterns.Drones
             
             for (int i = 0; i < droneCount; i++)
             {
-                linkedEntity.GetDrone(i).StopCoroutine(shootEnumerator[i]);
+                linkedEntity.GetDrone(i).CeaseFire();
             }
         }
     }

@@ -8,9 +8,9 @@ namespace Bosses.Instructions.Patterns
     {
         [SerializeField, Tooltip("Max 3 profiles")] private EmitterProfile[] emitterProfiles;
         
-        public override void Play(Boss boss)
+        public override void Play(Boss entity)
         {
-            base.Play(boss);
+            base.Play(entity);
             
             for (int i = 0; i < emitterProfiles.Length; i++)
             {

@@ -10,9 +10,9 @@ namespace Bosses.Instructions.Patterns.Drones
         [SerializeField] private float distanceToCenter;
         [SerializeField] private bool flipFormation;
 
-        public override void Play(BossSound boss)
+        public override void Play(BossSound entity)
         {
-            base.Play(boss);
+            base.Play(entity);
 
             int droneCount = linkedEntity.droneCount;
 
@@ -54,5 +54,7 @@ namespace Bosses.Instructions.Patterns.Drones
                     Quaternion.Euler(0, 0, droneZRot));
             }
         }
+
+        public override void Stop() {}
     }
 }
