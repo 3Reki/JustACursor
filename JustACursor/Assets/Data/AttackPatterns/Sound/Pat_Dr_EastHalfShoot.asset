@@ -15,7 +15,6 @@ MonoBehaviour:
   phase: 2
   resolver:
     choices: []
-  patternDuration: 3
   instructions:
-  - {fileID: 11400000, guid: 8d849b3ae4555eb46919f51c76e54087, type: 2}
+  - {fileID: 11400000, guid: 273792dc28bbd114ea5075b19e4ffb7f, type: 2}
   - {fileID: 11400000, guid: 47f60c3800da0be4497f6266c37378f1, type: 2}

@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213fc862370440a8ab77f7c593a88118, type: 3}
-  m_Name: Pat_Dr_DiagonalHalf
+  m_Script: {fileID: 11500000, guid: a6f8921c8cd348ef8eead87e65344d58, type: 3}
+  m_Name: Pat_Dr_ShootLongRange
   m_EditorClassIdentifier: 
-  patternDuration: 0.5
-  startingCorner: 3
+  phase: 2
+  resolver:
+    choices: []
+  patternDuration: 5
+  previewDuration: 1
+  laserWidth: 1
+  laserLength: 6

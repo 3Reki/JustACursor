@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213fc862370440a8ab77f7c593a88118, type: 3}
-  m_Name: Pat_Dr_DiagonalHalf
+  m_Script: {fileID: 11500000, guid: 44714ad37be94e76977a714a3fbdcf02, type: 3}
+  m_Name: Pat_Dr_Square
   m_EditorClassIdentifier: 
   patternDuration: 0.5
-  startingCorner: 3
