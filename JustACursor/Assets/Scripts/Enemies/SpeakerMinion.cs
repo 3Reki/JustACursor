@@ -54,7 +54,7 @@ namespace Enemies
         
         public void StartFire(float previewDuration, float laserDuration, float laserWidth, float laserLength)
         {
-            laser.StartFire(previewDuration, laserDuration, laserWidth, laserLength, hasCollision);
+            laser.StartFire(previewDuration, laserDuration, laserWidth, laserLength);
         }
 
         public void CeaseFire()

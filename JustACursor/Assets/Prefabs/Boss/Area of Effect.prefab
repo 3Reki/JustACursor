@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7940018127333520998}
   - component: {fileID: 4482048794073164492}
   - component: {fileID: 8983473590221331468}
-  m_Layer: 0
+  - component: {fileID: 7697456104391682761}
+  m_Layer: 7
   m_Name: AoE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,6 +102,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7697456104391682761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2514459659619528970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde13ebcc01e483f84bcb672c3547756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2948149775364297474
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5006123409456493811}
   - component: {fileID: 4976859124829025314}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3193334531252207531}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Area of Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

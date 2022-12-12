@@ -424,7 +424,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 5006236445304533773}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 04dc4461fccf3924b88a0954b78b2272, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -631,7 +631,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 8213265501839806752}
   respawnScreen: {fileID: 8381984491438418184}
-  respawnPoint: {fileID: 0}
   respawnKey: 114
 --- !u!114 &3615676464410597287
 MonoBehaviour:
