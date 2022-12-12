@@ -30,7 +30,7 @@ MonoBehaviour:
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
   currentParamsSelected: {fileID: 114027673760526898}
-  numberOfSubAssets: 0
+  numberOfSubAssets: 4
 --- !u!114 &114027673760526898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 2634476
+  uniqueIndex: 164772
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -161,7 +161,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: {fileID: 21300000, guid: 06e5d8f7ba9c17144b1ace83b073da17, type: 3}
+      defaultValue: {fileID: 21300000, guid: a104703f9eb9a194f94a342f8026224b, type: 3}
     narrowType: 1
     requireComponent: 0
     typeName: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
@@ -1100,7 +1100,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: {r: 0, g: 0.4705882, b: 1, a: 1}
+      defaultValue: {r: 1, g: 0.99627095, b: 0, a: 1}
       gradientValue:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -7530,7 +7530,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 8415382
+  uniqueIndex: 16360140
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -10466,7 +10466,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15572419
+  uniqueIndex: 15707930
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -17578,7 +17578,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 5286851
+  uniqueIndex: 6817985
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:

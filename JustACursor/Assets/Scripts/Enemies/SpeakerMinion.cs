@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using LD;
@@ -127,8 +126,11 @@ namespace Enemies
         {
             if (!showPreview) return;
 
-            Vector3 position = laser.transform.position;
-            Vector3 center = new(position.x, position.y + laserLength / 2);
+            Transform laserTransform = laser.transform;
+            
+            Gizmos.matrix = laserTransform.localToWorldMatrix;
+
+            Vector3 center = new(0, laserLength / 2);
             Vector3 size = new(laserWidth, laserLength);
 
             Gizmos.color = new Color(1, 0, 0, .5f);
