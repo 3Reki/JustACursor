@@ -16,3 +16,4 @@ MonoBehaviour:
   previewDuration: 1
   laserWidth: 2
   laserLength: 5
+  isEndless: 0

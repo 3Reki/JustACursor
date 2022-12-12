@@ -9,12 +9,21 @@ namespace Bosses.Instructions.Patterns
         [SerializeField] private float previewDuration;
         [SerializeField] private float laserWidth;
         [SerializeField] private float laserLength;
+        [SerializeField] private bool isEndless;
         
         public override void Play(ILaserHolder entity)
         {
             base.Play(entity);
             
-            entity.StartFire(previewDuration, patternDuration - previewDuration, laserWidth, laserLength);
+            entity.StartFire(previewDuration, isEndless ? float.PositiveInfinity : patternDuration - previewDuration, laserWidth, laserLength);
+        }
+
+        public override void Update()
+        {
+            if (!isEndless)
+            {
+                base.Update();
+            }
         }
 
         public override void Stop()
