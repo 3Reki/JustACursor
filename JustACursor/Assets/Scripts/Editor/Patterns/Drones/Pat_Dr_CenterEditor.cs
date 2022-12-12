@@ -3,7 +3,7 @@ using LD;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor
+namespace Editor.Patterns.Drones
 {
     [CustomEditor(typeof(Pat_Dr_Center))]
     public class Pat_Dr_CenterEditor : UnityEditor.Editor

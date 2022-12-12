@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-namespace Editor
+namespace Editor.Patterns.Drones
 {
     [CustomEditor(typeof(Pat_Dr_HalfRoom))]
     public class Pat_Dr_HalfRoomEditor : UnityEditor.Editor

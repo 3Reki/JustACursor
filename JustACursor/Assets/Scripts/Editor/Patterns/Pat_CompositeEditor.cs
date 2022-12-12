@@ -1,9 +1,8 @@
-﻿using Bosses.Instructions;
-using Bosses.Instructions.Patterns;
+﻿using Bosses.Instructions.Patterns;
 using UnityEditor;
 using Object = UnityEngine.Object;
 
-namespace Editor
+namespace Editor.Patterns
 {
     [CustomEditor(typeof(Pat_Composite))]
     public class Pat_CompositeEditor : UnityEditor.Editor

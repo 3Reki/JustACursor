@@ -2,9 +2,10 @@
 
 namespace Bosses.Instructions.Patterns
 {
-    public abstract class Pat_AoE<T> : Pattern<T>
+    public abstract class Pat_AreaOfEffect<T> : Pattern<T>
     {
         [SerializeField] private GameObject aoePrefab;
+        [Min(0)]
         [SerializeField] private float previewDuration;
 
         private float previewProgress;

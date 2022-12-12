@@ -2,10 +2,9 @@
 using Bosses.Instructions.Patterns.Drones;
 using LD;
 using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
 
-namespace Editor
+namespace Editor.Patterns.Drones
 {
     [CustomEditor(typeof(Pat_Dr_Plus))]
     public class Pat_Dr_PlusEditor : UnityEditor.Editor
