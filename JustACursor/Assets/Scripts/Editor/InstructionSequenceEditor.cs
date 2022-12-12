@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 namespace Editor
 {
     [CustomEditor(typeof(InstructionSequence<>))]
-    public class PatternQueueEditor : UnityEditor.Editor
+    public class InstructionSequenceEditor : UnityEditor.Editor
     {
         private SerializedProperty resolver, instructions;
         private float patternDuration;
@@ -42,8 +42,8 @@ namespace Editor
     }
     
     [CustomEditor(typeof(InstructionSequenceBoss))]
-    public class PatternBossQueueEditor : PatternQueueEditor {}
+    public class InstructionSequenceBossEditor : InstructionSequenceEditor {}
 
     [CustomEditor(typeof(InstructionSequenceDrones))]
-    public class PatternDronesQueueEditor : PatternQueueEditor {}
+    public class InstructionSequenceDronesEditor : InstructionSequenceEditor {}
 }
