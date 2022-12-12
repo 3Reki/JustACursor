@@ -1,11 +1,11 @@
-﻿using Bosses;
+﻿using Bosses.Dependencies;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace Editor
 {
-    [CustomPropertyDrawer(typeof(ResolvedPattern))]
+    [CustomPropertyDrawer(typeof(ResolvedPattern<>))]
     public class ResolvedPatternDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -57,6 +57,9 @@ namespace Editor
 
             EditorGUI.PropertyField(new Rect(propPosition, defaultSize), property.FindPropertyRelative("pattern"));
             propPosition.y += EditorGUIUtility.singleLineHeight;
+            
+            EditorGUI.PropertyField(new Rect(propPosition, defaultSize), property.FindPropertyRelative("weight"));
+            propPosition.y += EditorGUIUtility.singleLineHeight;
 
             EditorGUI.indentLevel -= 1;
             EditorGUI.EndProperty();
@@ -101,7 +104,7 @@ namespace Editor
                     break;
             }
 
-            return EditorGUIUtility.singleLineHeight * 3 + selectedPropertyHeight;
+            return EditorGUIUtility.singleLineHeight * 4 + selectedPropertyHeight;
 
             float GetConditionPropertyHeight(string propertyName) =>
                 EditorGUI.GetPropertyHeight(property.FindPropertyRelative(propertyName), true);

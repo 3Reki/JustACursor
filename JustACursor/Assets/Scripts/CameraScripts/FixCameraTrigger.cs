@@ -41,12 +41,13 @@ namespace CameraScripts
             float height = 2f * viewSize;
             float width = height * cam.aspect;
             
-            Gizmos.color = new Color(0, .5f, 1);
+            Gizmos.color = new Color(0, 0, 1f, .5f);
             Gizmos.DrawCube(position, size);
             
-            Gizmos.color = new Color(0, 0, 1f, .5f);
+            Gizmos.color = new Color(.5f, .5f, 1);
             Gizmos.DrawWireCube(position, size);
             Gizmos.DrawLine(transform.position,camPos);
+            
             Gizmos.DrawWireCube(camPos, new Vector2(width, height));
             Gizmos.DrawLine(new Vector3(camPos.x-width/2,camPos.y+height/2), new Vector3(camPos.x+width/2,camPos.y-height/2));
             Gizmos.DrawLine(new Vector3(camPos.x-width/2,camPos.y-height/2), new Vector3(camPos.x+width/2,camPos.y+height/2));

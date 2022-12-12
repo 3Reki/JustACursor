@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 9136940
+  uniqueIndex: 15693758
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -2367,7 +2367,7 @@ MonoBehaviour:
   canMove: 1
   canCollide: 1
   isVisible: 0
-  hasLifespan: 1
+  hasLifespan: 0
   hasLimitedRange: 0
   forwardSpeed:
     valueTree:
@@ -2844,7 +2844,7 @@ MonoBehaviour:
   deathTiming: 0
   maxSimultaneousCollisionsPerFrame: 1
   shapeFoldout: 1
-  collisionTagsFoldout: 1
+  collisionTagsFoldout: 0
   homing: 0
   homingTags:
     tagList: 1
@@ -7648,7 +7648,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 10247103
+  uniqueIndex: 11307585
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -7760,7 +7760,7 @@ MonoBehaviour:
         indexOfTo: 0
         indexOfBlendedChildren: 
         weight: 0
-        headerTitle: 
+        headerTitle: Bullet Params
         blendColor: {r: 0, g: 0, b: 0, a: 0}
         parameterType: 0
         relativeTo: 0
@@ -7936,7 +7936,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 7003728
+  uniqueIndex: 15755972
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -10256,7 +10256,7 @@ MonoBehaviour:
   foldoutVFX: 0
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 5
+  currentlyDisplayedModule: 3
   canMove: 0
   canCollide: 0
   isVisible: 0
@@ -15048,7 +15048,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 11553851
+  uniqueIndex: 7894422
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
