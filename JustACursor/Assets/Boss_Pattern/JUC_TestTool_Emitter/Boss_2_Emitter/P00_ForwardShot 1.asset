@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 2424900
+  uniqueIndex: 5989959
   profile: {fileID: 11400000}
   parent: {fileID: 114746627269426962}
   children:
@@ -19785,7 +19785,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 7333014
+  uniqueIndex: 12163825
   profile: {fileID: 11400000}
   parent: {fileID: 114235044058580522}
   children:
@@ -22211,7 +22211,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15533513
+  uniqueIndex: 5727322
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -29323,7 +29323,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 798849
+  uniqueIndex: 9993002
   profile: {fileID: 11400000}
   parent: {fileID: 114527426404384722}
   children: []
@@ -29781,7 +29781,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: {fileID: 2100000, guid: dedf0ed859edd7d44ae9eb78bf7a6b40, type: 2}
+      defaultValue: {fileID: 2100000, guid: ca700cbb1c38d76418bbd1195eb4472a, type: 2}
     narrowType: 1
     requireComponent: 0
     typeName: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
@@ -31642,7 +31642,7 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
