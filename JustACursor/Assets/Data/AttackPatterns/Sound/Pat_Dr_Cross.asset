@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f8921c8cd348ef8eead87e65344d58, type: 3}
-  m_Name: Pat_Dr_ShootLongRange
+  m_Script: {fileID: 11500000, guid: f6d6ca0d0a094d48a77ea7fc9cd7bd1d, type: 3}
+  m_Name: Pat_Dr_Cross
   m_EditorClassIdentifier: 
-  patternDuration: 5
-  previewDuration: 1
-  laserWidth: 1
-  laserLength: 12
+  patternDuration: 0.5
