@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using LD;
 using UnityEngine;
 
 namespace Bosses.Instructions.Patterns
@@ -6,12 +6,12 @@ namespace Bosses.Instructions.Patterns
     [CreateAssetMenu(fileName = "Pat_Corner", menuName = "Just A Cursor/Pattern/Corner")]
     public class Pat_Corner : Pattern<Boss>
     {
-        private IEnumerator playEnumerator;
+        [SerializeField] private Room.Corner corner;
 
         public override void Play(Boss entity)
         {
             base.Play(entity);
-            linkedEntity.mover.GoToRandomCorner(patternDuration);
+            linkedEntity.mover.GoToCorner(corner, patternDuration);
         }
 
         public override void Stop()
