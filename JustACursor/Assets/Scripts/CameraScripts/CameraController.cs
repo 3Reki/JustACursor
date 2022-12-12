@@ -8,7 +8,7 @@ namespace CameraScripts
         public static Camera mainCamera;
         public static CameraController instance;
         
-        public Transform target;
+        [SerializeField] private Transform target;
     
         [SerializeField] private Vector3 localPositionToMove = new(0, 5, -15);
         [SerializeField] private Vector3 localPositionToLook = new(0, -1, 5);
@@ -42,6 +42,11 @@ namespace CameraScripts
             Quaternion wantedRotation = Quaternion.LookRotation(target.TransformPoint(localPositionToLook) - currentPosition);
             transform.rotation = Quaternion.Slerp(transform.rotation, wantedRotation, rotationSpeed);
         }
+
+        public static void TeleportToTarget()
+        {
+            instance.transform.position = instance.target.position + instance.localPositionToMove;
+        } 
         
         public static void ShakeCamera(float intensity, float timer)
         {
@@ -51,18 +56,18 @@ namespace CameraScripts
         private static IEnumerator CameraShakeCoroutine(float intensity, float timer)
         {
             Vector3 lastCameraMovement = Vector3.zero;
-            var transform1 = mainCamera.transform;
-            Vector3 initialPosition = transform1.position;
+            Transform camTransform = mainCamera.transform;
+            Vector3 initialPosition = camTransform.position;
             
             while (timer > 0f) {
                 Vector3 randomMovement = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * intensity;
-                transform1.position = transform1.position - lastCameraMovement + randomMovement;
+                camTransform.position = camTransform.position - lastCameraMovement + randomMovement;
                 lastCameraMovement = randomMovement;
                 yield return null;
                 timer -= Time.unscaledDeltaTime;
             }
 
-            transform1.position = initialPosition;
+            camTransform.position = initialPosition;
         }
     }
 }

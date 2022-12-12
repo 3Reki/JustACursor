@@ -44,7 +44,7 @@ namespace LD
             
             //Next floor
             CameraController.instance.enabled = true;
-            player.transform.SetPositionAndRotation(Floors[0].StartPoint.position, Floors[0].StartPoint.rotation);
+            player.transform.SetPositionAndRotation(Floors[0].StartPoint.transform.position, Floors[0].StartPoint.transform.rotation);
             player.SetCheckpoint(Floors[0].StartPoint);
             UpdateFloors();
         }
@@ -94,15 +94,13 @@ namespace LD
 
         public void ResetAll()
         {
-            for (int i = 0; i < Floors.Count; i++)
+            foreach (Floor floor in Floors)
             {
-                Floor floor = Floors[i];
-                
                 floor.Scale(1);
                 floor.SetFloorState(Floor.FloorState.All);
                 floor.SetSortingLayer("CurrentFloor",0);
             }
-            
+
             Debug.Log("Floors have been reset successfully!");
         }
     }
