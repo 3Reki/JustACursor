@@ -8,14 +8,10 @@ namespace LD
     {
         [SerializeField] private Transform myTransform;
         [SerializeField] private LineRenderer lineRenderer;
-        
-        [Header("Emitter")]
         [SerializeField] private BulletEmitter emitter;
         
-        [Header("Preview")]
+        [Header("Render")]
         [SerializeField] private Gradient previewGradient;
-        
-        [Header("Laser")]
         [SerializeField] private Gradient laserGradient;
         
         private readonly BulletCollider[] colliders = new BulletCollider[3];
@@ -109,9 +105,9 @@ namespace LD
         {
             lineRenderer.widthMultiplier = width;
             
-            Vector3 position = myTransform.position;
-            lineRenderer.SetPosition(0, Vector2.zero);
-            lineRenderer.SetPosition(1,myTransform.up * length);
+            Vector3 position = myTransform.localPosition;
+            lineRenderer.SetPosition(0, position);
+            lineRenderer.SetPosition(1,position + Vector3.up * length);
         }
 
         private void SetupColliders(float width, float length)

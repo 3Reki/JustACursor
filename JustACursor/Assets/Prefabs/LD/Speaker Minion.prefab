@@ -48,9 +48,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActiveAtStart: 1
   laser: {fileID: 5660014381432595410}
-  laserPattern: {fileID: 11400000, guid: 01649ec115093fd4c8f284637e5270fe, type: 2}
+  laserWidth: 0
+  laserLength: 0
   timeBeforeFirstFire: 0
+  previewDuration: 0
+  laserDuration: 0
   laserCooldown: 0
+  hasCollision: 0
+  isEndless: 0
   movementAxis: 0
   movementCurve:
     serializedVersion: 2
@@ -229,7 +234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389298, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.553
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389298, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -261,6 +266,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5693606107218389298, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6010795632695718172, guid: bb44d15c85b7eea4f8acdc94f9a01dcd, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

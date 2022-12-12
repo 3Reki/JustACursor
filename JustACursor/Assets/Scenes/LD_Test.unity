@@ -42902,6 +42902,10 @@ PrefabInstance:
       propertyPath: previewGradient.key1.g
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5660014381986151576, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: emitterProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: ad44985831616cf43bca5be7d2bc78b8, type: 2}
     - target: {fileID: 5660014382880073223, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_SortingLayer
       value: -1
@@ -43004,7 +43008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: isEndless
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserWidth
@@ -43040,15 +43044,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: movementAxis
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: previewAlpha
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserDuration
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: IsActiveAtStart
@@ -43056,11 +43064,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: previewDuration
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: timeBeforeFirstFire
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserGradient.key0.b
@@ -43288,7 +43296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190805, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20
+      value: -17.3
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190805, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_LocalPosition.z

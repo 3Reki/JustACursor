@@ -51,7 +51,6 @@ namespace Enemies
             StartCoroutine(ShootLoop());
         }
         
-        //Boss
         public void StartFire(float previewDuration, float laserDuration, float laserWidth, float laserLength)
         {
             laser.StartFire(previewDuration, laserDuration, laserWidth, laserLength, hasCollision);
@@ -62,7 +61,6 @@ namespace Enemies
             laser.StopFire();
         }
         
-        //LD
         private void StartDefaultFire()
         {
             laser.StartFire(previewDuration, isEndless ? float.PositiveInfinity : laserDuration, laserWidth, laserLength, hasCollision);
