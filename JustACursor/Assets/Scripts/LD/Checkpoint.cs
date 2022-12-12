@@ -1,15 +1,18 @@
-﻿using Player;
+using Player;
 using UnityEngine;
 
 namespace LD
 {
-    public class FloorEndTrigger : MonoBehaviour
+    public class Checkpoint : MonoBehaviour
     {
+        public delegate void OnCheckpointEnter(Checkpoint checkpoint);
+        public static OnCheckpointEnter onCheckpointEnter;
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.TryGetComponent(out PlayerController player))
             {
-                LevelHandler.onEndFloor.Invoke();
+                onCheckpointEnter.Invoke(this);
             }
         }
 
@@ -20,10 +23,10 @@ namespace LD
             Vector3 position = triggerBounds.center;
             Vector3 size = triggerBounds.size;
             
-            Gizmos.color = new Color(0, 1, 0, .5f);
+            Gizmos.color = new Color(1, .5f, 0, .5f);
             Gizmos.DrawCube(position, size);
             
-            Gizmos.color = new Color(.5f, 1, .5f);
+            Gizmos.color = new Color(1, .5f, 1);
             Gizmos.DrawWireCube(position, size);
         }
 #endif

@@ -44,7 +44,7 @@ namespace LD
             
             //Next floor
             CameraController.instance.enabled = true;
-            player.transform.SetPositionAndRotation(Floors[0].StartPoint.position, Floors[0].StartPoint.rotation);
+            player.transform.SetPositionAndRotation(Floors[0].StartPoint.transform.position, Floors[0].StartPoint.transform.rotation);
             player.SetCheckpoint(Floors[0].StartPoint);
             UpdateFloors();
         }

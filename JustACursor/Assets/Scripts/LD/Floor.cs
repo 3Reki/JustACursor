@@ -8,7 +8,7 @@ namespace LD
     {
         public enum FloorState { All, TilemapOnly, Nothing }
         
-        [field:SerializeField] public Transform StartPoint { get; private set; }
+        [field:SerializeField] public Checkpoint StartPoint { get; private set; }
 
         [SerializeField] private TilemapCollider2D walls;
         [SerializeField] private Renderer[] renderers;
@@ -17,6 +17,7 @@ namespace LD
 
         public void GetComponents()
         {
+            StartPoint = GetComponentInChildren<Checkpoint>(true);
             walls = GetComponentInChildren<TilemapCollider2D>(true);
             renderers = GetComponentsInChildren<Renderer>(true);
             
