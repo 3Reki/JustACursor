@@ -48,6 +48,6 @@ namespace Editor
     [CustomEditor(typeof(InstructionCompositeBoss))]
     public class InstructionCompositeBossEditor : InstructionCompositeEditor {}
     
-    [CustomEditor(typeof(InstructionSequenceDrones))]
+    [CustomEditor(typeof(InstructionCompositeDrones))]
     public class InstructionCompositeDronesEditor : InstructionCompositeEditor {}
 }

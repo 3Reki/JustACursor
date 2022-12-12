@@ -33,7 +33,7 @@ namespace Bosses.Dependencies
             transform.rotation = Quaternion.Euler(0f, 0f, zRotation - 90);
         }
 
-        private Vector3 GetCorner(int cornerIndex)
+        public Vector3 GetCorner(int cornerIndex)
         {
             return coneFirePoints[cornerIndex].position;
         }
