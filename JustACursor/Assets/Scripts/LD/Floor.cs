@@ -19,6 +19,9 @@ namespace LD
         {
             walls = GetComponentInChildren<TilemapCollider2D>(true);
             renderers = GetComponentsInChildren<Renderer>(true);
+            
+            floorTilemaps.Clear();
+            floorElements.Clear();
             foreach (Transform child in transform)
             {
                 if (child.GetComponent<TilemapRenderer>()) floorTilemaps.Add(child.gameObject);
