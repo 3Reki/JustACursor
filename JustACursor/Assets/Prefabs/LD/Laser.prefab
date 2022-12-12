@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitterProfile: {fileID: 11400000, guid: aad8f32b94e3bc34e973a8c28543ff68, type: 2}
+  emitterProfile: {fileID: 11400000, guid: ad44985831616cf43bca5be7d2bc78b8, type: 2}
   patternOrigin: {fileID: 6010795632695718172}
   playAtStart: 0
   useDefaultGizmoColor: 1
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa22e60d05804956af928359227bfd31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myTransform: {fileID: 5693606107218389298}
   lineRenderer: {fileID: 5693606108572183780}
   emitter: {fileID: 5693606106664384123}
   previewGradient:
@@ -159,8 +160,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  laserWidth: 1
-  laserLength: 5
   laserGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -317,5 +316,5 @@ LineRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0

@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03587847f29c4206989dd50f53b1a0d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 454e1bc6a6954f949b2c2677b34d0ad4, type: 3}
   m_Name: Pat_CompositeCorner
   m_EditorClassIdentifier: 
-  resolver:
-    choices: []
-  patternDuration: 5
+  patternDuration: 3
   patterns:
-  - {fileID: 11400000, guid: 0648e16b1878a45429401cdaaf3766b4, type: 2}
   - {fileID: 11400000, guid: 3499d220e041fbc4ca0803fa9c98f8fd, type: 2}
+  - {fileID: 11400000, guid: a08ce8a6d28ba2944af20517fd28c916, type: 2}

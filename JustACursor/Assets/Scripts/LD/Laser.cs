@@ -6,96 +6,119 @@ namespace LD
 {
     public class Laser : MonoBehaviour
     {
+        [SerializeField] private Transform myTransform;
         [SerializeField] private LineRenderer lineRenderer;
-        
-        [Header("Emitter")]
         [SerializeField] private BulletEmitter emitter;
         
-        [Header("Preview")]
+        [Header("Render")]
         [SerializeField] private Gradient previewGradient;
-        
-        [Header("Laser")]
-        [SerializeField] private float laserWidth;
-        [SerializeField] private float laserLength;
         [SerializeField] private Gradient laserGradient;
         
-        private BulletCollider[] newColliders = new BulletCollider[3];
-        
+        private readonly BulletCollider[] colliders = new BulletCollider[3];
+        private IEnumerator fireEnumerator;
+
         private void Awake()
         {
-            InitLineRenderer(laserWidth, laserLength);
-            InitNewColliders(laserWidth, laserLength);
+            lineRenderer.positionCount = 2;
+            for (var i = 0; i < colliders.Length; i++)
+            {
+                colliders[i] = new BulletCollider
+                {
+                    colliderType = BulletColliderType.Line
+                };
+            }
+        }
+
+        public void StartFire(float previewDuration, float laserDuration, float customWidth, float customLength, bool hasCollision = true)
+        {
+            SetupLineRenderer(customWidth, customLength);
+            SetupColliders(customWidth, customLength);
+
+            fireEnumerator = Fire(previewDuration, laserDuration, hasCollision);
+            StartCoroutine(fireEnumerator);
+        }
+
+        public void StopFire()
+        {
+            if (fireEnumerator != null)
+            {
+                StopCoroutine(fireEnumerator);
+            }
+
+            if (emitter.isPlaying)
+            {
+                emitter.Stop();
+            }
+            emitter.Kill();
+            
+            lineRenderer.gameObject.SetActive(false);
         }
         
-        public IEnumerator Fire(float previewDuration, float laserDuration)
+        private IEnumerator Fire(float previewDuration, float laserDuration, bool hasCollision)
         {
             lineRenderer.gameObject.SetActive(true);
             lineRenderer.colorGradient = previewGradient;
             
             //Remove Time.deltaTime bc it's the time for the laser bullet to initialize
-            yield return new WaitForSeconds(previewDuration/Energy.GameSpeed-Time.deltaTime);
+            while (previewDuration > 0)
+            {
+                yield return null;
+                previewDuration -= Time.deltaTime * Energy.GameSpeed;
+            }
             
             emitter.Play();
             //Wait for bullet to initialize
-            yield return new WaitForSeconds(Time.deltaTime);
-            if (emitter.bullets.Count > 0) SetupBullet(emitter.bullets[^1], laserDuration);
+            yield return null;
+            if (emitter.bullets.Count > 0)
+            {
+                SetupBullet(emitter.bullets[^1], hasCollision);
+            }
 
             lineRenderer.colorGradient = laserGradient;
             
-            yield return new WaitForSeconds(laserDuration/Energy.GameSpeed);
+            laserDuration -= Time.deltaTime * Energy.GameSpeed;
+            while (laserDuration > 0)
+            {
+                yield return null;
+                laserDuration -= Time.deltaTime * Energy.GameSpeed;
+            }
             
             emitter.Stop();
+            emitter.Kill();
             lineRenderer.gameObject.SetActive(false);
         }
 
-        public IEnumerator CustomFire(float previewDuration, float laserDuration, float customWidth, float customLength)
+        private void SetupBullet(BulletPro.Bullet bullet, bool hasCollision)
         {
-            InitLineRenderer(customWidth, customLength);
-            InitNewColliders(customWidth, customLength);
-
-            yield return StartCoroutine(Fire(previewDuration, laserDuration));
-
-            InitLineRenderer(laserWidth, laserLength);
-            InitNewColliders(laserWidth, laserLength);
+            //Collision Module
+            if (!hasCollision) bullet.moduleCollision.Disable();
+            else
+            {   
+                bullet.moduleCollision.Enable();
+                bullet.moduleCollision.SetColliders(colliders);
+            }
+            
+            bullet.self.SetParent(transform);
         }
         
-        private void SetupBullet(BulletPro.Bullet bullet, float laserDuration)
-        {
-            bullet.moduleLifespan.lifespan = laserDuration/Energy.GameSpeed;
-            bullet.moduleCollision.SetColliders(newColliders);
-        }
-
-        private void InitLineRenderer(float width, float length)
+        private void SetupLineRenderer(float width, float length)
         {
             lineRenderer.widthMultiplier = width;
-            lineRenderer.positionCount = 2;
-            lineRenderer.SetPosition(0,transform.position);
-            lineRenderer.SetPosition(1,transform.position+transform.up*length);
+            
+            Vector3 position = myTransform.localPosition;
+            lineRenderer.SetPosition(0, position);
+            lineRenderer.SetPosition(1,position + Vector3.up * length);
         }
-        
-        private void InitNewColliders(float width, float length)
+
+        private void SetupColliders(float width, float length)
         {
             float colliderOffset = width/2;
-            
-            newColliders[0] = new BulletCollider
+            for (int i = 0; i < 3; i++)
             {
-                colliderType = BulletColliderType.Line,
-                lineStart = new Vector2(-colliderOffset, 0),
-                lineEnd = new Vector2(-colliderOffset, length)
-            };
-            
-            newColliders[1] = new BulletCollider
-            {
-                colliderType = BulletColliderType.Line,
-                lineEnd = new Vector2(0, length)
-            };
-            
-            newColliders[2] = new BulletCollider
-            {
-                colliderType = BulletColliderType.Line,
-                lineStart = new Vector2(colliderOffset, 0),
-                lineEnd = new Vector2(colliderOffset, length)
-            };
+                colliders[i].lineStart = new Vector2(colliderOffset * (i - 1), 0);
+                colliders[i].lineEnd = new Vector2(colliderOffset * (i - 1), length);
+            }
         }
+        
     }
 }
