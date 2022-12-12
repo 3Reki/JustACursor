@@ -1,10 +1,10 @@
-﻿using Bosses.Patterns;
+﻿using Bosses.Instructions;
 using UnityEditor;
 using Object = UnityEngine.Object;
 
 namespace Editor
 {
-    [CustomEditor(typeof(PatternQueue<>))]
+    [CustomEditor(typeof(InstructionSequence<>))]
     public class PatternQueueEditor : UnityEditor.Editor
     {
         private SerializedProperty resolver, instructions;
@@ -41,9 +41,9 @@ namespace Editor
         }
     }
     
-    [CustomEditor(typeof(PatternBossQueue))]
+    [CustomEditor(typeof(InstructionSequenceBoss))]
     public class PatternBossQueueEditor : PatternQueueEditor {}
 
-    [CustomEditor(typeof(PatternDronesQueue))]
+    [CustomEditor(typeof(InstructionSequenceDrones))]
     public class PatternDronesQueueEditor : PatternQueueEditor {}
 }

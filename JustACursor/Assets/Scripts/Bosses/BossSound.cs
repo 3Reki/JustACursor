@@ -1,6 +1,7 @@
 ﻿using System;
 using Bosses.Dependencies;
-using Bosses.Patterns;
+using Bosses.Instructions;
+using LD;
 using UnityEngine;
 
 namespace Bosses
@@ -11,10 +12,10 @@ namespace Bosses
         
         [Space(15)]
         [Header("=== Sound Boss ===")]
-        [SerializeField] private TempDrone[] drones = new TempDrone[12];
+        [SerializeField] private SpeakerMinion[] drones = new SpeakerMinion[12];
         [SerializeField] private Resolver<BossSound>[] dronesResolver;
         
-        private Pattern<BossSound> currentDronePattern;
+        private Instruction<BossSound> currentDronePattern;
 
         protected override void Update()
         {
@@ -34,7 +35,7 @@ namespace Bosses
             }
         }
 
-        public TempDrone GetDrone(int i)
+        public SpeakerMinion GetDrone(int i)
         {
             return drones[i];
         }
@@ -53,16 +54,16 @@ namespace Bosses
             }
             switch (currentDronePattern.phase)
             {
-                case PatternPhase.None:
+                case InstructionPhase.None:
                     currentDronePattern = dronesResolver[(int) currentBossPhase].Resolve(this);
                     break;
-                case PatternPhase.Start:
+                case InstructionPhase.Start:
                     currentDronePattern.Play(this);
                     break;
-                case PatternPhase.Update:
+                case InstructionPhase.Update:
                     currentDronePattern.Update();
                     break;
-                case PatternPhase.Stop:
+                case InstructionPhase.Stop:
                     currentDronePattern = currentDronePattern.Stop();
                     break;
                 default:

@@ -1,5 +1,4 @@
-﻿using Bosses.Patterns;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Bosses
 {

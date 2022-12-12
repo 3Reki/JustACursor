@@ -20,7 +20,33 @@ MonoBehaviour:
   phaseResolvers:
   - choices:
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: c8645a8bb7616f04b926beae427d4212, type: 2}
+      pattern: {fileID: 11400000, guid: 606fd6fc7bdd57149b593c8f4406a5dd, type: 2}
+      weight: 1
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: -1
+        checkType: 1
+        distance: 5
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 253fd8404aa03224680df0277c6ef481, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
@@ -47,33 +73,7 @@ MonoBehaviour:
         checkType: 0
   - choices:
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: 55715f107a82c1c42a186331ac3dc527, type: 2}
-      weight: 1
-      cdtHealthThreshold:
-        comparisonType: 0
-        threshold: 0
-      cdtCornerDistance:
-        targetType: 0
-        corner: 0
-        checkType: 0
-        distance: 0
-      cdtCenterDistance:
-        targetType: 0
-        checkType: 0
-        distance: 0
-      cdtBossDistance:
-        checkType: 0
-        distance: 0
-      cdtQuarter:
-        targetType: 0
-        quarter: 0
-        checkType: 0
-      cdtHalf:
-        targetType: 0
-        half: 0
-        checkType: 0
-    - conditionType: 0
-      pattern: {fileID: 11400000, guid: 733e8a0b2a614194295bb373cec9a9e5, type: 2}
+      pattern: {fileID: 11400000, guid: 253fd8404aa03224680df0277c6ef481, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
         checkType: 0
   - choices:
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: 1b916d5b02ba9d04f89874195f7149e8, type: 2}
+      pattern: {fileID: 11400000, guid: 253fd8404aa03224680df0277c6ef481, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
@@ -126,8 +126,8 @@ MonoBehaviour:
         half: 0
         checkType: 0
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: 55eb0118170ed944da4f234c5cae228b, type: 2}
-      weight: 1
+      pattern: {fileID: 11400000, guid: 606fd6fc7bdd57149b593c8f4406a5dd, type: 2}
+      weight: 2
       cdtHealthThreshold:
         comparisonType: 0
         threshold: 0

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Bosses.Conditions;
-using Bosses.Patterns;
+using Bosses.Instructions;
 using UnityEngine;
 
 namespace Bosses.Dependencies
@@ -13,7 +13,7 @@ namespace Bosses.Dependencies
 
         private readonly List<ResolvedPattern<T>> selectedList = new();
         
-        public Pattern<T> Resolve(T boss)
+        public Instruction<T> Resolve(T boss)
         {
             selectedList.Clear();
             
@@ -30,9 +30,9 @@ namespace Bosses.Dependencies
                 return null;
             }
 
-            Pattern<T> pat = selectedList.RandomWeightedSelection().pattern;
-            pat.phase = PatternPhase.Start;
-            return pat;
+            Instruction<T> instruction = selectedList.RandomWeightedSelection().pattern;
+            instruction.phase = InstructionPhase.Start;
+            return instruction;
         }
     }
 
@@ -59,7 +59,7 @@ namespace Bosses.Dependencies
             }
         }
         
-        public Pattern<T> pattern;
+        public Instruction<T> pattern;
         [Range(0, 20)]
         public float weight = 1;
 

@@ -1,7 +1,6 @@
 ﻿using System;
-using Bosses.Patterns.Drones;
-using Levels;
-using Unity.Mathematics;
+using Bosses.Instructions.Patterns.Drones;
+using LD;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -58,7 +57,7 @@ namespace Editor
 
         private void DrawWirePattern(Vector3 roomCenter, Vector3 halfSize)
         {
-            Handles.color = Color.magenta;
+            Handles.color = Color.red;
             
             GetLine(out Vector3 lineStart, out Vector3 lineEnd, roomCenter, halfSize);
             Handles.DrawLine(lineStart, lineEnd, 3);

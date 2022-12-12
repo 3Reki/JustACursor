@@ -21,7 +21,7 @@ MonoBehaviour:
   phaseResolvers:
   - choices:
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: c8645a8bb7616f04b926beae427d4212, type: 2}
+      pattern: {fileID: 0}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
         checkType: 0
   - choices:
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: 55715f107a82c1c42a186331ac3dc527, type: 2}
+      pattern: {fileID: 0}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
         checkType: 0
   - choices:
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: 1b916d5b02ba9d04f89874195f7149e8, type: 2}
+      pattern: {fileID: 0}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
         half: 0
         checkType: 0
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: 55eb0118170ed944da4f234c5cae228b, type: 2}
+      pattern: {fileID: 0}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0

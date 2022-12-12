@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Bosses.Dependencies;
-using Bosses.Patterns;
+using Bosses.Instructions;
 using BulletPro;
 using Player;
 using UnityEngine;
@@ -28,7 +28,7 @@ namespace Bosses
         
         protected bool isPaused;
         
-        private Pattern<Boss> currentPattern;
+        private Instruction<Boss> currentInstruction;
         protected BossPhase currentBossPhase;
         private bool isFrozen;
 
@@ -75,23 +75,23 @@ namespace Bosses
 
         private void HandlePatterns()
         {
-            if (currentPattern == null)
+            if (currentInstruction == null)
             {
-                currentPattern = bossData.phaseResolvers[(int) currentBossPhase].Resolve(this);
+                currentInstruction = bossData.phaseResolvers[(int) currentBossPhase].Resolve(this);
             }
-            switch (currentPattern.phase)
+            switch (currentInstruction.phase)
             {
-                case PatternPhase.None:
-                    currentPattern = bossData.phaseResolvers[(int) currentBossPhase].Resolve(this);
+                case InstructionPhase.None:
+                    currentInstruction = bossData.phaseResolvers[(int) currentBossPhase].Resolve(this);
                     break;
-                case PatternPhase.Start:
-                    currentPattern.Play(this);
+                case InstructionPhase.Start:
+                    currentInstruction.Play(this);
                     break;
-                case PatternPhase.Update:
-                    currentPattern.Update();
+                case InstructionPhase.Update:
+                    currentInstruction.Update();
                     break;
-                case PatternPhase.Stop:
-                    currentPattern = currentPattern.Stop();
+                case InstructionPhase.Stop:
+                    currentInstruction = currentInstruction.Stop();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -131,7 +131,7 @@ namespace Bosses
 
         protected virtual void StopCurrentPattern()
         {
-            currentPattern.Stop();
+            currentInstruction.Stop();
         }
 
         

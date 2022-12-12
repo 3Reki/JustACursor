@@ -19,7 +19,7 @@ namespace LD
         [SerializeField] private float laserLength;
         [SerializeField] private Gradient laserGradient;
         
-        private BulletCollider[] newColliders = new BulletCollider[3];
+        private readonly BulletCollider[] newColliders = new BulletCollider[3];
         
         private void Awake()
         {
@@ -53,8 +53,9 @@ namespace LD
             InitLineRenderer(customWidth, customLength);
             InitNewColliders(customWidth, customLength);
 
-            yield return StartCoroutine(Fire(previewDuration, laserDuration));
+            yield return Fire(previewDuration, laserDuration);
 
+            // Reset renderer and colliders
             InitLineRenderer(laserWidth, laserLength);
             InitNewColliders(laserWidth, laserLength);
         }

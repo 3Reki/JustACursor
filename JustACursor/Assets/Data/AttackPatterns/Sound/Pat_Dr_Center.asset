@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54abc1be203147b680a920f81d48867b, type: 3}
   m_Name: Pat_Dr_Center
   m_EditorClassIdentifier: 
-  phase: 2
-  resolver:
-    choices: []
   patternDuration: 3
-  distanceToCenter: 1.5425353
+  distanceToCenter: 2.2752395
   flipFormation: 0

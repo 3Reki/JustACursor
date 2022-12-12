@@ -1,6 +1,5 @@
-﻿using Bosses.Patterns.Drones;
-using Levels;
-using Unity.Mathematics;
+﻿using Bosses.Instructions.Patterns.Drones;
+using LD;
 using UnityEditor;
 using UnityEngine;
 
@@ -65,7 +64,7 @@ namespace Editor
 
         private void DrawWirePattern(Vector3 roomCenter, float distanceToCenter)
         {
-            Handles.color = Color.magenta;
+            Handles.color = Color.red;
 
             bool flipFormation = m_flipFormation.boolValue;
 
@@ -83,8 +82,8 @@ namespace Editor
                 float nextCos = Mathf.Cos(nextAngle);
                 float nextSin = Mathf.Sin(nextAngle);
 
-                Handles.DrawSolidDisc(roomCenter + distanceToCenter * new Vector3(cos, sin), Vector3.back, distanceToCenter * 0.02f);
-                Handles.DrawLine(roomCenter + distanceToCenter * new Vector3(cos, sin), roomCenter + distanceToCenter * new Vector3(nextCos, nextSin));
+                Handles.DrawSolidDisc(roomCenter + distanceToCenter * new Vector3(cos, sin), Vector3.back, distanceToCenter * 0.04f);
+                Handles.DrawLine(roomCenter + distanceToCenter * new Vector3(cos, sin), roomCenter + distanceToCenter * new Vector3(nextCos, nextSin), 2);
                 
                 cos = nextCos;
                 sin = nextSin;
