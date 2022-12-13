@@ -36,7 +36,7 @@ namespace Player
             canDash = false;
             isDashing = true;
             isFirstPhase = true;
-            playerController.invincible = true;
+            playerController.isInvincible = true;
             CameraController.ShakeCamera(playerData.dashShakeIntensity, playerData.dashShakeDuration);
 
             yield return new WaitForSeconds(playerData.dashFirstPhaseDuration); 
@@ -45,7 +45,7 @@ namespace Player
 
             yield return new WaitForSeconds(playerData.dashDuration - playerData.dashFirstPhaseDuration);
             isDashing = false;
-            playerController.invincible = false;
+            playerController.isInvincible = false;
             rb.velocity = Vector2.zero;
 
             yield return new WaitForSeconds(playerData.dashRefreshCooldown);

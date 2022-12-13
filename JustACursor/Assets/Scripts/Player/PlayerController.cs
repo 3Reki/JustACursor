@@ -10,7 +10,7 @@ namespace Player
     {
         public PlayerData data => playerData;
         public bool isDashing => playerDash.isDashing;
-        public bool invincible
+        public bool isInvincible
         {
             get => playerCollision.isInvincible;
             set => playerCollision.isInvincible = value;
