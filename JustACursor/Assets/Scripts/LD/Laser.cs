@@ -13,9 +13,11 @@ namespace LD
         [Header("Render")]
         [SerializeField] private Gradient previewGradient;
         [SerializeField] private Gradient laserGradient;
+        [SerializeField] private GameObject ps_Laser;
 
         private readonly BulletCollider[] colliders = new BulletCollider[3];
         private IEnumerator fireEnumerator;
+        private RaycastHit2D hit;
 
         private void Awake()
         {
@@ -33,6 +35,9 @@ namespace LD
 
         public void StartFire(float previewDuration, float laserDuration, float customWidth, float customLength, bool hasCollision = true)
         {
+            hit = Physics2D.Raycast(transform.position, transform.up, customLength+customWidth/2);
+            if (hit) customLength = hit.distance-customWidth/2;
+
             SetupLineRenderer(customWidth, customLength);
             SetupColliders(customWidth, customLength);
 
@@ -59,11 +64,6 @@ namespace LD
             lineRenderer.colorGradient = previewGradient;
         }
 
-        public void HidePreview()
-        {
-            lineRenderer.gameObject.SetActive(false);
-        }
-
         private IEnumerator Fire(float previewDuration, float laserDuration, bool hasCollision)
         {
             ShowPreview();
@@ -77,10 +77,18 @@ namespace LD
             
             emitter.Play();
             //Wait for bullet to initialize
-            while (emitter.bullets.Count == 0) yield return null;
-            SetupBullet(emitter.bullets[^1], hasCollision);
+            while (true)
+            {
+                yield return null;
+                if (emitter.bullets.Count > 0)
+                {
+                    SetupBullet(emitter.bullets[^1], hasCollision);
+                    break;
+                }
+            }
 
             lineRenderer.colorGradient = laserGradient;
+            ps_Laser.SetActive(true);
 
             laserDuration -= Time.deltaTime * Energy.GameSpeed;
             while (laserDuration > 0)
@@ -91,7 +99,8 @@ namespace LD
 
             emitter.Stop();
             emitter.Kill();
-            HidePreview();
+            
+            lineRenderer.gameObject.SetActive(false);
         }
 
         private void SetupBullet(BulletPro.Bullet bullet, bool hasCollision)
@@ -110,6 +119,10 @@ namespace LD
         private void SetupLineRenderer(float width, float length)
         {
             lineRenderer.widthMultiplier = width;
+            
+            
+
+            
 
             lineRenderer.SetPosition(0, Vector2.zero);
             lineRenderer.SetPosition(1, Vector2.zero + Vector2.up * length);

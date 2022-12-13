@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // This script is part of the BulletPro package for Unity.
@@ -68,7 +69,8 @@ namespace BulletPro
 		public void Update(float timestep)
 		{
 			if (!isPlaying) return;
-			
+
+			timestep *= BulletModuleMovement.SpeedMultiplier;
 			if (isBackwards) timeSinceLive -= timestep;
 			else timeSinceLive += timestep;
 		}

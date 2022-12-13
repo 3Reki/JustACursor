@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using BulletBehaviour;
 using CameraScripts;
 using UnityEngine;
 
@@ -30,7 +31,15 @@ namespace Player {
         
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
-            Damage(bullet.moduleParameters.GetInt("Damage"));
+            if (isInvincible) return;
+            
+            ShockwaveCollision shockwaveCollision = bullet.GetComponentInChildren<ShockwaveCollision>();
+            if (shockwaveCollision != null)
+            {
+                if (shockwaveCollision.CheckCollision(hitPoint))
+                    Damage(bullet.moduleParameters.GetInt("Damage"));
+            }
+            else Damage(bullet.moduleParameters.GetInt("Damage"));
         }
 
         public void Damage(int damage = 1)
