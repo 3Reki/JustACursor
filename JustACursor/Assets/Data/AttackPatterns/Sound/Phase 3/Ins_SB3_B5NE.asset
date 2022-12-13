@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5fe64e1a9641f9bb081e6dbe52a72f, type: 3}
-  m_Name: Ins_Dr_SB3_R4BG
+  m_Script: {fileID: 11500000, guid: 23128c179fd849caadd665c4cce187eb, type: 3}
+  m_Name: Ins_SB3_B5NE
   m_EditorClassIdentifier: 
-  phase: 2
+  phase: 0
   resolver:
     choices:
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: a05755849d1545c4c9f3705a922d04b7, type: 2}
-      weight: 0
+      pattern: {fileID: 11400000, guid: bd24afb9da15b9b4aa577dffb360c02c, type: 2}
+      weight: 1
       cdtHealthThreshold:
         comparisonType: 0
         threshold: 0
@@ -42,6 +42,4 @@ MonoBehaviour:
         half: 0
         checkType: 0
   instructions:
-  - {fileID: 11400000, guid: f4ea42178ea21fd4a8a38d248cce3c0f, type: 2}
-  - {fileID: 11400000, guid: 80e6102acda6af544a9bcf3438d8eb44, type: 2}
-  - {fileID: 11400000, guid: e06bc6ec30e977f4f9e44c2c631039cb, type: 2}
+  - {fileID: 11400000, guid: 7fdb0d9ef83bb984a897054346db93f4, type: 2}

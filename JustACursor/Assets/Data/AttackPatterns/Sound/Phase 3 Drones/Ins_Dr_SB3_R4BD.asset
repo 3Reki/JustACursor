@@ -10,14 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c5fe64e1a9641f9bb081e6dbe52a72f, type: 3}
-  m_Name: Ins_Dr_SB3_R4BG
+  m_Name: Ins_Dr_SB3_R4BD
   m_EditorClassIdentifier: 
   phase: 2
   resolver:
     choices:
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: a05755849d1545c4c9f3705a922d04b7, type: 2}
-      weight: 0
+      pattern: {fileID: 11400000, guid: a57c451d2114091439311211067d8839, type: 2}
+      weight: 1
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 97724d1aba51a634c9e33f2a051fc375, type: 2}
+      weight: 1
       cdtHealthThreshold:
         comparisonType: 0
         threshold: 0
@@ -42,6 +68,6 @@ MonoBehaviour:
         half: 0
         checkType: 0
   instructions:
-  - {fileID: 11400000, guid: f4ea42178ea21fd4a8a38d248cce3c0f, type: 2}
+  - {fileID: 11400000, guid: 1c0b4c2fedad1b24499bce13228aa4be, type: 2}
   - {fileID: 11400000, guid: 80e6102acda6af544a9bcf3438d8eb44, type: 2}
-  - {fileID: 11400000, guid: e06bc6ec30e977f4f9e44c2c631039cb, type: 2}
+  - {fileID: 11400000, guid: 3c63c410838b2c948b95ffd7f79152a1, type: 2}
