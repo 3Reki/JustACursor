@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1acd6c7fc7e54d1abcd3d08646eccec0, type: 3}
-  m_Name: Pat_Idle5Sec
+  m_Script: {fileID: 11500000, guid: 1cc33d2b60c647d6877bc68610d2efcb, type: 3}
+  m_Name: Pat_CornerNWaoe
   m_EditorClassIdentifier: 
-  patternDuration: 5
+  patternDuration: 4
+  aoePrefab: {fileID: 0}
+  previewDuration: 1
+  corner: 0
+  sizeMultiplier: 10.524999

@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a054d1204864b69b468ea0e472b4973, type: 3}
-  m_Name: Ins_SimpleIdle
+  m_Script: {fileID: 11500000, guid: 23128c179fd849caadd665c4cce187eb, type: 3}
+  m_Name: Ins_SB2_B4H
   m_EditorClassIdentifier: 
   phase: 0
   resolver:
     choices:
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: 4597d0e0f9849ba4d8ca175c3063f4db, type: 2}
+      pattern: {fileID: 11400000, guid: 4fa7dd4568a3e82489ab7c6e3278de00, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
@@ -41,4 +41,6 @@ MonoBehaviour:
         targetType: 0
         half: 0
         checkType: 0
-  pattern: {fileID: 11400000, guid: 6396cbad2be75b145bef798f066e467c, type: 2}
+  instructions:
+  - {fileID: 11400000, guid: 38872cd4bfee78343a1114510495e79b, type: 2}
+  - {fileID: 11400000, guid: d0572f7f771bc134681d18c739e87d33, type: 2}
