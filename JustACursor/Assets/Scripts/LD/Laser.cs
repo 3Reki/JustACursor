@@ -80,10 +80,11 @@ namespace LD
             while (true)
             {
                 yield return null;
-                if (emitter.bullets.Count <= 0) continue;
-                
-                SetupBullet(emitter.bullets[^1], hasCollision);
-                break;
+                if (emitter.bullets.Count > 0)
+                {
+                    SetupBullet(emitter.bullets[^1], hasCollision);
+                    break;
+                }
             }
 
             lineRenderer.colorGradient = laserGradient;
