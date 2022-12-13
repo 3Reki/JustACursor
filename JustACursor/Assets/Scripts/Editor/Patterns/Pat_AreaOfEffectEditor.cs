@@ -1,4 +1,4 @@
-﻿using Bosses.Instructions.Patterns;
+﻿using Bosses.Patterns;
 using UnityEditor;
 using UnityEngine;
 

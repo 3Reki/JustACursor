@@ -1,5 +1,5 @@
 ﻿using System;
-using Bosses.Instructions.Patterns.Drones;
+using Bosses.Patterns.Drones;
 using LD;
 using UnityEditor;
 using UnityEditor.Rendering;

@@ -42,8 +42,10 @@ namespace Editor
     }
     
     [CustomEditor(typeof(InstructionSequenceBoss))]
+    [CanEditMultipleObjects]
     public class InstructionSequenceBossEditor : InstructionSequenceEditor {}
 
     [CustomEditor(typeof(InstructionSequenceDrones))]
+    [CanEditMultipleObjects]
     public class InstructionSequenceDronesEditor : InstructionSequenceEditor {}
 }

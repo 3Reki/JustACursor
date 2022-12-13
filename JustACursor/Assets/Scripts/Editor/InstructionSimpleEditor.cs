@@ -40,8 +40,10 @@ namespace Editor
     }
     
     [CustomEditor(typeof(InstructionSimpleBoss))]
+    [CanEditMultipleObjects]
     public class InstructionSimpleBossEditor : InstructionSimpleEditor {}
     
     [CustomEditor(typeof(InstructionSimpleDrones))]
+    [CanEditMultipleObjects]
     public class InstructionSimpleDronesEditor : InstructionSimpleEditor {}
 }

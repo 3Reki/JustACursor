@@ -28705,7 +28705,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 881595640}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &163132893
 PrefabInstance:
@@ -29863,9 +29863,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 855145732}
-  - {fileID: 1711793817}
   - {fileID: 134429506}
   - {fileID: 1375879549}
+  - {fileID: 1711793817}
   m_Father: {fileID: 770709907}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39571,7 +39571,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 881595640}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1409171225
 PrefabInstance:
@@ -40260,7 +40260,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 881595640}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &1845391934 stripped
 Transform:
@@ -40669,7 +40669,11 @@ PrefabInstance:
     - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: bossData
       value: 
-      objectReference: {fileID: 11400000, guid: 0b85a997e37844146b26fe43d1411fa8, type: 2}
+      objectReference: {fileID: 11400000, guid: 79cfaad2c43aee144b2670229a20c9d1, type: 2}
+    - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: drones.Array.size
       value: 12
@@ -40864,7 +40868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8138451376555058698, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.14
       objectReference: {fileID: 0}
     - target: {fileID: 8138451376555058698, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -40913,15 +40917,15 @@ PrefabInstance:
     - target: {fileID: 8138451376555058701, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: coneFirePoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1711793817}
+      objectReference: {fileID: 134429506}
     - target: {fileID: 8138451376555058701, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: coneFirePoints.Array.data[2]
       value: 
-      objectReference: {fileID: 134429506}
+      objectReference: {fileID: 1375879549}
     - target: {fileID: 8138451376555058701, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: coneFirePoints.Array.data[3]
       value: 
-      objectReference: {fileID: 1375879549}
+      objectReference: {fileID: 1711793817}
     - target: {fileID: 8138451376555059191, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: m_Name
       value: Boss Sound

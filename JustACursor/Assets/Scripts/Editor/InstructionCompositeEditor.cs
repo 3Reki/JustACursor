@@ -46,8 +46,10 @@ namespace Editor
     }
     
     [CustomEditor(typeof(InstructionCompositeBoss))]
+    [CanEditMultipleObjects]
     public class InstructionCompositeBossEditor : InstructionCompositeEditor {}
     
     [CustomEditor(typeof(InstructionCompositeDrones))]
+    [CanEditMultipleObjects]
     public class InstructionCompositeDronesEditor : InstructionCompositeEditor {}
 }
