@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using BulletPro;
 using UnityEngine;
@@ -8,22 +7,13 @@ namespace Enemies
     public class BassBooster : MonoBehaviour
     {
         [SerializeField] private BulletEmitter emitter;
+        [SerializeField] private Animator animator;
         
         [SerializeField] private float timeBeforeFirstFire;
         [SerializeField] private float shockwaveLifespan;
         [SerializeField] private Color shockwaveColor;
         [SerializeField] private AnimationCurve shockwaveScaleOverLifetime;
         [SerializeField] private float shockwaveCooldown;
-
-        private void OnEnable()
-        {
-            Energy.onGameSpeedUpdate += UpdateLifespan;
-        }
-
-        private void OnDisable()
-        {
-            Energy.onGameSpeedUpdate -= UpdateLifespan;
-        }
 
         private void Awake()
         {
@@ -39,6 +29,7 @@ namespace Enemies
         private IEnumerator FireLoop()
         {
             emitter.Play();
+            animator.Play("BassBooster_Attack");
             //Wait for bullet to initialize
             while (true)
             {
@@ -52,13 +43,13 @@ namespace Enemies
             
             emitter.Stop();
             
+            
             float cooldown = shockwaveCooldown;
             while (cooldown > 0)
             {
                 yield return null;
                 cooldown -= Time.deltaTime * Energy.GameSpeed;
             }
-            
             StartCoroutine(FireLoop());
         }
         
@@ -69,15 +60,6 @@ namespace Enemies
             bullet.moduleRenderer.startColor = shockwaveColor;
 
             bullet.self.SetParent(transform);
-        }
-
-        private void UpdateLifespan()
-        {
-            /*foreach (BulletPro.Bullet bullet in emitter.bullets)
-            {
-                bullet.moduleLifespan.GetRemainingLifespan()
-                bullet.moduleLifespan.lifespan = bullet.timeSinceAlive+(shockwaveLifespan-bullet.timeSinceAlive)*Energy.GameSpeed;
-            }*/
         }
     }
 }

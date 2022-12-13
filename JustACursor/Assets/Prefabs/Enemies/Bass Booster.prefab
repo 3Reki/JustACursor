@@ -155,17 +155,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 4
-      outSlope: 4
+      inSlope: 3
+      outSlope: 3
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 4
-      inSlope: 4
-      outSlope: 4
+      value: 3
+      inSlope: 3
+      outSlope: 3
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -265,6 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4227097247812473782}
   - component: {fileID: 4227097247812473783}
+  - component: {fileID: 4009595295874210876}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -302,6 +303,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RenderPlan: 1
+--- !u!95 &4009595295874210876
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227097247812473781}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3bf9dd30c2102f543976e863e5c75ba8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4467163654949785414
 GameObject:
   m_ObjectHideFlags: 0

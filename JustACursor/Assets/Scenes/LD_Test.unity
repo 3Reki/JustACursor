@@ -52983,6 +52983,11 @@ PrefabInstance:
       objectReference: {fileID: 436607761}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8144959273fd8ad4dae7f3711e8e6e70, type: 3}
+--- !u!95 &1488576159 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4009595295874210876, guid: 9a5fca1cbf5cf874cad4a936f6c7c06b, type: 3}
+  m_PrefabInstance: {fileID: 4227097247763821556}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1490916497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1069125663697547605, guid: 8144959273fd8ad4dae7f3711e8e6e70, type: 3}
@@ -62906,8 +62911,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2364542196923931312, guid: 9a5fca1cbf5cf874cad4a936f6c7c06b, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1488576159}
+    - target: {fileID: 2364542196923931312, guid: 9a5fca1cbf5cf874cad4a936f6c7c06b, type: 3}
       propertyPath: shockwaveCooldown
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2364542196923931312, guid: 9a5fca1cbf5cf874cad4a936f6c7c06b, type: 3}
       propertyPath: shockwaveLifespan
