@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23128c179fd849caadd665c4cce187eb, type: 3}
-  m_Name: Ins_SB3_B6
+  m_Name: Ins_SB3_B5
   m_EditorClassIdentifier: 
-  phase: 2
+  phase: 0
   resolver:
     choices:
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: 46c2f23e85c0cf54ebdf49d62ca50aa6, type: 2}
-      weight: 1
+      pattern: {fileID: 11400000, guid: b9cef73f039496f42a50003322fff63c, type: 2}
+      weight: 0
       cdtHealthThreshold:
         comparisonType: 0
         threshold: 0
@@ -42,5 +42,7 @@ MonoBehaviour:
         half: 0
         checkType: 0
   instructions:
-  - {fileID: 11400000, guid: 38872cd4bfee78343a1114510495e79b, type: 2}
-  - {fileID: 11400000, guid: 932b3030fbcff8842ba4ae61d4b0da8b, type: 2}
+  - {fileID: 11400000, guid: f57e3a0eed02ff74c8261df1dd30e6ea, type: 2}
+  - {fileID: 11400000, guid: fbbea416b7c728a4c9f21d87e8336811, type: 2}
+  - {fileID: 11400000, guid: b0ef071a2e4a0ce46a9983563189fedc, type: 2}
+  - {fileID: 11400000, guid: a687bd0da5adeb842ad1af6bb2a9eb01, type: 2}
