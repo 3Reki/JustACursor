@@ -59,7 +59,7 @@ namespace LD
             lineRenderer.colorGradient = previewGradient;
         }
 
-        public void HidePreview()
+        private void HidePreview()
         {
             lineRenderer.gameObject.SetActive(false);
         }
@@ -77,8 +77,14 @@ namespace LD
             
             emitter.Play();
             //Wait for bullet to initialize
-            while (emitter.bullets.Count == 0) yield return null;
-            SetupBullet(emitter.bullets[^1], hasCollision);
+            while (true)
+            {
+                yield return null;
+                if (emitter.bullets.Count <= 0) continue;
+                
+                SetupBullet(emitter.bullets[^1], hasCollision);
+                break;
+            }
 
             lineRenderer.colorGradient = laserGradient;
 

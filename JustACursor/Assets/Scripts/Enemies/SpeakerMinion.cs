@@ -45,6 +45,18 @@ namespace Enemies
 
             if (movementAxis != Movement.None) StartCoroutine(MovementLoop());
         }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                StartFire(1,1,2,3);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                StartFire(0.5f,0.5f,6,4);
+            }
+        }
         
         private IEnumerator FirstFireDelay()
         {

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 2051986
+  uniqueIndex: 5017897
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
