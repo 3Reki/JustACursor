@@ -34,16 +34,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ElectAmount: 10
+    - _ElectAmount: 2.3
     - _ElectScale: 20
-    - _ElectThickness: 10
+    - _ElectThickness: 3
     - _QueueControl: 0
     - _QueueOffset: 0
     - _alpha: 1
     m_Colors:
-    - _AlphaColor: {r: 0.277, g: 0.277, b: 0.277, a: 0.7450981}
-    - _Color: {r: 7.0480003, g: 6.7896967, b: 0.29520422, a: 1}
-    - _ElectSpeed: {r: 0, g: 0.5, b: 0, a: 0}
+    - _AlphaColor: {r: 0.241, g: 0.10121999, b: 0.11889331, a: 0.57254905}
+    - _Color: {r: 23.968628, g: 17.568628, b: 0, a: 1}
+    - _ElectSpeed: {r: 0.1, g: 0.5, b: 0, a: 0}
     - _NoiseSpeed: {r: 0.05, g: -0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2776132803450008920
