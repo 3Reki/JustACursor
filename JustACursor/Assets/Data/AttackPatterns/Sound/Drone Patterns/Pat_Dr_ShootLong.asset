@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cc33d2b60c647d6877bc68610d2efcb, type: 3}
-  m_Name: Pat_CornerSWaoe
+  m_Script: {fileID: 11500000, guid: a6f8921c8cd348ef8eead87e65344d58, type: 3}
+  m_Name: Pat_Dr_ShootLong
   m_EditorClassIdentifier: 
-  patternDuration: 4
-  aoePrefab: {fileID: 4942947987975104490, guid: 76912dcd31df0bb42b66d4ec19869cc9, type: 3}
+  patternDuration: 3.5
   previewDuration: 1
-  corner: 2
-  sizeMultiplier: 10.524999
+  laserWidth: 1
+  laserLength: 15
