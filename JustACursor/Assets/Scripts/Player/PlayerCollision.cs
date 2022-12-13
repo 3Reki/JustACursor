@@ -27,18 +27,23 @@ namespace Player {
         {
             health.Init(data.maxHealth);
         }
+        
+        public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
+        {
+            Damage(bullet.moduleParameters.GetInt("Damage"));
+        }
+
+        public void Damage(int damage = 1)
+        {
+            if (isInvincible) return;
+            
+            health.LoseHealth(damage);
+            StartCoroutine(Invincibility());
+        }
 
         private void Shake()
         {
             CameraController.ShakeCamera(data.onHitShakeIntensity, data.onHitShakeDuration);
-        }
-
-        public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
-        {
-            if (isInvincible) return;
-            
-            health.LoseHealth(bullet.moduleParameters.GetInt("Damage"));
-            StartCoroutine(Invincibility());
         }
 
         private IEnumerator Invincibility()

@@ -1,5 +1,7 @@
 using System.Collections;
+using CameraScripts;
 using DG.Tweening;
+using LD;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,14 +11,24 @@ namespace Player
     {
         [SerializeField] private PlayerController playerController;
         [SerializeField] private Image respawnScreen;
-        [SerializeField] private Transform respawnPoint;
 
+        private Checkpoint respawnPoint;
+        
         [Header("Debug")]
         [SerializeField] private KeyCode respawnKey;
 
         private PlayerData data => playerController.data;
-
         public bool isAlive { get; private set; } = true;
+        
+        private void OnEnable()
+        {
+            Checkpoint.onCheckpointEnter += SetCheckpoint;
+        }
+
+        private void OnDisable()
+        {
+            Checkpoint.onCheckpointEnter -= SetCheckpoint;
+        }
 
         //TODO: To remove
         private void Update()
@@ -27,12 +39,12 @@ namespace Player
             }
         }
 
-        public void Respawn()
+        private void Respawn()
         {
             StartCoroutine(RespawnCR());
         }
 
-        public void SetCheckpoint(Transform newCheckpoint)
+        public void SetCheckpoint(Checkpoint newCheckpoint)
         {
             respawnPoint = newCheckpoint;
         }
@@ -42,8 +54,10 @@ namespace Player
             isAlive = false;
             respawnScreen.DOFade(1, data.respawnFadeIn).SetEase(Ease.Linear);
             yield return new WaitForSeconds(data.respawnFadeIn);
-        
-            transform.SetPositionAndRotation(respawnPoint.position,respawnPoint.rotation);
+
+            Transform checkpointTransform = respawnPoint.transform;
+            transform.SetPositionAndRotation(checkpointTransform.position, checkpointTransform.rotation);
+            CameraController.TeleportToTarget();
             yield return new WaitForSeconds(data.respawnStay);
         
             respawnScreen.DOFade(0, data.respawnFadeOut).SetEase(Ease.Linear);

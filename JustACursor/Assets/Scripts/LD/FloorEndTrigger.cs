@@ -23,7 +23,7 @@ namespace LD
             Gizmos.color = new Color(0, 1, 0, .5f);
             Gizmos.DrawCube(position, size);
             
-            Gizmos.color = new Color(0, .5f, 0);
+            Gizmos.color = new Color(.5f, 1, .5f);
             Gizmos.DrawWireCube(position, size);
         }
 #endif
