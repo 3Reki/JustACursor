@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23128c179fd849caadd665c4cce187eb, type: 3}
-  m_Name: Ins_SB3_B3H
+  m_Name: Ins_SB3_B4H 1
   m_EditorClassIdentifier: 
   phase: 0
   resolver:
     choices:
-    - conditionType: 0
-      pattern: {fileID: 11400000, guid: ae651385870cd5e49907ac124c6135c8, type: 2}
+    - conditionType: 5
+      pattern: {fileID: 11400000, guid: 6282a747ac77fa14ab069ceca9415b85, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
@@ -41,8 +41,8 @@ MonoBehaviour:
         targetType: 0
         half: 0
         checkType: 0
-    - conditionType: 0
-      pattern: {fileID: 11400000, guid: 689aef2c32da37040a1530901ed968b8, type: 2}
+    - conditionType: 5
+      pattern: {fileID: 11400000, guid: 92377fcfa148ecd4d96f3d338ae6bc3a, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
@@ -61,14 +61,14 @@ MonoBehaviour:
         distance: 0
       cdtQuarter:
         targetType: 0
-        quarter: 0
+        quarter: 1
         checkType: 0
       cdtHalf:
         targetType: 0
         half: 0
         checkType: 0
-    - conditionType: 0
-      pattern: {fileID: 11400000, guid: 36f1006e47269164ab1e0f9d4dcbbe7f, type: 2}
+    - conditionType: 5
+      pattern: {fileID: 11400000, guid: ba7b325d6d277524ca8e919fcd87d5f3, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
@@ -87,14 +87,14 @@ MonoBehaviour:
         distance: 0
       cdtQuarter:
         targetType: 0
-        quarter: 0
+        quarter: 2
         checkType: 0
       cdtHalf:
         targetType: 0
         half: 0
         checkType: 0
-    - conditionType: 0
-      pattern: {fileID: 11400000, guid: a5d491f9fa367cb4eb8ea216ef755649, type: 2}
+    - conditionType: 5
+      pattern: {fileID: 11400000, guid: 6ef16e8df40bef449bd854adf5f3e2be, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
@@ -113,11 +113,12 @@ MonoBehaviour:
         distance: 0
       cdtQuarter:
         targetType: 0
-        quarter: 0
+        quarter: 3
         checkType: 0
       cdtHalf:
         targetType: 0
         half: 0
         checkType: 0
   instructions:
-  - {fileID: 11400000, guid: ec6d92124363ce247b2a254b69c2e799, type: 2}
+  - {fileID: 11400000, guid: 38872cd4bfee78343a1114510495e79b, type: 2}
+  - {fileID: 11400000, guid: d0572f7f771bc134681d18c739e87d33, type: 2}

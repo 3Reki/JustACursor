@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pat_CornerSWaoe
   m_EditorClassIdentifier: 
   patternDuration: 4
-  aoePrefab: {fileID: 0}
+  aoePrefab: {fileID: 4942947987975104490, guid: 76912dcd31df0bb42b66d4ec19869cc9, type: 3}
   previewDuration: 1
   corner: 2
   sizeMultiplier: 10.524999
