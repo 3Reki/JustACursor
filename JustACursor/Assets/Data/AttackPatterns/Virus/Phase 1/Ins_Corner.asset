@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23128c179fd849caadd665c4cce187eb, type: 3}
   m_Name: Ins_Corner
   m_EditorClassIdentifier: 
-  phase: 3
+  phase: 0
   resolver:
     choices: []
   instructions:
   - {fileID: 11400000, guid: c8645a8bb7616f04b926beae427d4212, type: 2}
-  - {fileID: 11400000, guid: 5c6d26d33844dba4dae6dd1dc43ca7db, type: 2}
+  - {fileID: 11400000, guid: e39f1b8669e4ae142b7fc2839099a2eb, type: 2}

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5fe64e1a9641f9bb081e6dbe52a72f, type: 3}
+  m_Name: Ins_Dr_R5
+  m_EditorClassIdentifier: 
+  phase: 0
+  resolver:
+    choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 0aa08ffd86cf7614eb8c6261c1d0c11f, type: 2}
+      weight: 1
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+  instructions:
+  - {fileID: 11400000, guid: 0c9718c94203be4499aaacee278b78f9, type: 2}
+  - {fileID: 11400000, guid: 80e6102acda6af544a9bcf3438d8eb44, type: 2}
+  - {fileID: 11400000, guid: e06bc6ec30e977f4f9e44c2c631039cb, type: 2}

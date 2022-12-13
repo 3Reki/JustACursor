@@ -2,7 +2,6 @@
 using Bosses.Dependencies;
 using Bosses.Instructions;
 using Enemies;
-using LD;
 using UnityEngine;
 
 namespace Bosses
@@ -14,7 +13,7 @@ namespace Bosses
         [Space(15)]
         [Header("=== Sound Boss ===")]
         [SerializeField] private SpeakerMinion[] drones = new SpeakerMinion[12];
-        [SerializeField] private Resolver<BossSound>[] dronesResolver;
+        //[SerializeField] private Resolver<BossSound>[] dronesResolver;
         
         private Instruction<BossSound> currentDronePattern;
 
@@ -51,12 +50,12 @@ namespace Bosses
         {
             if (currentDronePattern == null)
             {
-                currentDronePattern = dronesResolver[(int) currentBossPhase].Resolve(this);
+                currentDronePattern = ((SoundBossData) bossData).droneResolvers[(int) currentBossPhase].Resolve(this);
             }
             switch (currentDronePattern.phase)
             {
                 case InstructionPhase.None:
-                    currentDronePattern = dronesResolver[(int) currentBossPhase].Resolve(this);
+                    currentDronePattern = ((SoundBossData) bossData).droneResolvers[(int) currentBossPhase].Resolve(this);
                     break;
                 case InstructionPhase.Start:
                     currentDronePattern.Play(this);
