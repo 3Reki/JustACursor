@@ -337,7 +337,6 @@ GameObject:
   - component: {fileID: 6038647851309756490}
   - component: {fileID: 3615676464410597287}
   - component: {fileID: 5524830041888224857}
-  - component: {fileID: 7126733577131024313}
   m_Layer: 3
   m_Name: Controller
   m_TagString: Untagged
@@ -353,7 +352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5006236445304533773}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -424,7 +423,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 5006236445304533773}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 04dc4461fccf3924b88a0954b78b2272, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -631,7 +630,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 8213265501839806752}
   respawnScreen: {fileID: 8381984491438418184}
-  respawnPoint: {fileID: 0}
   respawnKey: 114
 --- !u!114 &3615676464410597287
 MonoBehaviour:
@@ -703,13 +701,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: f0dbc50461d2a324a9667ab8dc186971, type: 2}
---- !u!114 &7126733577131024313
+--- !u!1 &8275907979604179105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9186319392919533144}
+  - component: {fileID: 26104225010853109}
+  m_Layer: 3
+  m_Name: Bullet Receivers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9186319392919533144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8275907979604179105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5582726313676599864}
+  - {fileID: 5258055325957493252}
+  - {fileID: 8117729187896404655}
+  m_Father: {fileID: 6995481266605536940}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &26104225010853109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5006236445304533773}
+  m_GameObject: {fileID: 8275907979604179105}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a50e756f139e8884f93ef2eca2eef78d, type: 3}
@@ -726,8 +759,8 @@ MonoBehaviour:
   syncCollisionTags: 1
   hitboxSize: 0.8
   hitboxOffset: {x: 0, y: 0}
-  killBulletOnCollision: 1
-  maxSimultaneousCollisionsPerFrame: 1
+  killBulletOnCollision: 0
+  maxSimultaneousCollisionsPerFrame: 10
   collisionTags:
     tagList: 1
   OnHitByBullet:
@@ -760,40 +793,6 @@ MonoBehaviour:
   useDefaultGizmoColor: 1
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
   gizmoZOffset: 0
---- !u!1 &8275907979604179105
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9186319392919533144}
-  m_Layer: 3
-  m_Name: Bullet Receivers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9186319392919533144
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8275907979604179105}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5582726313676599864}
-  - {fileID: 5258055325957493252}
-  - {fileID: 8117729187896404655}
-  m_Father: {fileID: 6995481266605536940}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8492879579015322661
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,6 +950,10 @@ PrefabInstance:
     - target: {fileID: 3922907136330970326, guid: 94a63c10e39267244aaf19aaaff52da9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318341422152638574, guid: 94a63c10e39267244aaf19aaaff52da9, type: 3}
+      propertyPath: m_Icon
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7318341422152638574, guid: 94a63c10e39267244aaf19aaaff52da9, type: 3}
       propertyPath: m_Name

@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23128c179fd849caadd665c4cce187eb, type: 3}
+  m_Name: Ins_SB2_PB6_B5H 1
+  m_EditorClassIdentifier: 
+  phase: 0
+  resolver:
+    choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 6fe1dfc5b493d2244bec78fa3da39eaf, type: 2}
+      weight: 1
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: ec9e2489b533f2c47b114f7b58968840, type: 2}
+      weight: 1
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: b804749b7dd68b3429bbef8e7c68824d, type: 2}
+      weight: 1
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 3e6ff476d6940754895124306ce3733f, type: 2}
+      weight: 1
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+  instructions:
+  - {fileID: 11400000, guid: 5ed6b5d1da2ba2742a1410792874156a, type: 2}
+  - {fileID: 11400000, guid: 425f242d023cf8248a5484c4ece83447, type: 2}

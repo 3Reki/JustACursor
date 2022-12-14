@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Bosses.Instructions.Patterns;
+using Bosses.Patterns;
 using UnityEngine;
 
 namespace Bosses.Instructions

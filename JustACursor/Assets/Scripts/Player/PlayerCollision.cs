@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using BulletBehaviour;
 using CameraScripts;
 using UnityEngine;
 
@@ -27,18 +28,31 @@ namespace Player {
         {
             health.Init(data.maxHealth);
         }
-
-        private void Shake()
-        {
-            CameraController.ShakeCamera(data.onHitShakeIntensity, data.onHitShakeDuration);
-        }
-
+        
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
             if (isInvincible) return;
             
-            health.LoseHealth(bullet.moduleParameters.GetInt("Damage"));
+            ShockwaveCollision shockwaveCollision = bullet.GetComponentInChildren<ShockwaveCollision>();
+            if (shockwaveCollision != null)
+            {
+                if (shockwaveCollision.CheckCollision(hitPoint))
+                    Damage(bullet.moduleParameters.GetInt("Damage"));
+            }
+            else Damage(bullet.moduleParameters.GetInt("Damage"));
+        }
+
+        public void Damage(int damage = 1)
+        {
+            if (isInvincible) return;
+            
+            health.LoseHealth(damage);
             StartCoroutine(Invincibility());
+        }
+
+        private void Shake()
+        {
+            CameraController.ShakeCamera(data.onHitShakeIntensity, data.onHitShakeDuration);
         }
 
         private IEnumerator Invincibility()

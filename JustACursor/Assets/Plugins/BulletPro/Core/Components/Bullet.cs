@@ -208,7 +208,7 @@ namespace BulletPro
 		{
 			if (emitter.allBulletsPaused) return;
 
-			timeSinceAlive += Time.deltaTime;
+			timeSinceAlive += Time.deltaTime*BulletModuleMovement.SpeedMultiplier;
 
 			if (moduleSpawn.isEnabled)
 				moduleSpawn.Update();

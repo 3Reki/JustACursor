@@ -61,7 +61,7 @@ namespace Bosses.Dependencies
         
         public Instruction<T> pattern;
         [Range(0, 20)]
-        public float weight = 1;
+        public float weight = 1f;
 
         [SerializeField] private Cdt_None cdtNone;
         [SerializeField] private Cdt_HealthThreshold cdtHealthThreshold;

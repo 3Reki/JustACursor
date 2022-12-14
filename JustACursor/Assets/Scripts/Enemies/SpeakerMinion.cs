@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using Bosses.Instructions.Patterns;
 using DG.Tweening;
 using LD;
 using UnityEngine;
@@ -9,9 +7,9 @@ namespace Enemies
 {
     public class SpeakerMinion : MonoBehaviour, ILaserHolder
     {
-        [field:SerializeField] public bool IsActiveAtStart;
-        
-        [Header("Laser")]
+        [SerializeField] private bool isActiveAtStart;
+
+        [field: Header("Laser")]
         [SerializeField] private Laser laser;
         [SerializeField] private float laserWidth;
         [SerializeField] private float laserLength;
@@ -28,17 +26,20 @@ namespace Enemies
         [SerializeField, Range(1,30)] private float amplitude;
         [SerializeField, Range(0.1f,20)] private float period;
 
+        [Header("Editor Only")]
+        [SerializeField] private bool showPreview;
+
         private Vector2 startPosition;
         private float curveTime;
         
         private void Awake()
         {
-            if (!IsActiveAtStart) return;
+            if (!isActiveAtStart) return;
 
             startPosition = transform.position;
 
             if (isEndless)
-                StartDefaultFire();
+                StartInfiniteFire();
             else
                 StartCoroutine(FirstFireDelay());
 
@@ -48,12 +49,12 @@ namespace Enemies
         private IEnumerator FirstFireDelay()
         {
             yield return new WaitForSeconds(timeBeforeFirstFire);
-            StartCoroutine(ShootLoop());
+            StartCoroutine(FireLoop());
         }
         
         public void StartFire(float previewDuration, float laserDuration, float laserWidth, float laserLength)
         {
-            laser.StartFire(previewDuration, laserDuration, laserWidth, laserLength, hasCollision);
+            laser.StartFire(previewDuration, laserDuration, laserWidth, laserLength);
         }
 
         public void CeaseFire()
@@ -63,10 +64,15 @@ namespace Enemies
         
         private void StartDefaultFire()
         {
-            laser.StartFire(previewDuration, isEndless ? float.PositiveInfinity : laserDuration, laserWidth, laserLength, hasCollision);
+            laser.StartFire(previewDuration, laserDuration, laserWidth, laserLength, hasCollision);
         }
 
-        private IEnumerator ShootLoop()
+        private void StartInfiniteFire()
+        {
+            laser.StartFire(0, float.PositiveInfinity, laserWidth, laserLength, hasCollision);
+        }
+
+        private IEnumerator FireLoop()
         {
             StartDefaultFire();
             float timer = previewDuration + laserDuration;
@@ -84,7 +90,7 @@ namespace Enemies
                 cooldown -= Time.deltaTime * Energy.GameSpeed;
             }
             
-            StartCoroutine(ShootLoop());
+            StartCoroutine(FireLoop());
         }
         
         public void SetPositionAndRotation(Vector3 position, Quaternion rotation)
@@ -115,5 +121,20 @@ namespace Enemies
         }
         
         private enum Movement { None, Horizontal, Vertical }
+
+        private void OnDrawGizmos()
+        {
+            if (!showPreview) return;
+
+            Transform laserTransform = laser.transform;
+            
+            Gizmos.matrix = laserTransform.localToWorldMatrix;
+
+            Vector3 center = new(0, laserLength / 2);
+            Vector3 size = new(laserWidth, laserLength);
+
+            Gizmos.color = new Color(1, 0, 0, .5f);
+            Gizmos.DrawCube(center,size);
+        }
     }
 }
