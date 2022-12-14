@@ -464,8 +464,8 @@ MonoBehaviour:
   playerDash: {fileID: 1562306899511487106}
   playerEnergy: {fileID: 7955158611217667163}
   playerDeviceHandler: {fileID: 3972917172572675394}
-  playerRespawn: {fileID: 6038647851309756490}
   playerCollision: {fileID: 2644103639729209473}
+  <Health>k__BackingField: {fileID: 3615676464410597287}
 --- !u!114 &2972059125400848232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,9 +594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d52094d7ab04344abb47b93d6f15d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInvincible: 0
+  IsInvincible: 0
   playerController: {fileID: 8213265501839806752}
-  health: {fileID: 3615676464410597287}
 --- !u!114 &8212564198902162576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,6 +630,7 @@ MonoBehaviour:
   playerController: {fileID: 8213265501839806752}
   respawnScreen: {fileID: 8381984491438418184}
   respawnKey: 114
+  immortalityKey: 105
 --- !u!114 &3615676464410597287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,9 +676,9 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3615676464410597287}
-        m_TargetAssemblyTypeName: Health, Assembly-CSharp
-        m_MethodName: Heal
+      - m_Target: {fileID: 6038647851309756490}
+        m_TargetAssemblyTypeName: Player.PlayerRespawn, Assembly-CSharp
+        m_MethodName: Respawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -765,6 +765,24 @@ MonoBehaviour:
     tagList: 1
   OnHitByBullet:
     m_PersistentCalls:
+      m_Calls: []
+  OnHitByBulletEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2644103639729209473}
+        m_TargetAssemblyTypeName: Player.PlayerCollision, Assembly-CSharp
+        m_MethodName: OnHitByBulletEnter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitByBulletStay:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2644103639729209473}
         m_TargetAssemblyTypeName: Player.PlayerCollision, Assembly-CSharp
@@ -778,18 +796,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnHitByBulletEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHitByBulletStay:
-    m_PersistentCalls:
-      m_Calls: []
   OnHitByBulletExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2644103639729209473}
+        m_TargetAssemblyTypeName: Player.PlayerCollision, Assembly-CSharp
+        m_MethodName: OnHitByBulletExit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   parentSyncFoldout: 1
   collisionTagsFoldout: 0
-  advancedEventsFoldout: 0
+  advancedEventsFoldout: 1
   useDefaultGizmoColor: 1
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
   gizmoZOffset: 0

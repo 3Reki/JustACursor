@@ -9,16 +9,17 @@ public class Health : MonoBehaviour
 
     private int maxHealth = -1;
     private int currentHealth = -1;
+    private bool isImmortal;
     
     public UnityEvent onHealthGain;
     public UnityEvent onHealthLose;
     public UnityEvent onDeath;
 
-    private void Start()
+    private void Awake()
     {
         currentHealth = MaxHealth;
     }
-
+    
     public void Init(int maxHealth)
     {
         this.maxHealth = maxHealth;
@@ -37,9 +38,9 @@ public class Health : MonoBehaviour
     {
         if (maxHealth == -1) Debug.LogError("Health has not been initialized!");
         
-        currentHealth = Math.Clamp(currentHealth - amount, 0, MaxHealth);
+        currentHealth = Math.Clamp(currentHealth - amount, isImmortal ? 1 : 0, MaxHealth);
         onHealthLose.Invoke();
-        
+
         if (currentHealth == 0) onDeath.Invoke();
     }
 
@@ -54,11 +55,16 @@ public class Health : MonoBehaviour
         currentHealth = amount;
     }
 
+    public void FlipImmortality()
+    {
+        isImmortal = !isImmortal;
+    }
+
     public void Heal() {
-        GainHealth(MaxHealth);
+        SetHealth(maxHealth);
     }
 
     public void Kill() {
-        LoseHealth(MaxHealth);
+        SetHealth(0);
     }
 }

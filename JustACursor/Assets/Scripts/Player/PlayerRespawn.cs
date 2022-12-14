@@ -12,13 +12,13 @@ namespace Player
         [SerializeField] private PlayerController playerController;
         [SerializeField] private Image respawnScreen;
 
-        private Checkpoint respawnPoint;
+        private Checkpoint currentCheckpoint;
+        private PlayerData data => playerController.Data;
+        private Health health => playerController.Health;
         
         [Header("Debug")]
         [SerializeField] private KeyCode respawnKey;
-
-        private PlayerData data => playerController.data;
-        public bool isAlive { get; private set; } = true;
+        [SerializeField] private KeyCode immortalityKey;
         
         private void OnEnable()
         {
@@ -37,37 +37,41 @@ namespace Player
             {
                 Respawn();
             }
+            
+            else if (Input.GetKeyDown(immortalityKey))
+            {
+                health.FlipImmortality();
+            }
+        }
+        
+        public void SetCheckpoint(Checkpoint newCheckpoint)
+        {
+            currentCheckpoint = newCheckpoint;
         }
 
         public void Spawn()
         {
-            Transform checkpointTransform = respawnPoint.transform;
+            Transform checkpointTransform = currentCheckpoint.transform;
             transform.SetPositionAndRotation(checkpointTransform.position, checkpointTransform.rotation);
             CameraController.TeleportToTarget();
         }
 
-        public void SetCheckpoint(Checkpoint newCheckpoint)
-        {
-            respawnPoint = newCheckpoint;
-        }
-        
-        private void Respawn()
+        public void Respawn()
         {
             StartCoroutine(RespawnCR());
         }
 
         private IEnumerator RespawnCR()
         {
-            isAlive = false;
             respawnScreen.DOFade(1, data.respawnFadeIn).SetEase(Ease.Linear);
             yield return new WaitForSeconds(data.respawnFadeIn);
 
             Spawn();
+            health.Heal();
             yield return new WaitForSeconds(data.respawnStay);
         
             respawnScreen.DOFade(0, data.respawnFadeOut).SetEase(Ease.Linear);
             yield return new WaitForSeconds(data.respawnFadeOut);
-            isAlive = true;
         }
     }
 }

@@ -97,8 +97,9 @@ namespace LD
                 yield return null;
                 laserDuration -= Time.deltaTime * Energy.GameSpeed;
             }
+
+            ps_Laser.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear);
             
-            ps_Laser.Pause();
             lineRenderer.gameObject.SetActive(false);
             emitter.Stop();
             emitter.Kill();

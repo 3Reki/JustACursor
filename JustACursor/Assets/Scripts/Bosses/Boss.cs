@@ -31,15 +31,11 @@ namespace Bosses
         private Instruction<Boss> currentInstruction;
         protected BossPhase currentBossPhase;
         private bool isFrozen;
-
-        private void Awake()
-        {
-            health.Init(bossData.startingHP);
-        }
         
         protected virtual void Start()
         {
             DebugStart();
+            health.Init(bossData.startingHP);
         }
 
         protected virtual void Update()
