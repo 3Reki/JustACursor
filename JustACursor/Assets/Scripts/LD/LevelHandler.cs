@@ -32,6 +32,7 @@ namespace LD
         private void Start()
         {
             player.SetCheckpoint(Floors[0].StartPoint);
+            player.Spawn();
         }
 
         public void GoToNextFloor()
@@ -96,6 +97,7 @@ namespace LD
         {
             foreach (Floor floor in Floors)
             {
+                floor.gameObject.SetActive(true);
                 floor.Scale(1);
                 floor.SetFloorState(Floor.FloorState.All);
                 floor.SetSortingLayer("CurrentFloor",0);

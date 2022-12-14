@@ -39,14 +39,21 @@ namespace Player
             }
         }
 
-        private void Respawn()
+        public void Spawn()
         {
-            StartCoroutine(RespawnCR());
+            Transform checkpointTransform = respawnPoint.transform;
+            transform.SetPositionAndRotation(checkpointTransform.position, checkpointTransform.rotation);
+            CameraController.TeleportToTarget();
         }
 
         public void SetCheckpoint(Checkpoint newCheckpoint)
         {
             respawnPoint = newCheckpoint;
+        }
+        
+        private void Respawn()
+        {
+            StartCoroutine(RespawnCR());
         }
 
         private IEnumerator RespawnCR()
@@ -55,9 +62,7 @@ namespace Player
             respawnScreen.DOFade(1, data.respawnFadeIn).SetEase(Ease.Linear);
             yield return new WaitForSeconds(data.respawnFadeIn);
 
-            Transform checkpointTransform = respawnPoint.transform;
-            transform.SetPositionAndRotation(checkpointTransform.position, checkpointTransform.rotation);
-            CameraController.TeleportToTarget();
+            Spawn();
             yield return new WaitForSeconds(data.respawnStay);
         
             respawnScreen.DOFade(0, data.respawnFadeOut).SetEase(Ease.Linear);

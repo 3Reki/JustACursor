@@ -40,16 +40,15 @@ namespace Enemies
                     break;
                 }
             }
-            
-            emitter.Stop();
-            
-            
+
             float cooldown = shockwaveCooldown;
             while (cooldown > 0)
             {
                 yield return null;
                 cooldown -= Time.deltaTime * Energy.GameSpeed;
             }
+            
+            emitter.Stop();
             StartCoroutine(FireLoop());
         }
         
