@@ -68,7 +68,9 @@ namespace BulletBehaviour
 
 		public bool CheckCollision(Vector3 collisionPoint)
 		{
-			float distance = Vector3.Distance(collisionPoint,bullet.self.position) - bullet.moduleCollision.scale * size;
+			float distanceFromCenter = Vector3.Distance(collisionPoint, bullet.self.position);
+			float currentSize = bullet.moduleCollision.scale * size;
+			float distance = distanceFromCenter - currentSize;
 			return distance is < 0f and > -0.5f;
 		}
 	}

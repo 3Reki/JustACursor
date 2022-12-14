@@ -99,6 +99,7 @@ namespace LD
             }
 
             ps_Laser.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear);
+            
             lineRenderer.gameObject.SetActive(false);
             emitter.Stop();
             emitter.Kill();

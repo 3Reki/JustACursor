@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BulletPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,6 +12,7 @@ namespace LD
         [field:SerializeField] public Checkpoint StartPoint { get; private set; }
 
         [SerializeField] private TilemapCollider2D walls;
+        [SerializeField] private BulletEmitter[] emitters;
         [SerializeField] private Renderer[] renderers;
         [SerializeField] private List<GameObject> floorTilemaps;
         [SerializeField] private List<GameObject> floorElements = new();
@@ -20,6 +22,7 @@ namespace LD
             StartPoint = GetComponentInChildren<Checkpoint>(true);
             walls = GetComponentInChildren<TilemapCollider2D>(true);
             renderers = GetComponentsInChildren<Renderer>(true);
+            emitters = GetComponentsInChildren<BulletEmitter>(true);
             
             floorTilemaps.Clear();
             floorElements.Clear();
@@ -57,14 +60,6 @@ namespace LD
             }
         }
 
-        private void UpdateGOVisibility(List<GameObject> list, bool state)
-        {
-            foreach (GameObject go in list)
-            {
-                go.SetActive(state);
-            }
-        }
-
         public void SetSortingLayer(string sortingLayerName, int sortingOrder)
         {
             foreach (Renderer rend in renderers)
@@ -78,6 +73,23 @@ namespace LD
                 {
                     rend.sortingOrder = sortingOrder;
                 }
+            }
+        }
+
+        public void KillEmitters()
+        {
+            foreach (BulletEmitter emitter in emitters)
+            {
+                emitter.Stop();
+                emitter.Kill();
+            }
+        }
+        
+        private void UpdateGOVisibility(List<GameObject> list, bool state)
+        {
+            foreach (GameObject go in list)
+            {
+                go.SetActive(state);
             }
         }
     }

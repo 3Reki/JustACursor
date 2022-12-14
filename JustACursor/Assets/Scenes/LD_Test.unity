@@ -8109,6 +8109,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5303936066745249952, guid: 4dda7f0de58bd8e479b3dcaa7a60d9e9, type: 3}
   m_PrefabInstance: {fileID: 58037534}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &65542381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8059214269864190806, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+  m_PrefabInstance: {fileID: 715834209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &120446961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12902,6 +12907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StartPoint>k__BackingField: {fileID: 1629252404}
   walls: {fileID: 777119228}
+  emitters: []
   renderers:
   - {fileID: 777119230}
   - {fileID: 756666352}
@@ -13002,6 +13008,11 @@ MonoBehaviour:
   useDefaultGizmoColor: 1
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
   gizmoZOffset: 0
+--- !u!120 &620767420 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 5660014382880073223, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+  m_PrefabInstance: {fileID: 715834209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &621951739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13467,9 +13478,21 @@ PrefabInstance:
       propertyPath: InitialModule.startLifetime.minScalar
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 7107942088878760902, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7107942088878760902, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7107942088878760902, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1869789539
+      objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: isEndless
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserWidth
@@ -13489,7 +13512,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: laserCooldown
-      value: 1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+      propertyPath: laserDuration
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: isActiveAtStart
@@ -13497,7 +13524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190804, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: previewDuration
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190805, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_RootOrder
@@ -13521,15 +13548,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190805, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190805, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190805, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8059214269864190805, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -38647,6 +38674,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 608500361682140896, guid: 4dda7f0de58bd8e479b3dcaa7a60d9e9, type: 3}
   m_PrefabInstance: {fileID: 5303936065387271379}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1376288214 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 823788516455889249, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+  m_PrefabInstance: {fileID: 715834209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1399648531
 GameObject:
   m_ObjectHideFlags: 0
@@ -39703,6 +39735,17 @@ Transform:
   m_Father: {fileID: 2011888463}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1726774268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5660014381986151576, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+  m_PrefabInstance: {fileID: 715834209}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1749515340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40389,6 +40432,11 @@ MonoBehaviour:
   useDefaultGizmoColor: 1
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
   gizmoZOffset: 0
+--- !u!212 &1995037401 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4027181958244872896, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+  m_PrefabInstance: {fileID: 715834209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2006724567
 GameObject:
   m_ObjectHideFlags: 0
@@ -40552,12 +40600,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StartPoint>k__BackingField: {fileID: 681354586}
   walls: {fileID: 1129094040}
+  emitters:
+  - {fileID: 1726774268}
   renderers:
   - {fileID: 1129094038}
   - {fileID: 31080590}
   - {fileID: 485885750}
   - {fileID: 1366369397}
   - {fileID: 1777307742}
+  - {fileID: 1995037401}
+  - {fileID: 1376288214}
+  - {fileID: 620767420}
+  - {fileID: 2023960906}
   floorTilemaps:
   - {fileID: 1129094036}
   - {fileID: 31080588}
@@ -40566,6 +40620,12 @@ MonoBehaviour:
   - {fileID: 1278235546}
   - {fileID: 1049645970}
   - {fileID: 2129295502}
+  - {fileID: 65542381}
+--- !u!199 &2023960906 stripped
+ParticleSystemRenderer:
+  m_CorrespondingSourceObject: {fileID: 7107942088878760902, guid: 570e1ab3de5b5b54eba631d89e5b930f, type: 3}
+  m_PrefabInstance: {fileID: 715834209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2031621732
 GameObject:
   m_ObjectHideFlags: 0
@@ -41063,6 +41123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StartPoint>k__BackingField: {fileID: 682481313}
   walls: {fileID: 244478158}
+  emitters: []
   renderers:
   - {fileID: 244478160}
   - {fileID: 980784831}

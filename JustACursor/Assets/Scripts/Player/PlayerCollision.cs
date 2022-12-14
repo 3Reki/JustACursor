@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using BulletBehaviour;
 using CameraScripts;
 using UnityEngine;
@@ -9,6 +10,8 @@ namespace Player {
         [HideInInspector] public bool IsInvincible;
         
         [SerializeField] private PlayerController playerController;
+
+        private List<BulletPro.Bullet> shockwaveCollisions = new();
         
         private PlayerData data => playerController.Data;
         private Health health => playerController.Health;
@@ -28,7 +31,35 @@ namespace Player {
             health.Init(data.maxHealth);
         }
 
+        public void OnHitByBulletEnter(BulletPro.Bullet bullet, Vector3 hitPoint)
+        {
+            if (bullet.GetComponentInChildren<ShockwaveCollision>())
+                shockwaveCollisions.Add(bullet);
+        }
+        
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
+        {
+            if (IsInvincible) return;
+
+            if (shockwaveCollisions.Contains(bullet))
+            {
+                ShockwaveCollision shockwaveCollision = bullet.GetComponentInChildren<ShockwaveCollision>();
+                if (shockwaveCollision.CheckCollision(hitPoint))
+                    Damage(bullet.moduleParameters.GetInt("Damage"));
+            }
+            else
+            {
+                Damage(bullet.moduleParameters.GetInt("Damage"));
+            }
+        }
+        
+        public void OnHitByBulletExit(BulletPro.Bullet bullet, Vector3 hitPoint)
+        {
+            if (bullet.GetComponentInChildren<ShockwaveCollision>())
+                shockwaveCollisions.Remove(bullet);
+        }
+
+        /*public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
             if (IsInvincible) return;
             
@@ -39,7 +70,7 @@ namespace Player {
                     Damage(bullet.moduleParameters.GetInt("Damage"));
             }
             else Damage(bullet.moduleParameters.GetInt("Damage"));
-        }
+        }*/
 
         public void Damage(int damage = 1)
         {

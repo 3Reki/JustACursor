@@ -38,7 +38,9 @@ namespace LD
         public void GoToNextFloor()
         {
             //Disable current floor
-            Floors[0].gameObject.SetActive(false);
+            Floor currentFloor = Floors[0];
+            currentFloor.gameObject.SetActive(false);
+            currentFloor.KillEmitters();
             Floors.RemoveAt(0);
             
             if (Floors.Count == 0) return;
