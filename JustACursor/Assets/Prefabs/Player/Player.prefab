@@ -760,7 +760,7 @@ MonoBehaviour:
   hitboxSize: 0.8
   hitboxOffset: {x: 0, y: 0}
   killBulletOnCollision: 0
-  maxSimultaneousCollisionsPerFrame: 10
+  maxSimultaneousCollisionsPerFrame: 3
   collisionTags:
     tagList: 1
   OnHitByBullet:
