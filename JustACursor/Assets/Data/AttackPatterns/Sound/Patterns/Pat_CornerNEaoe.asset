@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc33d2b60c647d6877bc68610d2efcb, type: 3}
   m_Name: Pat_CornerNEaoe
   m_EditorClassIdentifier: 
-  patternDuration: 4
+  patternDuration: 2
   aoePrefab: {fileID: 4942947987975104490, guid: 76912dcd31df0bb42b66d4ec19869cc9, type: 3}
-  previewDuration: 1
+  previewDuration: 0.5
   corner: 1
   sizeMultiplier: 10.524999
