@@ -12,7 +12,7 @@ namespace Player {
         [SerializeField] private List<Image> pvs;
         [SerializeField] private Image energy;
         
-        private PlayerData data => playerController.data;
+        private PlayerData data => playerController.Data;
         private Coroutine showHealthCoroutine;
 
         public void ShowHealth()

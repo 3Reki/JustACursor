@@ -9,7 +9,7 @@ namespace Player
         [SerializeField] private PlayerController playerController;
         [SerializeField] private BulletEmitter emitter;
 
-        private PlayerData data => playerController.data;
+        private PlayerData data => playerController.Data;
 
         private bool canShoot = true;
         

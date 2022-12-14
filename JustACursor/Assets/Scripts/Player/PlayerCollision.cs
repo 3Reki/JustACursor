@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using BulletBehaviour;
 using CameraScripts;
@@ -7,12 +6,12 @@ using UnityEngine;
 namespace Player {
     public class PlayerCollision : MonoBehaviour, IDamageable
     {
-        public bool isInvincible;
+        [HideInInspector] public bool IsInvincible;
         
         [SerializeField] private PlayerController playerController;
-        [SerializeField] private Health health;
-
-        private PlayerData data => playerController.data;
+        
+        private PlayerData data => playerController.Data;
+        private Health health => playerController.Health;
 
         private void OnEnable()
         {
@@ -24,14 +23,14 @@ namespace Player {
             health.onHealthLose.RemoveListener(Shake);
         }
         
-        private void Awake()
+        private void Start()
         {
             health.Init(data.maxHealth);
         }
-        
+
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
-            if (isInvincible) return;
+            if (IsInvincible) return;
             
             ShockwaveCollision shockwaveCollision = bullet.GetComponentInChildren<ShockwaveCollision>();
             if (shockwaveCollision != null)
@@ -44,7 +43,7 @@ namespace Player {
 
         public void Damage(int damage = 1)
         {
-            if (isInvincible) return;
+            if (IsInvincible) return;
             
             health.LoseHealth(damage);
             StartCoroutine(Invincibility());
@@ -57,9 +56,9 @@ namespace Player {
 
         private IEnumerator Invincibility()
         {
-            isInvincible = true;
+            IsInvincible = true;
             yield return new WaitForSeconds(data.invinciblityTime);
-            isInvincible = false;
+            IsInvincible = false;
         }
     }
 }

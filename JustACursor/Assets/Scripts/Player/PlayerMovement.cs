@@ -12,7 +12,7 @@ namespace Player
         private float decelerationProgress;
         private float rotationProgress;
         
-        private PlayerData data => playerController.data;
+        private PlayerData data => playerController.Data;
 
         public void LookAtPosition(Vector2 lookPosition)
         {
@@ -38,7 +38,7 @@ namespace Player
 
         public void Move(Vector2 direction)
         {
-            if (playerController.isDashing)
+            if (playerController.IsDashing)
             {
                 accelerationProgress = data.moveAcceleration
                     .keys[data.moveAcceleration.length - 1].time;
@@ -53,7 +53,7 @@ namespace Player
 
         public IEnumerator StopMoving(Vector2 direction)
         {
-            while (playerController.isDashing)
+            while (playerController.IsDashing)
             {
                 yield return null;
             }
