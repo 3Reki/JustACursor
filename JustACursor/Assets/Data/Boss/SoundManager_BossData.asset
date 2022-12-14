@@ -129,7 +129,7 @@ MonoBehaviour:
         checkType: 0
   - choices:
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: 92def9b765a758d4c878eb7ca7f0cff1, type: 2}
+      pattern: {fileID: 11400000, guid: 49826add79f0e23499a60c37c4fd75d0, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0

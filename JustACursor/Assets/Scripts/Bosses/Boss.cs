@@ -127,7 +127,11 @@ namespace Bosses
 
         protected virtual void StopCurrentPattern()
         {
-            currentInstruction.Stop();
+            if (currentInstruction != null)
+            {
+                currentInstruction.Stop();
+            }
+            
         }
 
         
@@ -144,8 +148,11 @@ namespace Bosses
 
         private void DebugStart()
         {
-            if (overridePhaseOnStart) 
-                SetBossPhase(phaseOverride);
+            if (overridePhaseOnStart)
+            {
+                StopCurrentPattern();
+                currentBossPhase = phaseOverride;
+            }
         }
 
         protected virtual void UpdateDebugInput()
