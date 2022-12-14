@@ -4,16 +4,29 @@ namespace Bosses.Dependencies
 {
     public class BossTrigger : MonoBehaviour
     {
-        [SerializeField] private GameObject bossGameObject;
-        [SerializeField] private GameObject[] invisibleWalls;
+        [SerializeField] private Boss bossToSpawn;
+        [SerializeField] private GameObject invisibleWalls;
 
-        private void OnTriggerExit2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            bossGameObject.SetActive(true);
-            foreach (GameObject wall in invisibleWalls)
-            {
-                wall.SetActive(true);
-            }
+            bossToSpawn.gameObject.SetActive(true);
+            invisibleWalls.SetActive(true);
+            enabled = false;
         }
+        
+#if UNITY_EDITOR
+        private void OnDrawGizmosSelected()
+        {
+            Bounds triggerBounds = GetComponent<BoxCollider2D>().bounds;
+            Vector3 position = triggerBounds.center;
+            Vector3 size = triggerBounds.size;
+            
+            Gizmos.color = new Color(1,1, 1, .5f);
+            Gizmos.DrawCube(position, size);
+            
+            Gizmos.color = new Color(0, 0, 0);
+            Gizmos.DrawWireCube(position, size);
+        }
+#endif
     }
 }
