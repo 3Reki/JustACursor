@@ -43,7 +43,11 @@ namespace Bosses
         protected override void StopCurrentPattern()
         {
             base.StopCurrentPattern();
-            currentDronePattern.Stop();
+            if (currentDronePattern != null)
+            {
+                currentDronePattern.Stop();
+            }
+            
         }
 
         private void HandleDrones()
