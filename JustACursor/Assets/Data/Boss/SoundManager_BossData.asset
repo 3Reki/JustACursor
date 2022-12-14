@@ -45,10 +45,118 @@ MonoBehaviour:
         targetType: 0
         half: 0
         checkType: 0
+  - choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 5dbd66b8fd4338448a3f4be7cf57cb46, type: 2}
+      weight: 1
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+  - choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 22d8d2d129536e246a444b2a128bb26e, type: 2}
+      weight: 1
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
   droneResolvers:
   - choices:
     - conditionType: 0
       pattern: {fileID: 11400000, guid: 92def9b765a758d4c878eb7ca7f0cff1, type: 2}
+      weight: 1
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+  - choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 92def9b765a758d4c878eb7ca7f0cff1, type: 2}
+      weight: 1
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+  - choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: c8afb5f48f115ec4b9f7db04a26ab852, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0
