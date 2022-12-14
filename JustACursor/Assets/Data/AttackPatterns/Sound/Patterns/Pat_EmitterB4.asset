@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33134043b5f423880cdfc1a5c61978d, type: 3}
   m_Name: Pat_EmitterB4
   m_EditorClassIdentifier: 
-  patternDuration: 4.5
+  patternDuration: 2
   emitterProfiles:
   - {fileID: 11400000, guid: b6097ea52dd21fc46a4cfcf1428753d9, type: 2}

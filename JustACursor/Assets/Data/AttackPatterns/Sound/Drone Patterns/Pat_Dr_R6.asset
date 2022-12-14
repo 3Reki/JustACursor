@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d6ca0d0a094d48a77ea7fc9cd7bd1d, type: 3}
   m_Name: Pat_Dr_R6
   m_EditorClassIdentifier: 
-  patternDuration: 0.5
+  patternDuration: 1
