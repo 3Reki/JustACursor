@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     private bool isImmortal;
     
     public UnityEvent onHealthGain;
+    public UnityEvent onHealthReset;
     public UnityEvent onHealthLose;
     public UnityEvent onDeath;
 
@@ -62,6 +63,7 @@ public class Health : MonoBehaviour
 
     public void Heal() {
         SetHealth(maxHealth);
+        onHealthReset.Invoke();
     }
 
     public void Kill() {

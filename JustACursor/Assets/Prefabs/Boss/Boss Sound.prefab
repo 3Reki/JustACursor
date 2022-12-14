@@ -612,7 +612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 5171160884692469371}
   player: {fileID: 0}
-  bossData: {fileID: 11400000, guid: cb4a2a41c52acbb44acb421644cab47a, type: 2}
+  bossData: {fileID: 11400000, guid: 79cfaad2c43aee144b2670229a20c9d1, type: 2}
   animator: {fileID: 7534499753136108323}
   movementHandler: {fileID: 8138451376555058701}
   emitters:
@@ -879,7 +879,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4436906642808111900, guid: 48fb8e8dca1f22f43b009f7d538910d5, type: 3}
       propertyPath: m_Name
-      value: Boss_Son
+      value: Boss_Sound_Graph
       objectReference: {fileID: 0}
     - target: {fileID: 4436906642808111901, guid: 48fb8e8dca1f22f43b009f7d538910d5, type: 3}
       propertyPath: m_RootOrder

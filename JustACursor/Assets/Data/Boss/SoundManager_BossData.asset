@@ -20,7 +20,7 @@ MonoBehaviour:
   phaseResolvers:
   - choices:
     - conditionType: 0
-      pattern: {fileID: 11400000, guid: 222b1cba9e09c18448847379fe243592, type: 2}
+      pattern: {fileID: 11400000, guid: bd407d46a5c00c34f823f36dd26e7a41, type: 2}
       weight: 1
       cdtHealthThreshold:
         comparisonType: 0

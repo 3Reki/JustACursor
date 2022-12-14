@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a503d61c5b524287b8991b003392b80a, type: 3}
   m_Name: Pat_Dr_ShortIdle
   m_EditorClassIdentifier: 
-  patternDuration: 1
+  patternDuration: 0.5

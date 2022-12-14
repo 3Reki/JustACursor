@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f8921c8cd348ef8eead87e65344d58, type: 3}
   m_Name: Pat_Dr_ShootLong
   m_EditorClassIdentifier: 
-  patternDuration: 3.5
-  previewDuration: 1
-  laserWidth: 1
-  laserLength: 15
+  patternDuration: 2
+  previewDuration: 0.5
+  laserWidth: 2
+  laserLength: 30
