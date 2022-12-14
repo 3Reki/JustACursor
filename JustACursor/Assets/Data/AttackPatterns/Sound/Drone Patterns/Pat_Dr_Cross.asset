@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44714ad37be94e76977a714a3fbdcf02, type: 3}
-  m_Name: Pat_Dr_Square
+  m_Script: {fileID: 11500000, guid: f6d6ca0d0a094d48a77ea7fc9cd7bd1d, type: 3}
+  m_Name: Pat_Dr_Cross
   m_EditorClassIdentifier: 
-  patternDuration: 0.5
+  patternDuration: 3

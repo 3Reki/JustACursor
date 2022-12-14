@@ -40675,6 +40675,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
+      propertyPath: phaseOverride
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: drones.Array.size
       value: 12
       objectReference: {fileID: 0}
@@ -40718,6 +40722,10 @@ PrefabInstance:
       propertyPath: drones.Array.data[9]
       value: 
       objectReference: {fileID: 2084600381}
+    - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
+      propertyPath: overridePhaseOnStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2204077400501933483, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: drones.Array.data[10]
       value: 

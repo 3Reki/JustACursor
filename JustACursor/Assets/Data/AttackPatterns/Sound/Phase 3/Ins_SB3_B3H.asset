@@ -16,8 +16,8 @@ MonoBehaviour:
   resolver:
     choices:
     - conditionType: 0
-      pattern: {fileID: 0}
-      weight: 0
+      pattern: {fileID: 11400000, guid: ae651385870cd5e49907ac124c6135c8, type: 2}
+      weight: 1
       cdtHealthThreshold:
         comparisonType: 0
         threshold: 0
@@ -42,8 +42,8 @@ MonoBehaviour:
         half: 0
         checkType: 0
     - conditionType: 0
-      pattern: {fileID: 0}
-      weight: 0
+      pattern: {fileID: 11400000, guid: 689aef2c32da37040a1530901ed968b8, type: 2}
+      weight: 1
       cdtHealthThreshold:
         comparisonType: 0
         threshold: 0
@@ -68,8 +68,8 @@ MonoBehaviour:
         half: 0
         checkType: 0
     - conditionType: 0
-      pattern: {fileID: 0}
-      weight: 0
+      pattern: {fileID: 11400000, guid: 36f1006e47269164ab1e0f9d4dcbbe7f, type: 2}
+      weight: 1
       cdtHealthThreshold:
         comparisonType: 0
         threshold: 0
@@ -94,8 +94,8 @@ MonoBehaviour:
         half: 0
         checkType: 0
     - conditionType: 0
-      pattern: {fileID: 0}
-      weight: 0
+      pattern: {fileID: 11400000, guid: a5d491f9fa367cb4eb8ea216ef755649, type: 2}
+      weight: 1
       cdtHealthThreshold:
         comparisonType: 0
         threshold: 0
@@ -120,4 +120,4 @@ MonoBehaviour:
         half: 0
         checkType: 0
   instructions:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: ec6d92124363ce247b2a254b69c2e799, type: 2}
