@@ -31,15 +31,11 @@ namespace Bosses
         private Instruction<Boss> currentInstruction;
         protected BossPhase currentBossPhase;
         private bool isFrozen;
-
-        private void Awake()
-        {
-            health.Init(bossData.startingHP);
-        }
         
         protected virtual void Start()
         {
             DebugStart();
+            health.Init(bossData.startingHP);
         }
 
         protected virtual void Update()
@@ -198,13 +194,22 @@ namespace Bosses
         }
 
         [ContextMenu("Reset Boss")]
-        private void Reset()
+        public void Reset()
         {
+            StopCurrentPattern();
             GetComponent<BulletReceiver>().enabled = true;
             GetComponent<CircleCollider2D>().enabled = true;
             transform.gameObject.SetActive(true);
+            health.Heal();
             isFrozen = false;
             isPaused = false;
+
+            for (int i = 0; i < 3; i++)
+            {
+                bulletEmitter[i].Stop();
+                bulletEmitter[i].Kill();
+                
+            }
         }
 
         #endregion

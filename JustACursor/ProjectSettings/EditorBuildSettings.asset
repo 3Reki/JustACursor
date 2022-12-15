@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: f78b746482605264c85db7f3b5630f19
   - enabled: 1
-    path: Assets/Scenes/Milestone_1.unity
-    guid: e5d7d0861ce606243b29142e6a61e483
+    path: Assets/Scenes/YSC_LDSoundManager.unity
+    guid: 58c246d90eae1d94ab67d97b193c1cfe
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3a08d02a3070f5147ae71a35873055b3, type: 2}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54abc1be203147b680a920f81d48867b, type: 3}
   m_Name: Pat_Dr_R1
   m_EditorClassIdentifier: 
-  patternDuration: 0.5
+  patternDuration: 0
   distanceToCenter: 2.8569007
   flipFormation: 0

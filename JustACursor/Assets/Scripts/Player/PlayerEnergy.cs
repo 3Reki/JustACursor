@@ -12,7 +12,7 @@ namespace Player
         [SerializeField] private Image extraTimeFill;
         [SerializeField] private Image intraTimeFill;
 
-        private PlayerData data => playerController.data;
+        private PlayerData data => playerController.Data;
 
         public void SpeedUpTime()
         {

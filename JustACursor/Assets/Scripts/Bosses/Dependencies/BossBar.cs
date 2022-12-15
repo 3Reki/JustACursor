@@ -15,12 +15,14 @@ namespace Bosses.Dependencies
         {
             health.onHealthLose.AddListener(UpdateBar);
             health.onDeath.AddListener(Hide);
+            health.onHealthReset.AddListener(UpdateBar);
         }
 
         private void OnDisable()
         {
             health.onHealthLose.RemoveListener(UpdateBar);
             health.onDeath.RemoveListener(Hide);
+            health.onHealthReset.RemoveListener(UpdateBar);
         }
 
         private void Start()
