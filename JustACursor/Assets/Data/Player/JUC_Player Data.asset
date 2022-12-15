@@ -90,9 +90,9 @@ MonoBehaviour:
   dashFirstPhaseDuration: 0.05
   dashRefreshCooldown: 0.2
   dashSecondPhaseControl: 0.2
-  dashShakeIntensity: 0.2
+  dashShakeIntensity: 0.08
   dashShakeDuration: 0.06
-  fireRate: 4
+  fireRate: 8
   timeAbilityDuration: 3
   maxHealth: 3
   invinciblityTime: 1
