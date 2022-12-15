@@ -8,31 +8,26 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerEnergy.onGameSpeedUpdate += UpdateSpeed;
+        Energy.onGameSpeedUpdate += UpdateSpeed;
     }
 
     private void OnDisable()
     {
-        PlayerEnergy.onGameSpeedUpdate -= UpdateSpeed;
+        Energy.onGameSpeedUpdate -= UpdateSpeed;
     }
 
     public void Shoot(Vector2 direction)
     {
-        rigidbody.velocity = direction * (bulletSpeed * PlayerEnergy.GameSpeed);
+        rigidbody.velocity = direction * (bulletSpeed * Energy.GameSpeed);
     }
 
     private void UpdateSpeed()
     {
-        rigidbody.velocity = rigidbody.velocity.normalized * (bulletSpeed * PlayerEnergy.GameSpeed);
+        rigidbody.velocity = rigidbody.velocity.normalized * (bulletSpeed * Energy.GameSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out IDamageable entity))
-        {
-            entity.Damage(1);
-        }
-        
         Pooler.instance.DePop(Pooler.Key.Bullet, gameObject);
     }
 }

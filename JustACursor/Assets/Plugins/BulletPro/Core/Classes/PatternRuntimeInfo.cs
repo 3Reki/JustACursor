@@ -110,7 +110,7 @@ namespace BulletPro
 	public struct PatternRuntimeInfo
 	{
 		// Basic info, read by bullet emitter in case we need to kill the Bullet afterwards
-		public bool isPlaying;
+		public bool isPlaying { get; set; }
 		public bool isDone { get; private set; }
 
 		// Always keep track of these (lifetime counters)

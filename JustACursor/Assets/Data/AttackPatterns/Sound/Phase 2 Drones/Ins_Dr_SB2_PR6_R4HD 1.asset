@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5fe64e1a9641f9bb081e6dbe52a72f, type: 3}
+  m_Name: Ins_Dr_SB2_PR6_R4HD 1
+  m_EditorClassIdentifier: 
+  phase: 0
+  resolver:
+    choices:
+    - conditionType: 0
+      pattern: {fileID: 11400000, guid: 69f6a5b9a91fa1b48b288608b0ba8a01, type: 2}
+      weight: 1
+      cdtHealthThreshold:
+        comparisonType: 0
+        threshold: 0
+      cdtCornerDistance:
+        targetType: 0
+        corner: 0
+        checkType: 0
+        distance: 0
+      cdtCenterDistance:
+        targetType: 0
+        checkType: 0
+        distance: 0
+      cdtBossDistance:
+        checkType: 0
+        distance: 0
+      cdtQuarter:
+        targetType: 0
+        quarter: 0
+        checkType: 0
+      cdtHalf:
+        targetType: 0
+        half: 0
+        checkType: 0
+  instructions:
+  - {fileID: 11400000, guid: 81b240e5ca8cb8142be689f1145478a2, type: 2}
+  - {fileID: 11400000, guid: 462c3883127625d43ac3f727ee2cb7af, type: 2}
+  - {fileID: 11400000, guid: e06bc6ec30e977f4f9e44c2c631039cb, type: 2}

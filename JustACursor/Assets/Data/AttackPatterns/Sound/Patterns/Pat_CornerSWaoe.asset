@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc33d2b60c647d6877bc68610d2efcb, type: 3}
+  m_Name: Pat_CornerSWaoe
+  m_EditorClassIdentifier: 
+  patternDuration: 2
+  aoePrefab: {fileID: 4942947987975104490, guid: 76912dcd31df0bb42b66d4ec19869cc9, type: 3}
+  previewDuration: 0.5
+  corner: 2
+  sizeMultiplier: 10.524999

@@ -1,5 +1,4 @@
 using DG.Tweening;
-using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -8,85 +7,60 @@ namespace Player
 {
     public class PlayerEnergy : MonoBehaviour
     {
-        public static float GameSpeed
-        {
-            get => _gameSpeed;
-            private set
-            {
-                _gameSpeed = value;
-                onGameSpeedUpdate?.Invoke();
-            }
-        }
-
         [SerializeField] private PlayerController playerController;
-        [SerializeField] private Image timeFill;
+        [SerializeField] private Energy energy;
+        [SerializeField] private Image extraTimeFill;
+        [SerializeField] private Image intraTimeFill;
 
-        private static float _gameSpeed = 1;
-        private PlayerData data => playerController.data;
-        private float tweenTime;
-        private TimeState timeState = TimeState.Resetting;
+        private PlayerData data => playerController.Data;
 
-        public void SpeedUpTime(float value)
+        public void SpeedUpTime()
         {
-            if (timeState == TimeState.Speeding) return;
+            if (energy.timeState == Energy.TimeState.Speeding) return;
+            energy.SpeedUpTime();
             
-            timeState = TimeState.Speeding;
+            DOFillAmount(intraTimeFill,1,data.timeAbilityDuration - data.timeAbilityDuration * intraTimeFill.fillAmount);
+            DOFillAmount(extraTimeFill,1,data.timeAbilityDuration - data.timeAbilityDuration * extraTimeFill.fillAmount);
             
-            DOTween.Kill(GameSpeed);
-            tweenTime = data.lerpDuration - Mathf.Lerp(0, data.lerpDuration, (GameSpeed - 1) / (value - 1));
-            DOTween.To(() => GameSpeed, x => GameSpeed = x, value, tweenTime).SetEase(data.lerpEase);
-
-            timeFill.DOKill();
-            timeFill.DOFillAmount(1, data.timeAbilityDuration - data.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear);
-            
-            onSpeedUp.Invoke();
+            onPlayerSpeedUp.Invoke();
         }
 
-        public void SlowDownTime(float value)
+        public void SlowDownTime()
         {
-            if (timeState == TimeState.Slowing) return;
-            if (timeFill.fillAmount == 0) return;
+            if (extraTimeFill.fillAmount == 0)
+            {
+                ResetSpeed();
+                return;
+            }
+            if (energy.timeState == Energy.TimeState.Slowing) return;
             
-            timeState = TimeState.Slowing;
-
-            DOTween.Kill(GameSpeed);
-            tweenTime = data.lerpDuration - Mathf.Lerp(0, data.lerpDuration, (1-GameSpeed)/(1-value));
-            DOTween.To(() => GameSpeed, x => GameSpeed = x, value, tweenTime).SetEase(data.lerpEase);
+            energy.SlowDownTime();
             
-            timeFill.DOKill();
-            timeFill.DOFillAmount(0, data.timeAbilityDuration * timeFill.fillAmount).SetEase(Ease.Linear);
+            DOFillAmount(intraTimeFill,0,data.timeAbilityDuration * intraTimeFill.fillAmount);
+            DOFillAmount(extraTimeFill,0,data.timeAbilityDuration * extraTimeFill.fillAmount);
             
-            onSlowDown.Invoke();
+            onPlayerSlowDown.Invoke();
         }
 
         public void ResetSpeed()
         {
-            if (timeState == TimeState.Resetting) return;
+            if (energy.timeState == Energy.TimeState.Resetting) return;
+            energy.ResetSpeed();
             
-            timeState = TimeState.Resetting;
-
-            timeFill.DOKill();
-
-            DOTween.Kill(GameSpeed);
-            if (GameSpeed > 1) tweenTime = Mathf.Lerp(0,data.lerpDuration, (GameSpeed - 1) / (data.speedUpModifier - 1));
-            else tweenTime = Mathf.Lerp(0,data.lerpDuration,(1-GameSpeed)/(1-data.slowDownModifier));
-            DOTween.To(() => GameSpeed, x => GameSpeed = x, 1, data.lerpDuration).SetEase(Ease.Linear);
+            intraTimeFill.DOKill();
+            extraTimeFill.DOKill();
             
-            onReset.Invoke();
+            onPlayerReset.Invoke();
         }
 
-        public UnityEvent onSpeedUp;
-        public UnityEvent onSlowDown;
-        public UnityEvent onReset;
-        
-        public delegate void OnGameSpeedUpdate();
-        public static OnGameSpeedUpdate onGameSpeedUpdate;
-        
-        private enum TimeState
+        private void DOFillAmount(Image image, float endValue, float duration)
         {
-            Slowing,
-            Resetting,
-            Speeding
+            image.DOKill();
+            image.DOFillAmount(endValue, duration).SetEase(Ease.Linear);
         }
+
+        public UnityEvent onPlayerSpeedUp;
+        public UnityEvent onPlayerSlowDown;
+        public UnityEvent onPlayerReset;
     }
 }
