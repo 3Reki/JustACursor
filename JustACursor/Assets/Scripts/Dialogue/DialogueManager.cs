@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Dialogue.Old;
+using Graph;
+using Graph.Dialogue;
 using Player;
 using TMPro;
 using UnityEngine;
@@ -13,9 +14,9 @@ namespace Dialogue.New
     {
         [SerializeField] private GameObject dialogueBox;
         [SerializeField] private GameObject responseParent;
-        [SerializeField] private DialogueOption[] options;
         [SerializeField] private TMP_Text textLabel;
         [SerializeField] private WriterEffect writerEffect;
+        [SerializeField] private DialogueOption[] options;
         
         [Header("DEBUG")]
         [SerializeField] private DialogueGraph testDialogue;
@@ -44,6 +45,14 @@ namespace Dialogue.New
 
             dialogueBox.SetActive(true);
             dialogueCoroutine = StartCoroutine(DialogueCR());
+        }
+        
+        public void Stop()
+        {
+            StopCoroutine(dialogueCoroutine);
+            
+            currentGraph = null;
+            dialogueBox.SetActive(false);
         }
 
         private IEnumerator DialogueCR()
@@ -98,22 +107,14 @@ namespace Dialogue.New
                     option.gameObject.SetActive(true);
                     option.SetAction(() =>
                     {
-                        GoToNextNode($"Responses {index}", response.ResponseEvent);
+                        GoToNextNode($"Responses {index}", response.Event);
                     });
-                    option.SetText(response.ResponseText);
+                    option.SetText(response.Text);
                 }
                 else option.gameObject.SetActive(false);
             }
         }
 
-        private void Stop()
-        {
-            StopCoroutine(dialogueCoroutine);
-            
-            currentGraph = null;
-            dialogueBox.SetActive(false);
-        }
-        
         private void TriggerEvent(DialogueEvent responseEvent)
         {
             // TODO: Some functions called when specific choices are made

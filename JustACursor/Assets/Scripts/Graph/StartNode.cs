@@ -1,4 +1,6 @@
-﻿namespace Dialogue.New
+﻿using Graph.Dialogue;
+
+namespace Graph
 {
     [NodeTint("#228B22")]
     [NodeWidth(150)]

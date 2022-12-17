@@ -3,7 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.ProBuilder;
 
-namespace Dialogue.Old {
+namespace Dialogue
+{
     public class WriterEffect : MonoBehaviour
     {
         public bool IsWriting { get; private set; }

@@ -1,13 +1,13 @@
-﻿using Dialogue.Old;
+﻿using Dialogue;
 using UnityEngine;
 
-namespace Dialogue.New
+namespace Graph.Dialogue
 {
     [NodeWidth(300)]
     public class DialogueNode : BaseNode
     {
         [Input(ShowBackingValue.Always), TextArea(5,5)] public string Dialogue;
-        [Output(dynamicPortList = true, connectionType = ConnectionType.Override)] public Response[] Responses;
+        [Output(dynamicPortList = true, connectionType = ConnectionType.Override)] public Response[] Responses = new Response[4];
         [Output(connectionType = ConnectionType.Override)] public string Default;
     }
 }

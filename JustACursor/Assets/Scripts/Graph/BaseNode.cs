@@ -1,6 +1,6 @@
 ﻿using XNode;
 
-namespace Dialogue.New
+namespace Graph
 {
     public class BaseNode : Node
     {

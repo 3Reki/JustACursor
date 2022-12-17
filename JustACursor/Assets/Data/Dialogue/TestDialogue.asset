@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1112, y: -104}
+  position: {x: 568, y: -248}
   ports:
     keys:
     - Dialogue
@@ -46,7 +46,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: Responses
       _node: {fileID: -7239372593355065843}
-      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
+      _typeQualifiedName: Dialogue.Response[], Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 552, y: -408}
+  position: {x: 184, y: -488}
   ports:
     keys:
     - Dialogue
@@ -101,7 +101,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: Responses
       _node: {fileID: -5489957911996660091}
-      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
+      _typeQualifiedName: Dialogue.Response[], Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
@@ -110,8 +110,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: Responses 0
       _node: {fileID: -5489957911996660091}
-      _typeQualifiedName: Dialogue.Old.Response, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: Dialogue.Response, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: Dialogue
         node: {fileID: -2929034537791168372}
@@ -122,8 +122,8 @@ MonoBehaviour:
       _dynamic: 1
     - _fieldName: Responses 1
       _node: {fileID: -5489957911996660091}
-      _typeQualifiedName: Dialogue.Old.Response, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+      _typeQualifiedName: Dialogue.Response, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       connections:
       - fieldName: Dialogue
         node: {fileID: -7239372593355065843}
@@ -134,12 +134,10 @@ MonoBehaviour:
       _dynamic: 1
   Dialogue: Fais ton choix
   Responses:
-  - <ResponseText>k__BackingField: Choix A
-    <ResponseEvent>k__BackingField: 1
-    <NextDialogue>k__BackingField: {fileID: 0}
-  - <ResponseText>k__BackingField: Choix B
-    <ResponseEvent>k__BackingField: 2
-    <NextDialogue>k__BackingField: {fileID: 0}
+  - <Text>k__BackingField: Choix A
+    <Event>k__BackingField: 1
+  - <Text>k__BackingField: Choix B
+    <Event>k__BackingField: 2
   Default: 
 --- !u!114 &-5480768622483758269
 MonoBehaviour:
@@ -154,7 +152,7 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 24, y: -408}
+  position: {x: -168, y: -488}
   ports:
     keys:
     - Dialogue
@@ -187,7 +185,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: Responses
       _node: {fileID: -5480768622483758269}
-      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
+      _typeQualifiedName: Dialogue.Response[], Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
@@ -211,7 +209,7 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1112, y: -408}
+  position: {x: 568, y: -488}
   ports:
     keys:
     - Dialogue
@@ -244,7 +242,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: Responses
       _node: {fileID: -2929034537791168372}
-      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
+      _typeQualifiedName: Dialogue.Response[], Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
@@ -289,7 +287,7 @@ MonoBehaviour:
   m_Name: Stop
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1736, y: -136}
+  position: {x: 984, y: -216}
   ports:
     keys:
     - entry
@@ -356,7 +354,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: Responses
       _node: {fileID: 3692527647565689771}
-      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
+      _typeQualifiedName: Dialogue.Response[], Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
