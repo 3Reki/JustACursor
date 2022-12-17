@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using Player;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 
-namespace Dialogue
+namespace Dialogue.Old
 {
     public class DialogueUI : MonoBehaviour
     {
@@ -81,7 +80,7 @@ namespace Dialogue
                     if (interactInput)
                     {
                         interactInput = false;
-                        writerEffect.Complete(dialogue, textLabel);
+                        writerEffect.Complete();
                     }
                     yield return null;
                 }

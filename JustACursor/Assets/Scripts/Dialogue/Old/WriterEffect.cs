@@ -3,23 +3,27 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.ProBuilder;
 
-namespace Dialogue {
+namespace Dialogue.Old {
     public class WriterEffect : MonoBehaviour
     {
-        public bool IsWriting => isWriting;
-        
+        public bool IsWriting { get; private set; }
+
         [SerializeField] private float writingSpeed;
 
         private Coroutine typeCR;
-        private bool isWriting;
-        
-        public void Run(string textToType, TMP_Text textLabel) {
-            typeCR = StartCoroutine(TypeText(textToType,textLabel));
+        private string textToType;
+        private TMP_Text textLabel;
+
+        public void Run(string textToType, TMP_Text textLabel)
+        {
+            this.textToType = textToType;
+            this.textLabel = textLabel;
+            typeCR = StartCoroutine(TypeText());
         }
 
-        private IEnumerator TypeText(string textToType, TMP_Text textLabel) {
+        private IEnumerator TypeText() {
             textLabel.text = string.Empty;
-            isWriting = true;
+            IsWriting = true;
             
             float time = 0;
             int charIndex = 0;
@@ -35,15 +39,18 @@ namespace Dialogue {
             }
 
             textLabel.text = textToType;
-            isWriting = false;
+            IsWriting = false;
         }
 
-        public void Complete(string textToType, TMP_Text textLabel)
+        public void Complete()
         {
             StopCoroutine(typeCR);
             
             textLabel.text = textToType;
-            isWriting = false;
+
+            textToType = null;
+            textLabel = null;
+            IsWriting = false;
         }
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Dialogue
+namespace Dialogue.Old
 {
     [CreateAssetMenu(menuName = "Just A Cursor/Dialogue", fileName = "New Dialogue")]
     public class DialogueObject : ScriptableObject
