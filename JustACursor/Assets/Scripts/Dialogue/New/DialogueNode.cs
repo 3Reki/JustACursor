@@ -1,14 +1,13 @@
 ﻿using Dialogue.Old;
 using UnityEngine;
-using XNode;
 
 namespace Dialogue.New
 {
-    [NodeWidth(500)]
+    [NodeWidth(300)]
     public class DialogueNode : BaseNode
     {
         [Input(ShowBackingValue.Always), TextArea(5,5)] public string Dialogue;
-        [Output(dynamicPortList = true)] public Response[] Responses;
-        [Output] public string Default;
+        [Output(dynamicPortList = true, connectionType = ConnectionType.Override)] public Response[] Responses;
+        [Output(connectionType = ConnectionType.Override)] public string Default;
     }
 }

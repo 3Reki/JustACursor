@@ -7,7 +7,7 @@ namespace Dialogue.New
     public class DialogueGraph : NodeGraph
     {
         public BaseNode startNode;
-        [HideInInspector] public BaseNode currentNode;
+        public BaseNode currentNode;
 
         public void Start()
         {

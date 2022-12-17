@@ -4,6 +4,6 @@
     [NodeWidth(150)]
     public class StartNode : BaseNode
     {
-        [Output] public int exit;
+        [Output(connectionType = ConnectionType.Override)] public int exit;
     }
 }

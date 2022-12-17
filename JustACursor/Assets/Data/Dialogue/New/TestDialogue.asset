@@ -17,8 +17,8 @@ MonoBehaviour:
   ports:
     keys:
     - Dialogue
-    - Responses
     - Default
+    - Responses
     values:
     - _fieldName: Dialogue
       _node: {fileID: -7239372593355065843}
@@ -32,15 +32,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: Responses
-      _node: {fileID: -7239372593355065843}
-      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
     - _fieldName: Default
       _node: {fileID: -7239372593355065843}
       _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
@@ -50,7 +41,16 @@ MonoBehaviour:
         node: {fileID: 1083313785571666033}
         reroutePoints: []
       _direction: 1
-      _connectionType: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Responses
+      _node: {fileID: -7239372593355065843}
+      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
   Dialogue: Je suis le dialogue B
@@ -73,8 +73,8 @@ MonoBehaviour:
   ports:
     keys:
     - Dialogue
-    - Responses
     - Default
+    - Responses
     - Responses 0
     - Responses 1
     values:
@@ -90,22 +90,22 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: Responses
-      _node: {fileID: -5489957911996660091}
-      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
     - _fieldName: Default
       _node: {fileID: -5489957911996660091}
       _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
-      _connectionType: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Responses
+      _node: {fileID: -5489957911996660091}
+      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: Responses 0
@@ -117,7 +117,7 @@ MonoBehaviour:
         node: {fileID: -2929034537791168372}
         reroutePoints: []
       _direction: 1
-      _connectionType: 0
+      _connectionType: 1
       _typeConstraint: 0
       _dynamic: 1
     - _fieldName: Responses 1
@@ -129,7 +129,7 @@ MonoBehaviour:
         node: {fileID: -7239372593355065843}
         reroutePoints: []
       _direction: 1
-      _connectionType: 0
+      _connectionType: 1
       _typeConstraint: 0
       _dynamic: 1
   Dialogue: Fais ton choix
@@ -182,7 +182,7 @@ MonoBehaviour:
         node: {fileID: -5489957911996660091}
         reroutePoints: []
       _direction: 1
-      _connectionType: 0
+      _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: Responses
@@ -191,7 +191,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
-      _connectionType: 0
+      _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
   Dialogue: "Apr\xE8s ce texte, tu vas pouvoir faire un choix et \xE7a va le debug
@@ -215,8 +215,8 @@ MonoBehaviour:
   ports:
     keys:
     - Dialogue
-    - Responses
     - Default
+    - Responses
     values:
     - _fieldName: Dialogue
       _node: {fileID: -2929034537791168372}
@@ -230,15 +230,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: Responses
-      _node: {fileID: -2929034537791168372}
-      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
     - _fieldName: Default
       _node: {fileID: -2929034537791168372}
       _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
@@ -248,7 +239,16 @@ MonoBehaviour:
         node: {fileID: 1083313785571666033}
         reroutePoints: []
       _direction: 1
-      _connectionType: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Responses
+      _node: {fileID: -2929034537791168372}
+      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
   Dialogue: Je suis le dialogue A
@@ -275,7 +275,7 @@ MonoBehaviour:
   - {fileID: -2929034537791168372}
   - {fileID: -7239372593355065843}
   startNode: {fileID: 5318620200402605858}
-  currentNode: {fileID: 0}
+  currentNode: {fileID: 1083313785571666033}
 --- !u!114 &1083313785571666033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ MonoBehaviour:
     values:
     - _fieldName: entry
       _node: {fileID: 1083313785571666033}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: Default
@@ -323,12 +323,12 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -520, y: -408}
+  position: {x: -520, y: -488}
   ports:
     keys:
     - Dialogue
-    - Responses
     - Default
+    - Responses
     values:
     - _fieldName: Dialogue
       _node: {fileID: 3692527647565689771}
@@ -342,15 +342,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: Responses
-      _node: {fileID: 3692527647565689771}
-      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
     - _fieldName: Default
       _node: {fileID: 3692527647565689771}
       _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
@@ -360,7 +351,16 @@ MonoBehaviour:
         node: {fileID: -5480768622483758269}
         reroutePoints: []
       _direction: 1
-      _connectionType: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Responses
+      _node: {fileID: 3692527647565689771}
+      _typeQualifiedName: Dialogue.Old.Response[], Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
   Dialogue: "Salut \xE0 toi, je suis le dialogue de test"
@@ -386,14 +386,14 @@ MonoBehaviour:
     values:
     - _fieldName: exit
       _node: {fileID: 5318620200402605858}
-      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: Dialogue
         node: {fileID: 3692527647565689771}
         reroutePoints: []
       _direction: 1
-      _connectionType: 0
+      _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
   exit: 0

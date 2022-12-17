@@ -70,12 +70,15 @@ namespace Dialogue.New
 
             while (!interactInput) yield return null;
 
-            currentGraph.currentNode = node.NextNode("Default");
-            HandleNewNode();
+            GoToNextNode("Default");
         }
 
-        private void HandleNewNode()
+        private void GoToNextNode(string nextNode, DialogueEvent eventToTrigger = DialogueEvent.None)
         {
+            TriggerEvent(eventToTrigger);
+            responseParent.SetActive(false);
+
+            currentGraph.currentNode = currentGraph.currentNode.NextNode(nextNode);
             if (currentGraph.currentNode.GetType() == typeof(DialogueNode)) StartCoroutine(DialogueCR());
             else if (currentGraph.currentNode.GetType() == typeof(StopNode)) Stop();
             else Debug.LogError("Invalid Node type");
@@ -89,13 +92,13 @@ namespace Dialogue.New
                 DialogueOption option = options[i];
                 if (i < node.Responses.Length)
                 {
-                    Response response = node.Responses[i];
+                    int index = i;
+                    Response response = node.Responses[index];
+                    
                     option.gameObject.SetActive(true);
                     option.SetAction(() =>
                     {
-                        TriggerEvent(response.ResponseEvent);
-                        currentGraph.currentNode = node.NextNode(response.ResponseText);
-                        HandleNewNode();
+                        GoToNextNode($"Responses {index}", response.ResponseEvent);
                     });
                     option.SetText(response.ResponseText);
                 }

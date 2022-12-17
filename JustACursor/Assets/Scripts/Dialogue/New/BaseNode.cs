@@ -9,7 +9,7 @@ namespace Dialogue.New
             return null;
         }
 
-        public virtual BaseNode NextNode(string _exit)
+        public BaseNode NextNode(string _exit)
         {
             foreach (NodePort port in Ports)
             {
