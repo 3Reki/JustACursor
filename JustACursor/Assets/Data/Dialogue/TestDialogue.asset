@@ -50,7 +50,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
-      _connectionType: 1
+      _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   Dialogue: Je suis le dialogue B
@@ -105,7 +105,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
-      _connectionType: 1
+      _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: Responses 0
@@ -117,7 +117,7 @@ MonoBehaviour:
         node: {fileID: -2929034537791168372}
         reroutePoints: []
       _direction: 1
-      _connectionType: 1
+      _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
     - _fieldName: Responses 1
@@ -129,7 +129,7 @@ MonoBehaviour:
         node: {fileID: -7239372593355065843}
         reroutePoints: []
       _direction: 1
-      _connectionType: 1
+      _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
   Dialogue: Fais ton choix
@@ -189,7 +189,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
-      _connectionType: 1
+      _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   Dialogue: "Apr\xE8s ce texte, tu vas pouvoir faire un choix et \xE7a va le debug
@@ -246,7 +246,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
-      _connectionType: 1
+      _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   Dialogue: Je suis le dialogue A
@@ -358,7 +358,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
-      _connectionType: 1
+      _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   Dialogue: "Salut \xE0 toi, je suis le dialogue de test"
