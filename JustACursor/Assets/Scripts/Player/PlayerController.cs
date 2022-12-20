@@ -8,12 +8,11 @@ namespace Player
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerController : MonoBehaviour
     {
-        public PlayerData data => playerData;
-        public bool isDashing => playerDash.isDashing;
-        public bool invincible
+        public PlayerData Data => playerData;
+        public bool IsDashing => playerDash.IsDashing;
+        public bool IsInvincible
         {
-            get => playerCollision.isInvincible;
-            set => playerCollision.isInvincible = value;
+            set => playerCollision.IsInvincible = value;
         }
         
         [SerializeField] private PlayerData playerData;
@@ -22,8 +21,8 @@ namespace Player
         [SerializeField] private PlayerDash playerDash;
         [SerializeField] private PlayerEnergy playerEnergy;
         [SerializeField] private PlayerDeviceHandler playerDeviceHandler;
-        [SerializeField] private PlayerRespawn playerRespawn;
         [SerializeField] private PlayerCollision playerCollision;
+        [field:SerializeField] public Health Health { get; private set; }
 
         private PlayerInputs inputs;
         private Camera mainCamera;
@@ -32,7 +31,6 @@ namespace Player
         private IEnumerator stopMovingEnumerator;
 
         private Vector2 dashDirection => playerDash.dashDirection;
-        private bool isAlive => playerRespawn.isAlive;
 
         public static Vector3 PlayerPosition { get; private set; }
 
@@ -60,14 +58,14 @@ namespace Player
                 playerDash.HandleDashInput(moveDirection);
             }
             
-            if (playerDash.isDashing)
+            if (playerDash.IsDashing)
             {
                 playerDash.DashMovement(moveDirection);
             }
         }
 
         private void HandleMovement() {
-            if (isDashing) return;
+            if (IsDashing) return;
             
             if (inputs.Player.Move.WasPressedThisFrame() && stopMovingEnumerator != null)
             {
@@ -87,11 +85,11 @@ namespace Player
         }
 
         private void HandleRotation() {
-            playerMovement.LookForward(isDashing && playerDash.isFirstPhase ? dashDirection : moveDirection);
+            playerMovement.LookForward(IsDashing && playerDash.isFirstPhase ? dashDirection : moveDirection);
         }
 
         private void HandleShoot() {
-            if (isDashing || Time.timeScale == 0) return;
+            if (IsDashing || Time.timeScale == 0) return;
             if (inputs.Player.Shoot.IsPressed())
             {
                 if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();

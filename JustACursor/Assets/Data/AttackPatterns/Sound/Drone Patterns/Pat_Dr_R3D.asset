@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccf1865493b4de29a1529c3734bbc08, type: 3}
   m_Name: Pat_Dr_R3D
   m_EditorClassIdentifier: 
-  patternDuration: 0.5
+  patternDuration: 0
   half: 1
   alternateDirectionMode: 3

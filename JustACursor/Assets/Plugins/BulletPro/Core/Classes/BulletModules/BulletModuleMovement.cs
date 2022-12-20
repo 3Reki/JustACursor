@@ -130,7 +130,7 @@ namespace BulletPro
 				if (scaleOverLifetime.enabled)
 				{
 					scaleOverLifetime.Update(timestep);
-					currentScale = baseScale * scaleOverLifetime.GetCurveResult() * SpeedMultiplier;
+					currentScale = baseScale * scaleOverLifetime.GetCurveResult();
 				}
 				else currentScale = baseScale;
 			}

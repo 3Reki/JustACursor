@@ -32,12 +32,15 @@ namespace LD
         private void Start()
         {
             player.SetCheckpoint(Floors[0].StartPoint);
+            player.Spawn();
         }
 
         public void GoToNextFloor()
         {
             //Disable current floor
-            Floors[0].gameObject.SetActive(false);
+            Floor currentFloor = Floors[0];
+            currentFloor.gameObject.SetActive(false);
+            currentFloor.KillEmitters();
             Floors.RemoveAt(0);
             
             if (Floors.Count == 0) return;
@@ -96,6 +99,7 @@ namespace LD
         {
             foreach (Floor floor in Floors)
             {
+                floor.gameObject.SetActive(true);
                 floor.Scale(1);
                 floor.SetFloorState(Floor.FloorState.All);
                 floor.SetSortingLayer("CurrentFloor",0);

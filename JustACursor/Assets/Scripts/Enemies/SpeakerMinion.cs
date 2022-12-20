@@ -34,10 +34,13 @@ namespace Enemies
         
         private void Awake()
         {
-            if (!isActiveAtStart) return;
-
             startPosition = transform.position;
+        }
 
+        private void Start()
+        {
+            if (!isActiveAtStart) return;
+            
             if (isEndless)
                 StartInfiniteFire();
             else

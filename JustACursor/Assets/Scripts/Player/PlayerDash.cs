@@ -6,7 +6,7 @@ namespace Player
 {
     public class PlayerDash : MonoBehaviour
     {
-        public bool isDashing { get; private set; }
+        public bool IsDashing { get; private set; }
         public bool isFirstPhase { get; private set; }
         public Vector2 dashDirection { get; private set; }
 
@@ -16,7 +16,7 @@ namespace Player
         private bool canDash = true;
         private float elapsedTime;
 
-        private PlayerData playerData => playerController.data;
+        private PlayerData playerData => playerController.Data;
 
         public void HandleDashInput(Vector2 moveDir)
         {
@@ -34,9 +34,9 @@ namespace Player
             rb.velocity = dashDirection * (playerData.dashSpeed * playerData.moveSpeed);
 
             canDash = false;
-            isDashing = true;
+            IsDashing = true;
             isFirstPhase = true;
-            playerController.invincible = true;
+            playerController.IsInvincible = true;
             CameraController.ShakeCamera(playerData.dashShakeIntensity, playerData.dashShakeDuration);
 
             yield return new WaitForSeconds(playerData.dashFirstPhaseDuration); 
@@ -44,8 +44,8 @@ namespace Player
             isFirstPhase = false;
 
             yield return new WaitForSeconds(playerData.dashDuration - playerData.dashFirstPhaseDuration);
-            isDashing = false;
-            playerController.invincible = false;
+            IsDashing = false;
+            playerController.IsInvincible = false;
             rb.velocity = Vector2.zero;
 
             yield return new WaitForSeconds(playerData.dashRefreshCooldown);
@@ -55,14 +55,14 @@ namespace Player
         public void DashMovement(Vector2 direction)
         {
             rb.velocity =
-                playerController.data.moveSpeed * playerController.data.dashSpeed * dashDirection;
+                playerController.Data.moveSpeed * playerController.Data.dashSpeed * dashDirection;
 
             if (direction == Vector2.zero)
                 return;
 
             float targetAngle = Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg;
             Vector2 moveDirection = Quaternion.Euler(0, 0, targetAngle) * Vector3.up;
-            Vector2 addedMovement = moveDirection.normalized * (playerController.data.moveSpeed * playerController.data.dashSecondPhaseControl);
+            Vector2 addedMovement = moveDirection.normalized * (playerController.Data.moveSpeed * playerController.Data.dashSecondPhaseControl);
 
             if (Vector2.Dot(addedMovement, dashDirection) > 0)
             {

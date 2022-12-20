@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using BulletPro;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace LD
 {
@@ -13,6 +14,7 @@ namespace LD
         [Header("Render")]
         [SerializeField] private Gradient previewGradient;
         [SerializeField] private Gradient laserGradient;
+        [SerializeField] private ParticleSystem ps_Laser;
 
         private readonly BulletCollider[] colliders = new BulletCollider[3];
         private IEnumerator fireEnumerator;
@@ -20,7 +22,6 @@ namespace LD
         private void Awake()
         {
             lineRenderer.positionCount = 2;
-            lineRenderer.gameObject.SetActive(false);
             
             for (var i = 0; i < colliders.Length; i++)
             {
@@ -33,6 +34,12 @@ namespace LD
 
         public void StartFire(float previewDuration, float laserDuration, float customWidth, float customLength, bool hasCollision = true)
         {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, customLength+customWidth/2);
+            if (hit && hit.collider is TilemapCollider2D)
+            {
+                customLength = hit.distance-customWidth/2;
+            }
+
             SetupLineRenderer(customWidth, customLength);
             SetupColliders(customWidth, customLength);
 
@@ -49,7 +56,6 @@ namespace LD
                 emitter.Stop();
 
             emitter.Kill();
-
             lineRenderer.gameObject.SetActive(false);
         }
 
@@ -57,11 +63,6 @@ namespace LD
         {
             lineRenderer.gameObject.SetActive(true);
             lineRenderer.colorGradient = previewGradient;
-        }
-
-        public void HidePreview()
-        {
-            lineRenderer.gameObject.SetActive(false);
         }
 
         private IEnumerator Fire(float previewDuration, float laserDuration, bool hasCollision)
@@ -77,10 +78,18 @@ namespace LD
             
             emitter.Play();
             //Wait for bullet to initialize
-            while (emitter.bullets.Count == 0) yield return null;
-            SetupBullet(emitter.bullets[^1], hasCollision);
+            while (true)
+            {
+                yield return null;
+                if (emitter.bullets.Count > 0)
+                {
+                    SetupBullet(emitter.bullets[^1], hasCollision);
+                    break;
+                }
+            }
 
             lineRenderer.colorGradient = laserGradient;
+            ps_Laser.Play();
 
             laserDuration -= Time.deltaTime * Energy.GameSpeed;
             while (laserDuration > 0)
@@ -89,9 +98,11 @@ namespace LD
                 laserDuration -= Time.deltaTime * Energy.GameSpeed;
             }
 
+            ps_Laser.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear);
+            
+            lineRenderer.gameObject.SetActive(false);
             emitter.Stop();
             emitter.Kill();
-            HidePreview();
         }
 
         private void SetupBullet(BulletPro.Bullet bullet, bool hasCollision)
