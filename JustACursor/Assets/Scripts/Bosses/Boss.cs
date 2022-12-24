@@ -17,13 +17,13 @@ namespace Bosses
         public int maxHP => bossData.startingHP;
         public BossMovement mover => movementHandler;
         public PlayerController targetedPlayer => player;
-        
-        public Health health;
+        public Health Health => bossBar.Health;
 
         [SerializeField] protected PlayerController player;
         [SerializeField] protected BossData bossData;
-        [SerializeField] protected BossAnimations animator;
         [SerializeField] private BossMovement movementHandler;
+        [SerializeField] protected BossAnimations animator;
+        [SerializeField] private BossBar bossBar;
         [SerializeField] private BulletEmitter[] emitters = new BulletEmitter[3];
         
         protected bool isPaused;
@@ -35,7 +35,8 @@ namespace Bosses
         protected virtual void Start()
         {
             DebugStart();
-            health.Init(bossData.startingHP);
+            Health.Init(bossData.startingHP);
+            bossBar.InitBar();
         }
 
         protected virtual void Update()
@@ -49,7 +50,7 @@ namespace Bosses
 
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
-            health.LoseHealth(bullet.moduleParameters.GetInt("Damage"));
+            Health.LoseHealth(bullet.moduleParameters.GetInt("Damage"));
             
             switch (currentBossPhase)
             {
@@ -65,9 +66,9 @@ namespace Bosses
             }
         }
         
-        protected bool CheckPhase2HPThreshold() => health.GetRatio() <= bossData.phase2HPThreshold;
+        protected bool CheckPhase2HPThreshold() => Health.GetRatio() <= bossData.phase2HPThreshold;
 
-        protected bool CheckPhase3HPThreshold() => health.GetRatio() <= bossData.phase3HPThreshold;
+        protected bool CheckPhase3HPThreshold() => Health.GetRatio() <= bossData.phase3HPThreshold;
 
         private void HandlePatterns()
         {
@@ -109,20 +110,39 @@ namespace Bosses
         public void Hit()
         {
             animator.Hit();
+            bossBar.UpdateBar();
         }
 
         public async void Die()
         {
             StopCurrentPattern();
-            isPaused = true;
-
-            animator.Die();
             GetComponent<BulletReceiver>().enabled = false;
             GetComponent<CircleCollider2D>().enabled = false;
+            
+            isPaused = true;
+            animator.Die();
+            bossBar.Hide();
 
             await Task.Delay((int) (animator.deathAnimLength * 1000));
-            
             transform.root.gameObject.SetActive(false);
+        }
+        
+        public void Reset()
+        {
+            StopCurrentPattern();
+            GetComponent<BulletReceiver>().enabled = true;
+            GetComponent<CircleCollider2D>().enabled = true;
+            
+            transform.gameObject.SetActive(true);
+            Health.ResetHealth();
+            isFrozen = false;
+            isPaused = false;
+
+            for (int i = 0; i < 3; i++)
+            {
+                bulletEmitter[i].Stop();
+                bulletEmitter[i].Kill();
+            }
         }
 
         protected virtual void StopCurrentPattern()
@@ -171,7 +191,7 @@ namespace Bosses
 
             if (Input.GetKeyDown(setHealthToOne))
             {
-                health.SetHealth(1);
+                Health.SetHealth(1);
                 animator.Hit();
                 SetBossPhase(BossPhase.Three);
             }
@@ -192,25 +212,7 @@ namespace Bosses
                 else bulletEmitter[i].Play(PlayOptions.AllBullets);
             }
         }
-
-        [ContextMenu("Reset Boss")]
-        public void Reset()
-        {
-            StopCurrentPattern();
-            GetComponent<BulletReceiver>().enabled = true;
-            GetComponent<CircleCollider2D>().enabled = true;
-            transform.gameObject.SetActive(true);
-            health.Heal();
-            isFrozen = false;
-            isPaused = false;
-
-            for (int i = 0; i < 3; i++)
-            {
-                bulletEmitter[i].Stop();
-                bulletEmitter[i].Kill();
-                
-            }
-        }
+        
 
         #endregion
     }

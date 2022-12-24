@@ -4,21 +4,21 @@ using UnityEngine;
 
 namespace Editor
 {
-    [CustomEditor(typeof(LevelHandler))]
-    public class LevelHandlerEditor : UnityEditor.Editor
+    [CustomEditor(typeof(LevelManager))]
+    public class LevelManagerEditor : UnityEditor.Editor
     {
-        private LevelHandler editedLH;
+        private LevelManager editedLevel;
 
         private void OnEnable()
         {
-            editedLH = target as LevelHandler;
+            editedLevel = target as LevelManager;
         }
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
             DrawDefaultInspector();
-            editedLH.NbMaxFloorShown = EditorGUILayout.IntSlider("NbMaxFloorShown", editedLH.NbMaxFloorShown, 1, editedLH.Floors.Count);
+            editedLevel.NbMaxFloorShown = EditorGUILayout.IntSlider("NbMaxFloorShown", editedLevel.NbMaxFloorShown, 1, editedLevel.Floors.Count);
 
             GUILayout.Space(10);
             GUILayout.Label("Editor Only", EditorStyles.boldLabel);
@@ -29,7 +29,7 @@ namespace Editor
                     Debug.LogWarning("Editor Only !");
                     return;
                 }
-                editedLH.GetComponents();
+                editedLevel.GetComponents();
             }
 
             if (GUILayout.Button("Setup Floors"))
@@ -39,7 +39,7 @@ namespace Editor
                     Debug.LogWarning("Editor Only !");
                     return;
                 }
-                editedLH.SetupFloors();
+                editedLevel.SetupFloors();
             }
                 
             if (GUILayout.Button("Reset All (for editing)"))
@@ -49,7 +49,7 @@ namespace Editor
                     Debug.LogWarning("Editor Only !");
                     return;
                 }
-                editedLH.ResetAll();
+                editedLevel.ResetAll();
             }
             
             GUILayout.Space(10);
@@ -61,7 +61,7 @@ namespace Editor
                     Debug.LogWarning("Runtime Only !");
                     return;
                 }
-                editedLH.GoToNextFloor();
+                editedLevel.GoToNextFloor();
             }
 
             serializedObject.ApplyModifiedProperties();

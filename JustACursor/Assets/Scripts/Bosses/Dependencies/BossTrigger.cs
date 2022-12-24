@@ -1,53 +1,41 @@
-﻿using System;
-using Player;
+﻿using Player;
 using UnityEngine;
 
 namespace Bosses.Dependencies
 {
     public class BossTrigger : MonoBehaviour
     {
-        [SerializeField] private Boss bossToSpawn;
+        [SerializeField] private GameObject bossToSpawn;
         [SerializeField] private GameObject invisibleWalls;
 
-        private bool isActive;
-        private PlayerController controller;
+        private PlayerController player;
+        private Boss boss;
 
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            controller = other.GetComponent<PlayerController>();
-            if (!controller)
-            {
-                return;
-            }
-
-            controller.Health.onDeath.AddListener(Undo);
-            isActive = true;
-            Do();
+        private void Awake() {
+            boss = bossToSpawn.GetComponentInChildren<Boss>(true);
         }
 
-        private void OnDestroy()
-        {
-            if (isActive)
-            {
-                controller.Health.onDeath.RemoveListener(Undo);
+        private void OnTriggerExit2D(Collider2D other) {
+            if (other.TryGetComponent(out PlayerController player)) {
+                if (player.transform.position.y < transform.position.y) return;
+
+                this.player = player;
+                
+                bossToSpawn.gameObject.SetActive(true);
+                invisibleWalls.SetActive(true);
+                enabled = false;
+                
+                player.Health.onDeath.AddListener(ResetTrigger);
             }
         }
 
-        public void Do()
-        {
-            bossToSpawn.gameObject.SetActive(true);
-            invisibleWalls.SetActive(true);
-            enabled = false;
-        }
-
-        public void Undo()
-        {
-            bossToSpawn.Reset();
+        private void ResetTrigger() {
+            boss.Reset();
             bossToSpawn.gameObject.SetActive(false);
             invisibleWalls.SetActive(false);
             enabled = true;
-            isActive = false;
-            controller.Health.onDeath.RemoveListener(Undo);
+            
+            player.Health.onDeath.RemoveListener(ResetTrigger);
         }
         
 #if UNITY_EDITOR

@@ -28,23 +28,23 @@ namespace Bosses.Patterns.Drones
             switch (index / 3)
             {
                 case 0 :
-                    start = linkedEntity.mover.room.topLeft;
-                    end = linkedEntity.mover.room.bottomLeft;
+                    start = linkedEntity.mover.Room.topLeft;
+                    end = linkedEntity.mover.Room.bottomLeft;
                     rotation = Quaternion.Euler(0, 0, -90);
                     break;
                 case 1 :
-                    start = linkedEntity.mover.room.topRight;
-                    end = linkedEntity.mover.room.topLeft;
+                    start = linkedEntity.mover.Room.topRight;
+                    end = linkedEntity.mover.Room.topLeft;
                     rotation = Quaternion.Euler(0, 0, 180);
                     break;
                 case 2 :
-                    start = linkedEntity.mover.room.bottomRight;
-                    end = linkedEntity.mover.room.topRight;
+                    start = linkedEntity.mover.Room.bottomRight;
+                    end = linkedEntity.mover.Room.topRight;
                     rotation = Quaternion.Euler(0, 0, 90);
                     break;
                 case 3 :
-                    start = linkedEntity.mover.room.bottomLeft;
-                    end = linkedEntity.mover.room.bottomRight;
+                    start = linkedEntity.mover.Room.bottomLeft;
+                    end = linkedEntity.mover.Room.bottomRight;
                     rotation = Quaternion.Euler(0, 0, 0);
                     break;
                 default:

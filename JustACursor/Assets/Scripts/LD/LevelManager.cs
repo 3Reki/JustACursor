@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LD
 {
-    public class LevelHandler : MonoBehaviour
+    public class LevelManager : MonoBehaviour
     {
         [Header("Components")]
         [SerializeField] private PlayerRespawn player;
@@ -46,8 +46,8 @@ namespace LD
             if (Floors.Count == 0) return;
             
             //Next floor
-            CameraController.instance.enabled = true;
             player.transform.SetPositionAndRotation(Floors[0].StartPoint.transform.position, Floors[0].StartPoint.transform.rotation);
+            CameraController.TeleportToTarget();
             player.SetCheckpoint(Floors[0].StartPoint);
             UpdateFloors();
         }

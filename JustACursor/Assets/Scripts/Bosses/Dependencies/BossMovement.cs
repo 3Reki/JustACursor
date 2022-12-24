@@ -7,9 +7,9 @@ using Random = UnityEngine.Random;
 
 namespace Bosses.Dependencies
 {
-    public class BossMovement : MonoBehaviour
-    {
-        public Room room;
+    public class BossMovement : MonoBehaviour {
+        
+        [field:SerializeField] public Room Room { get; private set; }
 
         [SerializeField] private Transform bossTransform;
         [SerializeField] private PlayerController player;
@@ -17,7 +17,7 @@ namespace Bosses.Dependencies
 
         public void GoToCenter(float moveDuration)
         {
-            MoveTo(room.middleCenter, moveDuration);
+            MoveTo(Room.middleCenter, moveDuration);
         }
 
         public void GoToCorner(Room.Corner corner, float moveDuration)

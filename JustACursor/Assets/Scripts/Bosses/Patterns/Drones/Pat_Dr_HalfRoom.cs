@@ -31,20 +31,20 @@ namespace Bosses.Patterns.Drones
             switch (half)
             {
                 case Room.Half.North:
-                    lineStart = linkedEntity.mover.room.middleLeft;
-                    lineEnd = linkedEntity.mover.room.middleRight;
+                    lineStart = linkedEntity.mover.Room.middleLeft;
+                    lineEnd = linkedEntity.mover.Room.middleRight;
                     break;
                 case Room.Half.East:
-                    lineStart = linkedEntity.mover.room.topCenter;
-                    lineEnd = linkedEntity.mover.room.bottomCenter;
+                    lineStart = linkedEntity.mover.Room.topCenter;
+                    lineEnd = linkedEntity.mover.Room.bottomCenter;
                     break;
                 case Room.Half.South:
-                    lineStart = linkedEntity.mover.room.middleLeft;
-                    lineEnd = linkedEntity.mover.room.middleRight;
+                    lineStart = linkedEntity.mover.Room.middleLeft;
+                    lineEnd = linkedEntity.mover.Room.middleRight;
                     break;
                 case Room.Half.West:
-                    lineStart = linkedEntity.mover.room.topCenter;
-                    lineEnd = linkedEntity.mover.room.bottomCenter;
+                    lineStart = linkedEntity.mover.Room.topCenter;
+                    lineEnd = linkedEntity.mover.Room.bottomCenter;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

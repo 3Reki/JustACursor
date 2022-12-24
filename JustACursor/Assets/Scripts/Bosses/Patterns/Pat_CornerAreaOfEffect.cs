@@ -11,7 +11,7 @@ namespace Bosses.Patterns
         
         protected override GameObject InstantiateAoE(GameObject prefab)
         {
-            GameObject go = Instantiate(prefab, linkedEntity.mover.room.GetCorner(corner), Quaternion.identity,
+            GameObject go = Instantiate(prefab, linkedEntity.mover.Room.GetCorner(corner), Quaternion.identity,
                 linkedEntity.transform);
             go.transform.localScale *= sizeMultiplier;
 
