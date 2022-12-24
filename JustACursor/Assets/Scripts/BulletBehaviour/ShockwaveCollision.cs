@@ -25,7 +25,7 @@ namespace BulletBehaviour
 		}
 	
 		// Update is (still) called once per frame
-		public override void Update ()
+		public override void Update()
 		{
 			base.Update();
 		}

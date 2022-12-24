@@ -22,34 +22,24 @@ namespace Editor
 
             GUILayout.Space(10);
             GUILayout.Label("Editor Only", EditorStyles.boldLabel);
-            if (GUILayout.Button("Get Components"))
+            if (GUILayout.Button("Setup LD"))
             {
                 if (Application.isPlaying)
                 {
                     Debug.LogWarning("Editor Only !");
                     return;
                 }
-                editedLevel.GetComponents();
-            }
-
-            if (GUILayout.Button("Setup Floors"))
-            {
-                if (Application.isPlaying)
-                {
-                    Debug.LogWarning("Editor Only !");
-                    return;
-                }
-                editedLevel.SetupFloors();
+                editedLevel.SetupLD();
             }
                 
-            if (GUILayout.Button("Reset All (for editing)"))
+            if (GUILayout.Button("Reset Layers"))
             {
                 if (Application.isPlaying)
                 {
                     Debug.LogWarning("Editor Only !");
                     return;
                 }
-                editedLevel.ResetAll();
+                editedLevel.ResetLayers();
             }
             
             GUILayout.Space(10);

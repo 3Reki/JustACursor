@@ -76,15 +76,11 @@ namespace LD
         /*
          * Methods for LevelHandlerEditor
          */
-        
-        public void GetComponents()
-        {
+
+        public void SetupLD() {
             Floors = new List<Floor>(GetComponentsInChildren<Floor>(true));
             player = FindObjectOfType<PlayerRespawn>();
-        }
-
-        public void SetupFloors()
-        {
+            
             foreach (var floor in Floors)
             {
                 floor.GetComponents();
@@ -95,7 +91,7 @@ namespace LD
             Debug.Log("Floors have been setup successfully!");
         }
 
-        public void ResetAll()
+        public void ResetLayers()
         {
             foreach (Floor floor in Floors)
             {
@@ -105,7 +101,7 @@ namespace LD
                 floor.SetSortingLayer("CurrentFloor",0);
             }
 
-            Debug.Log("Floors have been reset successfully!");
+            Debug.Log("Layers have been reset successfully!");
         }
     }
 }
