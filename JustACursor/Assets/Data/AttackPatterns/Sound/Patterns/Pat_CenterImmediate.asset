@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4457afccfecf55c44b1345c61497c6c9, type: 3}
-  m_Name: TestDialogue_A
+  m_Script: {fileID: 11500000, guid: 71f4f13db08b49e9a7fb7664e36949b1, type: 3}
+  m_Name: Pat_CenterImmediate
   m_EditorClassIdentifier: 
-  dialogue:
-  - Je suis le dialogue A
-  - A+
-  responses: []
+  patternDuration: 0

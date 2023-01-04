@@ -30,23 +30,23 @@ namespace Bosses.Patterns.Drones
             switch (startingCorner)
             {
                 case Room.Quarter.NorthWest:
-                    lineStart = linkedEntity.mover.room.topLeft;
-                    lineEnd = linkedEntity.mover.room.bottomRight;
+                    lineStart = linkedEntity.mover.Room.topLeft;
+                    lineEnd = linkedEntity.mover.Room.bottomRight;
                     rotation = Quaternion.Euler(0, 0, -45);
                     break;
                 case Room.Quarter.NorthEast:
-                    lineStart = linkedEntity.mover.room.topRight;
-                    lineEnd = linkedEntity.mover.room.bottomLeft;
+                    lineStart = linkedEntity.mover.Room.topRight;
+                    lineEnd = linkedEntity.mover.Room.bottomLeft;
                     rotation = Quaternion.Euler(0, 0, -135);
                     break;
                 case Room.Quarter.SouthWest:
-                    lineStart = linkedEntity.mover.room.topRight;
-                    lineEnd = linkedEntity.mover.room.bottomLeft;
+                    lineStart = linkedEntity.mover.Room.topRight;
+                    lineEnd = linkedEntity.mover.Room.bottomLeft;
                     rotation = Quaternion.Euler(0, 0, 45);
                     break;
                 case Room.Quarter.SouthEast:
-                    lineStart = linkedEntity.mover.room.topLeft;
-                    lineEnd = linkedEntity.mover.room.bottomRight;
+                    lineStart = linkedEntity.mover.Room.topLeft;
+                    lineEnd = linkedEntity.mover.Room.bottomRight;
                     rotation = Quaternion.Euler(0, 0, 135);
                     break;
                 default:

@@ -15,6 +15,8 @@ namespace Player
         private Checkpoint currentCheckpoint;
         private PlayerData data => playerController.Data;
         private Health health => playerController.Health;
+
+        public bool isRespawning { get; private set; }
         
         [Header("Debug")]
         [SerializeField] private KeyCode respawnKey;
@@ -35,7 +37,7 @@ namespace Player
         {
             if (Input.GetKeyDown(respawnKey))
             {
-                Respawn();
+                health.Kill();
             }
             
             else if (Input.GetKeyDown(immortalityKey))
@@ -54,6 +56,7 @@ namespace Player
             Transform checkpointTransform = currentCheckpoint.transform;
             transform.SetPositionAndRotation(checkpointTransform.position, checkpointTransform.rotation);
             CameraController.TeleportToTarget();
+            CameraController.Instance.enabled = true;
         }
 
         public void Respawn()
@@ -61,17 +64,18 @@ namespace Player
             StartCoroutine(RespawnCR());
         }
 
-        private IEnumerator RespawnCR()
-        {
+        private IEnumerator RespawnCR() {
+            isRespawning = true;
             respawnScreen.DOFade(1, data.respawnFadeIn).SetEase(Ease.Linear);
             yield return new WaitForSeconds(data.respawnFadeIn);
 
             Spawn();
-            health.Heal();
+            health.ResetHealth();
             yield return new WaitForSeconds(data.respawnStay);
         
             respawnScreen.DOFade(0, data.respawnFadeOut).SetEase(Ease.Linear);
             yield return new WaitForSeconds(data.respawnFadeOut);
+            isRespawning = false;
         }
     }
 }

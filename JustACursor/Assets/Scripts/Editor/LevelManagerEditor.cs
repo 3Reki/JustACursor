@@ -4,52 +4,42 @@ using UnityEngine;
 
 namespace Editor
 {
-    [CustomEditor(typeof(LevelHandler))]
-    public class LevelHandlerEditor : UnityEditor.Editor
+    [CustomEditor(typeof(LevelManager))]
+    public class LevelManagerEditor : UnityEditor.Editor
     {
-        private LevelHandler editedLH;
+        private LevelManager editedLevel;
 
         private void OnEnable()
         {
-            editedLH = target as LevelHandler;
+            editedLevel = target as LevelManager;
         }
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
             DrawDefaultInspector();
-            editedLH.NbMaxFloorShown = EditorGUILayout.IntSlider("NbMaxFloorShown", editedLH.NbMaxFloorShown, 1, editedLH.Floors.Count);
+            editedLevel.NbMaxFloorShown = EditorGUILayout.IntSlider("NbMaxFloorShown", editedLevel.NbMaxFloorShown, 1, editedLevel.Floors.Count);
 
             GUILayout.Space(10);
             GUILayout.Label("Editor Only", EditorStyles.boldLabel);
-            if (GUILayout.Button("Get Components"))
+            if (GUILayout.Button("Setup LD"))
             {
                 if (Application.isPlaying)
                 {
                     Debug.LogWarning("Editor Only !");
                     return;
                 }
-                editedLH.GetComponents();
-            }
-
-            if (GUILayout.Button("Setup Floors"))
-            {
-                if (Application.isPlaying)
-                {
-                    Debug.LogWarning("Editor Only !");
-                    return;
-                }
-                editedLH.SetupFloors();
+                editedLevel.SetupLD();
             }
                 
-            if (GUILayout.Button("Reset All (for editing)"))
+            if (GUILayout.Button("Reset Layers"))
             {
                 if (Application.isPlaying)
                 {
                     Debug.LogWarning("Editor Only !");
                     return;
                 }
-                editedLH.ResetAll();
+                editedLevel.ResetLayers();
             }
             
             GUILayout.Space(10);
@@ -61,7 +51,7 @@ namespace Editor
                     Debug.LogWarning("Runtime Only !");
                     return;
                 }
-                editedLH.GoToNextFloor();
+                editedLevel.GoToNextFloor();
             }
 
             serializedObject.ApplyModifiedProperties();

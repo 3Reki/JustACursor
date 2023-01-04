@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using BulletPro;
+using Player;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 using UnityEngine.Tilemaps;
 
 namespace LD
@@ -16,8 +18,9 @@ namespace LD
         [SerializeField] private Gradient laserGradient;
         [SerializeField] private ParticleSystem ps_Laser;
 
-        private readonly BulletCollider[] colliders = new BulletCollider[3];
+        private readonly BulletCollider[] colliders = new BulletCollider[5];
         private IEnumerator fireEnumerator;
+        private LayerMask layerMask;
 
         private void Awake()
         {
@@ -30,18 +33,15 @@ namespace LD
                     colliderType = BulletColliderType.Line
                 };
             }
+
+            layerMask.value = LayerMask.GetMask("Default");
         }
 
-        public void StartFire(float previewDuration, float laserDuration, float customWidth, float customLength, bool hasCollision = true)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, customLength+customWidth/2);
-            if (hit && hit.collider is TilemapCollider2D)
-            {
-                customLength = hit.distance-customWidth/2;
-            }
+        public void StartFire(float previewDuration, float laserDuration, float laserWidth, float laserLength, bool hasCollision = true) {
+            laserLength = GetCorrectLaserLength(laserLength, laserWidth);
 
-            SetupLineRenderer(customWidth, customLength);
-            SetupColliders(customWidth, customLength);
+            SetupLineRenderer(laserWidth, laserLength);
+            SetupColliders(laserWidth, laserLength);
 
             fireEnumerator = Fire(previewDuration, laserDuration, hasCollision);
             StartCoroutine(fireEnumerator);
@@ -52,17 +52,22 @@ namespace LD
             if (fireEnumerator != null)
                 StopCoroutine(fireEnumerator);
 
-            if (emitter.isPlaying)
-                emitter.Stop();
-
-            emitter.Kill();
-            lineRenderer.gameObject.SetActive(false);
+            Clear();
         }
 
         private void ShowPreview()
         {
             lineRenderer.gameObject.SetActive(true);
             lineRenderer.colorGradient = previewGradient;
+        }
+
+        private void Clear() {
+            emitter.Stop();
+            emitter.Kill();
+            
+            lineRenderer.gameObject.SetActive(false);
+            ps_Laser.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear);
+            ps_Laser.gameObject.SetActive(false);
         }
 
         private IEnumerator Fire(float previewDuration, float laserDuration, bool hasCollision)
@@ -90,6 +95,7 @@ namespace LD
 
             lineRenderer.colorGradient = laserGradient;
             ps_Laser.Play();
+            ps_Laser.gameObject.SetActive(true);
 
             laserDuration -= Time.deltaTime * Energy.GameSpeed;
             while (laserDuration > 0)
@@ -98,11 +104,15 @@ namespace LD
                 laserDuration -= Time.deltaTime * Energy.GameSpeed;
             }
 
-            ps_Laser.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear);
+            Clear();
+        }
+
+        private float GetCorrectLaserLength(float customLength, float customWidth) {
+            float rayLength = customLength + customWidth / 2;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, rayLength, layerMask);
             
-            lineRenderer.gameObject.SetActive(false);
-            emitter.Stop();
-            emitter.Kill();
+            if (hit) return hit.distance - customWidth / 2;
+            return customLength;
         }
 
         private void SetupBullet(BulletPro.Bullet bullet, bool hasCollision)
@@ -128,12 +138,23 @@ namespace LD
 
         private void SetupColliders(float width, float length)
         {
-            float colliderOffset = width / 2;
-            for (int i = 0; i < 3; i++)
-            {
-                colliders[i].lineStart = new Vector2(colliderOffset * (i - 1), 0);
-                colliders[i].lineEnd = new Vector2(colliderOffset * (i - 1), length);
+            float colliderOffset = width / (colliders.Length-1);
+            for (int i = 0; i < colliders.Length; i++) {
+                colliders[i].lineStart = new Vector2(colliderOffset * (i-2), 0);
+                colliders[i].lineEnd = new Vector2(colliderOffset * (i-2), length);
             }
+            
+            /*colliders[0].lineStart = new Vector2(-width / 2, 0);
+            colliders[0].lineEnd = new Vector2(-width / 2, length);
+            
+            colliders[1].lineStart = new Vector2(-width / 2, length);
+            colliders[1].lineEnd = new Vector2(width / 2, length);
+            
+            colliders[2].lineStart = new Vector2(width / 2, length);
+            colliders[2].lineEnd = new Vector2(width / 2, 0);
+            
+            colliders[3].lineStart = new Vector2(width / 2, 0);
+            colliders[3].lineEnd = new Vector2(-width / 2, 0);*/
         }
     }
 }

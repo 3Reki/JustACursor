@@ -22,7 +22,7 @@ namespace Bosses.Patterns.Drones
                     "Pat_Dr_Center is meant to be used with 12 drones. Other drone count may result in unexpected behaviours");
             }
 
-            Vector3 roomCenter = linkedEntity.mover.room.middleCenter;
+            Vector3 roomCenter = linkedEntity.mover.Room.middleCenter;
             for (int i = 0; i < droneCount; i++)
             {
                 // offset if flipFormation is false to match Julia's ATK-R1 pattern, else match ATK-R1bis

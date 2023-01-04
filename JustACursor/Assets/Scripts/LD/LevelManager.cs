@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LD
 {
-    public class LevelHandler : MonoBehaviour
+    public class LevelManager : MonoBehaviour
     {
         [Header("Components")]
         [SerializeField] private PlayerRespawn player;
@@ -46,8 +46,8 @@ namespace LD
             if (Floors.Count == 0) return;
             
             //Next floor
-            CameraController.instance.enabled = true;
             player.transform.SetPositionAndRotation(Floors[0].StartPoint.transform.position, Floors[0].StartPoint.transform.rotation);
+            CameraController.TeleportToTarget();
             player.SetCheckpoint(Floors[0].StartPoint);
             UpdateFloors();
         }
@@ -76,15 +76,11 @@ namespace LD
         /*
          * Methods for LevelHandlerEditor
          */
-        
-        public void GetComponents()
-        {
+
+        public void SetupLD() {
             Floors = new List<Floor>(GetComponentsInChildren<Floor>(true));
             player = FindObjectOfType<PlayerRespawn>();
-        }
-
-        public void SetupFloors()
-        {
+            
             foreach (var floor in Floors)
             {
                 floor.GetComponents();
@@ -95,7 +91,7 @@ namespace LD
             Debug.Log("Floors have been setup successfully!");
         }
 
-        public void ResetAll()
+        public void ResetLayers()
         {
             foreach (Floor floor in Floors)
             {
@@ -105,7 +101,7 @@ namespace LD
                 floor.SetSortingLayer("CurrentFloor",0);
             }
 
-            Debug.Log("Floors have been reset successfully!");
+            Debug.Log("Layers have been reset successfully!");
         }
     }
 }

@@ -13,7 +13,6 @@ namespace Bosses
         [Space(15)]
         [Header("=== Sound Boss ===")]
         [SerializeField] private SpeakerMinion[] drones = new SpeakerMinion[12];
-        //[SerializeField] private Resolver<BossSound>[] dronesResolver;
         
         private Instruction<BossSound> currentDronePattern;
 

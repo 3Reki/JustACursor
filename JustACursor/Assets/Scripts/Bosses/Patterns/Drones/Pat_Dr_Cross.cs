@@ -29,23 +29,23 @@ namespace Bosses.Patterns.Drones
             switch (index / 3)
             {
                 case 0 :
-                    start = Vector2.Lerp(linkedEntity.mover.room.topLeft, linkedEntity.mover.room.bottomLeft, .2f);
-                    end = Vector2.Lerp(linkedEntity.mover.room.topLeft, linkedEntity.mover.room.topRight, .2f);
+                    start = Vector2.Lerp(linkedEntity.mover.Room.topLeft, linkedEntity.mover.Room.bottomLeft, .2f);
+                    end = Vector2.Lerp(linkedEntity.mover.Room.topLeft, linkedEntity.mover.Room.topRight, .2f);
                     rotation = Quaternion.Euler(0, 0, -135);
                     break;
                 case 1 :
-                    start = Vector2.Lerp(linkedEntity.mover.room.topRight, linkedEntity.mover.room.topLeft, .2f);
-                    end = Vector2.Lerp(linkedEntity.mover.room.topRight, linkedEntity.mover.room.bottomRight, .2f);
+                    start = Vector2.Lerp(linkedEntity.mover.Room.topRight, linkedEntity.mover.Room.topLeft, .2f);
+                    end = Vector2.Lerp(linkedEntity.mover.Room.topRight, linkedEntity.mover.Room.bottomRight, .2f);
                     rotation = Quaternion.Euler(0, 0, 135);
                     break;
                 case 2 :
-                    start = Vector2.Lerp(linkedEntity.mover.room.bottomRight, linkedEntity.mover.room.topRight, .2f);
-                    end = Vector2.Lerp(linkedEntity.mover.room.bottomRight, linkedEntity.mover.room.bottomLeft, .2f);
+                    start = Vector2.Lerp(linkedEntity.mover.Room.bottomRight, linkedEntity.mover.Room.topRight, .2f);
+                    end = Vector2.Lerp(linkedEntity.mover.Room.bottomRight, linkedEntity.mover.Room.bottomLeft, .2f);
                     rotation = Quaternion.Euler(0, 0, 45);
                     break;
                 case 3 :
-                    start = Vector2.Lerp(linkedEntity.mover.room.bottomLeft, linkedEntity.mover.room.bottomRight, .2f);
-                    end = Vector2.Lerp(linkedEntity.mover.room.bottomLeft, linkedEntity.mover.room.topLeft, .2f);
+                    start = Vector2.Lerp(linkedEntity.mover.Room.bottomLeft, linkedEntity.mover.Room.bottomRight, .2f);
+                    end = Vector2.Lerp(linkedEntity.mover.Room.bottomLeft, linkedEntity.mover.Room.topLeft, .2f);
                     rotation = Quaternion.Euler(0, 0, -45);
                     break;
                 default:

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7911879526573161376}
   - component: {fileID: 7911879526573161379}
   - component: {fileID: 7911879526573161378}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Fix Camera Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,6 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb257ba211d055549b032bfdca2610e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchorPosition: {x: 0, y: 0}
-  movementDuration: 1
   viewSize: 9
+  movementDuration: 1
+  anchorPosition: {x: 0, y: 0}

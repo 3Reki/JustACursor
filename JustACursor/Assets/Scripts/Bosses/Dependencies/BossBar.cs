@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -7,35 +8,28 @@ namespace Bosses.Dependencies
 {
     public class BossBar : MonoBehaviour
     {
-        [SerializeField] private Health health;
+        [field:SerializeField] public Health Health { get; private set; }
         [SerializeField] private Image healthFill;
         [SerializeField] private TMP_Text healthAmountText;
+        [SerializeField] private float introFillSpeed = 1f;
 
-        private void OnEnable()
-        {
-            health.onHealthLose.AddListener(UpdateBar);
-            health.onDeath.AddListener(Hide);
-        }
+        private float fillCurrent;
 
-        private void OnDisable()
-        {
-            health.onHealthLose.RemoveListener(UpdateBar);
-            health.onDeath.RemoveListener(Hide);
-        }
-
-        private void Start()
-        {
-            healthAmountText.text = health.MaxHealth.ToString();
+        public void InitBar() {
+            DOTween.To(() => fillCurrent, x => fillCurrent = x, Health.MaxHealth, introFillSpeed).OnUpdate(() => {
+                healthAmountText.text = ((int)fillCurrent).ToString();
+                healthFill.fillAmount = fillCurrent/Health.MaxHealth;
+            });
         }
         
-        private void UpdateBar()
+        public void UpdateBar()
         {
             healthFill.DOKill();
-            healthFill.DOFillAmount(health.GetRatio(), 0.5f);
-            healthAmountText.text = health.CurrentHealth.ToString();
+            healthFill.DOFillAmount(Health.GetRatio(), 0.5f);
+            healthAmountText.text = Health.CurrentHealth.ToString();
         }
 
-        private void Hide()
+        public void Hide()
         {
             gameObject.SetActive(false);
         }
