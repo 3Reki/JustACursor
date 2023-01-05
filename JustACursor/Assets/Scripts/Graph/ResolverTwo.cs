@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Bosses;
-using Bosses.Dependencies;
-using Bosses.Instructions;
 using Graph.Resolver;
+using LegacyBosses;
+using LegacyBosses.Dependencies;
+using LegacyBosses.Instructions;
 using UnityEngine;
 
 namespace Graph

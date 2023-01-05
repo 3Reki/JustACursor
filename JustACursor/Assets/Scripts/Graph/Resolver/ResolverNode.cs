@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Bosses;
-using Bosses.Dependencies;
+using LegacyBosses;
+using LegacyBosses.Dependencies;
 
 namespace Graph.Resolver
 {

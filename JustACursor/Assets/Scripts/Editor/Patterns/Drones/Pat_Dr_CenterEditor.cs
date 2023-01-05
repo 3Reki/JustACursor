@@ -1,5 +1,5 @@
-﻿using Bosses.Patterns.Drones;
-using LD;
+﻿using LD;
+using LegacyBosses.Patterns.Drones;
 using UnityEditor;
 using UnityEngine;
 

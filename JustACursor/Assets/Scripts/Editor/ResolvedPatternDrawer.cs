@@ -1,4 +1,4 @@
-﻿using Bosses.Dependencies;
+﻿using LegacyBosses.Dependencies;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
