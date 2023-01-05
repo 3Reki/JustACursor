@@ -95,7 +95,7 @@ MonoBehaviour:
   fireRate: 8
   timeAbilityDuration: 3
   maxHealth: 3
-  invinciblityTime: 1
+  invinciblityTime: 1e+10
   onHitShakeIntensity: 0.3
   onHitShakeDuration: 0.09
   healthFadeIn: 0.2
