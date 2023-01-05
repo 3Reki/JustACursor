@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Bosses.Patterns.Drones
 {
     [CreateAssetMenu(fileName = "Pat_Dr_DiagonalHalf", menuName = "Just A Cursor/Pattern/Drones/Diagonal Half Room Pattern", order = 0)]
-    public class Pat_Dr_DiagonalHalfRoom : Pattern<BossSound>
+    public class Pat_Dr_DiagonalHalfRoom : Pat_Dr_Movement
     {
         [SerializeField] private Room.Quarter startingCorner;
         
@@ -18,12 +18,10 @@ namespace Bosses.Patterns.Drones
 
             for (int i = 0; i < droneCount; i++)
             {
-                linkedEntity.GetDrone(i).SetPositionAndRotation(Vector2.Lerp(start, end, (i + 0.5f) / droneCount),
+                SetTarget(i, Vector2.Lerp(start, end, (i + 0.5f) / droneCount),
                     rotation);
             }
         }
-
-        public override void Stop() {}
 
         private void GetPositionAndRotation(out Vector2 lineStart, out Vector2 lineEnd, out Quaternion rotation)
         {

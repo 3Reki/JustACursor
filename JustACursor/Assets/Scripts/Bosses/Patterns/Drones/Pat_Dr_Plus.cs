@@ -5,7 +5,7 @@ namespace Bosses.Patterns.Drones
 {
     
     [CreateAssetMenu(fileName = "Pat_Dr_Plus", menuName = "Just A Cursor/Pattern/Drones/Plus Pattern", order = 0)]
-    public class Pat_Dr_Plus : Pattern<BossSound>
+    public class Pat_Dr_Plus : Pat_Dr_Movement
     {
         
         public override void Play(BossSound entity)
@@ -16,12 +16,10 @@ namespace Bosses.Patterns.Drones
 
             for (int i = 0; i < droneCount; i++)
             {
-                linkedEntity.GetDrone(i).SetPositionAndRotation(GetPosition(i, out Quaternion rotation),
+                SetTarget(i, GetPosition(i, out Quaternion rotation),
                     rotation);
             }
         }
-
-        public override void Stop() {}
 
         private Vector2 GetPosition(int index, out Quaternion rotation)
         {
