@@ -2,7 +2,6 @@
 
 namespace LegacyBosses.Patterns
 {
-    [CreateAssetMenu(fileName = "Pat_Center", menuName = "Just A Cursor/Pattern/Center")]
     public class Pat_Center : Pattern<Boss>
     {
         public override void Play(Boss entity)

@@ -2,7 +2,6 @@
 
 namespace LegacyBosses.Patterns.Drones
 {
-    [CreateAssetMenu(fileName = "Pat_Dr_Shoot", menuName = "Just A Cursor/Pattern/Drones/Shoot Pattern", order = 0)]
     public class Pat_Dr_ShootLaser : Pattern<BossSound>
     {
         [SerializeField] private float previewDuration;

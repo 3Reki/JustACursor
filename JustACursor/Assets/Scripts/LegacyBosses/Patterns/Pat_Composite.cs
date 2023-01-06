@@ -2,7 +2,6 @@
 
 namespace LegacyBosses.Patterns
 {
-    [CreateAssetMenu(fileName = "Pat_Composite", menuName = "Just A Cursor/Pattern/Composite")]
     public class Pat_Composite : Pattern<Boss>
     {
         [SerializeField] private Pattern<Boss>[] patterns;

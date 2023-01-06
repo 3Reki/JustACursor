@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace LegacyBosses.Patterns
 {
-    [CreateAssetMenu(fileName = "Pat_Laser", menuName = "Just A Cursor/Pattern/Laser Pattern", order = 0)]
     public class Pat_Laser : Pattern<ILaserHolder>
     {
         [SerializeField] private float previewDuration;

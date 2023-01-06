@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace LegacyBosses.Patterns.Drones
 {
-    [CreateAssetMenu(fileName = "Pat_Dr_Half", menuName = "Just A Cursor/Pattern/Drones/Half Room Pattern", order = 0)]
     public class Pat_Dr_HalfRoom : Pat_Dr_Movement
     {
         [SerializeField] private Room.Half half;

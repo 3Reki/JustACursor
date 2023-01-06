@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace LegacyBosses.Patterns
 {
-    [CreateAssetMenu(fileName = "Pat_Border", menuName = "Just A Cursor/Pattern/Border Pattern", order = 0)]
     public class Pat_Border : Pattern<Boss>
     {
         [SerializeField] private Room.Half border;

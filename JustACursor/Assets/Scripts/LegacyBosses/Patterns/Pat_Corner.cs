@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace LegacyBosses.Patterns
 {
-    [CreateAssetMenu(fileName = "Pat_Corner", menuName = "Just A Cursor/Pattern/Corner")]
     public class Pat_Corner : Pattern<Boss>
     {
         [SerializeField] private Room.Corner corner;

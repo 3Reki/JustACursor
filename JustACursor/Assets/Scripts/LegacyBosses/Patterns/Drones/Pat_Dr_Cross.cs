@@ -4,7 +4,6 @@ using UnityEngine;
 namespace LegacyBosses.Patterns.Drones
 {
     
-    [CreateAssetMenu(fileName = "Pat_Dr_Cross", menuName = "Just A Cursor/Pattern/Drones/Cross Pattern", order = 0)]
     public class Pat_Dr_Cross : Pat_Dr_Movement
     {
         public override void Play(BossSound entity)

@@ -4,7 +4,6 @@ using UnityEngine;
 namespace LegacyBosses.Patterns.Drones
 {
     
-    [CreateAssetMenu(fileName = "Pat_Dr_Plus", menuName = "Just A Cursor/Pattern/Drones/Plus Pattern", order = 0)]
     public class Pat_Dr_Plus : Pat_Dr_Movement
     {
         

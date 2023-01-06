@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959cd646c339460caf873ffa855b1a59, type: 3}
+  m_Name: Ins_Dr_1
+  m_EditorClassIdentifier: 
+  phase: 0
+  resolver:
+    choices: []
+  pattern: {fileID: 11400000, guid: da25384e020e6cc488ad02b638fe6d68, type: 2}

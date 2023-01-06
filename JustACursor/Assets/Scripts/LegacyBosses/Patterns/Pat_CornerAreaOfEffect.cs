@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace LegacyBosses.Patterns
 {
-    [CreateAssetMenu(fileName = "Pat_CornerAoE", menuName = "Just A Cursor/Pattern/Corner AoE", order = 0)]
     public class Pat_CornerAreaOfEffect : Pat_AreaOfEffect<Boss>
     {
         [SerializeField] private Room.Quarter corner;

@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace LegacyBosses.Patterns
 {
-    [CreateAssetMenu(fileName = "Pat_Emitter", menuName = "Just A Cursor/Pattern/Emitter Pattern", order = 0)]
     public class Pat_Emitter : Pattern<Boss>
     {
         [SerializeField, Tooltip("Max 3 profiles")] private EmitterProfile[] emitterProfiles;

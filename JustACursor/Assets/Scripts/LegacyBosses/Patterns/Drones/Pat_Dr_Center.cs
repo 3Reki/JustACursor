@@ -2,8 +2,6 @@
 
 namespace LegacyBosses.Patterns.Drones
 {
-    [CreateAssetMenu(fileName = "Pat_Dr_Center", menuName = "Just A Cursor/Pattern/Drones/Center Room Pattern",
-        order = 0)]
     public class Pat_Dr_Center : Pat_Dr_Movement
     {
         [Min(0)]

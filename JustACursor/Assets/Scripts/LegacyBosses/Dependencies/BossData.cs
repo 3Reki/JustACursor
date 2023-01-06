@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace LegacyBosses.Dependencies
 {
-    [CreateAssetMenu(fileName = "BossName_BossData", menuName = "Just A Cursor/BossData")]
     public class BossData : ScriptableObject
     {
         [SerializeField] private string bossName;

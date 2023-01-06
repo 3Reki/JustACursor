@@ -2,7 +2,6 @@
 
 namespace LegacyBosses.Patterns
 {
-    [CreateAssetMenu(fileName = "Pat_RandomAoE", menuName = "Just A Cursor/Pattern/Random Area Of Effect", order = 0)]
     public class Pat_RandomAreaOfEffect : Pattern<Boss>
     {
         [SerializeField] private GameObject aoePrefab;

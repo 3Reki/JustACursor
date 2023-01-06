@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace LegacyBosses.Patterns.Drones
 {
-    [CreateAssetMenu(fileName = "Pat_Dr_Square", menuName = "Just A Cursor/Pattern/Drones/Square Pattern", order = 0)]
     public class Pat_Dr_Square : Pat_Dr_Movement
     {
         public override void Play(BossSound entity)
