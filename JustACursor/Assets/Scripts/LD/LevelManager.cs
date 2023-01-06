@@ -44,12 +44,12 @@ namespace LD
             Floors.RemoveAt(0);
             
             if (Floors.Count == 0) return;
-            
+
             //Next floor
-            player.transform.SetPositionAndRotation(Floors[0].StartPoint.transform.localPosition, Floors[0].StartPoint.transform.rotation);
+            UpdateFloors();
+            player.transform.SetPositionAndRotation(Floors[0].StartPoint.transform.position, Floors[0].StartPoint.transform.rotation);
             CameraController.TeleportToTarget();
             player.SetCheckpoint(Floors[0].StartPoint);
-            UpdateFloors();
         }
         
         private void UpdateFloors()

@@ -47,6 +47,11 @@ namespace Player
                 HandleRespawn();
                 return;
             }
+
+            if (Input.GetKey(KeyCode.P))
+            {
+                Debug.Log(PlayerPosition);
+            }
             
             moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
             PlayerPosition = transform.position; 
