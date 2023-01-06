@@ -46,7 +46,7 @@ namespace LD
             if (Floors.Count == 0) return;
             
             //Next floor
-            player.transform.SetPositionAndRotation(Floors[0].StartPoint.transform.position, Floors[0].StartPoint.transform.rotation);
+            player.transform.SetPositionAndRotation(Floors[0].StartPoint.transform.localPosition, Floors[0].StartPoint.transform.rotation);
             CameraController.TeleportToTarget();
             player.SetCheckpoint(Floors[0].StartPoint);
             UpdateFloors();

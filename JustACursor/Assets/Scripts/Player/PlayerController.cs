@@ -44,10 +44,7 @@ namespace Player
 
         private void Update() {
             if (playerRespawn.isRespawning) {
-                if (stopMovingEnumerator == null) return;
-                
-                StopCoroutine(stopMovingEnumerator);
-                playerMovement.Stop();
+                HandleRespawn();
                 return;
             }
             
@@ -59,6 +56,14 @@ namespace Player
             HandleRotation();
             HandleShoot();
             HandleEnergy();
+        }
+
+        private void HandleRespawn()
+        {
+            if (stopMovingEnumerator == null) return;
+                
+            StopCoroutine(stopMovingEnumerator);
+            playerMovement.Stop();
         }
 
         private void HandleDash() {

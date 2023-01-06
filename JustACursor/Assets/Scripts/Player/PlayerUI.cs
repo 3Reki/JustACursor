@@ -19,13 +19,7 @@ namespace Player {
         public void ShowHealth()
         {
             if (showHealthCoroutine != null)
-            {
-                for (int i = 0; i < pvs.Count; i++) {
-                    pvs[i].DOKill();
-                    pvsBackground[i].DOKill();
-                }
                 StopCoroutine(showHealthCoroutine);
-            }
             
             showHealthCoroutine = StartCoroutine(ShowHealthCR());
         }
@@ -45,6 +39,7 @@ namespace Player {
                 if (health.CurrentHealth >= health.MaxHealth - i) {
                     pvs[i].DOFade(1, data.healthFadeIn);
                 }
+                else pvs[i].DOFade(0, 0);
 
                 pvsBackground[i].DOFade(0.5f, data.healthFadeIn);
             }
