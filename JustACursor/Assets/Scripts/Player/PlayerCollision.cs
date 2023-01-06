@@ -14,8 +14,8 @@ namespace Player {
         [SerializeField] private PlayerController playerController;
         [SerializeField] private PolygonCollider2D playerCollider;
 
-        private List<BulletPro.Bullet> shockwaveCollisions = new();
-        private List<BoxCollider2D> laserCollisions = new();
+        private readonly List<BulletPro.Bullet> shockwaveCollisions = new();
+        private readonly List<BoxCollider2D> laserCollisions = new();
         
         private PlayerData data => playerController.Data;
         private Health health => playerController.Health;
@@ -74,7 +74,10 @@ namespace Player {
         public void OnHitByBulletEnter(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
             if (bullet.GetComponentInChildren<ShockwaveCollision>())
+            {
                 shockwaveCollisions.Add(bullet);
+            }
+                
         }
         
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
