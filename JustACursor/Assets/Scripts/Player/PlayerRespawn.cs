@@ -66,6 +66,8 @@ namespace Player
 
         private IEnumerator RespawnCR() {
             isRespawning = true;
+            playerController.IsInvincible = true;
+            
             respawnScreen.DOFade(1, data.respawnFadeIn).SetEase(Ease.Linear);
             yield return new WaitForSeconds(data.respawnFadeIn);
 
@@ -75,6 +77,8 @@ namespace Player
         
             respawnScreen.DOFade(0, data.respawnFadeOut).SetEase(Ease.Linear);
             yield return new WaitForSeconds(data.respawnFadeOut);
+            
+            playerController.IsInvincible = false;
             isRespawning = false;
         }
     }

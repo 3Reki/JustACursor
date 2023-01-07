@@ -574,6 +574,7 @@ MonoBehaviour:
   IsInvincible: 0
   playerController: {fileID: 8213265501839806752}
   playerCollider: {fileID: 924910023452520100}
+  spriteInside: {fileID: 3064125785663285954}
 --- !u!114 &8212564198902162576
 MonoBehaviour:
   m_ObjectHideFlags: 0

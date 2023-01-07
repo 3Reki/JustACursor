@@ -51,8 +51,9 @@ namespace Player {
         public void Damage(int damage = 1)
         {
             if (IsInvincible) return;
-            
             health.LoseHealth(damage);
+            
+            if (health.CurrentHealth == 0) return;
             StartCoroutine(Invincibility());
         }
 

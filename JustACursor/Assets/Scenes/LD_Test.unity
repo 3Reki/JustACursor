@@ -12784,11 +12784,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5303936066745249952, guid: 4dda7f0de58bd8e479b3dcaa7a60d9e9, type: 3}
   m_PrefabInstance: {fileID: 457377021}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &519538077 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3064125785663285954, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}
-  m_PrefabInstance: {fileID: 1409171225}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &523943743 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 608500361682140896, guid: 4dda7f0de58bd8e479b3dcaa7a60d9e9, type: 3}
@@ -38767,10 +38762,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2644103639729209473, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}
-      propertyPath: spriteInside
-      value: 
-      objectReference: {fileID: 519538077}
     - target: {fileID: 8492879579015322657, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}
       propertyPath: m_RootOrder
       value: 5
