@@ -1,8 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using BulletBehaviour;
 using CameraScripts;
+using DG.Tweening;
 using LD;
 using UnityEngine;
 
@@ -13,6 +13,9 @@ namespace Player {
         
         [SerializeField] private PlayerController playerController;
         [SerializeField] private PolygonCollider2D playerCollider;
+
+        [Header("Feedback")]
+        [SerializeField] private SpriteRenderer spriteInside;
 
         private readonly List<BulletPro.Bullet> shockwaveCollisions = new();
         private readonly List<BoxCollider2D> laserCollisions = new();
@@ -56,7 +59,16 @@ namespace Player {
         private IEnumerator Invincibility()
         {
             IsInvincible = true;
-            yield return new WaitForSeconds(data.invinciblityTime);
+
+            float time = 0;
+            float lastKeyTime = data.alphaOscillation.keys[^1].time;
+            while (time < data.invinciblityTime)
+            {
+                spriteInside.DOFade(data.alphaOscillation.Evaluate(time), 0);
+                yield return null;
+                time += Energy.GameSpeed * Time.deltaTime * (lastKeyTime/data.invinciblityTime);
+            }
+            
             IsInvincible = false;
         }
 

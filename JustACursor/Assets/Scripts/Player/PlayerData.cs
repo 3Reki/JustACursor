@@ -30,6 +30,7 @@ namespace Player
         [Header("Health")]
         public int maxHealth;
         public float invinciblityTime;
+        public AnimationCurve alphaOscillation;
         public float onHitShakeIntensity;
         public float onHitShakeDuration;
 

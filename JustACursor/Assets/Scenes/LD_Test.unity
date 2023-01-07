@@ -12784,6 +12784,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5303936066745249952, guid: 4dda7f0de58bd8e479b3dcaa7a60d9e9, type: 3}
   m_PrefabInstance: {fileID: 457377021}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &519538077 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3064125785663285954, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}
+  m_PrefabInstance: {fileID: 1409171225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &523943743 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 608500361682140896, guid: 4dda7f0de58bd8e479b3dcaa7a60d9e9, type: 3}
@@ -38762,6 +38767,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2644103639729209473, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}
+      propertyPath: spriteInside
+      value: 
+      objectReference: {fileID: 519538077}
     - target: {fileID: 8492879579015322657, guid: 8a5e3cef2e310a34cae196be79ae90ef, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -42564,7 +42573,7 @@ PrefabInstance:
       objectReference: {fileID: 1488576159}
     - target: {fileID: 2364542196923931312, guid: 9a5fca1cbf5cf874cad4a936f6c7c06b, type: 3}
       propertyPath: shockwaveCooldown
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2364542196923931312, guid: 9a5fca1cbf5cf874cad4a936f6c7c06b, type: 3}
       propertyPath: shockwaveLifespan
@@ -42596,7 +42605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4227097246424240061, guid: 9a5fca1cbf5cf874cad4a936f6c7c06b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4227097246424240062, guid: 9a5fca1cbf5cf874cad4a936f6c7c06b, type: 3}
       propertyPath: m_RootOrder
