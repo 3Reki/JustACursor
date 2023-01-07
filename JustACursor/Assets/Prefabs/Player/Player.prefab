@@ -501,6 +501,7 @@ MonoBehaviour:
   energy: {fileID: 5524830041888224857}
   extraTimeFill: {fileID: 6993762370553841011}
   intraTimeFill: {fileID: 899702378231113167}
+  animator: {fileID: 1184827919}
   onPlayerSpeedUp:
     m_PersistentCalls:
       m_Calls:
@@ -1545,6 +1546,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8477428863007759404, guid: 352819842b9341846b4128ad0a84028d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -220
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477428863007759404, guid: 352819842b9341846b4128ad0a84028d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 9000563038312215814, guid: 352819842b9341846b4128ad0a84028d, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -1655,3 +1664,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &9142183661543054502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1072757685265301621, guid: 352819842b9341846b4128ad0a84028d, type: 3}
+  m_PrefabInstance: {fileID: 8087546787174833363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1184827919
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9142183661543054502}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e6dc7f3976a5a6448e32fa66a577e92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
