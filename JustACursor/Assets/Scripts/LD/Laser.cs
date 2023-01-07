@@ -11,12 +11,12 @@ namespace LD
     {
         [Header("Components")]
         [SerializeField] private LineRenderer lineRenderer;
-        [SerializeField] private BoxCollider2D collider;
+        [SerializeField] private BoxCollider2D laserCollider;
 
         [Header("Render")]
         [SerializeField] private Gradient previewGradient;
         [SerializeField] private Gradient laserGradient;
-        [SerializeField] private ParticleSystem ps_Laser;
+        [SerializeField] private ParticleSystem psLaser;
         
         private IEnumerator fireEnumerator;
         private LayerMask layerMask;
@@ -54,18 +54,16 @@ namespace LD
 
         private void Active(bool hasCollision)
         {
-            if (hasCollision) collider.enabled = true;
+            if (hasCollision) laserCollider.enabled = true;
             lineRenderer.colorGradient = laserGradient;
-            ps_Laser.Play();
-            ps_Laser.gameObject.SetActive(true);
+            psLaser.Play();
         }
 
         private void Clear()
         {
-            collider.enabled = false;
+            laserCollider.enabled = false;
             lineRenderer.gameObject.SetActive(false);
-            ps_Laser.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear);
-            ps_Laser.gameObject.SetActive(false);
+            psLaser.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear);
         }
 
         private IEnumerator Fire(float previewDuration, float laserDuration, bool hasCollision)
@@ -109,8 +107,8 @@ namespace LD
 
         private void SetupCollider(float width, float length)
         {
-            collider.size = new Vector2(width, length);
-            collider.offset = new Vector2(0, length / 2);
+            laserCollider.size = new Vector2(width, length);
+            laserCollider.offset = new Vector2(0, length / 2);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Player
         [SerializeField] private Animator animator;
         [SerializeField] private GameObject baseTrail;
         [SerializeField] private GameObject dashTrail;
-        [SerializeField] private GameObject dashPS;
+        [SerializeField] private GameObject psDash;
 
         private bool canDash = true;
         private float elapsedTime;
@@ -37,7 +37,7 @@ namespace Player
             animator.Play("Player@Dash");
             baseTrail.SetActive(false);
             dashTrail.SetActive(true);
-            dashPS.SetActive(true);
+            psDash.SetActive(true);
             
             dashDirection = moveDir;
             if (dashDirection == Vector2.zero) dashDirection = rb.transform.right;
@@ -64,7 +64,7 @@ namespace Player
             
             baseTrail.SetActive(true);
             dashTrail.SetActive(false);
-            dashPS.SetActive(false);
+            psDash.SetActive(false);
         }
 
         public void DashMovement(Vector2 direction)

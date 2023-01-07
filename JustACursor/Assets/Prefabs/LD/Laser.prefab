@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 5693606108572183780}
-  collider: {fileID: 4601807912308481236}
+  laserCollider: {fileID: 4601807912308481236}
   previewGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 0, a: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  ps_Laser: {fileID: 7146036314686744870}
+  psLaser: {fileID: 7146036314686744870}
 --- !u!61 &4601807912308481236
 BoxCollider2D:
   m_ObjectHideFlags: 0

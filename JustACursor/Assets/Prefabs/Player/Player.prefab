@@ -484,7 +484,7 @@ MonoBehaviour:
   animator: {fileID: 7640553199668799672}
   baseTrail: {fileID: 8533040321762477041}
   dashTrail: {fileID: 2849960499836695686}
-  dashPS: {fileID: 6151579696066648935}
+  psDash: {fileID: 6151579696066648935}
 --- !u!114 &7955158611217667163
 MonoBehaviour:
   m_ObjectHideFlags: 0
