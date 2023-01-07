@@ -9,23 +9,47 @@ namespace Player
         [SerializeField] private PlayerController playerController;
         [SerializeField] private BulletEmitter emitter;
 
-        private PlayerData data => playerController.Data;
+        [Header("Feedback")]
+        [SerializeField] private GameObject psMuzzle;
 
         private bool canShoot = true;
         
-        public void Shoot()
+        private PlayerData data => playerController.Data;
+        
+        public void StartShoot()
         {
             if (!canShoot) return;
             
+            StartCoroutine(ShootCR());
+            psMuzzle.SetActive(true);
+        }
+
+        public void StopShoot()
+        {
+            psMuzzle.SetActive(false);
+        }
+
+        private IEnumerator ShootCR()
+        {
             emitter.Play();
-            StartCoroutine(ShootCooldown());
+            yield return ShootCooldown();
+            emitter.Stop();
+
+            if (playerController.IsShooting)
+                StartCoroutine(ShootCR());
         }
 
         private IEnumerator ShootCooldown()
         {
             canShoot = false;
-            yield return new WaitForSeconds(1 / data.fireRate / Energy.GameSpeed);
-            emitter.Stop();
+            
+            float shootCooldown = 1 / data.fireRate;
+            while (shootCooldown > 0)
+            {
+                yield return null;
+                shootCooldown -= Time.deltaTime * Energy.GameSpeed;
+            }
+
             canShoot = true;
         }
     }

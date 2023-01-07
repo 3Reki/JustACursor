@@ -18,6 +18,8 @@ namespace Player {
 
         public void ShowHealth()
         {
+            if (health.CurrentHealth == 0) return;
+            
             if (showHealthCoroutine != null)
                 StopCoroutine(showHealthCoroutine);
             

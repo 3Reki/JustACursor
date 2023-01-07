@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 15170030
+  uniqueIndex: 13851164
   profile: {fileID: 11400000}
   parent: {fileID: 114746627269426962}
   children:
@@ -4990,7 +4990,7 @@ MonoBehaviour:
         m_Center: {x: 0, y: 0, z: 0}
         m_Extent: {x: 0, y: 0, z: 0}
       displayName: Begin Loop
-    - enabled: 1
+    - enabled: 0
       instructionType: 6
       waitTime:
         valueTree:
@@ -24499,7 +24499,7 @@ MonoBehaviour:
   advancedFoldout: 0
   hasBeenSerializedOnce: 1
   focusedInstruction: -1
-  safetyForPlaymode: 47
+  safetyForPlaymode: 49
 --- !u!114 &114527426404384722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -24513,7 +24513,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 13825133
+  uniqueIndex: 2669535
   profile: {fileID: 11400000}
   parent: {fileID: 114235044058580522}
   children:
@@ -26947,7 +26947,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3761108
+  uniqueIndex: 3922767
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -34059,7 +34059,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 14660579
+  uniqueIndex: 14967351
   profile: {fileID: 11400000}
   parent: {fileID: 114527426404384722}
   children: []
