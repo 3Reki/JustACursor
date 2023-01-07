@@ -27,7 +27,7 @@ namespace Player
         [Header("Time Ability")]
         public float timeAbilityDuration;
 
-        [Header("Health")]
+        [Header("Health/Collision")]
         public int maxHealth;
         public float invinciblityTime;
         public AnimationCurve alphaOscillation;

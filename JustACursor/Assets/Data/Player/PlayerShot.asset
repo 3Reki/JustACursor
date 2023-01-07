@@ -9578,7 +9578,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 1285729
+  uniqueIndex: 14491814
   profile: {fileID: 11400000}
   parent: {fileID: 114746627269426962}
   children:
@@ -19467,7 +19467,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 7633950
+  uniqueIndex: 15255610
   profile: {fileID: 11400000}
   parent: {fileID: 114235044058580522}
   children:
@@ -21900,7 +21900,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 12758114
+  uniqueIndex: 15252631
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -29012,7 +29012,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 12258103
+  uniqueIndex: 1361715
   profile: {fileID: 11400000}
   parent: {fileID: 114527426404384722}
   children: []
@@ -30385,7 +30385,7 @@ MonoBehaviour:
   vfxParams:
   - tag: VFX #0
     attachToBulletTransform: 0
-    useDefaultParticles: 1
+    useDefaultParticles: 0
     particleSystemPrefab:
       valueTree:
       - settings:
@@ -30495,7 +30495,7 @@ MonoBehaviour:
           parameterType: 0
           relativeTo: 0
           parameterName: 
-        defaultValue: {fileID: 0}
+        defaultValue: {fileID: 3279788738459780764, guid: c68e6b85c993875408b2fb6d6360977f, type: 3}
       narrowType: 1
       requireComponent: 0
       typeName: UnityEngine.ParticleSystem, UnityEngine.ParticleSystemModule, Version=0.0.0.0,
@@ -30532,7 +30532,7 @@ MonoBehaviour:
       unless: 0
       canceller: 0
     replaceColorWithBulletColor: 1
-    replaceSizeWithNumber: 1
+    replaceSizeWithNumber: 0
     sizeNewValue:
       valueTree:
       - settings:
@@ -31331,7 +31331,7 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 1
   canMove: 1
   canCollide: 1
   isVisible: 1

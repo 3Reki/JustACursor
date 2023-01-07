@@ -174,7 +174,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  onHitColorBlendDuration: 0.5
+  onHitColorBlendDuration: 1
   onHitShakeIntensity: 0.3
   onHitShakeDuration: 0.09
   healthFadeIn: 0.2
