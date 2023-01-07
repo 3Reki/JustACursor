@@ -54,6 +54,8 @@ namespace Player {
             health.LoseHealth(damage);
             
             if (health.CurrentHealth == 0) return;
+            spriteInside.color = Color.red;
+            spriteInside.DOColor(Color.white, data.onHitColorBlendDuration);
             StartCoroutine(Invincibility());
         }
 
