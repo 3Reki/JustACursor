@@ -1,7 +1,5 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Player
@@ -71,8 +69,10 @@ namespace Player
             image.DOFillAmount(endValue, duration).SetEase(Ease.Linear).OnComplete(OnComplete);
         }
 
-        public UnityEvent onPlayerSpeedUp;
-        public UnityEvent onPlayerSlowDown;
-        public UnityEvent onPlayerReset;
+        public delegate void OnPlayerEnergyUpdate();
+        public static OnPlayerEnergyUpdate onPlayerSpeedUp;
+        public static OnPlayerEnergyUpdate onPlayerSlowDown;
+        public static OnPlayerEnergyUpdate onPlayerReset;
+        
     }
 }

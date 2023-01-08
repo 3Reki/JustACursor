@@ -16,6 +16,20 @@ namespace Player {
         private PlayerData data => playerController.Data;
         private Coroutine showHealthCoroutine;
 
+        private void OnEnable()
+        {
+            PlayerEnergy.onPlayerSpeedUp += ShowEnergy;
+            PlayerEnergy.onPlayerSlowDown += ShowEnergy;
+            PlayerEnergy.onPlayerReset += HideEnergy;
+        }
+
+        private void OnDisable()
+        {
+            PlayerEnergy.onPlayerSpeedUp -= ShowEnergy;
+            PlayerEnergy.onPlayerSlowDown -= ShowEnergy;
+            PlayerEnergy.onPlayerReset -= HideEnergy;
+        }
+
         public void ShowHealth()
         {
             if (health.CurrentHealth == 0) return;
