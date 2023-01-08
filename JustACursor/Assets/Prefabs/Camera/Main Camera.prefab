@@ -238,12 +238,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1667123922214539513}
   volume: {fileID: 6469314595101193138}
-  resetTime: 0.3
-  speedTime: 0.3
+  lerpDuration: 0.3
   speedOrthoSize: 9.5
   speedDistortion: 0.3
-  speedColorFilter: {r: 1, g: 1, b: 0.7254902, a: 1}
-  slowTime: 0.3
+  speedColorFilter: {r: 0.7254902, g: 1, b: 0.7254902, a: 1}
   slowOrthoSize: 8.5
   slowDistortion: 0.6
   slowColorFilter: {r: 0.7254902, g: 1, b: 1, a: 1}
