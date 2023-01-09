@@ -46,6 +46,7 @@ namespace Bosses.Patterns.Drones
 
         public override void Stop()
         {
+            base.Stop();
         }
         
         protected void SetTarget(int droneIndex, Vector3 position, Quaternion rotation)

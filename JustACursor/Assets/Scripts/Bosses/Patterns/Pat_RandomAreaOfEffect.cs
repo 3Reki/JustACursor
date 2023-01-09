@@ -48,6 +48,7 @@ namespace Bosses.Patterns
 
         public override void Stop()
         {
+            base.Stop();
             for (int i = 0; i < 5; i++)
             {
                 Destroy(aoeGameObject[i]);

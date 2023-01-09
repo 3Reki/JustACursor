@@ -13,6 +13,7 @@ namespace Bosses.Patterns
 
         public override void Stop()
         {
+            base.Stop();
             // TODO Kill Tween
         }
     }

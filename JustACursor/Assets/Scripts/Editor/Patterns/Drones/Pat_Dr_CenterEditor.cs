@@ -1,5 +1,5 @@
-﻿using Bosses.Patterns.Drones;
-using LD;
+﻿using LD;
+using Bosses.Patterns.Drones;
 using UnityEditor;
 using UnityEngine;
 
@@ -33,6 +33,7 @@ namespace Editor.Patterns.Drones
 
             Vector2 center;
             {
+                //
                 var roomSO = new SerializedObject(room);
                 var topLeftCorner = (Transform) roomSO.FindProperty("roomTopLeftCorner").objectReferenceValue;
                 var bottomRightCorner = (Transform) roomSO.FindProperty("roomBottomRightCorner").objectReferenceValue;

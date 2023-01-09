@@ -1,7 +1,5 @@
-using System;
 using System.Threading.Tasks;
 using Bosses.Dependencies;
-using Bosses.Instructions;
 using BulletPro;
 using Player;
 using UnityEngine;
@@ -28,7 +26,6 @@ namespace Bosses
         
         protected bool isPaused;
         
-        private Instruction<Boss> currentInstruction;
         protected BossPhase currentBossPhase;
         private bool isFrozen;
         
@@ -37,6 +34,7 @@ namespace Bosses
             DebugStart();
             Health.Init(bossData.startingHP);
             bossBar.InitBar();
+            StartStateMachine();
         }
 
         protected virtual void Update()
@@ -45,7 +43,7 @@ namespace Bosses
 
             if (isPaused) return;
 
-            HandlePatterns();
+            bossData.phaseResolvers[(int) currentBossPhase].UpdateMachine();
         }
 
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
@@ -70,34 +68,9 @@ namespace Bosses
 
         protected bool CheckPhase3HPThreshold() => Health.GetRatio() <= bossData.phase3HPThreshold;
 
-        private void HandlePatterns()
-        {
-            if (currentInstruction == null)
-            {
-                currentInstruction = bossData.phaseResolvers[(int) currentBossPhase].Resolve(this);
-            }
-            switch (currentInstruction.phase)
-            {
-                case InstructionPhase.None:
-                    currentInstruction = bossData.phaseResolvers[(int) currentBossPhase].Resolve(this);
-                    break;
-                case InstructionPhase.Start:
-                    currentInstruction.Play(this);
-                    break;
-                case InstructionPhase.Update:
-                    currentInstruction.Update();
-                    break;
-                case InstructionPhase.Stop:
-                    currentInstruction = currentInstruction.Stop();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
         private async void SetBossPhase(BossPhase newPhase)
         {
-            StopCurrentPattern();
+            StopStateMachine();
             animator.ChangePhase();
             isPaused = true;
         
@@ -105,6 +78,7 @@ namespace Bosses
             
             currentBossPhase = newPhase;
             isPaused = false;
+            StartStateMachine();
         }
 
         public void Hit()
@@ -115,7 +89,7 @@ namespace Bosses
 
         public async void Die()
         {
-            StopCurrentPattern();
+            StopStateMachine();
             GetComponent<BulletReceiver>().enabled = false;
             GetComponent<CircleCollider2D>().enabled = false;
             
@@ -129,7 +103,7 @@ namespace Bosses
         
         public void Reset()
         {
-            StopCurrentPattern();
+            StopStateMachine();
             GetComponent<BulletReceiver>().enabled = true;
             GetComponent<CircleCollider2D>().enabled = true;
             
@@ -137,21 +111,25 @@ namespace Bosses
             Health.ResetHealth();
             isFrozen = false;
             isPaused = false;
+            currentBossPhase = BossPhase.One;
 
             for (int i = 0; i < 3; i++)
             {
                 bulletEmitter[i].Stop();
                 bulletEmitter[i].Kill();
             }
+            
+            StartStateMachine();
+        }
+        
+        protected virtual void StartStateMachine()
+        {
+            bossData.phaseResolvers[(int) currentBossPhase].Play(this);
         }
 
-        protected virtual void StopCurrentPattern()
+        protected virtual void StopStateMachine()
         {
-            if (currentInstruction != null)
-            {
-                currentInstruction.Stop();
-            }
-            
+            bossData.phaseResolvers[(int) currentBossPhase].Stop();
         }
 
         
@@ -170,7 +148,7 @@ namespace Bosses
         {
             if (overridePhaseOnStart)
             {
-                StopCurrentPattern();
+                StopStateMachine();
                 currentBossPhase = phaseOverride;
             }
         }
@@ -198,7 +176,7 @@ namespace Bosses
 
             if (Input.GetKeyDown(skipPattern))
             {
-                StopCurrentPattern();
+                StopStateMachine();
             }
         }
 
