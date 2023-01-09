@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1816866778884720986}
   - component: {fileID: 5537142349407929359}
   - component: {fileID: 8380426816501225780}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas_Extra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,6 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2623719161867187467}
+  - component: {fileID: 1184827919}
   m_Layer: 0
   m_Name: Canvas_Player
   m_TagString: Untagged
@@ -135,6 +136,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1184827919
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072757685265301621}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e6dc7f3976a5a6448e32fa66a577e92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3238191991056696012
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +167,7 @@ GameObject:
   - component: {fileID: 4292886757901038423}
   - component: {fileID: 4259489436397313001}
   - component: {fileID: 5835106229717348999}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Cadre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +243,7 @@ GameObject:
   - component: {fileID: 7842343443933620437}
   - component: {fileID: 4334428438836692526}
   - component: {fileID: 7347503856602835912}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PV_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +319,7 @@ GameObject:
   - component: {fileID: 8800767201464915762}
   - component: {fileID: 6170065306489882488}
   - component: {fileID: 6692298117535583488}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PV_2_BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +397,7 @@ GameObject:
   - component: {fileID: 4942095302750663130}
   - component: {fileID: 7255891701651728571}
   - component: {fileID: 3101217258571511431}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas_Intra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1949928155600856413}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Energy Intra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +548,7 @@ GameObject:
   - component: {fileID: 3869190415398955212}
   - component: {fileID: 6466668072690578157}
   - component: {fileID: 7032689966927865731}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PV_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +624,7 @@ GameObject:
   - component: {fileID: 708939450005817286}
   - component: {fileID: 5624933814735836826}
   - component: {fileID: 2650050566223009818}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PV_1_BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +700,7 @@ GameObject:
   - component: {fileID: 1810120716242044894}
   - component: {fileID: 3216638131369191649}
   - component: {fileID: 319322950965491163}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: RespawnScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -753,7 +774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8477428863007759404}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Energy Extra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,7 +800,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -210, y: 30}
+  m_AnchoredPosition: {x: -220, y: 50}
   m_SizeDelta: {x: 450, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6556922329654552577
@@ -793,7 +814,7 @@ GameObject:
   - component: {fileID: 2511728032765128902}
   - component: {fileID: 5576344398572116181}
   - component: {fileID: 1982689354142390263}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PV_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,7 +890,7 @@ GameObject:
   - component: {fileID: 2910776544312209049}
   - component: {fileID: 2543681139794618388}
   - component: {fileID: 471493409375671023}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PV_3_BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,7 +966,7 @@ GameObject:
   - component: {fileID: 6902066822861936887}
   - component: {fileID: 3763301622017401614}
   - component: {fileID: 1239168460579363232}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1019,7 +1040,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6774188528076403437}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1063,7 +1084,7 @@ GameObject:
   - component: {fileID: 9125499102614096486}
   - component: {fileID: 7663847403407731940}
   - component: {fileID: 8953400699943811356}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Bar Intra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
