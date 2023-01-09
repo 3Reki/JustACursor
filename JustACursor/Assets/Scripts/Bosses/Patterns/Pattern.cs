@@ -8,8 +8,8 @@ namespace Bosses.Patterns
     {
         public State currentState { get; protected set; } = State.Start;
         
-        [Input] public int entry;
-        [Output] public int exit;
+        [Input(connectionType = ConnectionType.Override)] public int entry;
+        [Output(connectionType = ConnectionType.Override)] public int exit;
         
         [SerializeField, Range(0, 30f)] protected float patternDuration = 3f;
 
