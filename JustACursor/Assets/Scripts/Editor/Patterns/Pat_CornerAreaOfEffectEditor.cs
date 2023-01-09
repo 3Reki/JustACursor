@@ -1,5 +1,5 @@
-﻿using Bosses.Patterns;
-using LD;
+﻿using LD;
+using LegacyBosses.Patterns;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;

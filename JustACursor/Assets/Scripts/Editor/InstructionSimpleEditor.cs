@@ -1,4 +1,4 @@
-﻿using Bosses.Instructions;
+﻿using LegacyBosses.Instructions;
 using UnityEditor;
 using Object = UnityEngine.Object;
 

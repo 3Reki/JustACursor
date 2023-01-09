@@ -104,28 +104,29 @@ namespace Enemies
         private IEnumerator MovementLoop()
         {
             float newPos = movementCurve.Evaluate(curveTime)*amplitude;
+            float duration = Time.deltaTime * Energy.GameSpeed / period;
             
             if (movementAxis == Movement.Horizontal)
             {
                 transform.DOComplete();
-                transform.DOMoveX(startPosition.x+newPos, Time.deltaTime / period).SetEase(Ease.Linear);
+                transform.DOMoveX(startPosition.x+newPos, duration).SetEase(Ease.Linear);
             }
             else if (movementAxis == Movement.Vertical)
             {
                 transform.DOComplete();
-                transform.DOMoveY(startPosition.y+newPos, Time.deltaTime / period).SetEase(Ease.Linear);
+                transform.DOMoveY(startPosition.y+newPos, duration).SetEase(Ease.Linear);
             }
             
-            curveTime += Time.deltaTime / period;
+            curveTime += duration;
             curveTime %= 1;
 
-            yield return new WaitForSeconds(Time.deltaTime / period);
+            yield return new WaitForSeconds(duration);
             StartCoroutine(MovementLoop());
         }
         
         private enum Movement { None, Horizontal, Vertical }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             if (!showPreview) return;
 
@@ -136,7 +137,7 @@ namespace Enemies
             Vector3 center = new(0, laserLength / 2);
             Vector3 size = new(laserWidth, laserLength);
 
-            Gizmos.color = new Color(1, 0, 0, .5f);
+            Gizmos.color = new Color(1, 1, 0, .3f);
             Gizmos.DrawCube(center,size);
         }
     }

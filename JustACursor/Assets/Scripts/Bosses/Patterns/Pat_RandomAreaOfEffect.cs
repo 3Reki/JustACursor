@@ -48,6 +48,7 @@ namespace Bosses.Patterns
 
         public override void Stop()
         {
+            base.Stop();
             for (int i = 0; i < 5; i++)
             {
                 Destroy(aoeGameObject[i]);
@@ -57,8 +58,8 @@ namespace Bosses.Patterns
 
         private GameObject InstantiateAoE(GameObject prefab)
         {
-            Vector2 topLeft = linkedEntity.mover.room.topLeft;
-            Vector2 bottomRight = linkedEntity.mover.room.bottomRight;
+            Vector2 topLeft = linkedEntity.mover.Room.topLeft;
+            Vector2 bottomRight = linkedEntity.mover.Room.bottomRight;
             GameObject go = Instantiate(prefab, new Vector3(Random.Range(topLeft.x, bottomRight.x), Random.Range(bottomRight.y, topLeft.y)), Quaternion.identity,
                 linkedEntity.transform);
             go.transform.localScale *= 3;

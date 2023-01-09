@@ -7,7 +7,7 @@ namespace Graph.Dialogue
     public class DialogueNode : BaseNode
     {
         [Input(ShowBackingValue.Always), TextArea(5,5)] public string Dialogue;
-        [Output(dynamicPortList = true, connectionType = ConnectionType.Override)] public Response[] Responses = new Response[4];
+        [Output(dynamicPortList = true, connectionType = ConnectionType.Override)] public Response[] Responses;
         [Output(connectionType = ConnectionType.Override)] public string Default;
     }
 }

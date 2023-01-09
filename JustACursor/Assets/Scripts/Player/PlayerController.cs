@@ -22,6 +22,7 @@ namespace Player
         [SerializeField] private PlayerEnergy playerEnergy;
         [SerializeField] private PlayerDeviceHandler playerDeviceHandler;
         [SerializeField] private PlayerCollision playerCollision;
+        [SerializeField] private PlayerRespawn playerRespawn;
         [field:SerializeField] public Health Health { get; private set; }
 
         private PlayerInputs inputs;
@@ -42,6 +43,16 @@ namespace Player
         }
 
         private void Update() {
+            if (playerRespawn.isRespawning) {
+                HandleRespawn();
+                return;
+            }
+
+            if (Input.GetKey(KeyCode.P))
+            {
+                Debug.Log(PlayerPosition);
+            }
+            
             moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
             PlayerPosition = transform.position; 
 
@@ -50,6 +61,14 @@ namespace Player
             HandleRotation();
             HandleShoot();
             HandleEnergy();
+        }
+
+        private void HandleRespawn()
+        {
+            if (stopMovingEnumerator == null) return;
+                
+            StopCoroutine(stopMovingEnumerator);
+            playerMovement.Stop();
         }
 
         private void HandleDash() {
@@ -97,7 +116,7 @@ namespace Player
                 
                 playerShoot.Shoot();
             }
-            
+            else playerShoot.StopShoot();
         }
 
         private void HandleEnergy() {

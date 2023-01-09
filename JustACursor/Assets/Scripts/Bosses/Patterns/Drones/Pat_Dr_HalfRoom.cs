@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Bosses.Patterns.Drones
 {
     [CreateAssetMenu(fileName = "Pat_Dr_Half", menuName = "Just A Cursor/Pattern/Drones/Half Room Pattern", order = 0)]
-    public class Pat_Dr_HalfRoom : Pattern<BossSound>
+    public class Pat_Dr_HalfRoom : Pat_Dr_Movement
     {
         [SerializeField] private Room.Half half;
         [SerializeField] private AlternateDirectionMode alternateDirectionMode = AlternateDirectionMode.Simple;
@@ -19,32 +19,29 @@ namespace Bosses.Patterns.Drones
 
             for (int i = 0; i < droneCount; i++)
             {
-                linkedEntity.GetDrone(i).SetPositionAndRotation(Vector2.Lerp(start, end, (i + 0.5f) / droneCount),
-                    GetRotation(i, droneCount));
+                SetTarget(i, Vector2.Lerp(start, end, (i + 0.5f) / droneCount), GetRotation(i, droneCount));
             }
         }
-
-        public override void Stop() {}
 
         private void GetPosition(out Vector2 lineStart, out Vector2 lineEnd)
         {
             switch (half)
             {
                 case Room.Half.North:
-                    lineStart = linkedEntity.mover.room.middleLeft;
-                    lineEnd = linkedEntity.mover.room.middleRight;
+                    lineStart = linkedEntity.mover.Room.middleLeft;
+                    lineEnd = linkedEntity.mover.Room.middleRight;
                     break;
                 case Room.Half.East:
-                    lineStart = linkedEntity.mover.room.topCenter;
-                    lineEnd = linkedEntity.mover.room.bottomCenter;
+                    lineStart = linkedEntity.mover.Room.topCenter;
+                    lineEnd = linkedEntity.mover.Room.bottomCenter;
                     break;
                 case Room.Half.South:
-                    lineStart = linkedEntity.mover.room.middleLeft;
-                    lineEnd = linkedEntity.mover.room.middleRight;
+                    lineStart = linkedEntity.mover.Room.middleLeft;
+                    lineEnd = linkedEntity.mover.Room.middleRight;
                     break;
                 case Room.Half.West:
-                    lineStart = linkedEntity.mover.room.topCenter;
-                    lineEnd = linkedEntity.mover.room.bottomCenter;
+                    lineStart = linkedEntity.mover.Room.topCenter;
+                    lineEnd = linkedEntity.mover.Room.bottomCenter;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -54,9 +51,11 @@ namespace Bosses.Patterns.Drones
         private Quaternion GetRotation(int index, int totalCount)
         {
             // Magie noire tkt, exemple en mode Third : index * 3 / total = 0, 1 ou 2. 1 est le deuxième tiers donc on l'inverse
-            return (index * (int) alternateDirectionMode / totalCount) % 2 == 0 ? GetSimpleRotation() : GetInversedRotation();
+            return (index * (int) alternateDirectionMode / totalCount) % 2 == 0
+                ? GetSimpleRotation()
+                : GetInversedRotation();
         }
-        
+
         private Quaternion GetSimpleRotation()
         {
             return half switch
@@ -68,7 +67,7 @@ namespace Bosses.Patterns.Drones
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
-        
+
         private Quaternion GetInversedRotation()
         {
             return half switch

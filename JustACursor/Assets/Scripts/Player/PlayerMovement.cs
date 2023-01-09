@@ -50,6 +50,10 @@ namespace Player
                 data.moveAcceleration.Evaluate(accelerationProgress));
             accelerationProgress += Time.deltaTime;
         }
+        
+        public void Stop() {
+            rb.velocity = Vector2.zero;
+        }
 
         public IEnumerator StopMoving(Vector2 direction)
         {

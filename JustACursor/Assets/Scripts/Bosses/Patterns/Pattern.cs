@@ -1,22 +1,31 @@
-﻿using UnityEngine;
+﻿using Graph;
+using UnityEngine;
 
 namespace Bosses.Patterns
 {
-    
-    public abstract class Pattern<T> : ScriptableObject
+    [NodeWidth(300)]
+    public abstract class Pattern<T> : BaseNode
     {
-        public bool isFinished { get; protected set; }
+        public State currentState { get; protected set; } = State.Start;
+        
+        [Input] public int entry;
+        [Output] public int exit;
         
         [SerializeField, Range(0, 30f)] protected float patternDuration = 3f;
 
         protected T linkedEntity;
         protected float currentPatternTime;
-        
+
+        private void OnDisable()
+        {
+            currentState = State.Start;
+        }
+
         public virtual void Play(T entity)
         {
             linkedEntity = entity;
             currentPatternTime = patternDuration;
-            isFinished = false;
+            currentState = State.Update;
         }
 
         public virtual void Update()
@@ -25,10 +34,20 @@ namespace Bosses.Patterns
 
             if (currentPatternTime < 0)
             {
-                isFinished = true;
+                currentState = State.Stop;
             }
         }
 
-        public abstract void Stop();
+        public virtual void Stop()
+        {
+            currentState = State.Start;
+        }
+        
+        public enum State
+        {
+            Start,
+            Update,
+            Stop
+        }
     }
 }

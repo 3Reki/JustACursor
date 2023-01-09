@@ -1,85 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using Bosses.Conditions;
-using Bosses.Instructions;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using Graph;
 
 namespace Bosses.Dependencies
 {
-    [Serializable]
-    public class Resolver<T> where T : Boss
+    public class Resolver<T> : BaseNode where T : Boss
     {
-        [SerializeField] private ResolvedPattern<T>[] choices;
+        [Input(ShowBackingValue.Never)] public int entry;
 
-        private readonly List<ResolvedPattern<T>> selectedList = new();
-        
-        public Instruction<T> Resolve(T boss)
+        [Output(dynamicPortList = true, connectionType = ConnectionType.Override)]
+        public ResolvedPattern[] choices;
+
+        private readonly List<ResolvedPattern> selectedList = new();
+
+        public int Resolve(T boss)
         {
             selectedList.Clear();
-            
-            foreach (ResolvedPattern<T> choice in choices)
+
+            foreach (ResolvedPattern choice in choices)
             {
                 if (choice.condition.Check(boss))
                 {
-                    selectedList.Add(choice); 
+                    selectedList.Add(choice);
                 }
             }
 
             if (selectedList.Count == 0)
             {
-                return null;
+                return -1;
             }
 
-            Instruction<T> instruction = selectedList.RandomWeightedSelection().pattern;
-            instruction.phase = InstructionPhase.Start;
-            return instruction;
+            int i = selectedList.RandomWeightedSelection();
+            //instruction.phase = InstructionPhase.Start;
+            return i;
         }
-    }
-
-    [Serializable]
-    public class ResolvedPattern<T> where T : Boss
-    {
-        public ConditionType conditionType;
-
-        public ICondition condition
-        {
-            get
-            {
-                return conditionType switch
-                {
-                    ConditionType.HealthThreshold => cdtHealthThreshold,
-                    ConditionType.CornerDistance => cdtCornerDistance,
-                    ConditionType.CenterDistance => cdtCenterDistance,
-                    ConditionType.BossDistance => cdtBossDistance,
-                    ConditionType.Quarter => cdtQuarter,
-                    ConditionType.Half => cdtHalf,
-                    ConditionType.None => cdtNone,
-                    _ => null
-                };
-            }
-        }
-        
-        public Instruction<T> pattern;
-        [Range(0, 20)]
-        public float weight = 1f;
-
-        [SerializeField] private Cdt_None cdtNone;
-        [SerializeField] private Cdt_HealthThreshold cdtHealthThreshold;
-        [SerializeField] private Cdt_CornerDistance cdtCornerDistance;
-        [SerializeField] private Cdt_CenterDistance cdtCenterDistance;
-        [SerializeField] private Cdt_BossDistance cdtBossDistance;
-        [SerializeField] private Cdt_Quarter cdtQuarter;
-        [SerializeField] private Cdt_Half cdtHalf;
-    }
-    
-    public enum ConditionType
-    {
-        None,
-        HealthThreshold,
-        CornerDistance,
-        CenterDistance,
-        BossDistance,
-        Quarter,
-        Half
     }
 }

@@ -7,6 +7,7 @@ namespace Bosses.Patterns.Drones
     {
         public override void Stop()
         {
+            base.Stop();
         }
     }
 }

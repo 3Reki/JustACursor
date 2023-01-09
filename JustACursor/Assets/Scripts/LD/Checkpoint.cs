@@ -1,3 +1,5 @@
+using CameraScripts;
+using DG.Tweening;
 using Player;
 using UnityEngine;
 

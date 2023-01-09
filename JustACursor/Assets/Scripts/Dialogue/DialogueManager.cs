@@ -1,14 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using Graph;
 using Graph.Dialogue;
 using Player;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Utils;
 
-namespace Dialogue.New
+namespace Dialogue
 {
     public class DialogueManager : Singleton<DialogueManager>
     {

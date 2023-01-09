@@ -4,7 +4,7 @@ namespace Bosses.Patterns.Drones
 {
     [CreateAssetMenu(fileName = "Pat_Dr_Center", menuName = "Just A Cursor/Pattern/Drones/Center Room Pattern",
         order = 0)]
-    public class Pat_Dr_Center : Pattern<BossSound>
+    public class Pat_Dr_Center : Pat_Dr_Movement
     {
         [Min(0)]
         [SerializeField] private float distanceToCenter;
@@ -22,7 +22,7 @@ namespace Bosses.Patterns.Drones
                     "Pat_Dr_Center is meant to be used with 12 drones. Other drone count may result in unexpected behaviours");
             }
 
-            Vector3 roomCenter = linkedEntity.mover.room.middleCenter;
+            Vector3 roomCenter = linkedEntity.mover.Room.middleCenter;
             for (int i = 0; i < droneCount; i++)
             {
                 // offset if flipFormation is false to match Julia's ATK-R1 pattern, else match ATK-R1bis
@@ -50,11 +50,9 @@ namespace Bosses.Patterns.Drones
                     };
                 }
 
-                linkedEntity.GetDrone(i).SetPositionAndRotation(roomCenter + distanceToCenter * new Vector3(cos, sin),
+                SetTarget(i, roomCenter + distanceToCenter * new Vector3(cos, sin), 
                     Quaternion.Euler(0, 0, droneZRot));
             }
         }
-
-        public override void Stop() {}
     }
 }

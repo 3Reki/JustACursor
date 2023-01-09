@@ -12,14 +12,9 @@ public class Health : MonoBehaviour
     private bool isImmortal;
     
     public UnityEvent onHealthGain;
-    public UnityEvent onHealthReset;
+    //public UnityEvent onHealthReset;
     public UnityEvent onHealthLose;
     public UnityEvent onDeath;
-
-    private void Awake()
-    {
-        currentHealth = MaxHealth;
-    }
     
     public void Init(int maxHealth)
     {
@@ -31,7 +26,7 @@ public class Health : MonoBehaviour
     {
         if (maxHealth == -1) Debug.LogError("Health has not been initialized!");
         
-        currentHealth = Math.Clamp(currentHealth + amount, 0, MaxHealth);
+        currentHealth = Math.Clamp(currentHealth + amount, 0, maxHealth);
         onHealthGain.Invoke();
     }
 
@@ -39,34 +34,35 @@ public class Health : MonoBehaviour
     {
         if (maxHealth == -1) Debug.LogError("Health has not been initialized!");
         
-        currentHealth = Math.Clamp(currentHealth - amount, isImmortal ? 1 : 0, MaxHealth);
+        currentHealth = Math.Clamp(currentHealth - amount, isImmortal ? 1 : 0, maxHealth);
         onHealthLose.Invoke();
 
         if (currentHealth == 0) onDeath.Invoke();
     }
 
-    public float GetRatio()
-    {
-        return (float)currentHealth / maxHealth;
+    public void ResetHealth() {
+        SetHealth(maxHealth);
+        //onHealthReset.Invoke();
     }
 
     public void SetHealth(int amount)
     {
-        if (amount > maxHealth) Debug.LogError("Can't set health above max health!");
+        amount = Math.Clamp(amount, 0, maxHealth);
         currentHealth = amount;
+    }
+
+    public void Kill() {
+        onDeath.Invoke();
     }
 
     public void FlipImmortality()
     {
         isImmortal = !isImmortal;
     }
-
-    public void Heal() {
-        SetHealth(maxHealth);
-        onHealthReset.Invoke();
-    }
-
-    public void Kill() {
-        SetHealth(0);
+    
+    //Return health value between 0 and 1
+    public float GetRatio()
+    {
+        return (float)currentHealth / maxHealth;
     }
 }

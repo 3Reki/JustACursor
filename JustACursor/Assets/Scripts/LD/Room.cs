@@ -26,8 +26,7 @@ namespace LD
             Vector2 topLeftPos = roomTopLeftCorner.position;
             Vector2 bottomRightPos = roomBottomRightCorner.position;
             corners = new[] {topLeftPos, new Vector2(bottomRightPos.x, topLeftPos.y), new Vector2(topLeftPos.x, bottomRightPos.y), bottomRightPos};
-            middleCenter = new Vector2((bottomRightPos.x + topLeftPos.x) * 0.5f,
-                (topLeftPos.y + bottomRightPos.y) * 0.5f);
+            middleCenter = new Vector2((bottomRightPos.x + topLeftPos.x) * 0.5f, (topLeftPos.y + bottomRightPos.y) * 0.5f);
         }
 
         public float DistanceToCenter(Vector2 position) => Vector2.Distance(middleCenter, position);
