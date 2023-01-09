@@ -1,0 +1,4922 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8000817750919583390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 10440, y: 296}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    values:
+    - _fieldName: entry
+      _node: {fileID: -8000817750919583390}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -4970953585358414690}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -8000817750919583390}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -8000817750919583390}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 4018450449525424375}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -8000817750919583390}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 4111488298754799078}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+--- !u!114 &-7952753374450490562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 9624, y: 168}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -7952753374450490562}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: 3676774779307086265}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -7952753374450490562}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -4970953585358414690}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 1
+  alternateDirectionMode: 3
+--- !u!114 &-7764582070384991402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0865f37b02124f5680e5fb1f57e6d4e1, type: 3}
+  m_Name: Pat_Dr_Square
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 7944, y: 168}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -7764582070384991402}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -2134838743021373254}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -7764582070384991402}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -3860945366937816497}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+--- !u!114 &-7667881188199141757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 12104, y: 136}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    - choices 2
+    values:
+    - _fieldName: entry
+      _node: {fileID: -7667881188199141757}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: -4448199358099515998}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -7667881188199141757}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -7667881188199141757}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 7954377469135791568}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -7667881188199141757}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -935803299407506843}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 2
+      _node: {fileID: -7667881188199141757}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 2896247704149112432}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 2
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+--- !u!114 &-7642774990984333971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 13320, y: 856}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    - choices 2
+    values:
+    - _fieldName: entry
+      _node: {fileID: -7642774990984333971}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -5635793954997247660}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -7642774990984333971}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -7642774990984333971}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 7477758475174342044}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -7642774990984333971}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 2391086694397297670}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 2
+      _node: {fileID: -7642774990984333971}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 3904870894396768540}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 2
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+--- !u!114 &-7467248563693901666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 7064, y: 136}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -7467248563693901666}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 2826427133111969411}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: -80590913736064996}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -7467248563693901666}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -2134838743021373254}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 0
+  alternateDirectionMode: 3
+--- !u!114 &-7422712514287340403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5016, y: 56}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -7422712514287340403}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: 2303702679229231363}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -7422712514287340403}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 7967448297774982516}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 2
+  alternateDirectionMode: 1
+--- !u!114 &-7279621566051460049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 3384, y: -344}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -7279621566051460049}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: -5353463407181091549}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -7279621566051460049}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 2607963159244138562}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 0
+  alternateDirectionMode: 3
+--- !u!114 &-7168958387163015216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2168, y: -200}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -7168958387163015216}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 2314245418932706989}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -7168958387163015216}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -2089671948515157392}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 0
+  alternateDirectionMode: 1
+--- !u!114 &-6731658177714737973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 13720, y: 440}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -6731658177714737973}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: 5628022612819288052}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -6731658177714737973}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -2789141526985972654}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 1
+  alternateDirectionMode: 1
+--- !u!114 &-6470981702328118124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1784, y: -408}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -6470981702328118124}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 962208540621391846}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -6470981702328118124}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -3642405476227868978}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &-6288111551738522633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1384, y: -216}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -6288111551738522633}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: -2657412011686542389}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -6288111551738522633}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 2314245418932706989}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 2
+  alternateDirectionMode: 1
+--- !u!114 &-6012515342379376491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 6216, y: -328}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -6012515342379376491}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: -3172111939095942360}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -6012515342379376491}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 2826427133111969411}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 2
+  alternateDirectionMode: 1
+--- !u!114 &-5645044523701885739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 4600, y: -472}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    - choices 2
+    values:
+    - _fieldName: entry
+      _node: {fileID: -5645044523701885739}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: 5186876751532087839}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -5645044523701885739}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -5645044523701885739}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 1994518216361856955}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -5645044523701885739}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -5517934078477623615}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 2
+      _node: {fileID: -5645044523701885739}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 8554288187566707776}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 2
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+--- !u!114 &-5635793954997247660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 12920, y: 840}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -5635793954997247660}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 146890534377117673}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: 4265335808064380750}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: -625286966586614482}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -5635793954997247660}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -7642774990984333971}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &-5517934078477623615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5016, y: -312}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -5517934078477623615}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: -5645044523701885739}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -5517934078477623615}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 2989759664025944312}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 1
+  alternateDirectionMode: 1
+--- !u!114 &-5353463407181091549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2952, y: -360}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    values:
+    - _fieldName: entry
+      _node: {fileID: -5353463407181091549}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 95086288455469277}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: -2089671948515157392}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: -2789141526985972654}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: -744936928195679154}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -5353463407181091549}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -5353463407181091549}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -7279621566051460049}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -5353463407181091549}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 9096949716037747023}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+--- !u!114 &-4970953585358414690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 10056, y: 312}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -4970953585358414690}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -7952753374450490562}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: -2293973939547573753}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -4970953585358414690}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -8000817750919583390}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &-4448199358099515998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 11640, y: 360}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    values:
+    - _fieldName: entry
+      _node: {fileID: -4448199358099515998}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 7503319634080670166}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -4448199358099515998}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -4448199358099515998}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -7667881188199141757}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -4448199358099515998}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -979334260190351623}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 6
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 6
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 2
+      checkType: 0
+--- !u!114 &-4049778427885248819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 168, y: -280}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -4049778427885248819}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 3798963491027414284}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -4049778427885248819}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 3258557370002880156}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &-3860945366937816497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 8328, y: 184}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -3860945366937816497}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -7764582070384991402}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -3860945366937816497}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -2116918066235613615}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &-3683320547983585393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 12920, y: 312}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -3683320547983585393}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 7954377469135791568}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: -935803299407506843}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: 2896247704149112432}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -3683320547983585393}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 5628022612819288052}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &-3642405476227868978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2168, y: -408}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -3642405476227868978}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -6470981702328118124}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -3642405476227868978}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 95086288455469277}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 2
+  alternateDirectionMode: 1
+--- !u!114 &-3172111939095942360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5800, y: -328}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    - choices 2
+    values:
+    - _fieldName: entry
+      _node: {fileID: -3172111939095942360}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 2989759664025944312}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -3172111939095942360}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -3172111939095942360}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -6012515342379376491}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -3172111939095942360}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 1737344900333121072}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 2
+      _node: {fileID: -3172111939095942360}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 1690011077639315700}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 2
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+--- !u!114 &-2895762683143744664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c60698c716d34f27b723388fb014f9a5, type: 3}
+  m_Name: Stop
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -392, y: -88}
+  ports:
+    keys:
+    - entry
+    values:
+    - _fieldName: entry
+      _node: {fileID: -2895762683143744664}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+--- !u!114 &-2789141526985972654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 14120, y: 456}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -2789141526985972654}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -179538439521628183}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: -6731658177714737973}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: -1658906866192133784}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -2789141526985972654}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -5353463407181091549}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &-2671036773986595289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 6232, y: 568}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -2671036773986595289}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 2
+        node: {fileID: 6843220972575153339}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -2671036773986595289}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -80590913736064996}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 3
+  alternateDirectionMode: 1
+--- !u!114 &-2657412011686542389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 952, y: -424}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    values:
+    - _fieldName: entry
+      _node: {fileID: -2657412011686542389}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 3258557370002880156}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -2657412011686542389}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -2657412011686542389}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 962208540621391846}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -2657412011686542389}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -6288111551738522633}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 6
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 6
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 2
+      checkType: 0
+--- !u!114 &-2293973939547573753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 9624, y: 392}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -2293973939547573753}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: 3676774779307086265}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -2293973939547573753}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -4970953585358414690}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 3
+  alternateDirectionMode: 3
+--- !u!114 &-2134838743021373254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 7528, y: 152}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -2134838743021373254}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -7467248563693901666}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -2134838743021373254}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -7764582070384991402}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &-2116918066235613615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daeac0152e494a4e8a5ec97091410749, type: 3}
+  m_Name: Pat_Dr_Idle
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 8776, y: 200}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -2116918066235613615}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -3860945366937816497}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -2116918066235613615}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 3676774779307086265}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 5
+--- !u!114 &-2089671948515157392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2568, y: -184}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -2089671948515157392}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -7168958387163015216}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -2089671948515157392}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -5353463407181091549}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &-1658906866192133784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 13720, y: 600}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -1658906866192133784}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 2
+        node: {fileID: 5628022612819288052}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -1658906866192133784}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -2789141526985972654}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 3
+  alternateDirectionMode: 1
+--- !u!114 &-1307429234533195997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 6232, y: 408}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -1307429234533195997}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: 6843220972575153339}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -1307429234533195997}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -80590913736064996}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 1
+  alternateDirectionMode: 1
+--- !u!114 &-979334260190351623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 12104, y: 664}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    - choices 2
+    values:
+    - _fieldName: entry
+      _node: {fileID: -979334260190351623}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: -4448199358099515998}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -979334260190351623}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -979334260190351623}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 146890534377117673}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -979334260190351623}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 4265335808064380750}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 2
+      _node: {fileID: -979334260190351623}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -625286966586614482}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 2
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+--- !u!114 &-935803299407506843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 12520, y: 296}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -935803299407506843}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: -7667881188199141757}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -935803299407506843}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -3683320547983585393}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 1
+  alternateDirectionMode: 1
+--- !u!114 &-744936928195679154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 14136, y: 1032}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -744936928195679154}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 7477758475174342044}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: 2391086694397297670}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: 3904870894396768540}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -744936928195679154}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -5353463407181091549}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &-625286966586614482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 12520, y: 984}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -625286966586614482}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 2
+        node: {fileID: -979334260190351623}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -625286966586614482}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -5635793954997247660}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 3
+  alternateDirectionMode: 1
+--- !u!114 &-179538439521628183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 13720, y: 280}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -179538439521628183}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: 5628022612819288052}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -179538439521628183}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -2789141526985972654}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 2
+  alternateDirectionMode: 1
+--- !u!114 &-80590913736064996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 6632, y: 424}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -80590913736064996}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 6202948613257738679}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: -1307429234533195997}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: -2671036773986595289}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -80590913736064996}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -7467248563693901666}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a9c0371d164517a7285ce365ebed19, type: 3}
+  m_Name: SoundBoss Phase 1 Graph Drone
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 4402171910712814500}
+  - {fileID: -2895762683143744664}
+  - {fileID: 3798963491027414284}
+  - {fileID: -4049778427885248819}
+  - {fileID: 3258557370002880156}
+  - {fileID: -2657412011686542389}
+  - {fileID: 962208540621391846}
+  - {fileID: -6288111551738522633}
+  - {fileID: -6470981702328118124}
+  - {fileID: 2314245418932706989}
+  - {fileID: -3642405476227868978}
+  - {fileID: -7168958387163015216}
+  - {fileID: 95086288455469277}
+  - {fileID: -2089671948515157392}
+  - {fileID: -5353463407181091549}
+  - {fileID: 2607963159244138562}
+  - {fileID: 5186876751532087839}
+  - {fileID: -5645044523701885739}
+  - {fileID: 1994518216361856955}
+  - {fileID: -5517934078477623615}
+  - {fileID: 8554288187566707776}
+  - {fileID: 2989759664025944312}
+  - {fileID: 2303702679229231363}
+  - {fileID: -7422712514287340403}
+  - {fileID: 5531694803788869612}
+  - {fileID: 8605857202486981796}
+  - {fileID: 7967448297774982516}
+  - {fileID: -7279621566051460049}
+  - {fileID: 9096949716037747023}
+  - {fileID: 6843220972575153339}
+  - {fileID: 6202948613257738679}
+  - {fileID: -1307429234533195997}
+  - {fileID: -2671036773986595289}
+  - {fileID: -80590913736064996}
+  - {fileID: -3172111939095942360}
+  - {fileID: -6012515342379376491}
+  - {fileID: 1737344900333121072}
+  - {fileID: 1690011077639315700}
+  - {fileID: 2826427133111969411}
+  - {fileID: -7467248563693901666}
+  - {fileID: -2134838743021373254}
+  - {fileID: -7764582070384991402}
+  - {fileID: -3860945366937816497}
+  - {fileID: -2116918066235613615}
+  - {fileID: 3676774779307086265}
+  - {fileID: -7952753374450490562}
+  - {fileID: -2293973939547573753}
+  - {fileID: -4970953585358414690}
+  - {fileID: -8000817750919583390}
+  - {fileID: 4018450449525424375}
+  - {fileID: 7503319634080670166}
+  - {fileID: 4111488298754799078}
+  - {fileID: -4448199358099515998}
+  - {fileID: -7667881188199141757}
+  - {fileID: 7954377469135791568}
+  - {fileID: -935803299407506843}
+  - {fileID: 2896247704149112432}
+  - {fileID: -3683320547983585393}
+  - {fileID: -979334260190351623}
+  - {fileID: 146890534377117673}
+  - {fileID: 4265335808064380750}
+  - {fileID: -625286966586614482}
+  - {fileID: -5635793954997247660}
+  - {fileID: -7642774990984333971}
+  - {fileID: 7477758475174342044}
+  - {fileID: 2391086694397297670}
+  - {fileID: 3904870894396768540}
+  - {fileID: -744936928195679154}
+  - {fileID: 5628022612819288052}
+  - {fileID: -179538439521628183}
+  - {fileID: -6731658177714737973}
+  - {fileID: -1658906866192133784}
+  - {fileID: -2789141526985972654}
+  startNode: {fileID: 0}
+  currentNode: {fileID: 0}
+--- !u!114 &95086288455469277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2568, y: -392}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 95086288455469277}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -3642405476227868978}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 95086288455469277}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -5353463407181091549}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &146890534377117673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 12520, y: 664}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 146890534377117673}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: -979334260190351623}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 146890534377117673}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -5635793954997247660}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 2
+  alternateDirectionMode: 1
+--- !u!114 &962208540621391846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1384, y: -424}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 962208540621391846}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: -2657412011686542389}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 962208540621391846}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -6470981702328118124}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 0
+  alternateDirectionMode: 1
+--- !u!114 &1690011077639315700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 6216, y: -8}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 1690011077639315700}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 2
+        node: {fileID: -3172111939095942360}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 1690011077639315700}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 2826427133111969411}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 3
+  alternateDirectionMode: 1
+--- !u!114 &1737344900333121072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 6216, y: -168}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 1737344900333121072}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: -3172111939095942360}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 1737344900333121072}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 2826427133111969411}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 1
+  alternateDirectionMode: 1
+--- !u!114 &1994518216361856955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5016, y: -472}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 1994518216361856955}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: -5645044523701885739}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 1994518216361856955}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 2989759664025944312}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 0
+  alternateDirectionMode: 1
+--- !u!114 &2303702679229231363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 4600, y: 56}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    - choices 2
+    values:
+    - _fieldName: entry
+      _node: {fileID: 2303702679229231363}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: 5186876751532087839}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: 2303702679229231363}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: 2303702679229231363}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -7422712514287340403}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: 2303702679229231363}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 5531694803788869612}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 2
+      _node: {fileID: 2303702679229231363}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 8605857202486981796}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 2
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+--- !u!114 &2314245418932706989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1784, y: -200}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 2314245418932706989}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -6288111551738522633}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 2314245418932706989}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -7168958387163015216}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &2391086694397297670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 13736, y: 1016}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 2391086694397297670}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: -7642774990984333971}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 2391086694397297670}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -744936928195679154}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 1
+  alternateDirectionMode: 1
+--- !u!114 &2607963159244138562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 3768, y: -184}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 2607963159244138562}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -7279621566051460049}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: 9096949716037747023}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 2607963159244138562}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 5186876751532087839}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &2826427133111969411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 6616, y: -152}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 2826427133111969411}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -6012515342379376491}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: 1737344900333121072}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: 1690011077639315700}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 2826427133111969411}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -7467248563693901666}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &2896247704149112432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 12520, y: 456}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 2896247704149112432}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 2
+        node: {fileID: -7667881188199141757}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 2896247704149112432}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -3683320547983585393}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 3
+  alternateDirectionMode: 1
+--- !u!114 &2989759664025944312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5416, y: -296}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 2989759664025944312}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 1994518216361856955}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: -5517934078477623615}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: 8554288187566707776}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 2989759664025944312}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -3172111939095942360}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &3258557370002880156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daeac0152e494a4e8a5ec97091410749, type: 3}
+  m_Name: Pat_Dr_Idle
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 568, y: -264}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 3258557370002880156}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -4049778427885248819}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 3258557370002880156}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -2657412011686542389}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2.5
+--- !u!114 &3676774779307086265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 9176, y: 216}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    values:
+    - _fieldName: entry
+      _node: {fileID: 3676774779307086265}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -2116918066235613615}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: 3676774779307086265}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: 3676774779307086265}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -7952753374450490562}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: 3676774779307086265}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -2293973939547573753}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+--- !u!114 &3798963491027414284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc4bb3129d1435ca754e0559c91947a, type: 3}
+  m_Name: Pat_Dr_Center
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -184, y: -296}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 3798963491027414284}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 4402171910712814500}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 3798963491027414284}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -4049778427885248819}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  distanceToCenter: 3
+  flipFormation: 0
+--- !u!114 &3904870894396768540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 13736, y: 1176}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 3904870894396768540}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 2
+        node: {fileID: -7642774990984333971}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 3904870894396768540}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -744936928195679154}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 3
+  alternateDirectionMode: 1
+--- !u!114 &4018450449525424375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc4bb3129d1435ca754e0559c91947a, type: 3}
+  m_Name: Pat_Dr_Center
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 10872, y: 232}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 4018450449525424375}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: -8000817750919583390}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 4018450449525424375}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 7503319634080670166}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  distanceToCenter: 3
+  flipFormation: 0
+--- !u!114 &4111488298754799078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc4bb3129d1435ca754e0559c91947a, type: 3}
+  m_Name: Pat_Dr_Center
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 10872, y: 408}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 4111488298754799078}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: -8000817750919583390}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 4111488298754799078}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 7503319634080670166}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  distanceToCenter: 3
+  flipFormation: 0
+--- !u!114 &4265335808064380750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 12520, y: 824}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 4265335808064380750}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: -979334260190351623}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 4265335808064380750}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -5635793954997247660}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 1.1
+  half: 1
+  alternateDirectionMode: 1
+--- !u!114 &4402171910712814500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87e1085169f4992a3ed6ceae234bc2e, type: 3}
+  m_Name: Start
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -792, y: -312}
+  ports:
+    keys:
+    - exit
+    values:
+    - _fieldName: exit
+      _node: {fileID: 4402171910712814500}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 3798963491027414284}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  exit: 0
+--- !u!114 &5186876751532087839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 4136, y: -248}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    values:
+    - _fieldName: entry
+      _node: {fileID: 5186876751532087839}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 2607963159244138562}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: 5186876751532087839}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: 5186876751532087839}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -5645044523701885739}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: 5186876751532087839}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 2303702679229231363}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 6
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 6
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 2
+      checkType: 0
+--- !u!114 &5531694803788869612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5016, y: 216}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 5531694803788869612}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: 2303702679229231363}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 5531694803788869612}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 7967448297774982516}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 1.1
+  half: 1
+  alternateDirectionMode: 1
+--- !u!114 &5628022612819288052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 13304, y: 280}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    - choices 2
+    values:
+    - _fieldName: entry
+      _node: {fileID: 5628022612819288052}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -3683320547983585393}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: 5628022612819288052}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: 5628022612819288052}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -179538439521628183}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: 5628022612819288052}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -6731658177714737973}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 2
+      _node: {fileID: 5628022612819288052}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -1658906866192133784}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 2
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+--- !u!114 &6202948613257738679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 6232, y: 248}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 6202948613257738679}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: 6843220972575153339}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 6202948613257738679}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -80590913736064996}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 0
+  alternateDirectionMode: 1
+--- !u!114 &6843220972575153339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5816, y: 248}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    - choices 2
+    values:
+    - _fieldName: entry
+      _node: {fileID: 6843220972575153339}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 7967448297774982516}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: 6843220972575153339}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: 6843220972575153339}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 6202948613257738679}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: 6843220972575153339}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -1307429234533195997}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 2
+      _node: {fileID: 6843220972575153339}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: -2671036773986595289}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 2
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 4
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+--- !u!114 &7477758475174342044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 13736, y: 856}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 7477758475174342044}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: -7642774990984333971}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 7477758475174342044}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -744936928195679154}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 0
+  alternateDirectionMode: 1
+--- !u!114 &7503319634080670166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 11240, y: 344}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 7503319634080670166}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 4111488298754799078}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: 4018450449525424375}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 7503319634080670166}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -4448199358099515998}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &7954377469135791568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 12520, y: 136}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 7954377469135791568}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: -7667881188199141757}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 7954377469135791568}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -3683320547983585393}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 0
+  alternateDirectionMode: 1
+--- !u!114 &7967448297774982516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497683523844cefa5373fbd72cd7fdb, type: 3}
+  m_Name: Pat_Dr_Shoot Laser
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5416, y: 232}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 7967448297774982516}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -7422712514287340403}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: 5531694803788869612}
+        reroutePoints: []
+      - fieldName: exit
+        node: {fileID: 8605857202486981796}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 7967448297774982516}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 6843220972575153339}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 2
+  previewDuration: 1
+  laserWidth: 0.5
+  laserLength: 5
+--- !u!114 &8554288187566707776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5016, y: -152}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 8554288187566707776}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 2
+        node: {fileID: -5645044523701885739}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 8554288187566707776}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 2989759664025944312}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 3
+  alternateDirectionMode: 1
+--- !u!114 &8605857202486981796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5016, y: 376}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 8605857202486981796}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 2
+        node: {fileID: 2303702679229231363}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 8605857202486981796}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 7967448297774982516}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 3
+  alternateDirectionMode: 1
+--- !u!114 &9096949716037747023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d3d86aea2d47e5a8fbf6143cac5eff, type: 3}
+  m_Name: Pat_Dr_Half Room
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 3400, y: -136}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 9096949716037747023}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 1
+        node: {fileID: -5353463407181091549}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 9096949716037747023}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 2607963159244138562}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  half: 2
+  alternateDirectionMode: 3

@@ -7,17 +7,25 @@ namespace Bosses.Patterns
     {
         [SerializeField] private GameObject aoePrefab;
         [Min(0)]
+        [SerializeField] private int aoeCount = 5;
+        [Min(0)]
+        [SerializeField] private float aoeMinSize = 1;
+        [Min(0)]
+        [SerializeField] private float aoeMaxSize = 1;
+        [Min(0)] 
         [SerializeField] private float previewDuration;
 
         private float previewProgress;
-        private readonly GameObject[] aoeGameObject = new GameObject[5];
+        private GameObject[] aoeGameObject;
 
         private bool statePreview;
 
         public override void Play(Boss entity)
         {
             base.Play(entity);
-            for (int i = 0; i < 5; i++)
+            aoeGameObject = new GameObject[aoeCount];
+            
+            for (int i = 0; i < aoeCount; i++)
             {
                 aoeGameObject[i] = InstantiateAoE(aoePrefab);
                 aoeGameObject[i].transform.GetChild(0).gameObject.SetActive(true);
@@ -38,7 +46,7 @@ namespace Bosses.Patterns
             if (!(previewProgress <= 0)) return;
             
             statePreview = false;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < aoeCount; i++)
             {
                 aoeGameObject[i].transform.GetChild(0).gameObject.SetActive(false);
                 aoeGameObject[i].transform.GetChild(1).gameObject.SetActive(true);
@@ -49,7 +57,7 @@ namespace Bosses.Patterns
         public override void Stop()
         {
             base.Stop();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < aoeCount; i++)
             {
                 Destroy(aoeGameObject[i]);
             }
@@ -62,7 +70,7 @@ namespace Bosses.Patterns
             Vector2 bottomRight = linkedEntity.mover.Room.bottomRight;
             GameObject go = Instantiate(prefab, new Vector3(Random.Range(topLeft.x, bottomRight.x), Random.Range(bottomRight.y, topLeft.y)), Quaternion.identity,
                 linkedEntity.transform);
-            go.transform.localScale *= 3;
+            go.transform.localScale *= Random.Range(aoeMinSize, aoeMaxSize);
 
             return go;
         }

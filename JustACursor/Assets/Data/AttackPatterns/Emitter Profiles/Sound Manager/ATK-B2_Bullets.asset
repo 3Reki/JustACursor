@@ -29,7 +29,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114527426404384722}
+  currentParamsSelected: {fileID: 114792219329918588}
   numberOfSubAssets: 4
 --- !u!114 &114235044058580522
 MonoBehaviour:
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 1128990
+  uniqueIndex: 16690980
   profile: {fileID: 11400000}
   parent: {fileID: 114746627269426962}
   children:
@@ -19771,7 +19771,7 @@ MonoBehaviour:
   advancedFoldout: 0
   hasBeenSerializedOnce: 1
   focusedInstruction: -1
-  safetyForPlaymode: 64
+  safetyForPlaymode: 66
 --- !u!114 &114527426404384722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19785,7 +19785,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 4675810
+  uniqueIndex: 15021622
   profile: {fileID: 11400000}
   parent: {fileID: 114235044058580522}
   children:
@@ -22211,7 +22211,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 11854559
+  uniqueIndex: 9461346
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -29323,7 +29323,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 9364310
+  uniqueIndex: 16612400
   profile: {fileID: 11400000}
   parent: {fileID: 114527426404384722}
   children: []
@@ -31642,7 +31642,7 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 0
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1

@@ -1,16 +1,20 @@
 ﻿using System;
 using LD;
-using Bosses.Patterns.Drones;
+using LegacyBosses.Patterns.Drones;
 using UnityEditor;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace Editor.Patterns.Drones
 {
-    [CustomEditor(typeof(Pat_Dr_Cross))]
-    public class Pat_Dr_CrossEditor : UnityEditor.Editor
+    [CustomEditor(typeof(Pat_Dr_DiagonalHalfRoom))]
+    public class LegacyPat_Dr_DiagonalHalfRoomEditor : UnityEditor.Editor
     {
+        private SerializedProperty m_startingCorner;
+        
         private void OnEnable()
         {
+            m_startingCorner = serializedObject.FindProperty("startingCorner");
             SceneView.duringSceneGui += OnSceneGUI;
         }
 
@@ -51,21 +55,15 @@ namespace Editor.Patterns.Drones
         {
             Handles.color = Color.red;
             
-            Vector2 start = Vector2.zero;
-            Vector2 end = Vector2.zero;
-            Quaternion rotation = Quaternion.identity;
+            GetLine(out Vector3 lineStart, out Vector3 lineEnd, out Quaternion rotation, topLeftPos, bottomRightPos);
+            Handles.DrawLine(lineStart, lineEnd, 3);
+
             for (int i = 0; i < 12; i++)
             {
-                if (i % 3 == 0)
-                {
-                    GetPosition(out start, out end, out rotation, i, topLeftPos, bottomRightPos);
-                    Handles.DrawLine(start, end, 3);
-                }
-                
-                Handles.DrawSolidDisc(Vector3.Lerp(start, end, (i % 3 + 0.5f) / 3), Vector3.back, (end - start).magnitude * 0.04f);
+                Handles.DrawSolidDisc(Vector3.Lerp(lineStart, lineEnd, (i + 0.5f) / 12), Vector3.back, (lineEnd - lineStart).magnitude * 0.008f);
                 Handles.ArrowHandleCap(
                     0,
-                    Vector3.Lerp(start, end, (i % 3 + 0.5f) / 3),
+                    Vector3.Lerp(lineStart, lineEnd, (i + 0.5f) / 12),
                     rotation,
                     1,
                     EventType.Repaint
@@ -73,31 +71,29 @@ namespace Editor.Patterns.Drones
             }
         }
 
-        private static void GetPosition(out Vector2 start, out Vector2 end, out Quaternion rotation, int index, Vector3 topLeft, Vector3 bottomRight)
+        private void GetLine(out Vector3 lineStart, out Vector3 lineEnd, out Quaternion rotation, Vector3 topLeftPos, Vector3 bottomRightPos)
         {
-            Vector2 bottomLeft = new Vector2(topLeft.x, bottomRight.y);
-            Vector2 topRight = new Vector2(bottomRight.x, topLeft.y);
-            switch (index / 3)
+            switch (m_startingCorner.GetEnumValue<Room.Quarter>())
             {
-                case 0:
-                    start = Vector2.Lerp(topLeft, bottomLeft, .2f);
-                    end = Vector2.Lerp(topLeft, topRight, .2f);
+                case Room.Quarter.NorthWest:
+                    lineStart = topLeftPos;
+                    lineEnd = bottomRightPos;
+                    rotation = Quaternion.LookRotation(Vector2.one, Vector3.back);
+                    break;
+                case Room.Quarter.NorthEast:
+                    lineStart = new Vector3(bottomRightPos.x, topLeftPos.y);
+                    lineEnd = new Vector3(topLeftPos.x, bottomRightPos.y);
                     rotation = Quaternion.LookRotation(new Vector3(1, -1), Vector3.back);
                     break;
-                case 1:
-                    start = Vector2.Lerp(topRight, topLeft, .2f);
-                    end = Vector2.Lerp(topRight, bottomRight, .2f);
-                    rotation = Quaternion.LookRotation(new Vector3(-1, -1), Vector3.back);
-                    break;
-                case 2:
-                    start = Vector2.Lerp(bottomRight, topRight, .2f);
-                    end = Vector2.Lerp(bottomRight, bottomLeft, .2f);
+                case Room.Quarter.SouthWest:
+                    lineStart = new Vector3(bottomRightPos.x, topLeftPos.y);
+                    lineEnd = new Vector3(topLeftPos.x, bottomRightPos.y);
                     rotation = Quaternion.LookRotation(new Vector3(-1, 1), Vector3.back);
                     break;
-                case 3:
-                    start = Vector2.Lerp(bottomLeft, bottomRight, .2f);
-                    end = Vector2.Lerp(bottomLeft, topLeft, .2f);
-                    rotation = Quaternion.LookRotation(new Vector3(1, 1), Vector3.back);
+                case Room.Quarter.SouthEast:
+                    lineStart = topLeftPos;
+                    lineEnd = bottomRightPos;
+                    rotation = Quaternion.LookRotation(-Vector2.one, Vector3.back);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
