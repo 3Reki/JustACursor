@@ -14,7 +14,6 @@ namespace Player
         {
             set => playerCollision.IsInvincible = value;
         }
-        [HideInInspector] public bool IsShooting;
         
         [SerializeField] private PlayerData playerData;
         [SerializeField] private PlayerMovement playerMovement;
@@ -114,17 +113,10 @@ namespace Player
             {
                 if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();
                 else GamepadAim();
-
-                if (IsShooting) return;
-                IsShooting = true;
-                playerShoot.StartShoot();
+                
+                playerShoot.Shoot();
             }
-            else
-            {
-                if (!IsShooting) return;
-                IsShooting = false;
-                playerShoot.StopShoot();
-            }
+            else playerShoot.StopShoot();
         }
 
         private void HandleEnergy() {
