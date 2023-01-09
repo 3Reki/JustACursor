@@ -15,7 +15,7 @@ namespace Bosses.Conditions
         {
             Vector2 targetPosition = HandleTargetType(boss);
 
-            return HandleCheckType(boss.mover.room.IsInsideHalf(targetPosition, half));
+            return HandleCheckType(boss.mover.Room.IsInsideHalf(targetPosition, half));
         }
 
         private Vector2 HandleTargetType(Boss boss)

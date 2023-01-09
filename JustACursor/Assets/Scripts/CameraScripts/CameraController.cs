@@ -1,33 +1,35 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 namespace CameraScripts
 {
     public class CameraController : MonoBehaviour
     {
-        public static Camera mainCamera;
-        public static CameraController instance;
+        public static CameraController Instance;
         
+        [Header("Target")]
         [SerializeField] private Transform target;
-    
         [SerializeField] private Vector3 localPositionToMove = new(0, 5, -15);
         [SerializeField] private Vector3 localPositionToLook = new(0, -1, 5);
         [SerializeField] private float movingSpeed = 0.02f;
         [SerializeField] private float rotationSpeed = 0.1f;
 
+        [Header("Scripts")]
+        [field: SerializeField] public CameraEffect Effect;
+
+        private static Camera mainCamera;
+
         private void Awake()
         {
-            if (instance != null)
+            if (Instance != null)
             {
                 Destroy(gameObject);
                 return;
             }
 
-            instance = this;
-        }
-
-        private void Start()
-        {
+            Instance = this;
+            
             mainCamera = Camera.main;
         }
         
@@ -43,14 +45,24 @@ namespace CameraScripts
             transform.rotation = Quaternion.Slerp(transform.rotation, wantedRotation, rotationSpeed);
         }
 
+        public void Move(Vector3 position, float duration) {
+            mainCamera.transform.DOKill();
+            mainCamera.transform.DOMove(position, duration);
+        }
+
+        public void SetViewSize(float viewSize, float duration) {
+            mainCamera.DOKill();
+            mainCamera.DOOrthoSize(viewSize, duration);
+        }
+
         public static void TeleportToTarget()
         {
-            instance.transform.position = instance.target.position + instance.localPositionToMove;
+            Instance.transform.position = Instance.target.position + Instance.localPositionToMove;
         } 
         
         public static void ShakeCamera(float intensity, float timer)
         {
-            instance.StartCoroutine(CameraShakeCoroutine(intensity, timer));
+            Instance.StartCoroutine(CameraShakeCoroutine(intensity, timer));
         }
 
         private static IEnumerator CameraShakeCoroutine(float intensity, float timer)

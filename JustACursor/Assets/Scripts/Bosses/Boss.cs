@@ -1,7 +1,5 @@
-using System;
 using System.Threading.Tasks;
 using Bosses.Dependencies;
-using Bosses.Instructions;
 using BulletPro;
 using Player;
 using UnityEngine;
@@ -17,25 +15,26 @@ namespace Bosses
         public int maxHP => bossData.startingHP;
         public BossMovement mover => movementHandler;
         public PlayerController targetedPlayer => player;
-        
-        public Health health;
+        public Health Health => bossBar.Health;
 
         [SerializeField] protected PlayerController player;
         [SerializeField] protected BossData bossData;
-        [SerializeField] protected BossAnimations animator;
         [SerializeField] private BossMovement movementHandler;
+        [SerializeField] protected BossAnimations animator;
+        [SerializeField] private BossBar bossBar;
         [SerializeField] private BulletEmitter[] emitters = new BulletEmitter[3];
         
         protected bool isPaused;
         
-        private Instruction<Boss> currentInstruction;
         protected BossPhase currentBossPhase;
         private bool isFrozen;
         
         protected virtual void Start()
         {
             DebugStart();
-            health.Init(bossData.startingHP);
+            Health.Init(bossData.startingHP);
+            bossBar.InitBar();
+            StartStateMachine();
         }
 
         protected virtual void Update()
@@ -44,12 +43,12 @@ namespace Bosses
 
             if (isPaused) return;
 
-            HandlePatterns();
+            bossData.phaseResolvers[(int) currentBossPhase].UpdateMachine();
         }
 
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
-            health.LoseHealth(bullet.moduleParameters.GetInt("Damage"));
+            Health.LoseHealth(bullet.moduleParameters.GetInt("Damage"));
             
             switch (currentBossPhase)
             {
@@ -65,38 +64,13 @@ namespace Bosses
             }
         }
         
-        protected bool CheckPhase2HPThreshold() => health.GetRatio() <= bossData.phase2HPThreshold;
+        protected bool CheckPhase2HPThreshold() => Health.GetRatio() <= bossData.phase2HPThreshold;
 
-        protected bool CheckPhase3HPThreshold() => health.GetRatio() <= bossData.phase3HPThreshold;
-
-        private void HandlePatterns()
-        {
-            if (currentInstruction == null)
-            {
-                currentInstruction = bossData.phaseResolvers[(int) currentBossPhase].Resolve(this);
-            }
-            switch (currentInstruction.phase)
-            {
-                case InstructionPhase.None:
-                    currentInstruction = bossData.phaseResolvers[(int) currentBossPhase].Resolve(this);
-                    break;
-                case InstructionPhase.Start:
-                    currentInstruction.Play(this);
-                    break;
-                case InstructionPhase.Update:
-                    currentInstruction.Update();
-                    break;
-                case InstructionPhase.Stop:
-                    currentInstruction = currentInstruction.Stop();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
+        protected bool CheckPhase3HPThreshold() => Health.GetRatio() <= bossData.phase3HPThreshold;
 
         private async void SetBossPhase(BossPhase newPhase)
         {
-            StopCurrentPattern();
+            StopStateMachine();
             animator.ChangePhase();
             isPaused = true;
         
@@ -104,34 +78,58 @@ namespace Bosses
             
             currentBossPhase = newPhase;
             isPaused = false;
+            StartStateMachine();
         }
 
         public void Hit()
         {
             animator.Hit();
+            bossBar.UpdateBar();
         }
 
         public async void Die()
         {
-            StopCurrentPattern();
-            isPaused = true;
-
-            animator.Die();
+            StopStateMachine();
             GetComponent<BulletReceiver>().enabled = false;
             GetComponent<CircleCollider2D>().enabled = false;
+            
+            isPaused = true;
+            animator.Die();
+            bossBar.Hide();
 
             await Task.Delay((int) (animator.deathAnimLength * 1000));
-            
             transform.root.gameObject.SetActive(false);
         }
-
-        protected virtual void StopCurrentPattern()
+        
+        public void Reset()
         {
-            if (currentInstruction != null)
+            StopStateMachine();
+            GetComponent<BulletReceiver>().enabled = true;
+            GetComponent<CircleCollider2D>().enabled = true;
+            
+            transform.gameObject.SetActive(true);
+            Health.ResetHealth();
+            isFrozen = false;
+            isPaused = false;
+            currentBossPhase = BossPhase.One;
+
+            for (int i = 0; i < 3; i++)
             {
-                currentInstruction.Stop();
+                bulletEmitter[i].Stop();
+                bulletEmitter[i].Kill();
             }
             
+            StartStateMachine();
+        }
+        
+        protected virtual void StartStateMachine()
+        {
+            bossData.phaseResolvers[(int) currentBossPhase].Play(this);
+        }
+
+        protected virtual void StopStateMachine()
+        {
+            bossData.phaseResolvers[(int) currentBossPhase].Stop();
         }
 
         
@@ -150,7 +148,7 @@ namespace Bosses
         {
             if (overridePhaseOnStart)
             {
-                StopCurrentPattern();
+                StopStateMachine();
                 currentBossPhase = phaseOverride;
             }
         }
@@ -171,14 +169,14 @@ namespace Bosses
 
             if (Input.GetKeyDown(setHealthToOne))
             {
-                health.SetHealth(1);
+                Health.SetHealth(1);
                 animator.Hit();
                 SetBossPhase(BossPhase.Three);
             }
 
             if (Input.GetKeyDown(skipPattern))
             {
-                StopCurrentPattern();
+                StopStateMachine();
             }
         }
 
@@ -192,16 +190,7 @@ namespace Bosses
                 else bulletEmitter[i].Play(PlayOptions.AllBullets);
             }
         }
-
-        [ContextMenu("Reset Boss")]
-        private void Reset()
-        {
-            GetComponent<BulletReceiver>().enabled = true;
-            GetComponent<CircleCollider2D>().enabled = true;
-            transform.gameObject.SetActive(true);
-            isFrozen = false;
-            isPaused = false;
-        }
+        
 
         #endregion
     }

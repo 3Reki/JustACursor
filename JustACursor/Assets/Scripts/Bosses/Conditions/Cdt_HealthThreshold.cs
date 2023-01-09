@@ -11,7 +11,7 @@ namespace Bosses.Conditions
         
         public bool Check(Boss boss)
         {
-            float currentPercentHP = (float) boss.health.CurrentHealth / boss.maxHP;
+            float currentPercentHP = (float) boss.Health.CurrentHealth / boss.maxHP;
             return comparisonType switch
             {
                 ComparisonType.InferiorTo => currentPercentHP < threshold,

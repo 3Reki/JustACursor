@@ -1,6 +1,5 @@
 ﻿using System;
 using LD;
-using Player;
 using UnityEngine;
 
 namespace Bosses.Conditions
@@ -18,9 +17,9 @@ namespace Bosses.Conditions
             Vector2 targetPosition = HandleTargetType(boss);
             
             if (corner == Room.Corner.Any)
-                return HandleCheckType(boss.mover.room.MinDistanceToCorners(targetPosition));
+                return HandleCheckType(boss.mover.Room.MinDistanceToCorners(targetPosition));
 
-            return HandleCheckType(boss.mover.room.DistanceToCorner(targetPosition, corner));
+            return HandleCheckType(boss.mover.Room.DistanceToCorner(targetPosition, corner));
         }
 
         private Vector2 HandleTargetType(Boss boss)

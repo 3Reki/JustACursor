@@ -1,5 +1,257 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7239372593355065843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db9df5df75243fc83a9a9e1355ced90, type: 3}
+  m_Name: Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 568, y: -248}
+  ports:
+    keys:
+    - Dialogue
+    - Default
+    - Responses
+    values:
+    - _fieldName: Dialogue
+      _node: {fileID: -7239372593355065843}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Responses 1
+        node: {fileID: -5489957911996660091}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Default
+      _node: {fileID: -7239372593355065843}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 1083313785571666033}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Responses
+      _node: {fileID: -7239372593355065843}
+      _typeQualifiedName: Dialogue.Response[], Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  Dialogue: Je suis le dialogue B
+  Responses: []
+  Default: 
+--- !u!114 &-5489957911996660091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db9df5df75243fc83a9a9e1355ced90, type: 3}
+  m_Name: Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 184, y: -488}
+  ports:
+    keys:
+    - Dialogue
+    - Default
+    - Responses
+    - Responses 0
+    - Responses 1
+    values:
+    - _fieldName: Dialogue
+      _node: {fileID: -5489957911996660091}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Default
+        node: {fileID: -5480768622483758269}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Default
+      _node: {fileID: -5489957911996660091}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Responses
+      _node: {fileID: -5489957911996660091}
+      _typeQualifiedName: Dialogue.Response[], Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Responses 0
+      _node: {fileID: -5489957911996660091}
+      _typeQualifiedName: Dialogue.Response, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Dialogue
+        node: {fileID: -2929034537791168372}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: Responses 1
+      _node: {fileID: -5489957911996660091}
+      _typeQualifiedName: Dialogue.Response, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Dialogue
+        node: {fileID: -7239372593355065843}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  Dialogue: Fais ton choix
+  Responses:
+  - <Text>k__BackingField: Choix A
+    <Event>k__BackingField: 1
+  - <Text>k__BackingField: Choix B
+    <Event>k__BackingField: 2
+  Default: 
+--- !u!114 &-5480768622483758269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db9df5df75243fc83a9a9e1355ced90, type: 3}
+  m_Name: Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -168, y: -488}
+  ports:
+    keys:
+    - Dialogue
+    - Default
+    - Responses
+    values:
+    - _fieldName: Dialogue
+      _node: {fileID: -5480768622483758269}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Default
+        node: {fileID: 3692527647565689771}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Default
+      _node: {fileID: -5480768622483758269}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Dialogue
+        node: {fileID: -5489957911996660091}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Responses
+      _node: {fileID: -5480768622483758269}
+      _typeQualifiedName: Dialogue.Response[], Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  Dialogue: "Apr\xE8s ce texte, tu vas pouvoir faire un choix et \xE7a va le debug
+    dans la console"
+  Responses: []
+  Default: 
+--- !u!114 &-2929034537791168372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db9df5df75243fc83a9a9e1355ced90, type: 3}
+  m_Name: Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 568, y: -488}
+  ports:
+    keys:
+    - Dialogue
+    - Default
+    - Responses
+    values:
+    - _fieldName: Dialogue
+      _node: {fileID: -2929034537791168372}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Responses 0
+        node: {fileID: -5489957911996660091}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Default
+      _node: {fileID: -2929034537791168372}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 1083313785571666033}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Responses
+      _node: {fileID: -2929034537791168372}
+      _typeQualifiedName: Dialogue.Response[], Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  Dialogue: Je suis le dialogue A
+  Responses: []
+  Default: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9,18 +261,137 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4457afccfecf55c44b1345c61497c6c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 18b94a1fc90449ddb7a0cf2fb1775629, type: 3}
   m_Name: TestDialogue
   m_EditorClassIdentifier: 
-  dialogue:
-  - "Salut \xE0 toi, je suis le dialogue de test"
-  - "Apr\xE8s ce texte tu vas pouvoir faire un choix et \xE7a va le debug dans la
-    console"
-  - Fais ton choix bg
-  responses:
-  - <ResponseEvent>k__BackingField: 1
-    <ResponseText>k__BackingField: Choix A
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 281805e916972ac4e8e9ed000c596db1, type: 2}
-  - <ResponseEvent>k__BackingField: 2
-    <ResponseText>k__BackingField: Choix B
-    <NextDialogue>k__BackingField: {fileID: 0}
+  nodes:
+  - {fileID: 5318620200402605858}
+  - {fileID: 1083313785571666033}
+  - {fileID: 3692527647565689771}
+  - {fileID: -5480768622483758269}
+  - {fileID: -5489957911996660091}
+  - {fileID: -2929034537791168372}
+  - {fileID: -7239372593355065843}
+  startNode: {fileID: 5318620200402605858}
+  currentNode: {fileID: 1083313785571666033}
+--- !u!114 &1083313785571666033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c60698c716d34f27b723388fb014f9a5, type: 3}
+  m_Name: Stop
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 984, y: -216}
+  ports:
+    keys:
+    - entry
+    values:
+    - _fieldName: entry
+      _node: {fileID: 1083313785571666033}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Default
+        node: {fileID: -2929034537791168372}
+        reroutePoints: []
+      - fieldName: Default
+        node: {fileID: -7239372593355065843}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+--- !u!114 &3692527647565689771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db9df5df75243fc83a9a9e1355ced90, type: 3}
+  m_Name: Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -520, y: -488}
+  ports:
+    keys:
+    - Dialogue
+    - Default
+    - Responses
+    values:
+    - _fieldName: Dialogue
+      _node: {fileID: 3692527647565689771}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 5318620200402605858}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Default
+      _node: {fileID: 3692527647565689771}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Dialogue
+        node: {fileID: -5480768622483758269}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Responses
+      _node: {fileID: 3692527647565689771}
+      _typeQualifiedName: Dialogue.Response[], Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  Dialogue: "Salut \xE0 toi, je suis le dialogue de test"
+  Responses: []
+  Default: 
+--- !u!114 &5318620200402605858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87e1085169f4992a3ed6ceae234bc2e, type: 3}
+  m_Name: Start
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -728, y: -408}
+  ports:
+    keys:
+    - exit
+    values:
+    - _fieldName: exit
+      _node: {fileID: 5318620200402605858}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: Dialogue
+        node: {fileID: 3692527647565689771}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  exit: 0

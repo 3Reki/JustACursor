@@ -6,9 +6,8 @@ namespace Dialogue
     [Serializable]
     public class Response
     {
-        [field: SerializeField] public DialogueEvent ResponseEvent { get; private set; }
-        [field: SerializeField] public string ResponseText { get; private set; }
-        [field: SerializeField] public DialogueObject NextDialogue { get; private set; }
+        [field: SerializeField, TextArea(2,2)] public string Text { get; private set; }
+        [field: SerializeField, NodeEnum] public DialogueEvent Event { get; private set; }
     }
     
     public enum DialogueEvent

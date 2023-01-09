@@ -128,9 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74958fd1c8ba24241943d4da36b5ff3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  <Health>k__BackingField: {fileID: 0}
   healthFill: {fileID: 8982527503251995792}
   healthAmountText: {fileID: 3021162294216937299}
+  introFillSpeed: 1
 --- !u!1 &6632535344387222963
 GameObject:
   m_ObjectHideFlags: 0

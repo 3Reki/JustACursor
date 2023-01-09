@@ -149,7 +149,7 @@ MonoBehaviour:
   animator: {fileID: 4009595295874210876}
   timeBeforeFirstFire: 1
   shockwaveLifespan: 3
-  shockwaveColor: {r: 1, g: 0.5019608, b: 0, a: 1}
+  shockwaveColor: {r: 1, g: 0.78153276, b: 0, a: 1}
   shockwaveScaleOverLifetime:
     serializedVersion: 2
     m_Curve:

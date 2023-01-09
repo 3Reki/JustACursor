@@ -31,7 +31,7 @@ namespace Player
             var angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
 
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, angle),
-                data.rotationCurve.Evaluate(rotationProgress));
+                data.rotationCurve.Evaluate(rotationProgress) * Time.deltaTime * 120);
 
             rotationProgress += Time.deltaTime;
         }
@@ -49,6 +49,10 @@ namespace Player
             rb.velocity = GetTargetSpeed(direction,
                 data.moveAcceleration.Evaluate(accelerationProgress));
             accelerationProgress += Time.deltaTime;
+        }
+        
+        public void Stop() {
+            rb.velocity = Vector2.zero;
         }
 
         public IEnumerator StopMoving(Vector2 direction)

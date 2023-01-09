@@ -9,7 +9,7 @@ namespace LD
         {
             if (other.TryGetComponent(out PlayerController player))
             {
-                LevelHandler.onEndFloor.Invoke();
+                LevelManager.onEndFloor.Invoke();
             }
         }
 

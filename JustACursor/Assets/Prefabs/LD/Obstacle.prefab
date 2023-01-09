@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1698473039154869005}
   - component: {fileID: 7975919383093587929}
   - component: {fileID: 8836385536605074032}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 421189833598014178}
   - component: {fileID: 1148825411153638362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hitbox (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 282846105189077224}
   - component: {fileID: 1094817614031498647}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hitbox (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8227606320156499543}
   - component: {fileID: 4393463335458243229}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5327436926702835833}
   - component: {fileID: 7187947474455108764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hitbox (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

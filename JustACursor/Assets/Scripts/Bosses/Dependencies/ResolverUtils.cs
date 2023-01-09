@@ -5,17 +5,17 @@ namespace Bosses.Dependencies
 {
     public static class ResolverUtils
     {
-        public static float WeightSum<T>(this List<ResolvedPattern<T>> resolvedPatterns) where T : Bosses.Boss
+        public static float WeightSum(this List<ResolvedPattern> resolvedPatterns)
         {
             float sum = 0;
 
-            foreach (ResolvedPattern<T> pattern in resolvedPatterns)
+            foreach (ResolvedPattern pattern in resolvedPatterns)
             {
                 sum += pattern.weight;
 #if UNITY_EDITOR
                 if (pattern.weight < 0.001f)
                 {
-                    Debug.LogWarning($"{pattern.pattern.name} has a weight of 0 !");
+                    Debug.LogWarning("A pattern has a weight of 0 !");
                 }
 #endif
             }
@@ -23,21 +23,21 @@ namespace Bosses.Dependencies
             return sum;
         }
 
-        public static ResolvedPattern<T> RandomWeightedSelection<T>(this List<ResolvedPattern<T>> candidates) where T : Bosses.Boss
+        public static int RandomWeightedSelection(this List<ResolvedPattern> candidates)
         {
             float selected = Random.Range(0f, candidates.WeightSum());
 
-            foreach (ResolvedPattern<T> pattern in candidates)
+            for (var i = 0; i < candidates.Count; i++)
             {
-                selected -= pattern.weight;
+                selected -= candidates[i].weight;
 
                 if (selected < 0)
                 {
-                    return pattern;
+                    return i;
                 }
             }
 
-            return candidates[^1];
+            return candidates.Count - 1;
         }
     }
 }
