@@ -10,25 +10,29 @@ namespace Dialogue
 {
     public class DialogueManager : Singleton<DialogueManager>
     {
+        [Header("UI")]
         [SerializeField] private GameObject dialogueBox;
         [SerializeField] private GameObject responseParent;
         [SerializeField] private TMP_Text textLabel;
-        [SerializeField] private WriterEffect writerEffect;
         [SerializeField] private DialogueOption[] options;
+        [SerializeField] private WriterEffect writerEffect;
         
-        [Header("DEBUG")]
-        [SerializeField] private DialogueGraph testDialogue;
+        [Header("Dialogue")]
+        [SerializeField] private DialogueGraph currentDialogue;
         
         private PlayerInputs inputs;
         private bool interactInput;
         
         private DialogueGraph currentGraph;
         private Coroutine dialogueCoroutine;
+        
+        public delegate void NextDialogue();
+        public static NextDialogue nextDialogue;
 
         private void Start()
         {
             inputs = InputManager.Instance.inputs;
-            Play(testDialogue);
+            Play(currentDialogue);
         }
 
         private void Update()
@@ -45,7 +49,7 @@ namespace Dialogue
             dialogueCoroutine = StartCoroutine(DialogueCR());
         }
         
-        public void Stop()
+        private void Stop()
         {
             StopCoroutine(dialogueCoroutine);
             
@@ -55,7 +59,7 @@ namespace Dialogue
 
         private IEnumerator DialogueCR()
         {
-            DialogueNode node = currentGraph.currentNode as DialogueNode;
+            DialogueNode node = currentGraph.CurrentNode as DialogueNode;
             writerEffect.Run(node.Dialogue, textLabel);
 
             //Prevent skipping
@@ -85,9 +89,9 @@ namespace Dialogue
             TriggerEvent(eventToTrigger);
             responseParent.SetActive(false);
 
-            currentGraph.currentNode = currentGraph.currentNode.NextNode(nextNode);
-            if (currentGraph.currentNode.GetType() == typeof(DialogueNode)) StartCoroutine(DialogueCR());
-            else if (currentGraph.currentNode.GetType() == typeof(StopNode)) Stop();
+            currentGraph.CurrentNode = currentGraph.CurrentNode.NextNode(nextNode);
+            if (currentGraph.CurrentNode.GetType() == typeof(DialogueNode)) StartCoroutine(DialogueCR());
+            else if (currentGraph.CurrentNode.GetType() == typeof(StopNode)) Stop();
             else Debug.LogError("Invalid Node type");
         }
 

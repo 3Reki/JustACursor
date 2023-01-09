@@ -1,15 +1,17 @@
-﻿using XNode;
+﻿using UnityEngine;
+using XNode;
 
 namespace Graph {
-    public class BaseGraph : NodeGraph {
-        public BaseNode startNode;
-        public BaseNode currentNode;
+    public class BaseGraph : NodeGraph
+    {
+        private BaseNode startNode;
+        [HideInInspector] public BaseNode CurrentNode;
 
         public void Start()
         {
             if (startNode == null) Init();
             
-            currentNode = startNode.NextNode("exit");
+            CurrentNode = startNode.NextNode("exit");
         }
 
         private void Init() {

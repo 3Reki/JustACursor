@@ -9,5 +9,6 @@ namespace Graph.Dialogue
         [Input(ShowBackingValue.Always), TextArea(5,5)] public string Dialogue;
         [Output(dynamicPortList = true, connectionType = ConnectionType.Override)] public Response[] Responses;
         [Output(connectionType = ConnectionType.Override)] public string Default;
+        [Output(connectionType = ConnectionType.Override)] public float Wait;
     }
 }

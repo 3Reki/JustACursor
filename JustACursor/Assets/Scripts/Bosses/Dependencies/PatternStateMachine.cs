@@ -29,14 +29,14 @@ namespace Bosses.Dependencies
                 return;
             }
 
-            if (resolverGraph.currentNode.GetType() == typeof(ResolverNode))
+            if (resolverGraph.CurrentNode.GetType() == typeof(ResolverNode))
             {
-                int choiceIndex = ((ResolverNode) resolverGraph.currentNode).Resolve(target);
+                int choiceIndex = ((ResolverNode) resolverGraph.CurrentNode).Resolve(target);
                 GoToNextNode($"choices {choiceIndex}");
                 return;
             }
 
-            var pattern = resolverGraph.currentNode as Pattern<T>;
+            var pattern = resolverGraph.CurrentNode as Pattern<T>;
             if (pattern)
             {
                 switch (pattern.currentState)
@@ -72,9 +72,9 @@ namespace Bosses.Dependencies
         
         private void GoToNextNode(string nextNode)
         {
-            resolverGraph.currentNode = resolverGraph.currentNode.NextNode(nextNode);
+            resolverGraph.CurrentNode = resolverGraph.CurrentNode.NextNode(nextNode);
             
-            if (resolverGraph.currentNode.GetType() == typeof(StopNode))
+            if (resolverGraph.CurrentNode.GetType() == typeof(StopNode))
                 hasEnded = true;
             else
                 UpdateMachine();
