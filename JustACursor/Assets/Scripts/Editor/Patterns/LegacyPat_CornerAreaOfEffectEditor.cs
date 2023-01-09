@@ -1,5 +1,5 @@
 ﻿using LD;
-using Bosses.Patterns;
+using LegacyBosses.Patterns;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Editor.Patterns
 {
     [CustomEditor(typeof(Pat_CornerAreaOfEffect))]
-    public class Pat_CornerAreaOfEffectEditor : Pat_AreaOfEffectEditor
+    public class LegacyPat_CornerAreaOfEffectEditor : Pat_AreaOfEffectEditor
     {
         private SerializedProperty m_corner, m_sizeMultiplier;
         

@@ -1,13 +1,13 @@
 ﻿using System;
 using LD;
-using Bosses.Patterns.Drones;
+using LegacyBosses.Patterns.Drones;
 using UnityEditor;
 using UnityEngine;
 
 namespace Editor.Patterns.Drones
 {
     [CustomEditor(typeof(Pat_Dr_Cross))]
-    public class Pat_Dr_CrossEditor : UnityEditor.Editor
+    public class LegacyPat_Dr_CrossEditor : UnityEditor.Editor
     {
         private void OnEnable()
         {

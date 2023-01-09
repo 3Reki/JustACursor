@@ -1,6 +1,6 @@
 ﻿using System;
 using LD;
-using Bosses.Patterns.Drones;
+using LegacyBosses.Patterns.Drones;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Editor.Patterns.Drones
 {
     [CustomEditor(typeof(Pat_Dr_HalfRoom))]
-    public class Pat_Dr_HalfRoomEditor : UnityEditor.Editor
+    public class LegacyPat_Dr_HalfRoomEditor : UnityEditor.Editor
     {
         private SerializedProperty m_half, m_alternateDirectionMode;
         

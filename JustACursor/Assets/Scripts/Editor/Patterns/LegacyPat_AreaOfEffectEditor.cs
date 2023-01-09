@@ -1,11 +1,11 @@
-﻿using Bosses.Patterns;
+﻿using LegacyBosses.Patterns;
 using UnityEditor;
 using UnityEngine;
 
 namespace Editor.Patterns
 {
     [CustomEditor(typeof(Pat_AreaOfEffect<>))]
-    public class Pat_AreaOfEffectEditor : UnityEditor.Editor
+    public class LegacyPat_AreaOfEffectEditor : UnityEditor.Editor
     {
         private SerializedProperty m_patternDuration, m_aoePrefab, m_previewDuration;
 

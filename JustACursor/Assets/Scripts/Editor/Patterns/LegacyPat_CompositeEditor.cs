@@ -1,11 +1,11 @@
-﻿using Bosses.Patterns;
+﻿using LegacyBosses.Patterns;
 using UnityEditor;
 using Object = UnityEngine.Object;
 
 namespace Editor.Patterns
 {
     [CustomEditor(typeof(Pat_Composite))]
-    public class Pat_CompositeEditor : UnityEditor.Editor
+    public class LegacyPat_CompositeEditor : UnityEditor.Editor
     {
         private SerializedProperty m_patterns;
         private float patternDuration;
