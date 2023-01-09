@@ -6,7 +6,7 @@ using XNodeEditor;
 
 namespace Graph.Editor
 {
-    [CustomNodeGraphEditor(typeof(DialogueGraph))]
+    [CustomNodeGraphEditor(typeof(BaseGraph))]
     public class BaseGraphEditor : NodeGraphEditor
     {
         private BaseGraph graph;
