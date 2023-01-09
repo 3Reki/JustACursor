@@ -20,8 +20,8 @@ MonoBehaviour:
   phaseResolvers:
   - {fileID: 11400000, guid: 2f1cc7810ab970a42a8fa727a91af8f3, type: 2}
   - {fileID: 11400000, guid: 58be6a773e417794587337f93752a0b5, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: de14553b72d13504cbb72cfc2f4ba8d7, type: 2}
   droneResolver:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 5e2f51b899ca89040b653f2f75fbf3af, type: 2}
   - {fileID: 0}
   - {fileID: 0}
