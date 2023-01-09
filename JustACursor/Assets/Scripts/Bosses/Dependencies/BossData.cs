@@ -10,6 +10,6 @@ namespace Bosses.Dependencies
         [SerializeField] public int startingHP;
         [SerializeField, Range(0, 1)] public float phase2HPThreshold = 0.6f;
         [SerializeField, Range(0, 1)] public float phase3HPThreshold = 0.3f;
-        [SerializeField] public PatternStateMachine[] phaseResolvers;
+        [SerializeField] public DefaultPatternStateMachine[] phaseResolvers;
     }
 }

@@ -12,8 +12,6 @@ namespace Bosses
         [Space(15)]
         [Header("=== Sound Boss ===")]
         [SerializeField] private SpeakerMinion[] drones = new SpeakerMinion[12];
-        
-        //private Instruction<BossSound> currentDronePattern;
 
         protected override void Update()
         {
@@ -21,7 +19,7 @@ namespace Bosses
 
             if (isPaused) return;
             
-            HandleDrones();
+            ((SoundBossData) bossData).droneResolver[(int) currentBossPhase].UpdateMachine();
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -38,39 +36,17 @@ namespace Bosses
             return drones[i];
         }
 
+        protected override void StartStateMachine()
+        {
+            base.StartStateMachine();
+            ((SoundBossData) bossData).droneResolver[(int) currentBossPhase].Play(this);
+        }
+
         protected override void StopStateMachine()
         {
             base.StopStateMachine();
-            // if (currentDronePattern != null)
-            // {
-            //     currentDronePattern.Stop();
-            // }
+            ((SoundBossData) bossData).droneResolver[(int) currentBossPhase].Stop();
             
-        }
-
-        private void HandleDrones()
-        {
-            // if (currentDronePattern == null)
-            // {
-            //     currentDronePattern = ((SoundBossData) bossData).droneResolvers[(int) currentBossPhase].Resolve(this);
-            // }
-            // switch (currentDronePattern.phase)
-            // {
-            //     case InstructionPhase.None:
-            //         currentDronePattern = ((SoundBossData) bossData).droneResolvers[(int) currentBossPhase].Resolve(this);
-            //         break;
-            //     case InstructionPhase.Start:
-            //         currentDronePattern.Play(this);
-            //         break;
-            //     case InstructionPhase.Update:
-            //         currentDronePattern.Update();
-            //         break;
-            //     case InstructionPhase.Stop:
-            //         currentDronePattern = currentDronePattern.Stop();
-            //         break;
-            //     default:
-            //         throw new ArgumentOutOfRangeException();
-            // }
         }
     }
 }

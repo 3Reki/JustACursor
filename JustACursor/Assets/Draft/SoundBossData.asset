@@ -21,7 +21,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7f79cb21d2d21844d8c9c138e5c6da38, type: 2}
   - {fileID: 11400000, guid: 7f79cb21d2d21844d8c9c138e5c6da38, type: 2}
   - {fileID: 11400000, guid: 7f79cb21d2d21844d8c9c138e5c6da38, type: 2}
-  droneResolvers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  droneResolver:
+  - {fileID: 11400000, guid: bb891bbfd7abbde4ea3afb85f78bdcf2, type: 2}
+  - {fileID: 11400000, guid: bb891bbfd7abbde4ea3afb85f78bdcf2, type: 2}
+  - {fileID: 11400000, guid: bb891bbfd7abbde4ea3afb85f78bdcf2, type: 2}

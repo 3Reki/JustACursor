@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Bosses.Patterns;
 using Graph;
 using Graph.Resolver;
@@ -7,17 +6,15 @@ using UnityEngine;
 
 namespace Bosses.Dependencies
 {
-    [CreateAssetMenu(fileName = "StateMachine", menuName = "Just A Cursor/State Machine", order = 0)]
-    public class PatternStateMachine : ScriptableObject
+    public class PatternStateMachine<T> : ScriptableObject where T : Boss
     {
         [SerializeField] private ResolverGraph resolverGraph;
 
-        private Boss target;
-        private Pattern<Boss> currentInstruction;
-        private readonly List<ResolvedPattern> selectedList = new();
+        private T target;
+        private Pattern<T> currentPattern;
         private bool hasEnded;
 
-        public void Play(Boss boss)
+        public void Play(T boss)
         {
             target = boss;
             resolverGraph.Start();
@@ -39,19 +36,21 @@ namespace Bosses.Dependencies
                 return;
             }
 
-            var pattern = resolverGraph.currentNode as Pattern<Boss>;
+            var pattern = resolverGraph.currentNode as Pattern<T>;
             if (pattern)
             {
                 switch (pattern.currentState)
                 {
-                    case Pattern<Boss>.State.Start:
+                    case Pattern<T>.State.Start:
                         pattern.Play(target);
+                        currentPattern = pattern;
                         break;
-                    case Pattern<Boss>.State.Update:
+                    case Pattern<T>.State.Update:
                         pattern.Update();
                         break;
-                    case Pattern<Boss>.State.Stop:
+                    case Pattern<T>.State.Stop:
                         pattern.Stop();
+                        currentPattern = null;
                         GoToNextNode("exit");
                         break;
                     default:
@@ -61,69 +60,15 @@ namespace Bosses.Dependencies
             }
             
             Debug.Log("Not pattern or resolver.");
-            
-            // TODO
-            // if (currentInstruction == null)
-            // {
-            //     currentInstruction = Resolve(target);
-            //     return;
-            // }
-            //
-            // switch (currentInstruction.phase)
-            // {
-            //     case InstructionPhase.None:
-            //         currentInstruction = Resolve(target);
-            //         break;
-            //     case InstructionPhase.Start:
-            //         currentInstruction.Play(target);
-            //         break;
-            //     case InstructionPhase.Update:
-            //         currentInstruction.Update();
-            //         break;
-            //     case InstructionPhase.Stop:
-            //         currentInstruction = currentInstruction.Stop();
-            //         break;
-            //     default:
-            //         throw new ArgumentOutOfRangeException();
-            // }
         }
         
         public void Stop()
         {
-            if (currentInstruction != null)
+            if (currentPattern != null)
             {
-                currentInstruction.Stop();
+                currentPattern.Stop();
             }
         }
-
-        // public Instruction<Boss> Resolve(Boss boss)
-        // {
-        //     selectedList.Clear();
-        //     
-        //     foreach (ResolvedPattern choice in GetChoices())
-        //     {
-        //         if (choice.condition.Check(boss)) selectedList.Add(choice); 
-        //     }
-        //
-        //     if (selectedList.Count == 0) return null;
-        //
-        //     Instruction<Boss> instruction = selectedList.RandomWeightedSelection().pattern;
-        //     instruction.phase = InstructionPhase.Start;
-        //     
-        //     for (int i = 0; i < selectedList.Count; i++)
-        //     {
-        //         if (instruction != selectedList[i].pattern) continue;
-        //         
-        //         GoToNextNode($"choices {i}");
-        //         break;
-        //     }
-        //     return instruction;
-        // }
-        
-        // private List<ResolvedPattern> GetChoices() {
-        //     ResolverNode node = (ResolverNode) resolverGraph.currentNode;
-        //     return node.Choices;
-        // }
         
         private void GoToNextNode(string nextNode)
         {

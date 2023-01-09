@@ -1,12 +1,12 @@
 ﻿using LD;
-using Bosses.Patterns.Drones;
+using LegacyBosses.Patterns.Drones;
 using UnityEditor;
 using UnityEngine;
 
 namespace Editor.Patterns.Drones
 {
     [CustomEditor(typeof(Pat_Dr_Center))]
-    public class Pat_Dr_CenterEditor : UnityEditor.Editor
+    public class LegacyPat_Dr_CenterEditor : UnityEditor.Editor
     {
         private SerializedProperty m_distanceToCenter, m_flipFormation;
         
@@ -33,7 +33,6 @@ namespace Editor.Patterns.Drones
 
             Vector2 center;
             {
-                //
                 var roomSO = new SerializedObject(room);
                 var topLeftCorner = (Transform) roomSO.FindProperty("roomTopLeftCorner").objectReferenceValue;
                 var bottomRightCorner = (Transform) roomSO.FindProperty("roomBottomRightCorner").objectReferenceValue;
