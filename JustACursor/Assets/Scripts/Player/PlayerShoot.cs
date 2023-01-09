@@ -16,11 +16,11 @@ namespace Player
         
         private PlayerData data => playerController.Data;
         
-        public void StartShoot()
+        public void Shoot()
         {
             if (!canShoot) return;
             
-            StartCoroutine(ShootCR());
+            StartCoroutine(ShootCooldown());
             psMuzzle.SetActive(true);
         }
 
@@ -29,19 +29,10 @@ namespace Player
             psMuzzle.SetActive(false);
         }
 
-        private IEnumerator ShootCR()
-        {
-            emitter.Play();
-            yield return ShootCooldown();
-            emitter.Stop();
-
-            if (playerController.IsShooting)
-                StartCoroutine(ShootCR());
-        }
-
         private IEnumerator ShootCooldown()
         {
             canShoot = false;
+            emitter.Play();
             
             float shootCooldown = 1 / data.fireRate;
             while (shootCooldown > 0)
@@ -49,7 +40,8 @@ namespace Player
                 yield return null;
                 shootCooldown -= Time.deltaTime * Energy.GameSpeed;
             }
-
+            
+            emitter.Stop();
             canShoot = true;
         }
     }

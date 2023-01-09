@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6755871492523410327}
   - component: {fileID: 6755871492523410326}
   m_Layer: 0
-  m_Name: PS_MuzzleFlash_Droit (2)
+  m_Name: PS_MuzzleFlash_Mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6755871492523410325}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.19099998, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -107,7 +107,7 @@ ParticleSystem:
       m_PostInfinity: 2
       m_RotationOrder: 4
   moveWithTransform: 0
-  moveWithCustomTransform: {fileID: 0}
+  moveWithCustomTransform: {fileID: 6755871492526476170}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -4858,7 +4858,7 @@ GameObject:
   - component: {fileID: 6755871492951571341}
   - component: {fileID: 6755871492951571340}
   m_Layer: 0
-  m_Name: PS_MuzzleFlash_Droit
+  m_Name: PS_MuzzleFlash_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4872,7 +4872,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6755871492951571347}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06700015, y: 0.14999998, z: 0}
+  m_LocalPosition: {x: -0.15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4953,7 +4953,7 @@ ParticleSystem:
       m_PostInfinity: 2
       m_RotationOrder: 4
   moveWithTransform: 0
-  moveWithCustomTransform: {fileID: 0}
+  moveWithCustomTransform: {fileID: 6755871492526476170}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -9670,7 +9670,7 @@ GameObject:
   - component: {fileID: 6755871493258916392}
   - component: {fileID: 6755871493258916399}
   m_Layer: 0
-  m_Name: PS_MuzzleFlash_Droit (1)
+  m_Name: PS_MuzzleFlash_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9684,7 +9684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6755871493258916398}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07199979, y: 0.144, z: 0}
+  m_LocalPosition: {x: 0.15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9765,7 +9765,7 @@ ParticleSystem:
       m_PostInfinity: 2
       m_RotationOrder: 4
   moveWithTransform: 0
-  moveWithCustomTransform: {fileID: 0}
+  moveWithCustomTransform: {fileID: 6755871492526476170}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
