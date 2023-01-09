@@ -8,12 +8,15 @@ namespace CameraScripts
     {
         public static CameraController Instance;
         
+        [Header("Target")]
         [SerializeField] private Transform target;
-    
         [SerializeField] private Vector3 localPositionToMove = new(0, 5, -15);
         [SerializeField] private Vector3 localPositionToLook = new(0, -1, 5);
         [SerializeField] private float movingSpeed = 0.02f;
         [SerializeField] private float rotationSpeed = 0.1f;
+
+        [Header("Scripts")]
+        [field: SerializeField] public CameraEffect Effect;
 
         private static Camera mainCamera;
 

@@ -12,6 +12,12 @@ namespace Player
 
         [SerializeField] private PlayerController playerController;
         [SerializeField] private Rigidbody2D rb;
+        
+        [Header("Feedback")]
+        [SerializeField] private Animator animator;
+        [SerializeField] private GameObject baseTrail;
+        [SerializeField] private GameObject dashTrail;
+        [SerializeField] private GameObject psDash;
 
         private bool canDash = true;
         private float elapsedTime;
@@ -28,6 +34,11 @@ namespace Player
 
         private IEnumerator Dash(Vector2 moveDir)
         {
+            animator.Play("Player@Dash");
+            baseTrail.SetActive(false);
+            dashTrail.SetActive(true);
+            psDash.SetActive(true);
+            
             dashDirection = moveDir;
             if (dashDirection == Vector2.zero) dashDirection = rb.transform.right;
 
@@ -40,7 +51,7 @@ namespace Player
             CameraController.ShakeCamera(playerData.dashShakeIntensity, playerData.dashShakeDuration);
 
             yield return new WaitForSeconds(playerData.dashFirstPhaseDuration); 
-                // TODO : cache WaitForSeconds (wait for GD to look for good values)
+            // TODO : cache WaitForSeconds (wait for GD to look for good values)
             isFirstPhase = false;
 
             yield return new WaitForSeconds(playerData.dashDuration - playerData.dashFirstPhaseDuration);
@@ -50,6 +61,10 @@ namespace Player
 
             yield return new WaitForSeconds(playerData.dashRefreshCooldown);
             canDash = true;
+            
+            baseTrail.SetActive(true);
+            dashTrail.SetActive(false);
+            psDash.SetActive(false);
         }
 
         public void DashMovement(Vector2 direction)

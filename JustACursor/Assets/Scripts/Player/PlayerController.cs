@@ -14,6 +14,7 @@ namespace Player
         {
             set => playerCollision.IsInvincible = value;
         }
+        [HideInInspector] public bool IsShooting;
         
         [SerializeField] private PlayerData playerData;
         [SerializeField] private PlayerMovement playerMovement;
@@ -44,11 +45,13 @@ namespace Player
 
         private void Update() {
             if (playerRespawn.isRespawning) {
-                if (stopMovingEnumerator == null) return;
-                
-                StopCoroutine(stopMovingEnumerator);
-                playerMovement.Stop();
+                HandleRespawn();
                 return;
+            }
+
+            if (Input.GetKey(KeyCode.P))
+            {
+                Debug.Log(PlayerPosition);
             }
             
             moveDirection = inputs.Player.Move.ReadValue<Vector2>().normalized;
@@ -59,6 +62,14 @@ namespace Player
             HandleRotation();
             HandleShoot();
             HandleEnergy();
+        }
+
+        private void HandleRespawn()
+        {
+            if (stopMovingEnumerator == null) return;
+                
+            StopCoroutine(stopMovingEnumerator);
+            playerMovement.Stop();
         }
 
         private void HandleDash() {
@@ -103,8 +114,16 @@ namespace Player
             {
                 if (playerDeviceHandler.currentAimMethod == PlayerDeviceHandler.AimMethod.Mouse) MouseAim();
                 else GamepadAim();
-                
-                playerShoot.Shoot();
+
+                if (IsShooting) return;
+                IsShooting = true;
+                playerShoot.StartShoot();
+            }
+            else
+            {
+                if (!IsShooting) return;
+                IsShooting = false;
+                playerShoot.StopShoot();
             }
         }
 

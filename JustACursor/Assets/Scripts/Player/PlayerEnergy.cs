@@ -1,6 +1,5 @@
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Player
@@ -12,15 +11,25 @@ namespace Player
         [SerializeField] private Image extraTimeFill;
         [SerializeField] private Image intraTimeFill;
 
+        [Header("Feedback")]
+        [SerializeField] private Animator animator;
+
         private PlayerData data => playerController.Data;
 
         public void SpeedUpTime()
         {
             if (energy.timeState == Energy.TimeState.Speeding) return;
             energy.SpeedUpTime();
-            
-            DOFillAmount(intraTimeFill,1,data.timeAbilityDuration - data.timeAbilityDuration * intraTimeFill.fillAmount);
-            DOFillAmount(extraTimeFill,1,data.timeAbilityDuration - data.timeAbilityDuration * extraTimeFill.fillAmount);
+
+            if (extraTimeFill.fillAmount < 1)
+            {
+                float duration = data.timeAbilityDuration - data.timeAbilityDuration * intraTimeFill.fillAmount;
+                DoFillAmount(intraTimeFill,1,duration);
+                DoFillAmount(extraTimeFill,1,duration, () =>
+                {
+                    animator.Play("Energy@Scale");
+                });
+            }
             
             onPlayerSpeedUp.Invoke();
         }
@@ -36,8 +45,9 @@ namespace Player
             
             energy.SlowDownTime();
             
-            DOFillAmount(intraTimeFill,0,data.timeAbilityDuration * intraTimeFill.fillAmount);
-            DOFillAmount(extraTimeFill,0,data.timeAbilityDuration * extraTimeFill.fillAmount);
+            float duration = data.timeAbilityDuration * intraTimeFill.fillAmount;
+            DoFillAmount(intraTimeFill,0,duration);
+            DoFillAmount(extraTimeFill,0,duration);
             
             onPlayerSlowDown.Invoke();
         }
@@ -53,14 +63,16 @@ namespace Player
             onPlayerReset.Invoke();
         }
 
-        private void DOFillAmount(Image image, float endValue, float duration)
+        private void DoFillAmount(Image image, float endValue, float duration, TweenCallback OnComplete = null)
         {
             image.DOKill();
-            image.DOFillAmount(endValue, duration).SetEase(Ease.Linear);
+            image.DOFillAmount(endValue, duration).SetEase(Ease.Linear).OnComplete(OnComplete);
         }
 
-        public UnityEvent onPlayerSpeedUp;
-        public UnityEvent onPlayerSlowDown;
-        public UnityEvent onPlayerReset;
+        public delegate void OnPlayerEnergyUpdate();
+        public static OnPlayerEnergyUpdate onPlayerSpeedUp;
+        public static OnPlayerEnergyUpdate onPlayerSlowDown;
+        public static OnPlayerEnergyUpdate onPlayerReset;
+        
     }
 }
