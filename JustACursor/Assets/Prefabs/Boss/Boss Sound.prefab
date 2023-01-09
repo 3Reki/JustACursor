@@ -44,9 +44,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1699200556435724993}
   - component: {fileID: 4105485060245091497}
-  - component: {fileID: 2854913144953593601}
-  - component: {fileID: 7631233629567784612}
-  - component: {fileID: 732020146979904354}
+  - component: {fileID: 1390334459}
+  - component: {fileID: 1390334460}
   - component: {fileID: 2894734514773219363}
   - component: {fileID: 556927314842284143}
   m_Layer: 0
@@ -89,7 +88,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
---- !u!114 &2854913144953593601
+--- !u!114 &1390334459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,14 +97,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2898638757146436835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4ffbfafb7234c5b8d87e26ba41bc565, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e7cc5bcb81449438a53164ffed968db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  bossData: {fileID: 11400000, guid: 79cfaad2c43aee144b2670229a20c9d1, type: 2}
-  movementHandler: {fileID: 7631233629567784612}
-  animator: {fileID: 7534499753136108323}
-  bossBar: {fileID: 7389617505897620215}
+  bossData: {fileID: 11400000, guid: f4ec7d1999a36d34e81bc99b0492014f, type: 2}
+  movementHandler: {fileID: 1390334460}
+  animator: {fileID: 27804481}
+  bossBar: {fileID: 1772972539}
   emitters:
   - {fileID: 8138451376106017870}
   - {fileID: 8138451376663446304}
@@ -129,7 +128,7 @@ MonoBehaviour:
   - {fileID: 6599744642223503916}
   - {fileID: 1902774049257025670}
   - {fileID: 2926187879597284576}
---- !u!114 &7631233629567784612
+--- !u!114 &1390334460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +137,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2898638757146436835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96644cca27fc4e57b9e33745d7fad458, type: 3}
+  m_Script: {fileID: 11500000, guid: 916165e472e24f6e827c19866ac1ccf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Room>k__BackingField: {fileID: 0}
@@ -149,19 +148,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &732020146979904354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2898638757146436835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9006801a2f8c6540b6ff720b7ffeecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: bceb9685870f13248a363b894beb9630, type: 2}
 --- !u!114 &2894734514773219363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +166,7 @@ MonoBehaviour:
   onHealthLose:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2854913144953593601}
+      - m_Target: {fileID: 1390334459}
         m_TargetAssemblyTypeName: Bosses.Boss, Assembly-CSharp
         m_MethodName: Hit
         m_Mode: 1
@@ -195,7 +181,7 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2854913144953593601}
+      - m_Target: {fileID: 1390334459}
         m_TargetAssemblyTypeName: Bosses.Boss, Assembly-CSharp
         m_MethodName: Die
         m_Mode: 1
@@ -234,7 +220,7 @@ MonoBehaviour:
   OnHitByBullet:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2854913144953593601}
+      - m_Target: {fileID: 1390334459}
         m_TargetAssemblyTypeName: Bosses.Boss, Assembly-CSharp
         m_MethodName: Damage
         m_Mode: 0
@@ -313,7 +299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8946268594333285121}
-  - component: {fileID: 7389617505897620215}
+  - component: {fileID: 1772972539}
   m_Layer: 0
   m_Name: BossBar
   m_TagString: Untagged
@@ -344,7 +330,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -75}
   m_SizeDelta: {x: 0, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7389617505897620215
+--- !u!114 &1772972539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -353,7 +339,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5245421193545055035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74958fd1c8ba24241943d4da36b5ff3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 753b5a833a134b87b09f4d49263816f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: {fileID: 2894734514773219363}
@@ -1093,7 +1079,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4436906642808111900, guid: 48fb8e8dca1f22f43b009f7d538910d5, type: 3}
   m_PrefabInstance: {fileID: 832640411493672472}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7534499753136108323
+--- !u!114 &27804481
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1102,7 +1088,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3899322465864721668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71919579cb2b4edb8103245c0000a414, type: 3}
+  m_Script: {fileID: 11500000, guid: 9551310ba7af4b6d92e5a604d7e211fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animation: {fileID: 0}
@@ -1117,7 +1103,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7534499753136108323}
+      - m_Target: {fileID: 27804481}
         m_TargetAssemblyTypeName: Bosses.Dependencies.BossAnimations, Assembly-CSharp
         m_MethodName: ColorLerp
         m_Mode: 1
