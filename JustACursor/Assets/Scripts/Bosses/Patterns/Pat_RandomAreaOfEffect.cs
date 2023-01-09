@@ -9,7 +9,9 @@ namespace Bosses.Patterns
         [Min(0)]
         [SerializeField] private int aoeCount = 5;
         [Min(0)]
-        [SerializeField] private float aoeSize = 1;
+        [SerializeField] private float aoeMinSize = 1;
+        [Min(0)]
+        [SerializeField] private float aoeMaxSize = 1;
         [Min(0)] 
         [SerializeField] private float previewDuration;
 
@@ -68,7 +70,7 @@ namespace Bosses.Patterns
             Vector2 bottomRight = linkedEntity.mover.Room.bottomRight;
             GameObject go = Instantiate(prefab, new Vector3(Random.Range(topLeft.x, bottomRight.x), Random.Range(bottomRight.y, topLeft.y)), Quaternion.identity,
                 linkedEntity.transform);
-            go.transform.localScale *= aoeSize;
+            go.transform.localScale *= Random.Range(aoeMinSize, aoeMaxSize);
 
             return go;
         }
