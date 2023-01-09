@@ -6,7 +6,7 @@ namespace Enemies
 {
     public class SpeakerMinion : MonoBehaviour, ILaserHolder
     {
-        [HideInInspector] public bool IsActiveAtStart;
+        [SerializeField] private bool IsActiveAtStart;
 
         [Header("Laser")]
         [SerializeField] private Laser laser;
@@ -18,9 +18,6 @@ namespace Enemies
         [SerializeField] private float laserCooldown;
         [SerializeField] private bool hasCollision;
         [SerializeField] private bool isEndless;
-
-        [Header("Movement")]
-        [SerializeField] private BasicMovement movement;
 
         [Header("Editor Preview")]
         [SerializeField] private bool showPreview;

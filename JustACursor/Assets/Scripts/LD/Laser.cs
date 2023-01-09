@@ -70,7 +70,6 @@ namespace LD
         {
             ShowPreview();
 
-            //Remove Time.deltaTime bc it's the time for the laser bullet to initialize
             while (previewDuration > 0)
             {
                 yield return null;
@@ -79,7 +78,6 @@ namespace LD
 
             Active(hasCollision);
 
-            laserDuration -= Time.deltaTime * Energy.GameSpeed;
             while (laserDuration > 0)
             {
                 yield return null;

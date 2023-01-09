@@ -12,6 +12,8 @@ namespace Enemies
         [SerializeField, Range(0.1f,20)] private float period = 10;
         [SerializeField] private Ease movementEase = Ease.Linear;
         
+        
+        
         private Vector2 startPosition;
         private float curveTime;
         
@@ -47,6 +49,11 @@ namespace Enemies
 
             yield return new WaitForSeconds(duration);
             StartCoroutine(MovementLoop());
+        }
+
+        public void StopMovement()
+        {
+            transform.DOKill();
         }
         
         private enum Movement { None, Horizontal, Vertical }
