@@ -39386,6 +39386,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1243091281}
+    - target: {fileID: 1390334459, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
+      propertyPath: bossData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7798f7147aa646944b39971d523aabe9, type: 2}
     - target: {fileID: 1390334460, guid: 53830630a2cdffe4e9a04b24360328c5, type: 3}
       propertyPath: player
       value: 

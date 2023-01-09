@@ -23,5 +23,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: de14553b72d13504cbb72cfc2f4ba8d7, type: 2}
   droneResolver:
   - {fileID: 11400000, guid: 5e2f51b899ca89040b653f2f75fbf3af, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 2d3b1f9890bb77f468024aaf3e36ea13, type: 2}
+  - {fileID: 11400000, guid: 95e0d07c89cdda14e92be7cf10c9f739, type: 2}
