@@ -34,6 +34,7 @@ namespace Bosses
             DebugStart();
             Health.Init(bossData.startingHP);
             bossBar.InitBar();
+            StartStateMachine();
         }
 
         protected virtual void Update()
@@ -77,6 +78,7 @@ namespace Bosses
             
             currentBossPhase = newPhase;
             isPaused = false;
+            StartStateMachine();
         }
 
         public void Hit()
@@ -109,12 +111,20 @@ namespace Bosses
             Health.ResetHealth();
             isFrozen = false;
             isPaused = false;
+            currentBossPhase = BossPhase.One;
 
             for (int i = 0; i < 3; i++)
             {
                 bulletEmitter[i].Stop();
                 bulletEmitter[i].Kill();
             }
+            
+            StartStateMachine();
+        }
+        
+        protected virtual void StartStateMachine()
+        {
+            bossData.phaseResolvers[(int) currentBossPhase].Play(this);
         }
 
         protected virtual void StopStateMachine()

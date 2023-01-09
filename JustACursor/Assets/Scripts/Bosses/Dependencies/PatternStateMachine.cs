@@ -16,14 +16,12 @@ namespace Bosses.Dependencies
         private Pattern<Boss> currentInstruction;
         private readonly List<ResolvedPattern> selectedList = new();
         private bool hasEnded;
-        private int nodeIndex;
 
         public void Play(Boss boss)
         {
             target = boss;
             resolverGraph.Start();
             hasEnded = false;
-            nodeIndex = 1;
         }
 
         public void UpdateMachine()
@@ -33,6 +31,36 @@ namespace Bosses.Dependencies
                 Play(target);
                 return;
             }
+
+            if (resolverGraph.currentNode.GetType() == typeof(ResolverNode))
+            {
+                int choiceIndex = ((ResolverNode) resolverGraph.currentNode).Resolve(target);
+                GoToNextNode($"choices {choiceIndex}");
+                return;
+            }
+
+            var pattern = resolverGraph.currentNode as Pattern<Boss>;
+            if (pattern)
+            {
+                switch (pattern.currentState)
+                {
+                    case Pattern<Boss>.State.Start:
+                        pattern.Play(target);
+                        break;
+                    case Pattern<Boss>.State.Update:
+                        pattern.Update();
+                        break;
+                    case Pattern<Boss>.State.Stop:
+                        pattern.Stop();
+                        GoToNextNode("exit");
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                return;
+            }
+            
+            Debug.Log("Not pattern or resolver.");
             
             // TODO
             // if (currentInstruction == null)
@@ -86,27 +114,25 @@ namespace Bosses.Dependencies
         //     {
         //         if (instruction != selectedList[i].pattern) continue;
         //         
-        //         Debug.Log($"{nodeIndex}) {instruction.name}");
         //         GoToNextNode($"choices {i}");
-        //         nodeIndex++;
         //         break;
         //     }
         //     return instruction;
         // }
         
-        private List<ResolvedPattern> GetChoices() {
-            ResolverNode node = (ResolverNode) resolverGraph.currentNode;
-            return node.Choices;
-        }
+        // private List<ResolvedPattern> GetChoices() {
+        //     ResolverNode node = (ResolverNode) resolverGraph.currentNode;
+        //     return node.Choices;
+        // }
         
         private void GoToNextNode(string nextNode)
         {
             resolverGraph.currentNode = resolverGraph.currentNode.NextNode(nextNode);
             
-            if (resolverGraph.currentNode.GetType() != typeof(StopNode)) return;
-            
-            Debug.Log("End of Resolver");
-            hasEnded = true;
+            if (resolverGraph.currentNode.GetType() == typeof(StopNode))
+                hasEnded = true;
+            else
+                UpdateMachine();
         }
     }
 }

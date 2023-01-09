@@ -10,8 +10,8 @@ namespace Bosses.Dependencies
     {
         [Input(ShowBackingValue.Never)] public int entry;
 
-        [Output(dynamicPortList = true, connectionType = ConnectionType.Override)] 
-        [SerializeField] private ResolvedPattern[] choices;
+        [Output(dynamicPortList = true, connectionType = ConnectionType.Override)]
+        public ResolvedPattern[] choices;
 
         private readonly List<ResolvedPattern> selectedList = new();
 

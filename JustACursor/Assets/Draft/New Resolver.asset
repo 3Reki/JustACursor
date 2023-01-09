@@ -1,5 +1,123 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-621705526289444153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1112, y: -168}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    - choices 1
+    values:
+    - _fieldName: entry
+      _node: {fileID: -621705526289444153}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 1470455503564155234}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -621705526289444153}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -621705526289444153}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 2186450674952359538}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -621705526289444153}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 2110410023183037041}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
+  - conditionType: 0
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,12 +133,142 @@ MonoBehaviour:
   nodes:
   - {fileID: 8367776725103558552}
   - {fileID: 2186450674952359538}
-  - {fileID: 8695087578942539930}
-  - {fileID: 6770396150294571804}
   - {fileID: 2110410023183037041}
-  - {fileID: 3362016771114027152}
-  startNode: {fileID: 0}
-  currentNode: {fileID: 0}
+  - {fileID: 1782242640581200061}
+  - {fileID: -621705526289444153}
+  - {fileID: 9165924505833892965}
+  - {fileID: 1470455503564155234}
+  startNode: {fileID: 8367776725103558552}
+  currentNode: {fileID: 2110410023183037041}
+--- !u!114 &1470455503564155234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03ed893e70c4dd3b6e0e38c03f8abb1, type: 3}
+  m_Name: Pat_Composite
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 648, y: -168}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 1470455503564155234}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: choices 0
+        node: {fileID: 1782242640581200061}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 1470455503564155234}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -621705526289444153}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  patternDuration: 3
+  patterns:
+  - {fileID: 9165924505833892965}
+  - {fileID: 11400000, guid: 2ed50e95000f0dc408d2ea504d997246, type: 2}
+--- !u!114 &1782242640581200061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
+  m_Name: Resolver
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 72, y: -184}
+  ports:
+    keys:
+    - entry
+    - choices
+    - choices 0
+    values:
+    - _fieldName: entry
+      _node: {fileID: 1782242640581200061}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 8367776725103558552}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: 1782242640581200061}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern[], Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: 1782242640581200061}
+      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: entry
+        node: {fileID: 1470455503564155234}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  entry: 0
+  choices:
+  - conditionType: 0
+    weight: 1
+    cdtHealthThreshold:
+      comparisonType: 0
+      threshold: 0
+    cdtCornerDistance:
+      targetType: 0
+      corner: 0
+      checkType: 0
+      distance: 0
+    cdtCenterDistance:
+      targetType: 0
+      checkType: 0
+      distance: 0
+    cdtBossDistance:
+      checkType: 0
+      distance: 0
+    cdtQuarter:
+      targetType: 0
+      quarter: 0
+      checkType: 0
+    cdtHalf:
+      targetType: 0
+      half: 0
+      checkType: 0
 --- !u!114 &2110410023183037041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34,7 +282,7 @@ MonoBehaviour:
   m_Name: Pat_Border
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 200, y: 216}
+  position: {x: 1576, y: -8}
   ports:
     keys:
     - entry
@@ -44,7 +292,10 @@ MonoBehaviour:
       _node: {fileID: 2110410023183037041}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: choices 1
+        node: {fileID: -621705526289444153}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -55,7 +306,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: entry
-        node: {fileID: 3362016771114027152}
+        node: {fileID: 9165924505833892965}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -63,7 +314,7 @@ MonoBehaviour:
       _dynamic: 0
   entry: 0
   exit: 0
-  patternDuration: 0
+  patternDuration: 1
   border: 0
 --- !u!114 &2186450674952359538
 MonoBehaviour:
@@ -78,7 +329,7 @@ MonoBehaviour:
   m_Name: Stop
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 952, y: -200}
+  position: {x: 2424, y: -120}
   ports:
     keys:
     - entry
@@ -88,142 +339,17 @@ MonoBehaviour:
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: Choices 0
-        node: {fileID: 6770396150294571804}
+      - fieldName: choices 0
+        node: {fileID: -621705526289444153}
         reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  entry: 0
---- !u!114 &3362016771114027152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 398ddd7734884863bb976ad56ec13334, type: 3}
-  m_Name: Pat_Corner
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 632, y: 216}
-  ports:
-    keys:
-    - entry
-    - exit
-    values:
-    - _fieldName: entry
-      _node: {fileID: 3362016771114027152}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
       - fieldName: exit
-        node: {fileID: 2110410023183037041}
+        node: {fileID: 9165924505833892965}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: exit
-      _node: {fileID: 3362016771114027152}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
   entry: 0
-  exit: 0
-  patternDuration: 3
-  corner: 0
---- !u!114 &6770396150294571804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
-  m_Name: Resolver
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 360, y: -232}
-  ports:
-    keys:
-    - entry
-    - Choices
-    - Choices 0
-    values:
-    - _fieldName: entry
-      _node: {fileID: 6770396150294571804}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: Choices 0
-        node: {fileID: 8695087578942539930}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Choices
-      _node: {fileID: 6770396150294571804}
-      _typeQualifiedName: System.Collections.Generic.List`1[[Bosses.Dependencies.ResolvedPattern`1[[Bosses.Boss,
-        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
-        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Choices 0
-      _node: {fileID: 6770396150294571804}
-      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern`1[[Bosses.Boss, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: entry
-        node: {fileID: 2186450674952359538}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 1
-  entry: 0
-  Choices:
-  - conditionType: 0
-    pattern: {fileID: 11400000, guid: c1307f51adc571b46ac2f733d3ddbb53, type: 2}
-    weight: 1
-    cdtHealthThreshold:
-      comparisonType: 0
-      threshold: 0
-    cdtCornerDistance:
-      targetType: 0
-      corner: 0
-      checkType: 0
-      distance: 0
-    cdtCenterDistance:
-      targetType: 0
-      checkType: 0
-      distance: 0
-    cdtBossDistance:
-      checkType: 0
-      distance: 0
-    cdtQuarter:
-      targetType: 0
-      quarter: 0
-      checkType: 0
-    cdtHalf:
-      targetType: 0
-      half: 0
-      checkType: 0
 --- !u!114 &8367776725103558552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +363,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -456, y: -88}
+  position: {x: -152, y: -104}
   ports:
     keys:
     - exit
@@ -248,14 +374,14 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: entry
-        node: {fileID: 8695087578942539930}
+        node: {fileID: 1782242640581200061}
         reroutePoints: []
       _direction: 1
       _connectionType: 1
       _typeConstraint: 0
       _dynamic: 0
   exit: 0
---- !u!114 &8695087578942539930
+--- !u!114 &9165924505833892965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,78 +390,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5cf6cd4f3343c3a73db0d9ccf6921a, type: 3}
-  m_Name: Resolver
+  m_Script: {fileID: 11500000, guid: 21f80752baf249ffb75c0b0cf3b6297a, type: 3}
+  m_Name: Pat_Emitter
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -200, y: -232}
+  position: {x: 2040, y: 40}
   ports:
     keys:
     - entry
-    - Choices
-    - Choices 0
+    - exit
     values:
     - _fieldName: entry
-      _node: {fileID: 8695087578942539930}
+      _node: {fileID: 9165924505833892965}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: exit
-        node: {fileID: 8367776725103558552}
+        node: {fileID: 2110410023183037041}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: Choices
-      _node: {fileID: 8695087578942539930}
-      _typeQualifiedName: System.Collections.Generic.List`1[[Bosses.Dependencies.ResolvedPattern`1[[Bosses.Boss,
-        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
-        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Choices 0
-      _node: {fileID: 8695087578942539930}
-      _typeQualifiedName: Bosses.Dependencies.ResolvedPattern`1[[Bosses.Boss, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - _fieldName: exit
+      _node: {fileID: 9165924505833892965}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: entry
-        node: {fileID: 6770396150294571804}
+        node: {fileID: 2186450674952359538}
         reroutePoints: []
       _direction: 1
-      _connectionType: 1
+      _connectionType: 0
       _typeConstraint: 0
-      _dynamic: 1
+      _dynamic: 0
   entry: 0
-  Choices:
-  - conditionType: 0
-    pattern: {fileID: 11400000, guid: 06a15281ba94562499ad9f5541449d2e, type: 2}
-    weight: 1
-    cdtHealthThreshold:
-      comparisonType: 0
-      threshold: 0
-    cdtCornerDistance:
-      targetType: 0
-      corner: 0
-      checkType: 0
-      distance: 0
-    cdtCenterDistance:
-      targetType: 0
-      checkType: 0
-      distance: 0
-    cdtBossDistance:
-      checkType: 0
-      distance: 0
-    cdtQuarter:
-      targetType: 0
-      quarter: 0
-      checkType: 0
-    cdtHalf:
-      targetType: 0
-      half: 0
-      checkType: 0
+  exit: 0
+  patternDuration: 3
+  emitterProfiles:
+  - {fileID: 11400000, guid: cd82867e66c9b1849af3c78a0d1939dd, type: 2}

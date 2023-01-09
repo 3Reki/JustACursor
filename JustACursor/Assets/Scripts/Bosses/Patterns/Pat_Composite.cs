@@ -21,20 +21,24 @@ namespace Bosses.Patterns
         {
             foreach (Pattern<Boss> pattern in patterns)
             {
+                if (pattern.currentState != State.Update)
+                    return;
+                
                 pattern.Update();
             }
 
             foreach (Pattern<Boss> pattern in patterns)
             {
-                if (!pattern.isFinished)
+                if (pattern.currentState != State.Stop)
                     return;
             }
 
-            isFinished = true;
+            currentState = State.Stop;
         }
 
         public override void Stop()
         {
+            base.Stop();
             foreach (Pattern<Boss> pattern in patterns)
             {
                 pattern.Stop();

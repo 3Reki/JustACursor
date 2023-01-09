@@ -24,6 +24,7 @@ namespace Bosses.Patterns.Drones
 
         public override void Stop()
         {
+            base.Stop();
             int droneCount = linkedEntity.droneCount;
             
             for (int i = 0; i < droneCount; i++)

@@ -12,6 +12,8 @@ namespace Bosses.Patterns
             linkedEntity.mover.RotateTowardsPlayer();
         }
 
-        public override void Stop() {}
+        public override void Stop() {
+            base.Stop();
+        }
     }
 }

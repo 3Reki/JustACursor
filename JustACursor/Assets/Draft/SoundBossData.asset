@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossName: 
   description: 
-  startingHP: 0
+  startingHP: 300
   phase2HPThreshold: 0.6
   phase3HPThreshold: 0.3
   phaseResolvers:
@@ -22,84 +22,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7f79cb21d2d21844d8c9c138e5c6da38, type: 2}
   - {fileID: 11400000, guid: 7f79cb21d2d21844d8c9c138e5c6da38, type: 2}
   droneResolvers:
-  - choices:
-    - conditionType: 0
-      pattern: {fileID: 11400000, guid: d558e93b0d5466d44b7cd89bdd406071, type: 2}
-      weight: 1
-      cdtHealthThreshold:
-        comparisonType: 0
-        threshold: 0
-      cdtCornerDistance:
-        targetType: 0
-        corner: 0
-        checkType: 0
-        distance: 0
-      cdtCenterDistance:
-        targetType: 0
-        checkType: 0
-        distance: 0
-      cdtBossDistance:
-        checkType: 0
-        distance: 0
-      cdtQuarter:
-        targetType: 0
-        quarter: 0
-        checkType: 0
-      cdtHalf:
-        targetType: 0
-        half: 0
-        checkType: 0
-  - choices:
-    - conditionType: 0
-      pattern: {fileID: 11400000, guid: d558e93b0d5466d44b7cd89bdd406071, type: 2}
-      weight: 1
-      cdtHealthThreshold:
-        comparisonType: 0
-        threshold: 0
-      cdtCornerDistance:
-        targetType: 0
-        corner: 0
-        checkType: 0
-        distance: 0
-      cdtCenterDistance:
-        targetType: 0
-        checkType: 0
-        distance: 0
-      cdtBossDistance:
-        checkType: 0
-        distance: 0
-      cdtQuarter:
-        targetType: 0
-        quarter: 0
-        checkType: 0
-      cdtHalf:
-        targetType: 0
-        half: 0
-        checkType: 0
-  - choices:
-    - conditionType: 0
-      pattern: {fileID: 11400000, guid: d558e93b0d5466d44b7cd89bdd406071, type: 2}
-      weight: 1
-      cdtHealthThreshold:
-        comparisonType: 0
-        threshold: 0
-      cdtCornerDistance:
-        targetType: 0
-        corner: 0
-        checkType: 0
-        distance: 0
-      cdtCenterDistance:
-        targetType: 0
-        checkType: 0
-        distance: 0
-      cdtBossDistance:
-        checkType: 0
-        distance: 0
-      cdtQuarter:
-        targetType: 0
-        quarter: 0
-        checkType: 0
-      cdtHalf:
-        targetType: 0
-        half: 0
-        checkType: 0
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
