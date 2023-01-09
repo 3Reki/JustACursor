@@ -1,6 +1,4 @@
-﻿using BulletPro;
-
-namespace Enemies
+﻿namespace Enemies
 {
     public interface ILaserHolder
     {

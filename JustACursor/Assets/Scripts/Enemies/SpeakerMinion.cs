@@ -1,5 +1,4 @@
 using System.Collections;
-using DG.Tweening;
 using LD;
 using UnityEngine;
 
@@ -7,9 +6,9 @@ namespace Enemies
 {
     public class SpeakerMinion : MonoBehaviour, ILaserHolder
     {
-        [SerializeField] private bool isActiveAtStart;
+        [HideInInspector] public bool IsActiveAtStart;
 
-        [field: Header("Laser")]
+        [Header("Laser")]
         [SerializeField] private Laser laser;
         [SerializeField] private float laserWidth;
         [SerializeField] private float laserLength;
@@ -21,32 +20,19 @@ namespace Enemies
         [SerializeField] private bool isEndless;
 
         [Header("Movement")]
-        [SerializeField] private Movement movementAxis;
-        [SerializeField] private AnimationCurve movementCurve;
-        [SerializeField, Range(1,30)] private float amplitude;
-        [SerializeField, Range(0.1f,20)] private float period;
+        [SerializeField] private BasicMovement movement;
 
-        [Header("Editor Only")]
+        [Header("Editor Preview")]
         [SerializeField] private bool showPreview;
-
-        private Vector2 startPosition;
-        private float curveTime;
-        
-        private void Awake()
-        {
-            startPosition = transform.position;
-        }
 
         private void Start()
         {
-            if (!isActiveAtStart) return;
+            if (!IsActiveAtStart) return;
             
             if (isEndless)
                 StartInfiniteFire();
             else
                 StartCoroutine(FirstFireDelay());
-
-            if (movementAxis != Movement.None) StartCoroutine(MovementLoop());
         }
         
         private IEnumerator FirstFireDelay()
@@ -100,31 +86,6 @@ namespace Enemies
         {
             transform.SetPositionAndRotation(position, rotation);
         }
-        
-        private IEnumerator MovementLoop()
-        {
-            float newPos = movementCurve.Evaluate(curveTime)*amplitude;
-            float duration = Time.deltaTime * Energy.GameSpeed / period;
-            
-            if (movementAxis == Movement.Horizontal)
-            {
-                transform.DOComplete();
-                transform.DOMoveX(startPosition.x+newPos, duration).SetEase(Ease.Linear);
-            }
-            else if (movementAxis == Movement.Vertical)
-            {
-                transform.DOComplete();
-                transform.DOMoveY(startPosition.y+newPos, duration).SetEase(Ease.Linear);
-            }
-            
-            curveTime += duration;
-            curveTime %= 1;
-
-            yield return new WaitForSeconds(duration);
-            StartCoroutine(MovementLoop());
-        }
-        
-        private enum Movement { None, Horizontal, Vertical }
 
         private void OnDrawGizmosSelected()
         {
