@@ -38,11 +38,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Distortion_Scale: 1
-    - _Distortion_Scrool_Speed: 3.53
-    - _Distortion_Strenght: 2.3
-    - _Glitch_Amount: 0.6
-    - _Glitch_Strenght: 50
+    - _Distortion_Scale: 10
+    - _Distortion_Scrool_Speed: 1.7
+    - _Distortion_Strenght: 3.87
+    - _Glitch_Amount: 0.8
+    - _Glitch_Speed: 2
+    - _Glitch_Strenght: 2
     - _Oscilation_Number: 1
     - _Oscilation_Speed: 1
     - _QueueControl: 0
@@ -51,7 +52,8 @@ Material:
     - _Refresh_Speed: 0.5
     - _Zoom: 70
     m_Colors:
-    - _Color: {r: 0, g: 0.5803922, b: 1.623529, a: 0}
+    - _Color: {r: 2.1675384, g: 2.1675384, b: 2.1675384, a: 0}
+    - _GlitchColor: {r: 0, g: 0.03216424, b: 0.4716981, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8337359066451416195
 MonoBehaviour:
