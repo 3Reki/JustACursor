@@ -10,8 +10,6 @@ namespace LD
         [SerializeField] private GameObject aoe;
 
         private Coroutine fireCoroutine;
-        private Coroutine damageCoroutine;
-        private Collider2D target;
 
         public void SetRadius(float radius)
         {
@@ -37,7 +35,7 @@ namespace LD
             
             preview.SetActive(false);
             aoe.SetActive(true);
-            
+
             timer = aoeDuration;
             while (timer > 0)
             {
@@ -52,30 +50,6 @@ namespace LD
         {
             if (fireCoroutine != null)
                 StopCoroutine(fireCoroutine);
-        }
-        
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.TryGetComponent(out PlayerCollision player))
-            {
-                StartCoroutine(DamageCR(player));
-                target = other;
-            }
-        }
-
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            if (other == target)
-                StopCoroutine(damageCoroutine);
-        }
-
-        private IEnumerator DamageCR(PlayerCollision player)
-        {
-            while (true)
-            {
-                yield return null;
-                player.Damage();
-            }
         }
     }
 }
