@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8447345017923191085
 Transform:
   m_ObjectHideFlags: 0
@@ -71,7 +71,6 @@ MonoBehaviour:
   aoeParent: {fileID: 7490944806140012863}
   childTransform: {fileID: 8447345018296318886}
   health: {fileID: 8447345017923191080}
-  movement: {fileID: 8447345017923191086}
   maxHealth: 5
   timeBeforeFirstFire: 0
   previewDuration: 0.5

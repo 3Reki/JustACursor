@@ -11,7 +11,6 @@ namespace Enemies
         [SerializeField] private AreaOfEffect aoeParent;
         [SerializeField] private Transform childTransform;
         [SerializeField] private Health health;
-        [SerializeField] private BasicMovement movement;
 
         [Header("Health")]
         [SerializeField] private int maxHealth = 5;
