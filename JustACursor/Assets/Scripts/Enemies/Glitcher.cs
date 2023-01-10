@@ -23,15 +23,15 @@ namespace Enemies
         [SerializeField] private float aoeCooldown;
 
         [Header("Area of Effects")]
-        [SerializeField] private Level level;
+        [SerializeField, Range(1,3)] private int level;
         
-        [ConditionalField(nameof(level), true, Level.ChildOnly)]
+        [ConditionalField(nameof(level), true, 2)]
         [SerializeField] private float parentRadius = 2;
-        [ConditionalField(nameof(level), true, Level.ParentOnly)]
+        [ConditionalField(nameof(level), true, 1)]
         [SerializeField] private int childNumber = 4;
-        [ConditionalField(nameof(level), true, Level.ParentOnly)]
+        [ConditionalField(nameof(level), true, 1)]
         [SerializeField] private float childRadius = 1;
-        [ConditionalField(nameof(level), true, Level.ParentOnly)]
+        [ConditionalField(nameof(level), true, 1)]
         [SerializeField] private float childSpawnRadius = 3;
 
         [Header("Editor Preview")]
@@ -43,7 +43,7 @@ namespace Enemies
         {
             aoeParent.SetRadius(parentRadius);
 
-            if (level == Level.ParentOnly) return;
+            if (level == 1) return;
             
             childAoE = new AreaOfEffect[childNumber];
             for (int i = 0; i < childAoE.Length; i++)
@@ -67,9 +67,9 @@ namespace Enemies
 
         private IEnumerator FireLoop()
         {
-            if (level != Level.ChildOnly) aoeParent.StartFire(previewDuration, aoeDuration);
+            if (level != 2) aoeParent.StartFire(previewDuration, aoeDuration);
 
-            if (level != Level.ParentOnly)
+            if (level != 1)
             {
                 foreach (AreaOfEffect aoe in childAoE)
                 {
@@ -85,10 +85,6 @@ namespace Enemies
                 timer -= Time.deltaTime * Energy.GameSpeed;
             }
             
-            //Cooldown
-            /*parentAoE.StopFire();
-            foreach (AreaOfEffect aoe in childAoE) aoe.StopFire();*/
-            
             timer = aoeCooldown;
             while (timer > 0)
             {
@@ -102,11 +98,11 @@ namespace Enemies
         public void Damage(BulletPro.Bullet bullet, Vector3 hitPoint)
         {
             health.LoseHealth(bullet.moduleParameters.GetInt("Damage"));
-            if (health.CurrentHealth == 0)
-            {
-                movement.StopMovement();
-                Destroy(gameObject);
-            }
+        }
+
+        public void Die()
+        {
+            Destroy(gameObject);
         }
         
         private void OnDrawGizmosSelected()
@@ -114,25 +110,23 @@ namespace Enemies
             if (!showPreview) return;
 
             var position = transform.position;
-            if (level != Level.ParentOnly)
+            if (level != 1)
             {
                 Gizmos.color = new Color(0,0,1,.5f);
                 Gizmos.DrawSphere(position, childSpawnRadius);
             }
 
-            if (level != Level.ChildOnly)
+            if (level != 2)
             {
                 Gizmos.color = new Color(1,0,0,.5f);
                 Gizmos.DrawSphere(position, parentRadius);
             }
 
-            if (level != Level.ParentOnly)
+            if (level != 1)
             {
                 Gizmos.color = new Color(0,1,0,.5f);
                 Gizmos.DrawSphere(position, childRadius);
             }
         }
-        
-        private enum Level {ParentOnly, ChildOnly, Both}
     }
 }

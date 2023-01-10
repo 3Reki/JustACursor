@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
@@ -11,9 +12,7 @@ namespace Enemies
         [SerializeField, Range(1,30)] private float amplitude = 15;
         [SerializeField, Range(0.1f,20)] private float period = 10;
         [SerializeField] private Ease movementEase = Ease.Linear;
-        
-        
-        
+
         private Vector2 startPosition;
         private float curveTime;
         
@@ -28,7 +27,7 @@ namespace Enemies
             
             StartCoroutine(MovementLoop());
         }
-        
+
         private IEnumerator MovementLoop()
         {
             float newPos = movementCurve.Evaluate(curveTime)*amplitude;
@@ -50,8 +49,8 @@ namespace Enemies
             yield return new WaitForSeconds(duration);
             StartCoroutine(MovementLoop());
         }
-
-        public void StopMovement()
+        
+        private void OnDestroy()
         {
             transform.DOKill();
         }

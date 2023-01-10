@@ -74,10 +74,10 @@ MonoBehaviour:
   movement: {fileID: 8447345017923191086}
   maxHealth: 5
   timeBeforeFirstFire: 0
-  previewDuration: 1
+  previewDuration: 0.5
   aoeDuration: 1
-  aoeCooldown: 1
-  level: 0
+  aoeCooldown: 0.5
+  level: 3
   parentRadius: 1.5
   childNumber: 4
   childRadius: 0.5
@@ -161,7 +161,19 @@ MonoBehaviour:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8447345017923191087}
+        m_TargetAssemblyTypeName: Enemies.Glitcher, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8447345017923191081
 MonoBehaviour:
   m_ObjectHideFlags: 0
