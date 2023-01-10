@@ -1,5 +1,6 @@
 using System.Collections;
 using BulletPro;
+using MyBox;
 using Player;
 using UnityEngine;
 
@@ -10,12 +11,16 @@ namespace Enemies
         [SerializeField] private Health health;
         [SerializeField] private BulletEmitter[] emitterList;
 
+        [Separator("GD")]
+        
         [Header("Health")]
         [SerializeField] private int maxHealth = 5;
         
-        [Header("Timing")]
+        [Header("Fire")]
         [SerializeField] private float timeBeforeFirstFire;
         [SerializeField] private float shootCooldown;
+        
+        [Header("Level")]
         [SerializeField, Range(1,4)] private int level;
 
         private BulletEmitter emitter;

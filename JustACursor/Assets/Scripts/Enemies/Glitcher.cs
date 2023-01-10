@@ -11,17 +11,19 @@ namespace Enemies
         [SerializeField] private AreaOfEffect aoeParent;
         [SerializeField] private Transform childTransform;
         [SerializeField] private Health health;
+        
+        [Separator("GD")]
 
         [Header("Health")]
         [SerializeField] private int maxHealth = 5;
         
-        [Header("Timing")]
+        [Header("AoE")]
         [SerializeField] private float timeBeforeFirstFire;
         [SerializeField] private float previewDuration;
         [SerializeField] private float aoeDuration;
         [SerializeField] private float aoeCooldown;
 
-        [Header("Area of Effects")]
+        [Header("Level")]
         [SerializeField, Range(1,3)] private int level;
         
         [ConditionalField(nameof(level), true, 2)]
