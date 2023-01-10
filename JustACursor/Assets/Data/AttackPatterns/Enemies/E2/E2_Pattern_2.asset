@@ -29,7 +29,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114184213563873034}
+  currentParamsSelected: {fileID: 114455728593515822}
   numberOfSubAssets: 4
 --- !u!114 &114043142638459942
 MonoBehaviour:
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 13118062
+  uniqueIndex: 6335204
   profile: {fileID: 11400000}
   parent: {fileID: 114184213563873034}
   children:
@@ -4616,7 +4616,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 2773448
+  uniqueIndex: 1290969
   profile: {fileID: 11400000}
   parent: {fileID: 114334976902514986}
   children:
@@ -38703,7 +38703,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 5221855
+  uniqueIndex: 13968094
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -45815,7 +45815,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3213746
+  uniqueIndex: 4095028
   profile: {fileID: 11400000}
   parent: {fileID: 114043142638459942}
   children: []
@@ -45932,7 +45932,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: {fileID: 21300000, guid: 654dd63921adbcb4fb04985d43c34542, type: 3}
+      defaultValue: {fileID: 21300000, guid: 934e6b2f345dc8749b891dcf6f0b6648, type: 3}
     narrowType: 1
     requireComponent: 0
     typeName: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
@@ -46273,7 +46273,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: {fileID: 2100000, guid: dedf0ed859edd7d44ae9eb78bf7a6b40, type: 2}
+      defaultValue: {fileID: 2100000, guid: c8a2753bcfe6f7d4681c997392cf0aec, type: 2}
     narrowType: 1
     requireComponent: 0
     typeName: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
@@ -46871,7 +46871,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: {r: 1.0147059, g: 0, b: 0.67149645, a: 1}
+      defaultValue: {r: 1, g: 1, b: 1, a: 1}
       gradientValue:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -48134,7 +48134,7 @@ MonoBehaviour:
   foldoutVFX: 1
   hideSpriteList: 0
   vfxOpened: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -48601,7 +48601,7 @@ MonoBehaviour:
         parameterType: 0
         relativeTo: 0
         parameterName: 
-      defaultValue: 0.1
+      defaultValue: 0.08
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
