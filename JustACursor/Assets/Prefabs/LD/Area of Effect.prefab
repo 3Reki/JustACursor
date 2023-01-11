@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7940018127333520998}
   - component: {fileID: 4482048794073164492}
   - component: {fileID: 8983473590221331468}
-  - component: {fileID: 7697456104391682761}
+  - component: {fileID: 5845633302348546550}
   m_Layer: 7
-  m_Name: AoE
+  m_Name: AoE Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.9056604, g: 0.36311856, b: 0.36311856, a: 0.8352941}
   m_FlipX: 0
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &7697456104391682761
+--- !u!114 &5845633302348546550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2514459659619528970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dde13ebcc01e483f84bcb672c3547756, type: 3}
+  m_Script: {fileID: 11500000, guid: 55d936483936c1f47a467c6c3b842193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2948149775364297474
@@ -186,7 +186,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0.7176471}
   m_FlipX: 0
@@ -207,6 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3193334531252207531}
+  - component: {fileID: 1355531901890375239}
   m_Layer: 7
   m_Name: Area of Effect
   m_TagString: Untagged
@@ -231,3 +232,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1355531901890375239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4942947987975104490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde13ebcc01e483f84bcb672c3547756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preview: {fileID: 2948149775364297474}
+  aoe: {fileID: 2514459659619528970}
+  aoeCollider: {fileID: 8983473590221331468}

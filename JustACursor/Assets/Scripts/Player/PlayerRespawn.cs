@@ -16,7 +16,7 @@ namespace Player
         private PlayerData data => playerController.Data;
         private Health health => playerController.Health;
 
-        public bool isRespawning { get; private set; }
+        public bool IsRespawning { get; private set; }
         
         [Header("Debug")]
         [SerializeField] private KeyCode respawnKey;
@@ -65,7 +65,7 @@ namespace Player
         }
 
         private IEnumerator RespawnCR() {
-            isRespawning = true;
+            IsRespawning = true;
             playerController.IsInvincible = true;
             
             respawnScreen.DOFade(1, data.respawnFadeIn).SetEase(Ease.Linear);
@@ -77,9 +77,10 @@ namespace Player
         
             respawnScreen.DOFade(0, data.respawnFadeOut).SetEase(Ease.Linear);
             yield return new WaitForSeconds(data.respawnFadeOut);
-            
+
             playerController.IsInvincible = false;
-            isRespawning = false;
+            IsRespawning = false;
+            
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Player
         }
 
         private void Update() {
-            if (playerRespawn.isRespawning) {
+            if (playerRespawn.IsRespawning) {
                 HandleRespawn();
                 return;
             }
