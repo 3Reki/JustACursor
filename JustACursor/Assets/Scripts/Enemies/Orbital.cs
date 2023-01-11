@@ -31,11 +31,11 @@ namespace Enemies
 
         private void Awake()
         {
-            if (level < 2) turrets[1].gameObject.SetActive(false);
+            if (level < 2) turrets[2].gameObject.SetActive(false);
 
             if (level < 3)
             {
-                turrets[2].gameObject.SetActive(false);
+                turrets[1].gameObject.SetActive(false);
                 turrets[3].gameObject.SetActive(false);
             }
 
